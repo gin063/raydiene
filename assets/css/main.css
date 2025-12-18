@@ -1,0 +1,27 @@
+/* assets/css/main.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+   在这里定义全局样式 
+*/
+body {
+  /* 1. 启用我们在 tailwind.config.ts 里配置好的字体栈 */
+  @apply font-sans;
+  
+  /* 2. 开启“抗锯齿”，让文字在 Mac/iPhone 屏幕上显示得更细致清晰 */
+  @apply antialiased;
+
+  /* 3. 设置默认背景为黑色，文字为白色 (符合你的暗黑科技风) */
+  @apply bg-black text-white;
+}
+
+/* 
+  你之前的自定义颜色保留着也没事，
+  但如果现在全站都是黑色/透明玻璃风，这个可能暂时用不到了。
+  为了不报错，先留着也行，或者直接删掉。
+*/
+.bg-raydiene-dark {
+  background-color: #0f1c2e; 
+}
