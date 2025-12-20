@@ -5,22 +5,24 @@
 
 /* --- @font-face 定义区 --- */
 
-/* 1. Michroma (英文标题) - 强制覆盖所有字重，防止加粗时丢失 */
+/* 1. Michroma (英文标题) */
 @font-face {
   font-family: 'Michroma';
   src: url('/fonts/Michroma-Regular.woff2') format('woff2');
-  font-weight: 100 900; /* 让它响应所有字重 */
-  font-style: normal;
-  font-display: swap;
-}
-
-/* 2. Inter (英文正文) - 可变字体 */
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype'); /* 注意你之前截图是 ttf */
   font-weight: 100 900;
   font-style: normal;
-  font-display: swap;
+  /* ★ 修改点：改为 block (阻塞显示，直到加载完成) */
+  font-display: block; 
+}
+
+/* 2. Inter (英文正文) */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  /* ★ 修改点：改为 block */
+  font-display: block;
 }
 
 /* 3. 中文体系：Resource Han Rounded (源泉圆体) */
@@ -29,48 +31,40 @@
   font-family: 'Resource Han Rounded';
   src: url('/fonts/Resource-Han-Rounded-CN-Bold.woff2') format('woff2');
   font-weight: 700;
-  font-display: swap;
+  /* ★ 修改点：改为 block */
+  font-display: block;
 }
 /* Medium (500) */
 @font-face {
   font-family: 'Resource Han Rounded';
   src: url('/fonts/Resource-Han-Rounded-CN-Medium.woff2') format('woff2');
   font-weight: 500;
-  font-display: swap;
+  /* ★ 修改点：改为 block */
+  font-display: block;
 }
 /* Regular (400) */
 @font-face {
   font-family: 'Resource Han Rounded';
   src: url('/fonts/Resource-Han-Rounded-CN-Regular.woff2') format('woff2');
   font-weight: 400;
-  font-display: swap;
+  /* ★ 修改点：改为 block */
+  font-display: block;
 }
 
-/* --- ★★★ 自动化规则区 (@layer base) ★★★ --- */
-/* 这里定义的样式会自动应用到所有对应的 HTML 标签上 */
+/* --- 自动化规则区 --- */
 @layer base {
-  
-  /* 1. 全局默认 (正文 Regular) */
   body {
     @apply font-body text-base font-normal bg-black text-white antialiased;
   }
-
-  /* 2. 一级标题 (Hero Title) -> 自动用 Bold */
   h1 {
     @apply font-hero font-bold;
   }
-
-  /* 3. 二级/三级标题 (Subtitle) -> 自动用 Medium */
   h2, h3, h4, .subtitle {
     @apply font-hero font-medium;
   }
-
-  /* 4. 交互元素 (导航、按钮) -> 自动用 Medium */
   button, nav a, .btn {
     @apply font-body font-medium;
   }
-  
-  /* 5. 强调文字 -> 自动用 Bold */
   strong, b {
     @apply font-bold;
   }
