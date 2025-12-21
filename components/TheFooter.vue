@@ -142,8 +142,8 @@ const socialLinks = [
   {
     name: '小红书',
     icon: '/images/social/xhs.svg',
-    url: '...',
-    qr: '...',
+    url: 'https://www.xiaohongshu.com/user/profile/65a87c94000000000803da00',
+    qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     
     // ★★★ 关键修改 ★★★
