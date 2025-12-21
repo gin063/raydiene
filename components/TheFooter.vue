@@ -105,7 +105,7 @@ const socialLinks = [
   {
     name: '京东旗舰店',
     icon: '/images/social/jd-dog.svg',
-    url: 'https://shop.jd.com/shop/home?shopId=13360593',
+    url: 'https://mall.jd.com/index-13360593.html',
     qr: '/images/qr-placeholder.png',
     // 滤镜逻辑：强制变白 + 降低透明度(变灰)
     filterClass: 'filter brightness-0 invert opacity-40',
