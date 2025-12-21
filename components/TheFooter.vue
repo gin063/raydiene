@@ -7,7 +7,6 @@
         <div class="md:col-span-4 space-y-6">
           <h3 class="text-lg mb-6 text-gray-200">联系我们</h3>
           <div class="flex items-start space-x-3 text-gray-400 text-sm hover:text-white transition-colors">
-            <!-- 这里保留了简单的内置 SVG，因为这些是通用的UI图标 -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-5 h-5 mt-0.5">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -45,36 +44,42 @@
           </div>
         </div>
 
-        <!-- 右侧：Logo & 社交图标 (SVG 文件版) -->
+        <!-- 右侧：Logo & 社交图标 -->
         <div class="md:col-span-5 flex flex-col items-start md:items-end text-left md:text-right">
           <img src="/logo-placeholder-white.png" alt="Raydiene White" class="h-6 md:h-8 mb-4 opacity-90" />
           <p class="text-xs tracking-[0.2em] text-gray-500 mb-8 uppercase">Charging For Better World</p>
 
           <div class="flex items-center space-x-4 mb-8">
             <div v-for="(social, index) in socialLinks" :key="index" class="relative group">
-              <!-- 图标按钮 -->
               <a :href="social.url" target="_blank"
-                class="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 overflow-hidden">
-                <!-- ★★★ 这里直接使用 img 标签读取 SVG 文件 ★★★ -->
-                <!-- class="p-1.5": 给内部图标留一点呼吸空间，不要撑满圆圈 -->
-                <img :src="social.icon" :alt="social.name" class="w-full h-full object-contain pointer-events-none"
-                  :class="[social.padding || 'p-1.5', social.offset]" />
+                class="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300">
+                <!-- 
+                  img 样式逻辑：
+                  1. 默认使用 social.filterClass (静止时灰色/去背景)。
+                  2. 如果没有 filterClass，则使用默认的挖孔滤镜 (grayscale+contrast+invert)。
+                  3. group-hover:filter-none 鼠标悬停时还原原始色彩。
+                -->
+                <img :src="social.icon" :alt="social.name"
+                  class="w-full h-full object-contain transition-all duration-300 group-hover:filter-none group-hover:opacity-100"
+                  :class="[
+                    social.padding || 'p-1',
+                    social.offset,
+                    social.filterClass || '[filter:grayscale(1)_contrast(10)_invert(1)] opacity-80',
+                    social.hoverScale || 'group-hover:scale-110'
+                  ]" />
               </a>
 
-              <!-- 弹窗 (iOS 风格) -->
+              <!-- 弹窗 (不变) -->
               <div
                 class="absolute bottom-full mb-4 z-50 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] opacity-0 translate-y-4 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible"
                 :class="[index === socialLinks.length - 1 ? 'right-0' : 'left-1/2 -translate-x-1/2']">
                 <div class="bg-white/70 backdrop-blur-2xl p-3 rounded-xl shadow-2xl ring-1 ring-white/40 relative">
-
-                  <!-- 二维码 -->
                   <div class="w-32 h-32 flex items-center justify-center overflow-hidden rounded-lg">
-                    <img :src="social.qr" :alt="social.name" class="w-full h-full object-cover" />
+                    <div class="w-full h-full bg-white flex items-center justify-center">
+                      <img :src="social.qr" :alt="social.name" class="w-full h-full object-cover" />
+                    </div>
                   </div>
-
                   <p class="text-slate-800 text-center text-xs mt-2 font-bold">{{ social.name }}</p>
-
-                  <!-- 小三角 -->
                   <div
                     class="absolute -bottom-1.5 w-3 h-3 bg-white/70 backdrop-blur-2xl rotate-45 ring-1 ring-white/40 border-r border-b border-transparent"
                     :class="[index === socialLinks.length - 1 ? 'right-3' : 'left-1/2 -translate-x-1/2']"></div>
@@ -95,57 +100,66 @@
 
 <script setup>
 // 数据配置
-// ★★★ 修改：icon 字段现在指向 .svg 文件 ★★★
+// 现在所有图标都使用了“无背景镂空 SVG”，逻辑完全统一
 const socialLinks = [
   {
     name: '京东旗舰店',
-    icon: '/images/social/jd.svg',
+    icon: '/images/social/jd-dog.svg',
     url: 'https://shop.m.jd.com/shop/home?shopId=13360593',
     qr: '/images/qr-placeholder.png',
-    // 京东图标比较宽，默认 p-1.5 可能显得有点小，改为 p-1 让它大一点
-    // 如果觉得位置偏上，可以加 translate-y-[1px]
-    padding: 'p-1',
-    offset: 'translate-y-[1px]' 
+    // 滤镜逻辑：强制变白 + 降低透明度(变灰)
+    filterClass: 'filter brightness-0 invert opacity-40',
+    padding: 'p-0',
+    offset: 'translate-y-[1px]'
   },
   {
     name: '天猫旗舰店',
-    icon: '/images/social/tmall.svg',
+    icon: '/images/social/tmall4.svg', // 更新为 tmall4
     url: 'https://leidienqcyp.m.tmall.com/',
     qr: '/images/qr-placeholder.png',
-    // 天猫猫头比较方正，默认 p-1.5 通常没问题，如有偏差可微调
-    padding: 'p-1.5' 
+    filterClass: 'filter brightness-0 invert opacity-40',
+    padding: 'p-1'
   },
   {
     name: '抖音主页',
-    icon: '/images/social/douyin.svg',
+    icon: '/images/social/douyin.svg', // 更新为 douyin.svg
     url: 'https://www.douyin.com/user/MS4wLjABAAAA4yK9kWqRNXf4xzK-ndbbkjp-IDGzf81JulVHMik8Yyg',
     qr: '/images/qr-douyin.png',
-    // ★★★ 抖音图标微调重点 ★★★
-    // 抖音音符重心偏右上，所以视觉上需要向左下移动一点点才能居中
-    // 同时也稍微改大一点 (p-1.25)
-    padding: 'p-1.5',
-    offset: 'translate-x-[2px]' 
+    filterClass: 'filter brightness-0 invert opacity-40',
+    padding: 'p-1',
+    // 抖音音符可能视觉重心偏右，保留微调
+    offset: 'translate-x-[4px] translate-y-[2px]'
   },
   {
     name: '拼多多',
-    icon: '/images/social/pinduoduo.svg',
+    icon: '/images/social/pdd.svg', // 更新为 pdd.svg
     url: '#',
     qr: '/images/qr-placeholder.png',
-    padding: 'p-1.5' // 拼多多图标也是宽的，稍微放大点好看
+    filterClass: 'filter brightness-0 invert opacity-40',
+    padding: 'p-1',
+    offset: 'translate-y-[2px]'
   },
   {
     name: '小红书',
-    icon: '/images/social/xiaohongshu.svg',
-    url: 'https://www.xiaohongshu.com/user/profile/65a87c94000000000803da00',
-    qr: '/images/qr-placeholder.png',
-    padding: 'p-1.5'
+    icon: '/images/social/xhs.svg',
+    url: '...',
+    qr: '...',
+    filterClass: 'filter brightness-0 invert opacity-40',
+    
+    // ★★★ 关键修改 ★★★
+    // 基础大小：scale-125 (1.25倍)
+    // 悬停大小：scale-150 (1.5倍) -> 这样视觉上就是放大了
+    padding: 'p-0',
+    offset: 'translate-y-[1px]'
   },
   {
     name: '微信公众号',
-    icon: '/images/social/wechat.svg',
-    url: '#', 
+    icon: '/images/social/wechat2.svg', // 更新为 wechat2.svg
+    url: '#',
     qr: '/images/qr-placeholder.png',
-    padding: 'p-1' // 微信图标比较圆润，放大一点视觉上和其他的平衡
+    filterClass: 'filter brightness-0 invert opacity-40',
+    padding: 'p-1',
+    offset: 'translate-y-[2px]'
   }
 ]
 </script>
