@@ -105,7 +105,7 @@ const socialLinks = [
   {
     name: '京东旗舰店',
     icon: '/images/social/jd-dog.svg',
-    url: 'https://shop.m.jd.com/shop/home?shopId=13360593',
+    url: 'https://shop.jd.com/shop/home?shopId=13360593',
     qr: '/images/qr-placeholder.png',
     // 滤镜逻辑：强制变白 + 降低透明度(变灰)
     filterClass: 'filter brightness-0 invert opacity-40',
@@ -115,7 +115,7 @@ const socialLinks = [
   {
     name: '天猫旗舰店',
     icon: '/images/social/tmall4.svg', // 更新为 tmall4
-    url: 'https://leidienqcyp.m.tmall.com/',
+    url: 'https://leidienqcyp.tmall.com/',
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1'
