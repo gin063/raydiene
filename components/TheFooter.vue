@@ -32,20 +32,8 @@
             <p>总部：上海市自由贸易试验区临港新片区环湖西二路888号C楼</p>
           </div>
         </div>
-
-        <!-- 中间：快速导航 (不变) -->
-        <div class="md:col-span-3">
-          <h3 class="text-lg mb-6 text-gray-200">快速导航</h3>
-          <div class="grid grid-cols-2 gap-y-4 text-sm text-gray-400">
-            <a href="#" class="hover:text-white transition-colors">产品服务</a>
-            <a href="#" class="hover:text-white transition-colors">APP下载</a>
-            <a href="#" class="hover:text-white transition-colors">产品手册</a>
-            <a href="#" class="hover:text-white transition-colors">如何购买</a>
-          </div>
-        </div>
-
         <!-- 右侧：Logo & 社交图标 -->
-        <div class="md:col-span-5 flex flex-col items-start md:items-end text-left md:text-right">
+        <div class="md:col-span-5 md:col-start-8 flex flex-col items-start md:items-end text-left md:text-right">
           <img src="/logo-placeholder-white.png" alt="Raydiene White" class="h-6 md:h-8 mb-4 opacity-90" />
           <p class="text-xs tracking-[0.2em] text-gray-500 mb-8 uppercase">Charging For Better World</p>
 

@@ -69,3 +69,20 @@
     @apply font-bold;
   }
 }
+/* ★ 全局滚动条美化 (Webkit内核浏览器) ★ */
+::-webkit-scrollbar {
+  width: 8px; /* 稍微宽一点点，方便鼠标抓取 */
+}
+
+::-webkit-scrollbar-track {
+  background: #000; /* 轨道纯黑 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333; /* 滑块深灰 */
+  border-radius: 4px; /* 圆角 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* 悬停变亮 */
+}
