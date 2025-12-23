@@ -4,7 +4,7 @@
     <header class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 shadow-2xl" :class="[
       isMobileMenuOpen
         ? 'bg-white/90 backdrop-blur-xl'
-        : 'bg-black/95 backdrop-blur-xl'
+        : 'bg-black/90 backdrop-blur-xl'
     ]" :style="{ paddingRight: scrollbarWidth + 'px' }" @mouseleave="scheduleCloseMenu" @mouseenter="cancelCloseTimer">
       <div class="container mx-auto px-6 h-20 flex items-center justify-between relative">
 
@@ -55,7 +55,7 @@
 
     <!-- Mega Menu 幕布 -->
     <div ref="megaMenuRef"
-      class="fixed top-20 left-0 w-full bg-black/95 backdrop-blur-xl shadow-2xl overflow-hidden origin-top z-40 custom-scrollbar"
+      class="fixed top-20 left-0 w-full bg-black/90 backdrop-blur-xl shadow-2xl overflow-hidden origin-top z-40 custom-scrollbar"
       style="height: 0; opacity: 0; max-height: calc(100vh - 80px);" @mouseenter="cancelCloseTimer"
       @mouseleave="scheduleCloseMenu" @wheel.stop>
       <div class="container mx-auto px-6 py-10 h-full max-h-[50vh] overflow-y-auto custom-scrollbar"
@@ -181,11 +181,11 @@ import gsap from 'gsap'
 
 // 菜单数据
 const menuItems = [
-  { name: '新闻中心', type: 'mega', children: [{ name: '新品发布', linkTitle: '阅读最新发布', linkDesc: '探索 Raydiene 最新技术突破' }, { name: '企业资讯', linkTitle: '查看企业动态', linkDesc: '了解我们的发展历程' }] },
-  { name: '在售产品', type: 'mega', children: [{ name: '交流充电桩', series: [{ name: '坚石系列', products: [{ name: '坚石', image: '/images/products/jianshi.png' }] }, { name: '磐石系列', products: [{ name: '磐石Max', image: '/images/products/panshi-max.png' }, { name: '磐石Pro', image: '/images/products/panshi-pro.png' }] }, { name: '星辰系列', products: [{ name: '星辰', image: '/images/products/xingchen.png' }] }, { name: '星耀系列', products: [{ name: '星耀', image: '/images/products/xingyao.png' }] }] }] },
-  { name: '服务支持', type: 'mega', children: [{ name: '预约安装', linkTitle: '立即预约', linkDesc: '专业团队上门服务' }, { name: '售后服务', linkTitle: '售后支持', linkDesc: '全天候客户响应' }] },
-  { name: '下载中心', type: 'mega', children: [{ name: '产品手册', linkTitle: '下载 PDF 手册', linkDesc: '获取详细的操作指南与参数', }, { name: 'App下载', linkTitle: '扫码下载 App', linkDesc: 'iOS / Android 客户端' }] },
-  { name: '发现', type: 'mega', children: [{ name: '关于我们', linkTitle: '了解品牌故事', linkDesc: 'Charging For Better World' }, { name: '联系我们' }] }
+  { name: '关于我们', type: 'mega', children: [{ name: '企业简介' }, { name: '企业文化' }, { name: '企业资讯' }] },
+  { name: '产品介绍', type: 'mega', children: [{ name: '产品路线图', series: [{ name: '交流充电桩' }]}, { name: '在售产品', series: [{ name: '坚石系列', products: [{ name: '坚石', image: '/images/products/jianshi.png' }] }, { name: '磐石系列', products: [{ name: '磐石Max', image: '/images/products/panshi-max.png' }, { name: '磐石Pro', image: '/images/products/panshi-pro.png' }] }, { name: '星辰系列', products: [{ name: '星辰', image: '/images/products/xingchen.png' }] }, { name: '星耀系列', products: [{ name: '星耀', image: '/images/products/xingyao.png' }] }] }] },
+  { name: '产品服务', type: 'mega', children: [{ name: '安装服务' }, { name: '售后服务' }] },
+  { name: '下载中心', type: 'mega', children: [{ name: 'App下载' }, { name: '说明书下载' }] },
+  { name: '联系我们', type: 'mega', children: [{ name: '联系方式' }, { name: '官方渠道' }, { name: '加入我们' }] }
 ]
 
 // 状态
