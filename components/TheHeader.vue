@@ -182,7 +182,7 @@ import gsap from 'gsap'
 // 菜单数据
 const menuItems = [
   { name: '关于我们', type: 'mega', children: [{ name: '企业简介' }, { name: '企业文化' }, { name: '企业资讯' }] },
-  { name: '产品介绍', type: 'mega', children: [{ name: '产品路线图', series: [{ name: '交流充电桩' }]}, { name: '在售产品', series: [{ name: '坚石系列', products: [{ name: '坚石', image: '/images/products/jianshi.png' }] }, { name: '磐石系列', products: [{ name: '磐石Max', image: '/images/products/panshi-max.png' }, { name: '磐石Pro', image: '/images/products/panshi-pro.png' }] }, { name: '星辰系列', products: [{ name: '星辰', image: '/images/products/xingchen.png' }] }, { name: '星耀系列', products: [{ name: '星耀', image: '/images/products/xingyao.png' }] }] }] },
+  { name: '产品介绍', type: 'mega', children: [{ name: '在售产品', series: [{ name: '坚石系列', products: [{ name: '坚石', image: '/images/products/jianshi.png' }] }, { name: '磐石系列', products: [{ name: '磐石Max', image: '/images/products/panshi-max.png' }, { name: '磐石Pro', image: '/images/products/panshi-pro.png' }] }, { name: '星辰系列', products: [{ name: '星辰', image: '/images/products/xingchen.png' }] }, { name: '星耀系列', products: [{ name: '星耀', image: '/images/products/xingyao.png' }] }] }, { name: '产品路线图', linkTitle: '交流充电桩' }] },
   { name: '产品服务', type: 'mega', children: [{ name: '安装服务' }, { name: '售后服务' }] },
   { name: '下载中心', type: 'mega', children: [{ name: 'App下载' }, { name: '说明书下载' }] },
   { name: '联系我们', type: 'mega', children: [{ name: '联系方式' }, { name: '官方渠道' }, { name: '加入我们' }] }
@@ -236,7 +236,31 @@ const onMenuEnter = (index) => {
   }
 }
 
-const onCategoryEnter = (index) => { activeCategoryIndex.value = index; activeSeriesIndex.value = 0 }
+const onCategoryEnter = async (index) => {
+  // 如果是同一个选项，不做处理，避免重复触发
+  if (activeCategoryIndex.value === index) return
+
+  activeCategoryIndex.value = index
+  activeSeriesIndex.value = 0
+
+  // 等待 Vue 完成 v-if 的 DOM 更新
+  await nextTick()
+
+  // 获取需要做动画的元素 (主要是 col2，因为 col1 始终存在且可见，col3 始终存在)
+  // 我们重点检查 col2 是否存在（因为它可能刚被 v-if 创建出来，带有 opacity-0 类）
+  const targets = []
+  if (col2.value) targets.push(col2.value)
+  // 如果你希望右侧 col3 在切换分类时也有个淡入效果，可以加上 col3.value
+  // if (col3.value) targets.push(col3.value) 
+
+  if (targets.length > 0) {
+    // 强制执行一个微小的进入动画，确保 opacity 变为 1
+    gsap.fromTo(targets,
+      { opacity: 0, x: -10 },
+      { opacity: 1, x: 0, duration: 0.3, ease: 'power2.out', overwrite: true }
+    )
+  }
+}
 const onSeriesEnter = (index) => { activeSeriesIndex.value = index }
 
 const runStaggerAnimation = async () => {
