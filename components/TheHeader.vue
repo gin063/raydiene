@@ -3,8 +3,8 @@
     <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 shadow-2xl" :class="[
       isMobileMenuOpen
-        ? 'bg-white/90 backdrop-blur-xl'
-        : 'bg-black/90 backdrop-blur-xl'
+        ? 'bg-white/50 backdrop-blur-xl'
+        : 'bg-black/50 backdrop-blur-xl'
     ]" :style="{ paddingRight: scrollbarWidth + 'px' }" @mouseleave="scheduleCloseMenu" @mouseenter="cancelCloseTimer">
       <div class="container mx-auto px-6 h-20 flex items-center justify-between relative">
 
@@ -55,7 +55,7 @@
 
     <!-- Mega Menu 幕布 -->
     <div ref="megaMenuRef"
-      class="fixed top-20 left-0 w-full bg-black/90 backdrop-blur-xl shadow-2xl overflow-hidden origin-top z-40 custom-scrollbar"
+      class="fixed top-20 left-0 w-full bg-black/60 backdrop-blur-xl shadow-2xl overflow-hidden origin-top z-40 custom-scrollbar"
       style="height: 0; opacity: 0; max-height: calc(100vh - 80px);" @mouseenter="cancelCloseTimer"
       @mouseleave="scheduleCloseMenu" @wheel.stop>
       <div class="container mx-auto px-6 py-10 h-full max-h-[50vh] overflow-y-auto custom-scrollbar"
@@ -131,16 +131,16 @@
     <!-- 移动端菜单 -->
     <Teleport to="body">
       <div v-if="isMenuMounted" ref="mobileMenuContainer"
-        class="fixed inset-0 bg-white z-40 md:hidden overflow-hidden invisible">
+        class="fixed inset-0 bg-white/60 backdrop-blur-xl shadow-2xl z-40 md:hidden overflow-hidden invisible">
         <div ref="mainMenuLayer" class="absolute inset-0 pt-28 px-8 w-full h-full overflow-y-auto">
           <div class="flex flex-col space-y-1">
             <div v-for="(item, index) in menuItems" :key="index" class="mobile-menu-item opacity-0">
-              <div class="flex justify-between items-center py-5 border-b border-gray-100 cursor-pointer group"
+              <div class="flex justify-between items-center py-5 cursor-pointer group"
                 @click="handleMenuClick(item)">
                 <span
                   class="text-slate-900 text-xl font-bold tracking-tight group-active:text-gray-500 transition-colors">{{
                     item.name }}</span>
-                <span v-if="item.children" class="text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                <span v-if="item.children" class="text-black"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                   </svg></span>
