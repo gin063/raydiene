@@ -16,12 +16,11 @@
 
         <nav class="hidden md:flex h-full items-center justify-center flex-1 space-x-1">
           <div v-for="(item, index) in menuItems" :key="index"
-            class="h-full flex items-center px-5 relative cursor-pointer group" 
-            @mouseenter="onMenuEnter(index)"
+            class="h-full flex items-center px-5 relative cursor-pointer group" @mouseenter="onMenuEnter(index)"
             @mouseleave="onMenuLeave">
-            
+
             <span class="text-base font-bold tracking-wide transition-all duration-300 origin-center font-hero" :class="[
-              activeMenuIndex === index
+              activeMenuIndex === index && !isClosing
                 ? 'text-white scale-110'
                 : 'text-gray-300 group-hover:text-white group-hover:scale-110'
             ]">
@@ -48,7 +47,7 @@
       style="height: 0; opacity: 0; max-height: calc(100vh - 80px);" @mouseenter="cancelCloseTimer"
       @mouseleave="scheduleCloseMenu" @wheel.stop>
       <div class="container mx-auto px-6 py-10 h-full max-h-[50vh] overflow-y-auto custom-scrollbar"
-        v-if="activeItem && activeItem.children">
+        v-if="activeItem && activeItem.children" :key="activeMenuIndex">
         <div class="grid grid-cols-12 gap-8 h-full min-h-[300px]">
 
           <div ref="col1" class="col-span-3 border-r border-white/10 pr-4 opacity-0 translate-x-[-10px]">
@@ -67,7 +66,7 @@
           </div>
 
           <div ref="col2" class="col-span-3 border-r border-white/10 pr-4 opacity-0 translate-x-[-10px]"
-            v-if="currentCategory && currentCategory.series">
+            v-if="currentCategory && currentCategory.series" :key="activeCategoryIndex">
             <div class="space-y-1">
               <div v-for="(ser, sIndex) in currentCategory.series" :key="sIndex"
                 class="px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex justify-between items-center"
@@ -83,7 +82,7 @@
           </div>
 
           <div ref="col3" class="col-span-6 pl-8 opacity-0 translate-x-[-10px]">
-            <transition name="fade" mode="out-in">
+            <transition name="fade" mode="out-in" :key="activeCategoryIndex">
               <div v-if="currentSeries && currentSeries.products" :key="currentSeries.name"
                 class="flex gap-6 h-full items-start">
                 <div v-for="(prod, pIndex) in currentSeries.products" :key="pIndex" class="group/prod cursor-pointer">
@@ -120,8 +119,7 @@
         <div ref="mainMenuLayer" class="absolute inset-0 pt-28 px-8 w-full h-full overflow-y-auto">
           <div class="flex flex-col space-y-1">
             <div v-for="(item, index) in menuItems" :key="index" class="mobile-menu-item opacity-0">
-              <div class="flex justify-between items-center py-5 cursor-pointer group"
-                @click="handleMenuClick(item)">
+              <div class="flex justify-between items-center py-5 cursor-pointer group" @click="handleMenuClick(item)">
                 <span
                   class="text-slate-900 text-xl font-bold tracking-tight group-active:text-gray-500 transition-colors">{{
                     item.name }}</span>
@@ -180,6 +178,9 @@ const activeSeriesIndex = ref(0)
 const isMenuOpen = ref(false)
 const megaMenuRef = ref(null)
 const closeTimer = ref(null)
+
+// ★★★ 修复 1：补全缺失的 isClosing 状态 ★★★
+const isClosing = ref(false)
 
 // ★★★ 新增：切换计时器，用于处理防抖 ★★★
 const switchTimer = ref(null)
@@ -259,39 +260,84 @@ const onMenuLeave = () => {
 const onCategoryEnter = async (index) => {
   if (activeCategoryIndex.value === index) return
 
+  const targetsToHide = [col2.value, col3.value].filter(el => el)
+  if (targetsToHide.length > 0) gsap.set(targetsToHide, { opacity: 0 })
+
   activeCategoryIndex.value = index
   activeSeriesIndex.value = 0
 
   await nextTick()
 
-  const targets = []
-  if (col2.value) targets.push(col2.value)
+  const targetsToShow = [col2.value, col3.value].filter(el => el)
 
-  if (targets.length > 0) {
-    gsap.fromTo(targets,
-      { opacity: 0, x: -10 },
-      { opacity: 1, x: 0, duration: 0.3, ease: 'power2.out', overwrite: true }
+  if (targetsToShow.length > 0) {
+    gsap.killTweensOf(targetsToShow)
+
+    // 👇【核心修改】同样改用 fromTo
+    gsap.fromTo(targetsToShow,
+      {
+        opacity: 0,
+        x: -30
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.3,
+        overwrite: 'auto'
+      }
     )
   }
 }
+
 const onSeriesEnter = (index) => { activeSeriesIndex.value = index }
 
 const runStaggerAnimation = async () => {
+  // 1. 清理旧元素 (保持不变)
+  const oldTargets = [col1.value, col2.value, col3.value].filter(el => el)
+  if (oldTargets.length > 0) gsap.set(oldTargets, { opacity: 0 })
+
   await nextTick()
-  const targets = [col1.value, col2.value, col3.value].filter(el => el)
-  gsap.killTweensOf(targets)
-  gsap.set(targets, { opacity: 0, x: -15 })
-  gsap.to(targets, { opacity: 1, x: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' })
+
+  // 2. 获取新元素
+  const newTargets = [col1.value, col2.value, col3.value].filter(el => el)
+  gsap.killTweensOf(newTargets)
+
+  // 👇【核心修改】改用 fromTo，强制规定“从哪里开始，到哪里结束”
+  // 这样无论之前的状态如何，动画都会强制从 opacity: 0 开始执行
+  gsap.fromTo(newTargets,
+    {
+      opacity: 0,
+      x: -30
+    },
+    {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      stagger: 0.3,
+      ease: 'power3.out',
+      overwrite: 'auto' // 确保新动画会自动覆盖旧动画
+    }
+  )
 }
 
 // 打开菜单
 const openMenu = async () => {
-  if (!isMenuOpen.value) {
+  // ★★★ 修复 2：逻辑条件补全，允许在关闭过程中强制重新打开 ★★★
+  if (!isMenuOpen.value || isClosing.value) {
     isMenuOpen.value = true
+    // 重置关闭标记
+    isClosing.value = false
+
     const width = getScrollbarWidth()
     scrollbarWidth.value = width
     document.body.style.paddingRight = `${width}px`
     document.body.style.overflow = 'hidden'
+
+    // 强制杀掉所有正在进行的关闭动画 (column + menu)
+    const columnTargets = [col1.value, col2.value, col3.value].filter(el => el)
+    gsap.killTweensOf(columnTargets)
 
     gsap.killTweensOf(megaMenuRef.value)
     gsap.to(megaMenuRef.value, { height: 'auto', opacity: 1, duration: 0.6, ease: 'power3.out' })
@@ -303,19 +349,30 @@ const openMenu = async () => {
 // 关闭菜单动画
 const closeMenu = () => {
   closeTimer.value = setTimeout(() => {
+    isClosing.value = true
+
+    // ❌ 删除下面这一行！不要在这里清空，否则内容没了，高度就塌陷了
+    // activeMenuIndex.value = null 
+
     const targets = [col1.value, col2.value, col3.value].filter(el => el)
-    gsap.to(targets, { opacity: 0, duration: 0.2, overwrite: true })
+    gsap.to(targets, { opacity: 0, duration: 0.3, overwrite: true })
 
     gsap.to(megaMenuRef.value, {
       height: 0,
-      opacity: 0,
       duration: 0.5,
-      delay: 0.1, 
+      delay: 0.2, 
       ease: 'power3.inOut',
       overwrite: true,
       onComplete: () => {
         isMenuOpen.value = false
+        isClosing.value = false
+        
+        // ✅ 恢复下面这一行！动画播完了，现在可以安全销毁内容了
         activeMenuIndex.value = null
+        
+        // 确保彻底清理内部状态
+        activeCategoryIndex.value = 0
+        activeSeriesIndex.value = 0
 
         document.body.style.paddingRight = ''
         document.body.style.overflow = ''
@@ -324,6 +381,9 @@ const closeMenu = () => {
     })
   }, 100)
 }
+
+// ★★★ 修复 3：定义模板中调用的 scheduleCloseMenu ★★★
+const scheduleCloseMenu = () => closeMenu()
 
 const cancelCloseTimer = () => {
   if (closeTimer.value) {
