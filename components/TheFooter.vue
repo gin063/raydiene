@@ -38,32 +38,31 @@
 
           <div class="flex items-center space-x-4 mb-8">
             <div v-for="(social, index) in socialLinks" :key="index" class="relative" :class="{ 'group': !isMobile }">
-              
-              <a :href="isMobile && social.mobileUrl ? social.mobileUrl : social.url" 
-                 target="_blank"
-                 class="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300">
+
+              <a :href="isMobile && social.mobileUrl ? social.mobileUrl : social.url" target="_blank"
+                class="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300">
                 <img :src="social.icon" :alt="social.name"
                   class="w-full h-full object-contain transition-all duration-300 md:group-hover:filter-none md:group-hover:opacity-100"
                   :class="[
                     social.padding || 'p-1',
                     social.offset,
                     social.filterClass || '[filter:grayscale(1)_contrast(10)_invert(1)] opacity-80',
-                    social.hoverScale || 'md:group-hover:scale-110' 
+                    social.hoverScale || 'md:group-hover:scale-110'
                   ]" />
               </a>
 
               <div
-                class="absolute bottom-full mb-4 z-50 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] opacity-0 translate-y-4 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible"
+                class="absolute bottom-full mb-4 z-50 opacity-0 translate-y-4 invisible group-hover:transition-transform group-hover:duration-1000 group-hover:ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible"
                 :class="[index === socialLinks.length - 1 ? 'right-0' : 'left-1/2 -translate-x-1/2']">
-                <div class="bg-white/70 backdrop-blur-2xl p-3 rounded-xl shadow-2xl ring-1 ring-white/40 relative">
+                <div class="bg-white/60 backdrop-blur-2xl p-3 rounded-xl shadow-2xl ring-1 ring-white/40 relative">
                   <div class="w-32 h-32 flex items-center justify-center overflow-hidden rounded-lg">
-                    <div class="w-full h-full bg-white flex items-center justify-center">
+                    <div class="w-full h-full bg-white/60 flex items-center justify-center">
                       <img :src="social.qr" :alt="social.name" class="w-full h-full object-cover" />
                     </div>
                   </div>
-                  <p class="text-slate-800 text-center text-xs mt-2 font-bold">{{ social.name }}</p>
+                  <p class="text-black text-center text-xs mt-2 font-bold">{{ social.name }}</p>
                   <div
-                    class="absolute -bottom-1.5 w-3 h-3 bg-white/70 backdrop-blur-2xl rotate-45 ring-1 ring-white/40 border-r border-b border-transparent"
+                    class="absolute -bottom-1.5 w-3 h-3 bg-white/60 backdrop-blur-2xl rotate-45 ring-1 ring-white/40 border-r border-b border-transparent"
                     :class="[index === socialLinks.length - 1 ? 'right-3' : 'left-1/2 -translate-x-1/2']"></div>
                 </div>
               </div>
@@ -109,8 +108,8 @@ const socialLinks = [
     icon: '/images/social/jd-dog.svg',
     url: 'https://mall.jd.com/index-13360593.html',
     // 假设你的京东 ShopID 是链接里的 13360593
-    mobileUrl: 'https://shop.m.jd.com/?shopId=13360593', 
-    qr: '/images/qr-placeholder.png',
+    mobileUrl: 'https://shop.m.jd.com/?shopId=13360593',
+    qr: '/images/qrcode/qr-jd.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-0',
     offset: 'translate-y-[1px]'
@@ -121,28 +120,28 @@ const socialLinks = [
     url: 'https://leidienqcyp.tmall.com/',
     // 天猫必须用 .m.tmall.com
     mobileUrl: 'https://leidienqcyp.m.tmall.com/',
-    qr: '/images/qr-placeholder.png',
+    qr: '/images/qrcode/qr-tmall.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1'
   },
   {
     name: '抖音主页',
     icon: '/images/social/douyin.svg',
-    url: 'https://www.douyin.com/user/MS4wLjABAAAA4yK9kWqRNXf4xzK-ndbbkjp-IDGzf81JulVHMik8Yyg',
+    url: 'https://www.douyin.com/user/MS4wLjABAAAAs_dJCXRyzllTiEdFGrZZ1_e_gOzM9LgcsdIFD0kzZZdlr05ibuu4KQgd7Fviz7Wm',
     // 抖音暂时复用，或使用 v.douyin.com 短链
-    mobileUrl: 'https://www.douyin.com/user/MS4wLjABAAAA4yK9kWqRNXf4xzK-ndbbkjp-IDGzf81JulVHMik8Yyg',
-    qr: '/images/qr-douyin.png',
+    mobileUrl: 'https://m.douyin.com/share/user/MS4wLjABAAAAs_dJCXRyzllTiEdFGrZZ1_e_gOzM9LgcsdIFD0kzZZdlr05ibuu4KQgd7Fviz7Wm',
+    qr: '/images/qrcode/qr-douyin.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1',
     offset: 'translate-x-[4px] translate-y-[2px]'
   },
   {
-    name: '拼多多',
+    name: '拼多多旗舰店',
     icon: '/images/social/pdd.svg',
-    url: '#', 
+    url: 'https://mobile.pinduoduo.com/mall_page.html?mall_id=141717566',
     // 拼多多移动端链接通常需要从 app 分享出来获取，格式类似 https://mobile.yangkeduo.com/mall_page.html?mall_id=xxx
-    mobileUrl: '#', 
-    qr: '/images/qr-placeholder.png',
+    mobileUrl: 'https://mobile.pinduoduo.com/mall_page.html?mall_id=141717566',
+    qr: '/images/qrcode/qr-pdd.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1',
     offset: 'translate-y-[2px]'
@@ -152,17 +151,17 @@ const socialLinks = [
     icon: '/images/social/xhs.svg',
     url: 'https://www.xiaohongshu.com/user/profile/65a87c94000000000803da00',
     mobileUrl: 'https://www.xiaohongshu.com/user/profile/65a87c94000000000803da00',
-    qr: '/images/qr-placeholder.png',
+    qr: '/images/qrcode/qr-xhs.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-0',
     offset: 'translate-y-[1px]'
   },
   {
-    name: '微信公众号',
+    name: '微信服务号',
     icon: '/images/social/wechat2.svg',
     url: '#',
     mobileUrl: '#',
-    qr: '/images/qr-placeholder.png',
+    qr: '/images/qrcode/qr-weixin.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1',
     offset: 'translate-y-[2px]'

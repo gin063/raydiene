@@ -13,9 +13,9 @@ export default <Config>{
   theme: {
     extend: {
       fontFamily: {
-        'hero': ['"Michroma"', '"Resource Han Rounded"', 'sans-serif'],
-        'body': ['"Inter"', '"Resource Han Rounded"', 'sans-serif'],
-        'sans': ['"Inter"', '"Resource Han Rounded"', 'sans-serif'],
+        'hero': ['"Michroma"', '"AlibabaPuHuiTi"', 'sans-serif'],
+        'body': ['"Inter"', '"AlibabaPuHuiTi"', 'sans-serif'],
+        'sans': ['"Inter"', '"AlibabaPuHuiTi"', 'sans-serif'],
       }
     }
   }

@@ -1,14 +1,12 @@
 <template>
   <div @mouseleave="closeMenu">
-    <!-- Header -->
     <header class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 shadow-2xl" :class="[
       isMobileMenuOpen
-        ? 'bg-white/50 backdrop-blur-xl'
-        : 'bg-black/50 backdrop-blur-xl'
+        ? 'bg-white/60 backdrop-blur-xl'
+        : 'bg-black/60 backdrop-blur-xl'
     ]" :style="{ paddingRight: scrollbarWidth + 'px' }" @mouseleave="scheduleCloseMenu" @mouseenter="cancelCloseTimer">
       <div class="container mx-auto px-6 h-20 flex items-center justify-between relative">
 
-        <!-- Logo -->
         <div class="flex-shrink-0 cursor-pointer z-50 transition-all duration-300"
           :class="{ 'invert': isMobileMenuOpen }">
           <NuxtLink to="/">
@@ -16,19 +14,12 @@
           </NuxtLink>
         </div>
 
-        <!-- PC 导航菜单 -->
         <nav class="hidden md:flex h-full items-center justify-center flex-1 space-x-1">
           <div v-for="(item, index) in menuItems" :key="index"
-            class="h-full flex items-center px-5 relative cursor-pointer group" @mouseenter="onMenuEnter(index)">
-            <!-- 
-      修改说明：
-      1. 移除了外层 div 复杂的 :class (去掉了凹陷、边框、背景变化)。
-      2. span 增加 transform transition-all: 允许形变动画。
-      3. :class 逻辑：
-         - activeMenuIndex === index (激活时): text-white scale-110 (白字 + 放大1.1倍)。
-         - 默认: text-gray-300 (灰字)。
-         - group-hover: text-white scale-110 (鼠标悬停时也变白放大)。
-    -->
+            class="h-full flex items-center px-5 relative cursor-pointer group" 
+            @mouseenter="onMenuEnter(index)"
+            @mouseleave="onMenuLeave">
+            
             <span class="text-base font-bold tracking-wide transition-all duration-300 origin-center font-hero" :class="[
               activeMenuIndex === index
                 ? 'text-white scale-110'
@@ -39,7 +30,6 @@
           </div>
         </nav>
 
-        <!-- 移动端按钮 -->
         <button
           class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50 group"
           @click="toggleMobileMenu">
@@ -53,7 +43,6 @@
       </div>
     </header>
 
-    <!-- Mega Menu 幕布 -->
     <div ref="megaMenuRef"
       class="fixed top-20 left-0 w-full bg-black/60 backdrop-blur-xl shadow-2xl overflow-hidden origin-top z-40 custom-scrollbar"
       style="height: 0; opacity: 0; max-height: calc(100vh - 80px);" @mouseenter="cancelCloseTimer"
@@ -62,7 +51,6 @@
         v-if="activeItem && activeItem.children">
         <div class="grid grid-cols-12 gap-8 h-full min-h-[300px]">
 
-          <!-- 第一列：二级菜单 -->
           <div ref="col1" class="col-span-3 border-r border-white/10 pr-4 opacity-0 translate-x-[-10px]">
             <div class="space-y-1">
               <div v-for="(cat, cIndex) in activeItem.children" :key="cIndex"
@@ -78,7 +66,6 @@
             </div>
           </div>
 
-          <!-- 第二列：三级菜单 -->
           <div ref="col2" class="col-span-3 border-r border-white/10 pr-4 opacity-0 translate-x-[-10px]"
             v-if="currentCategory && currentCategory.series">
             <div class="space-y-1">
@@ -95,7 +82,6 @@
             </div>
           </div>
 
-          <!-- 第三列：产品展示 -->
           <div ref="col3" class="col-span-6 pl-8 opacity-0 translate-x-[-10px]">
             <transition name="fade" mode="out-in">
               <div v-if="currentSeries && currentSeries.products" :key="currentSeries.name"
@@ -128,7 +114,6 @@
       </div>
     </div>
 
-    <!-- 移动端菜单 -->
     <Teleport to="body">
       <div v-if="isMenuMounted" ref="mobileMenuContainer"
         class="fixed inset-0 bg-white/60 backdrop-blur-xl shadow-2xl z-40 md:hidden overflow-hidden invisible">
@@ -195,6 +180,10 @@ const activeSeriesIndex = ref(0)
 const isMenuOpen = ref(false)
 const megaMenuRef = ref(null)
 const closeTimer = ref(null)
+
+// ★★★ 新增：切换计时器，用于处理防抖 ★★★
+const switchTimer = ref(null)
+
 const scrollbarWidth = ref(0)
 
 const col1 = ref(null)
@@ -218,43 +207,67 @@ const getScrollbarWidth = () => {
   return window.innerWidth - document.documentElement.clientWidth
 }
 
-// 鼠标进入一级菜单
+// ★★★ 新增：取消切换计时器函数 ★★★
+const cancelSwitchTimer = () => {
+  if (switchTimer.value) {
+    clearTimeout(switchTimer.value)
+    switchTimer.value = null
+  }
+}
+
+// ★★★ 核心修改：鼠标进入一级菜单 (带延迟) ★★★
 const onMenuEnter = (index) => {
+  // 1. 取消关闭菜单的倒计时（保持菜单打开）
   cancelCloseTimer()
-  if (activeMenuIndex.value !== index) {
+  // 2. 取消任何正在进行的切换倒计时（防止冲突）
+  cancelSwitchTimer()
+
+  if (activeMenuIndex.value === index) return
+
+  // 封装切换逻辑
+  const performSwitch = () => {
     activeMenuIndex.value = index
     activeCategoryIndex.value = 0
     activeSeriesIndex.value = 0
 
     if (menuItems[index].type === 'mega') {
       openMenu()
-      // 如果切换菜单，重置内容动画
       runStaggerAnimation()
     } else {
-      closeMenu() // 改为调用带动画的 closeMenu，而不是立即关闭
+      closeMenu()
     }
+  }
+
+  // 3. 智能延迟逻辑
+  if (!isMenuOpen.value) {
+    // 场景 A：菜单目前是关闭的 -> 立即打开 (为了响应迅速)
+    performSwitch()
+  } else {
+    // 场景 B：菜单已经是打开的，用户在切换标题
+    // 给 200ms 的延迟，防止鼠标斜向划过时误触邻近菜单
+    switchTimer.value = setTimeout(performSwitch, 200)
   }
 }
 
+// ★★★ 新增：鼠标快速离开一级菜单项 ★★★
+const onMenuLeave = () => {
+  // 如果用户鼠标只是匆匆掠过某个菜单项，还没到 200ms 就离开了
+  // 那么取消这个切换任务，菜单将保持原状
+  cancelSwitchTimer()
+}
+
 const onCategoryEnter = async (index) => {
-  // 如果是同一个选项，不做处理，避免重复触发
   if (activeCategoryIndex.value === index) return
 
   activeCategoryIndex.value = index
   activeSeriesIndex.value = 0
 
-  // 等待 Vue 完成 v-if 的 DOM 更新
   await nextTick()
 
-  // 获取需要做动画的元素 (主要是 col2，因为 col1 始终存在且可见，col3 始终存在)
-  // 我们重点检查 col2 是否存在（因为它可能刚被 v-if 创建出来，带有 opacity-0 类）
   const targets = []
   if (col2.value) targets.push(col2.value)
-  // 如果你希望右侧 col3 在切换分类时也有个淡入效果，可以加上 col3.value
-  // if (col3.value) targets.push(col3.value) 
 
   if (targets.length > 0) {
-    // 强制执行一个微小的进入动画，确保 opacity 变为 1
     gsap.fromTo(targets,
       { opacity: 0, x: -10 },
       { opacity: 1, x: 0, duration: 0.3, ease: 'power2.out', overwrite: true }
@@ -266,7 +279,6 @@ const onSeriesEnter = (index) => { activeSeriesIndex.value = index }
 const runStaggerAnimation = async () => {
   await nextTick()
   const targets = [col1.value, col2.value, col3.value].filter(el => el)
-  // 确保打断之前的动画
   gsap.killTweensOf(targets)
   gsap.set(targets, { opacity: 0, x: -15 })
   gsap.to(targets, { opacity: 1, x: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' })
@@ -275,44 +287,36 @@ const runStaggerAnimation = async () => {
 // 打开菜单
 const openMenu = async () => {
   if (!isMenuOpen.value) {
-    // 第一次打开
     isMenuOpen.value = true
     const width = getScrollbarWidth()
     scrollbarWidth.value = width
     document.body.style.paddingRight = `${width}px`
     document.body.style.overflow = 'hidden'
 
-    // 幕布下落动画 (确保杀掉之前的动画)
     gsap.killTweensOf(megaMenuRef.value)
     gsap.to(megaMenuRef.value, { height: 'auto', opacity: 1, duration: 0.6, ease: 'power3.out' })
 
-    // 内容动画
     await runStaggerAnimation()
   }
-  // 如果已经是打开的，onMenuEnter 会负责触发 runStaggerAnimation
 }
 
-// ★★★ 核心修改：关闭菜单动画 (反向效果) ★★★
+// 关闭菜单动画
 const closeMenu = () => {
   closeTimer.value = setTimeout(() => {
-    // 1. 内容先淡出 (0.2s)
     const targets = [col1.value, col2.value, col3.value].filter(el => el)
     gsap.to(targets, { opacity: 0, duration: 0.2, overwrite: true })
 
-    // 2. 幕布向上收起 (延迟 0.1s, 0.5s)
     gsap.to(megaMenuRef.value, {
       height: 0,
       opacity: 0,
       duration: 0.5,
-      delay: 0.1, // 等待内容稍微淡出一点
+      delay: 0.1, 
       ease: 'power3.inOut',
-      overwrite: true, // 确保覆盖之前的打开动画
+      overwrite: true,
       onComplete: () => {
-        // 动画结束后清理状态
         isMenuOpen.value = false
         activeMenuIndex.value = null
 
-        // 恢复滚动条
         document.body.style.paddingRight = ''
         document.body.style.overflow = ''
         scrollbarWidth.value = 0
@@ -328,7 +332,7 @@ const cancelCloseTimer = () => {
   }
 }
 
-// 移动端逻辑 (保持不变)
+// 移动端逻辑
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
   const container = mobileMenuContainer.value
@@ -371,7 +375,6 @@ onMounted(() => {
     if (mobileMenuContainer.value) gsap.set(mobileMenuContainer.value, { yPercent: -100 })
     if (subMenuLayer.value) gsap.set(subMenuLayer.value, { xPercent: 100 })
   }, 0)
-  // 滚动监听已删除
 })
 </script>
 
