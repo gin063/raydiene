@@ -38,17 +38,17 @@
 
           <div class="flex items-center space-x-4 mb-8">
             <div v-for="(social, index) in socialLinks" :key="index" class="relative" :class="{ 'group': !isMobile }">
-              
-              <a :href="isMobile && social.mobileUrl ? social.mobileUrl : social.url" 
-                 target="_blank"
-                 class="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300">
+
+              <a :href="isMobile && social.mobileUrl ? social.mobileUrl : social.url"
+                :target="isMobile ? '_self' : '_blank'"
+                class="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300">
                 <img :src="social.icon" :alt="social.name"
                   class="w-full h-full object-contain transition-all duration-300 md:group-hover:filter-none md:group-hover:opacity-100"
                   :class="[
                     social.padding || 'p-1',
                     social.offset,
                     social.filterClass || '[filter:grayscale(1)_contrast(10)_invert(1)] opacity-80',
-                    social.hoverScale || 'md:group-hover:scale-110' 
+                    social.hoverScale || 'md:group-hover:scale-110'
                   ]" />
               </a>
 
@@ -109,7 +109,7 @@ const socialLinks = [
     icon: '/images/social/jd-dog.svg',
     url: 'https://mall.jd.com/index-13360593.html',
     // 假设你的京东 ShopID 是链接里的 13360593
-    mobileUrl: 'https://shop.m.jd.com/?shopId=13360593', 
+    mobileUrl: 'https://shop.m.jd.com/?shopId=13360593',
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-0',
@@ -139,9 +139,9 @@ const socialLinks = [
   {
     name: '拼多多',
     icon: '/images/social/pdd.svg',
-    url: '#', 
+    url: '#',
     // 拼多多移动端链接通常需要从 app 分享出来获取，格式类似 https://mobile.yangkeduo.com/mall_page.html?mall_id=xxx
-    mobileUrl: '#', 
+    mobileUrl: '#',
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1',
