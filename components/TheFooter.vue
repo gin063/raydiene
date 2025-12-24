@@ -3,7 +3,6 @@
     <div class="container mx-auto px-6">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
 
-        <!-- 左侧：联系我们 (不变) -->
         <div class="md:col-span-4 space-y-6">
           <h3 class="text-lg mb-6 text-gray-200">联系我们</h3>
           <div class="flex items-start space-x-3 text-gray-400 text-sm hover:text-white transition-colors">
@@ -32,32 +31,26 @@
             <p>总部：上海市自由贸易试验区临港新片区环湖西二路888号C楼</p>
           </div>
         </div>
-        <!-- 右侧：Logo & 社交图标 -->
+
         <div class="md:col-span-5 md:col-start-8 flex flex-col items-start md:items-end text-left md:text-right">
           <img src="/logo-placeholder-white.png" alt="Raydiene White" class="h-6 md:h-8 mb-4 opacity-90" />
           <p class="text-xs tracking-[0.2em] text-gray-500 mb-8 uppercase">Charging For Better World</p>
 
           <div class="flex items-center space-x-4 mb-8">
-            <div v-for="(social, index) in socialLinks" :key="index" class="relative group">
+            <div v-for="(social, index) in socialLinks" :key="index" class="relative" :class="{ 'group': !isMobile }">
+              
               <a :href="social.url" target="_blank"
                 class="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300">
-                <!-- 
-                  img 样式逻辑：
-                  1. 默认使用 social.filterClass (静止时灰色/去背景)。
-                  2. 如果没有 filterClass，则使用默认的挖孔滤镜 (grayscale+contrast+invert)。
-                  3. group-hover:filter-none 鼠标悬停时还原原始色彩。
-                -->
                 <img :src="social.icon" :alt="social.name"
-                  class="w-full h-full object-contain transition-all duration-300 group-hover:filter-none group-hover:opacity-100"
+                  class="w-full h-full object-contain transition-all duration-300 md:group-hover:filter-none md:group-hover:opacity-100"
                   :class="[
                     social.padding || 'p-1',
                     social.offset,
                     social.filterClass || '[filter:grayscale(1)_contrast(10)_invert(1)] opacity-80',
-                    social.hoverScale || 'group-hover:scale-110'
+                    social.hoverScale || 'md:group-hover:scale-110' 
                   ]" />
               </a>
 
-              <!-- 弹窗 (不变) -->
               <div
                 class="absolute bottom-full mb-4 z-50 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] opacity-0 translate-y-4 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible"
                 :class="[index === socialLinks.length - 1 ? 'right-0' : 'left-1/2 -translate-x-1/2']">
@@ -87,22 +80,43 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+// ★★★ 核心修改 2：移动端检测逻辑 ★★★
+const isMobile = ref(false)
+
+const checkMobile = () => {
+  // 768px 是常用的平板/手机分界线 (md breakpoint)
+  if (typeof window !== 'undefined') {
+    isMobile.value = window.innerWidth < 768
+  }
+}
+
+onMounted(() => {
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
+})
+
+onUnmounted(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('resize', checkMobile)
+  }
+})
+
 // 数据配置
-// 现在所有图标都使用了“无背景镂空 SVG”，逻辑完全统一
 const socialLinks = [
   {
     name: '京东旗舰店',
     icon: '/images/social/jd-dog.svg',
     url: 'https://mall.jd.com/index-13360593.html',
     qr: '/images/qr-placeholder.png',
-    // 滤镜逻辑：强制变白 + 降低透明度(变灰)
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-0',
     offset: 'translate-y-[1px]'
   },
   {
     name: '天猫旗舰店',
-    icon: '/images/social/tmall4.svg', // 更新为 tmall4
+    icon: '/images/social/tmall4.svg',
     url: 'https://leidienqcyp.tmall.com/',
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
@@ -110,18 +124,17 @@ const socialLinks = [
   },
   {
     name: '抖音主页',
-    icon: '/images/social/douyin.svg', // 更新为 douyin.svg
+    icon: '/images/social/douyin.svg',
     url: 'https://www.douyin.com/user/MS4wLjABAAAA4yK9kWqRNXf4xzK-ndbbkjp-IDGzf81JulVHMik8Yyg',
     qr: '/images/qr-douyin.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1',
-    // 抖音音符可能视觉重心偏右，保留微调
     offset: 'translate-x-[4px] translate-y-[2px]'
   },
   {
     name: '拼多多',
-    icon: '/images/social/pdd.svg', // 更新为 pdd.svg
-    url: '#',
+    icon: '/images/social/pdd.svg',
+    url: '#', // 注意：如果是 #，点击不会跳转，请确保填入实际移动端链接
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1',
@@ -133,16 +146,12 @@ const socialLinks = [
     url: 'https://www.xiaohongshu.com/user/profile/65a87c94000000000803da00',
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
-    
-    // ★★★ 关键修改 ★★★
-    // 基础大小：scale-125 (1.25倍)
-    // 悬停大小：scale-150 (1.5倍) -> 这样视觉上就是放大了
     padding: 'p-0',
     offset: 'translate-y-[1px]'
   },
   {
     name: '微信公众号',
-    icon: '/images/social/wechat2.svg', // 更新为 wechat2.svg
+    icon: '/images/social/wechat2.svg',
     url: '#',
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
