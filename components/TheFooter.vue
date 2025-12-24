@@ -39,8 +39,9 @@
           <div class="flex items-center space-x-4 mb-8">
             <div v-for="(social, index) in socialLinks" :key="index" class="relative" :class="{ 'group': !isMobile }">
               
-              <a :href="social.url" target="_blank"
-                class="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300">
+              <a :href="isMobile && social.mobileUrl ? social.mobileUrl : social.url" 
+                 target="_blank"
+                 class="flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300">
                 <img :src="social.icon" :alt="social.name"
                   class="w-full h-full object-contain transition-all duration-300 md:group-hover:filter-none md:group-hover:opacity-100"
                   :class="[
@@ -82,11 +83,9 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
-// ★★★ 核心修改 2：移动端检测逻辑 ★★★
 const isMobile = ref(false)
 
 const checkMobile = () => {
-  // 768px 是常用的平板/手机分界线 (md breakpoint)
   if (typeof window !== 'undefined') {
     isMobile.value = window.innerWidth < 768
   }
@@ -103,12 +102,14 @@ onUnmounted(() => {
   }
 })
 
-// 数据配置
+// ★★★ 数据配置：请确保填入正确的店铺 ID ★★★
 const socialLinks = [
   {
     name: '京东旗舰店',
     icon: '/images/social/jd-dog.svg',
     url: 'https://mall.jd.com/index-13360593.html',
+    // 假设你的京东 ShopID 是链接里的 13360593
+    mobileUrl: 'https://shop.m.jd.com/?shopId=13360593', 
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-0',
@@ -118,6 +119,8 @@ const socialLinks = [
     name: '天猫旗舰店',
     icon: '/images/social/tmall4.svg',
     url: 'https://leidienqcyp.tmall.com/',
+    // 天猫必须用 .m.tmall.com
+    mobileUrl: 'https://leidienqcyp.m.tmall.com/',
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1'
@@ -126,6 +129,8 @@ const socialLinks = [
     name: '抖音主页',
     icon: '/images/social/douyin.svg',
     url: 'https://www.douyin.com/user/MS4wLjABAAAA4yK9kWqRNXf4xzK-ndbbkjp-IDGzf81JulVHMik8Yyg',
+    // 抖音暂时复用，或使用 v.douyin.com 短链
+    mobileUrl: 'https://www.douyin.com/user/MS4wLjABAAAA4yK9kWqRNXf4xzK-ndbbkjp-IDGzf81JulVHMik8Yyg',
     qr: '/images/qr-douyin.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1',
@@ -134,7 +139,9 @@ const socialLinks = [
   {
     name: '拼多多',
     icon: '/images/social/pdd.svg',
-    url: '#', // 注意：如果是 #，点击不会跳转，请确保填入实际移动端链接
+    url: '#', 
+    // 拼多多移动端链接通常需要从 app 分享出来获取，格式类似 https://mobile.yangkeduo.com/mall_page.html?mall_id=xxx
+    mobileUrl: '#', 
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1',
@@ -144,6 +151,7 @@ const socialLinks = [
     name: '小红书',
     icon: '/images/social/xhs.svg',
     url: 'https://www.xiaohongshu.com/user/profile/65a87c94000000000803da00',
+    mobileUrl: 'https://www.xiaohongshu.com/user/profile/65a87c94000000000803da00',
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-0',
@@ -153,6 +161,7 @@ const socialLinks = [
     name: '微信公众号',
     icon: '/images/social/wechat2.svg',
     url: '#',
+    mobileUrl: '#',
     qr: '/images/qr-placeholder.png',
     filterClass: 'filter brightness-0 invert opacity-40',
     padding: 'p-1',
