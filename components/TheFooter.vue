@@ -33,7 +33,7 @@
         </div>
 
         <div class="md:col-span-5 md:col-start-8 flex flex-col items-start md:items-end text-left md:text-right">
-          <NuxtImg src="//images/logo.svg" alt="Raydiene White" class="h-6 md:h-8 mb-4 opacity-90"
+          <NuxtImg src="/images/logo.svg" alt="Raydiene Logo" class="h-6 md:h-8 mb-4 opacity-90"
             loading="lazy" format="webp" />
           <p class="text-xs tracking-[0.2em] text-gray-500 mb-8 uppercase">Charging For Better World</p>
 
