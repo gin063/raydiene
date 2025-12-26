@@ -113,7 +113,7 @@
               @click="handleCategoryClick(currentCategory)">
 
               <NuxtImg :src="currentCategory.image"
-                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-60"
+                class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-700 group-hover:scale-105 opacity-60"
                 sizes="500px" format="webp" />
 
               <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent"></div>
@@ -157,11 +157,11 @@
             </div>
           </div>
         </div>
-        <div ref="subMenuLayer" class="absolute inset-0 pt-28 px-8 w-full h-full overflow-y-auto bg-white z-50">
-          <div v-if="activeSubMenu">
+        <div ref="subMenuLayer" class="absolute inset-0 w-full h-full overflow-y-auto bg-white z-50 custom-scrollbar">
+          <div v-if="activeSubMenu" class="pt-24 px-6 pb-20">
 
             <div
-              class="flex items-center space-x-2 mb-8 cursor-pointer text-slate-500 hover:text-black transition-colors"
+              class="flex items-center space-x-2 mb-6 cursor-pointer text-slate-500 hover:text-black transition-colors inline-flex"
               @click="closeSubMenu">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
                 stroke="currentColor" class="w-5 h-5">
@@ -170,17 +170,82 @@
               <span class="text-sm font-bold tracking-wide uppercase">返回</span>
             </div>
 
-            <h2 class="text-3xl font-bold text-black mb-8">{{ activeSubMenu.name }}</h2>
+            <div v-if="activeSubMenu && activeSubMenu.image"
+              class="w-full aspect-[16/9] rounded-lg overflow-hidden mb-8 bg-gray-50 shadow-sm">
+              <NuxtImg :src="activeSubMenu.image" class="w-full h-full object-cover" sizes="500px" format="webp"
+                loading="lazy" />
+            </div>
+
+            <h2 class="text-3xl font-bold text-black mb-8 font-hero">{{ activeSubMenu.name }}</h2>
 
             <div class="flex flex-col space-y-2">
-              <div v-for="(child, ci) in activeSubMenu.children" :key="ci"
-                class="py-4 border-b border-gray-50 cursor-pointer" @click="handleCategoryClick(child)">
+              <div class="flex flex-col space-y-2">
+                <div v-for="(child, ci) in activeSubMenu.children" :key="ci">
 
-                <p class="text-lg font-medium text-gray-800">{{ child.name }}</p>
+                  <div v-if="child.series"
+                    class="py-5 border-b border-gray-100 cursor-pointer flex justify-between items-center group active:bg-gray-50 transition-colors"
+                    @click="openThirdMenu(child)"> <span
+                      class="text-lg font-bold text-gray-900 group-hover:text-black">{{
+                        child.name }}</span>
 
-                <div v-if="child.series" class="mt-2 pl-4 space-y-2">
-                  <p v-for="ser in child.series" :key="ser.name" class="text-sm text-gray-500">{{ ser.name }}</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                      stroke="currentColor" class="w-5 h-5 text-gray-400 group-hover:text-black">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </div>
+
+                  <div v-else
+                    class="py-5 border-b border-gray-100 cursor-pointer flex justify-between items-center group active:bg-gray-50 transition-colors"
+                    @click="handleCategoryClick(child)">
+
+                    <span class="text-lg font-bold text-gray-900 group-hover:text-black">{{ child.name }}</span>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                      stroke="currentColor" class="w-5 h-5 text-gray-300 group-hover:text-black">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </div>
+
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ref="thirdMenuLayer"
+          class="absolute inset-0 w-full h-full overflow-y-auto bg-white z-[60] custom-scrollbar invisible">
+          <div v-if="activeThirdMenu" class="pt-24 px-6 pb-20">
+
+            <div
+              class="flex items-center space-x-2 mb-8 cursor-pointer text-slate-500 hover:text-black transition-colors inline-flex"
+              @click="closeThirdMenu">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+              <span class="text-sm font-bold tracking-wide uppercase">返回 {{ activeSubMenu?.name }}</span>
+            </div>
+
+            <h2 class="text-3xl font-bold text-black mb-8 font-hero">{{ activeThirdMenu.name }}</h2>
+
+            <div class="grid grid-cols-2 gap-x-4 gap-y-8">
+              <div v-for="(ser, si) in activeThirdMenu.series" :key="si" class="group cursor-pointer flex flex-col"
+                @click="handleCategoryClick(ser)">
+
+                <div class="w-full aspect-[4/5] bg-gray-50 rounded-lg overflow-hidden mb-3 relative">
+                  <NuxtImg v-if="ser.image" :src="ser.image"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                    format="webp"      
+                    sizes="500px" 
+                  />
+                  <div v-else class="w-full h-full flex items-center justify-center text-gray-200">
+                    No Image
+                  </div>
+                </div>
+
+                <span class="text-sm font-bold text-gray-900 text-center group-hover:text-black">
+                  {{ ser.name }}
+                </span>
               </div>
             </div>
 
@@ -215,6 +280,8 @@ const col3 = ref(null)
 
 const isMobileMenuOpen = ref(false)
 const activeSubMenu = ref(null)
+const activeThirdMenu = ref(null) // 当前激活的三级菜单数据
+const thirdMenuLayer = ref(null)  // DOM 引用
 const isMenuMounted = ref(false)
 const mobileMenuContainer = ref(null)
 const mainMenuLayer = ref(null)
@@ -241,6 +308,7 @@ const onMenuEnter = (index) => {
   cancelCloseTimer()
   cancelSwitchTimer()
 
+  if (isMobileMenuOpen.value) return
   if (activeMenuIndex.value === index) return
 
   const performSwitch = () => {
@@ -319,20 +387,21 @@ const openMenu = async () => {
     const columnTargets = [col1.value, col2.value, col3.value].filter(el => el)
     gsap.killTweensOf(columnTargets)
     gsap.killTweensOf(megaMenuRef.value)
-    gsap.to(megaMenuRef.value, { height: 'auto', opacity: 1, duration: 0.6, ease: 'power3.out' })
+    gsap.to(megaMenuRef.value, { height: 'auto', opacity: 1, duration: 0.6, ease: 'expo.out' })
 
     await runStaggerAnimation()
   }
 }
 
 const closeMenu = () => {
+  if (isMobileMenuOpen.value) return
   closeTimer.value = setTimeout(() => {
     isClosing.value = true
     const targets = [col1.value, col2.value, col3.value].filter(el => el)
     gsap.to(targets, { opacity: 0, duration: 0.2, overwrite: true })
 
     gsap.to(megaMenuRef.value, {
-      height: 0, duration: 0.5, delay: 0.1, ease: 'power3.inOut', overwrite: true,
+      height: 0, duration: 0.5, delay: 0.1, ease: 'expo.inOut', overwrite: true,
       onComplete: () => {
         isMenuOpen.value = false
         isClosing.value = false
@@ -365,11 +434,11 @@ const toggleMobileMenu = () => {
   if (isMobileMenuOpen.value) {
     document.body.style.overflow = 'hidden'
     gsap.set(container, { autoAlpha: 1 })
-    gsap.fromTo(container, { yPercent: -100 }, { yPercent: 0, duration: 0.8, ease: 'power4.out' })
-    gsap.fromTo(items, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.05, delay: 0.2, ease: 'power2.out' })
+    gsap.fromTo(container, { yPercent: -100 }, { yPercent: 0, duration: 0.8, ease: 'expo.out' })
+    gsap.fromTo(items, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.05, delay: 0.2, ease: 'expo.out' })
   } else {
     gsap.to(container, {
-      yPercent: -100, duration: 0.5, ease: 'power3.inOut',
+      yPercent: -100, duration: 0.8, ease: 'expo.inOut',
       onComplete: () => {
         activeSubMenu.value = null;
         gsap.set(subMenuLayer.value, { xPercent: 100 });
@@ -382,16 +451,64 @@ const toggleMobileMenu = () => {
 
 const handleMenuClick = async (item) => {
   if (item.children) {
+    gsap.killTweensOf([mainMenuLayer.value, subMenuLayer.value])
     activeSubMenu.value = item
     await nextTick()
-    gsap.to(mainMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.6, ease: 'power3.out' })
-    gsap.fromTo(subMenuLayer.value, { xPercent: 100 }, { xPercent: 0, duration: 0.6, ease: 'power3.out' })
+    gsap.to(mainMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
+    gsap.fromTo(subMenuLayer.value, { xPercent: 100 }, { xPercent: 0, duration: 0.8, ease: 'expo.out' })
   } else { toggleMobileMenu() }
 }
 
+// 打开三级菜单 (从右侧滑入)
+const openThirdMenu = async (child) => {
+  // 保护机制：杀掉正在运行的动画
+  gsap.killTweensOf([subMenuLayer.value, thirdMenuLayer.value])
+
+  activeThirdMenu.value = child
+  await nextTick()
+
+  // 1. 二级菜单退后 (变淡、左移)
+  gsap.to(subMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
+  
+  // 2. 三级菜单进场 (从右侧 100% 移到 0%)
+  // 先设置 visible 避免闪烁
+  gsap.set(thirdMenuLayer.value, { autoAlpha: 1 })
+  gsap.fromTo(thirdMenuLayer.value, 
+    { xPercent: 100 }, 
+    { xPercent: 0, duration: 0.8, ease: 'expo.out' }
+  )
+}
+
+// 关闭三级菜单 (返回二级)
+const closeThirdMenu = () => {
+  gsap.killTweensOf([subMenuLayer.value, thirdMenuLayer.value])
+
+  // 1. 二级菜单回归
+  gsap.to(subMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
+
+  // 2. 三级菜单退出
+  gsap.to(thirdMenuLayer.value, { 
+    xPercent: 100, 
+    duration: 0.8, 
+    ease: 'expo.out',
+    onComplete: () => { activeThirdMenu.value = null } // 清理数据
+  })
+}
+
 const closeSubMenu = () => {
-  gsap.to(mainMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.5, ease: 'power3.out' })
-  gsap.to(subMenuLayer.value, { xPercent: 100, duration: 0.5, ease: 'power3.out', onComplete: () => { activeSubMenu.value = null } })
+  gsap.killTweensOf([mainMenuLayer.value, subMenuLayer.value, thirdMenuLayer.value]) // 把 third 也加上
+
+  // ... 原有逻辑不变 ...
+  gsap.to(mainMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
+  gsap.to(subMenuLayer.value, { 
+    xPercent: 100, 
+    duration: 0.8, 
+    ease: 'expo.out', 
+    onComplete: () => { 
+      activeSubMenu.value = null 
+      activeThirdMenu.value = null // 顺便清理三级
+    } 
+  })
 }
 
 const handleCategoryClick = async (category) => {

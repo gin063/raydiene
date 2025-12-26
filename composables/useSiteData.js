@@ -30,18 +30,24 @@ export const useSiteData = () => {
     {
       name: "产品介绍",
       type: "mega",
+      image: "/images/products/mobile-menu-header.jpg",
       children: [
         {
           name: "在售产品",
+          type: "grid",
           series: [
             {
               name: "坚石系列",
+              link: "/products/jianshi",
+              image: "/images/products/jianshi.png",
               products: [
                 { name: "坚石", image: "/images/products/jianshi.png" },
               ],
             },
             {
               name: "磐石系列",
+              link: "/products/panshi",
+              image: "/images/products/panshi-pro.png",
               products: [
                 { name: "磐石Max", image: "/images/products/panshi-max.png" },
                 { name: "磐石Pro", image: "/images/products/panshi-pro.png" },
@@ -49,19 +55,23 @@ export const useSiteData = () => {
             },
             {
               name: "星辰系列",
+              link: "/products/xingchen",
+              image: "/images/products/xingchen.png",
               products: [
                 { name: "星辰", image: "/images/products/xingchen.png" },
               ],
             },
             {
               name: "星耀系列",
+              link: "/products/xingyao",
+              image: "/images/products/xingyao.png",
               products: [
                 { name: "星耀", image: "/images/products/xingyao.png" },
               ],
             },
           ],
         },
-        { name: "产品路线图" },
+        { name: "产品路线图", link: "/roadmap" },
       ],
     },
     {

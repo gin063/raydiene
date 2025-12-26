@@ -53,7 +53,7 @@
               <p class="text-sm font-bold text-gray-800 mb-4">手机扫码阅读</p>
 
               <div class="rounded-lg overflow-hidden mx-auto max-w-[280px]">
-                <NuxtImg src="/images/qrcode/wechat-banner.png" alt="关注雷迪恩公众号" class="w-full h-auto block" />
+                <NuxtImg src="/images/qrcode/wechat-banner.png" alt="关注雷迪恩公众号" class="w-full h-auto block" format="webp" sizes="500px" />
               </div>
 
               <p class="text-xs text-gray-400 mt-4">关注“雷迪恩”官方公众号<br>获取更多服务</p>
