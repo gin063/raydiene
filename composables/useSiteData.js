@@ -81,6 +81,7 @@ export const useSiteData = () => {
     },
     {
       name: "下载中心",
+      image: "/images/download/mobile-menu-header.jpg",
       type: "mega",
       children: [
         {
