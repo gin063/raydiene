@@ -9,7 +9,7 @@ useSeoMeta({
   // 6. 社交分享缩略图 (关键！需要你去设计一张 1200x630 的图放在 public 目录下)
   // 注意：必须写绝对路径或确保域名正确，但在 Nuxt 中写相对路径通常也能被解析，
   // 最稳妥是写完整 URL: 'https://www.raydiene.cn/og-share.png'
-  ogImage: '/og-share.png',
+  ogImage: 'https://www.raydiene.cn/og-share.png',
   
   // 7. 推特卡片格式 (可选)
   twitterCard: 'summary_large_image',
