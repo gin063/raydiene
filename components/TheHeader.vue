@@ -10,8 +10,11 @@
         <div class="flex-shrink-0 cursor-pointer z-50 transition-[filter] duration-300"
           :class="{ 'invert': isMobileMenuOpen }">
           <NuxtLink to="/">
-            <NuxtImg src="/images/logo.svg" alt="Raydiene Logo" class="h-8 md:h-10 w-auto" preload format="webp"
-              height="40" />
+            <img 
+              src="/images/logo.svg" 
+              alt="Raydiene Logo" 
+              class="h-12 md:h-16 w-auto object-contain" 
+            />
           </NuxtLink>
         </div>
 
