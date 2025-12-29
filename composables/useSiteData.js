@@ -6,6 +6,7 @@ export const useSiteData = () => {
     {
       name: "关于我们",
       type: "mega",
+      image: "/images/about/about-bg.jpg",
       children: [
         {
           name: "企业简介",
@@ -77,6 +78,7 @@ export const useSiteData = () => {
     {
       name: "产品服务",
       type: "mega",
+      image: "/images/service/service-bg.jpg",
       children: [{ name: "安装服务" }, { name: "售后服务" }],
     },
     {
@@ -131,7 +133,7 @@ export const useSiteData = () => {
       padding: "p-1",
     },
     {
-      name: "抖音主页",
+      name: "抖音旗舰店",
       icon: "/images/social/douyin.svg",
       url: "https://www.douyin.com/user/MS4wLjABAAAAs_dJCXRyzllTiEdFGrZZ1_e_gOzM9LgcsdIFD0kzZZdlr05ibuu4KQgd7Fviz7Wm",
       mobileUrl:

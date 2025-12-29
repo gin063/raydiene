@@ -4,7 +4,7 @@
     <div class="md:hidden pt-12 pb-20 px-6">
       
       <div class="flex flex-col items-start space-y-4 mb-10">
-        <img src="/images/logo.svg" alt="Raydiene Logo" class="w-60 h-auto opacity-90 -ml-4" />
+        <img src="/images/logo-cn.svg" alt="Raydiene Logo" class="w-60 h-auto opacity-90 -ml-4" />
         <p class="text-xl tracking-[0.18em] text-white font-bold opacity-90 leading-none whitespace-nowrap">
           智享充电，悦享安全
         </p>
@@ -94,7 +94,7 @@
         <div class="flex flex-row justify-between items-start mb-4">
 
           <div class="w-auto xl:w-72 flex flex-col flex-shrink-0 items-start pt-1">
-            <img src="/images/logo.svg" alt="Raydiene Logo"
+            <img src="/images/logo-cn2.svg" alt="Raydiene Logo"
               class="w-60 h-auto opacity-90 object-contain object-left -ml-4 mb-1" />
             <p class="text-xl tracking-[0.18em] text-white font-bold opacity-90 leading-none whitespace-nowrap mb-4">
               智享充电，悦享安全
