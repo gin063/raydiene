@@ -2,7 +2,7 @@
   <div class="bg-white text-slate-900 min-h-screen pt-24 pb-20 font-sans selection:bg-blue-100">
 
     <div class="container mx-auto px-6 mb-16 text-center animate-fade-up">
-      <h1 class="text-4xl md:text-5xl font-hero font-bold tracking-tight mb-4 text-black">
+      <h1 class="text-4xl md:text-5xl font-hero font-bold tracking-tight mb-4 mt-12 text-black">
         产品说明书
       </h1>
       <p class="text-gray-400 text-xs md:text-sm tracking-[0.3em] uppercase font-bold">

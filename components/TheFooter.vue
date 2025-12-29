@@ -1,14 +1,17 @@
 <template>
   <footer class="bg-black text-white border-t border-white/10 font-sans relative z-10 w-full">
 
-    <div class="md:hidden pt-12 pb-20 px-6">
+    <div class="md:hidden pt-10 pb-20 px-6">
       
-      <div class="flex flex-col items-start space-y-4 mb-10">
-        <img src="/images/logo-cn.svg" alt="Raydiene Logo" class="w-60 h-auto opacity-90 -ml-4" />
-        <p class="text-xl tracking-[0.18em] text-white font-bold opacity-90 leading-none whitespace-nowrap">
+      <div class="flex flex-col items-start mb-10">
+        
+        <img src="/images/logo-cn2.svg" alt="Raydiene Logo" class="w-64 h-auto opacity-90 -ml-1 mb-1" />
+        
+        <p class="-mt-2 text-2xl tracking-[0.18em] text-white opacity-90 leading-none whitespace-nowrap">
           智享充电，悦享安全
         </p>
-        <p class="text-[10px] tracking-[0.18em] text-white font-['Michroma'] uppercase opacity-90 leading-none whitespace-nowrap">
+
+        <p class="mt-5 text-[10px] tracking-[0.18em] text-white font-['Michroma'] uppercase opacity-90 leading-none whitespace-nowrap">
           CHARGING FOR BETTER WORLD
         </p>
       </div>
@@ -95,8 +98,8 @@
 
           <div class="w-auto xl:w-72 flex flex-col flex-shrink-0 items-start pt-1">
             <img src="/images/logo-cn2.svg" alt="Raydiene Logo"
-              class="w-60 h-auto opacity-90 object-contain object-left -ml-4 mb-1" />
-            <p class="text-xl tracking-[0.18em] text-white font-bold opacity-90 leading-none whitespace-nowrap mb-4">
+              class="w-64 h-auto opacity-90 object-contain object-left -ml-1 -mb-1" />
+            <p class="text-2xl tracking-[0.18em] text-white opacity-90 leading-none whitespace-nowrap mb-4">
               智享充电，悦享安全
             </p>
             <p class="text-[10px] tracking-[0.18em] text-white font-['Michroma'] uppercase opacity-90 leading-none whitespace-nowrap">
