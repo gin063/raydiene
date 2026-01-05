@@ -10,16 +10,13 @@
       >
         <source src="/video-placeholder.mp4" type="video/mp4" />
       </video>
-
       <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80 pointer-events-none"></div>
-
       <div class="absolute inset-0 z-10 w-full h-full">
         <div class="absolute bottom-[10%] left-1/2 -translate-x-1/2 flex flex-col items-center">
            <button class="px-10 py-3 border border-white/60 rounded-full text-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 backdrop-blur-md bg-white/5 tracking-widest font-bold text-lg">
             了解更多
           </button>
         </div>
-
         <div 
           class="absolute bottom-12 right-6 md:right-12 cursor-pointer transition-transform duration-300 hover:scale-105"
           @click="toggleHeroVideo"
@@ -36,16 +33,13 @@
       </div>
     </section>
 
-
     <section class="w-full bg-black pt-20 pb-20 px-6 md:px-12 container mx-auto">
       <h2 class="text-3xl md:text-5xl text-white font-bold tracking-tight animate-fade-in-up">
         即刻探索雷迪恩家用充电桩系列
       </h2>
     </section>
 
-
-    <section id="product-section" class="w-full bg-black text-white pb-32">
-      <div class="container mx-auto px-6 md:px-12 flex flex-col gap-6">
+    <section id="product-section" class="w-full bg-black text-white pb-32 select-none"> <div class="container mx-auto px-6 md:px-12 flex flex-col gap-6">
 
         <div v-for="(row, rowIndex) in productRows" :key="rowIndex" 
           class="flex flex-col md:flex-row w-full gap-6 h-auto"
@@ -62,6 +56,9 @@
             ]"
             @mouseenter="handleMouseEnter(rowIndex, product.id)"
             @mouseleave="handleMouseLeave"
+            @touchstart="handleTouchStart(product.id)"
+            @touchend="handleTouchEnd"
+            @contextmenu.prevent 
           >
             <div 
               class="absolute top-0 h-full transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
@@ -71,7 +68,14 @@
               ]"
             >
               <div class="absolute inset-0 w-full h-full bg-gray-900">
-                <img :src="product.image" :alt="product.name" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-105" />
+                <NuxtImg 
+                  :src="product.image" 
+                  :alt="product.name" 
+                  format="webp"
+                  quality="80"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-105"
+                />
+                
                 <video 
                   :ref="el => setVideoRef(el, product.id)"
                   :src="product.video"
@@ -124,7 +128,6 @@
       <div class="container mx-auto px-6 md:px-12 flex flex-col gap-10 items-center">
 
         <div class="w-full max-w-6xl aspect-[4/5] md:aspect-[3/1] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer relative bg-gray-900 flex flex-col md:flex-row">
-          
           <div class="w-full md:w-[40%] h-full bg-black p-8 md:p-12 flex flex-col justify-center items-start z-10 relative">
              <h3 class="text-3xl md:text-5xl font-bold mb-6 text-white group-hover:text-blue-100 transition-colors">
                安装服务
@@ -139,29 +142,29 @@
                </svg>
              </button>
           </div>
-
           <div class="w-full md:w-[60%] h-full relative overflow-hidden">
-             <img 
+             <NuxtImg 
                src="/images/service-install.jpg" 
                alt="安装服务" 
+               format="webp"
+               quality="80"
                class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
              />
              <div class="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-black via-black/50 to-transparent"></div>
           </div>
         </div>
 
-
         <div class="w-full max-w-6xl aspect-[4/5] md:aspect-[3/1] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer relative bg-gray-900 flex flex-col md:flex-row">
-          
           <div class="w-full md:w-[60%] h-full relative overflow-hidden">
-             <img 
+             <NuxtImg 
                src="/images/service-aftersales.jpg" 
                alt="售后服务" 
+               format="webp"
+               quality="80"
                class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
              />
              <div class="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-black via-black/50 to-transparent"></div>
           </div>
-
           <div class="w-full md:w-[40%] h-full bg-black p-8 md:p-12 flex flex-col justify-center items-start z-10 relative">
              <h3 class="text-3xl md:text-5xl font-bold mb-6 text-white group-hover:text-blue-100 transition-colors">
                售后服务
@@ -176,12 +179,10 @@
                </svg>
              </button>
           </div>
-
         </div>
 
       </div>
     </section>
-
   </div>
 </template>
 
@@ -204,10 +205,11 @@ const toggleHeroVideo = () => {
   }
 }
 
-// === 产品卡片交互 ===
+// === 产品卡片交互逻辑 ===
 const activeRowIndex = ref(null)
 const activeCardId = ref(null)
 const productVideoMap = new Map()
+const longPressTimer = ref(null) // 新增：用于存储长按定时器
 
 const setVideoRef = (el, id) => {
   if (el) {
@@ -215,11 +217,11 @@ const setVideoRef = (el, id) => {
   }
 }
 
+// 1. PC 端悬停逻辑 (保持原样)
 const handleMouseEnter = (rowIndex, productId) => {
-  if (window.innerWidth >= 768) {
+  if (window.innerWidth >= 768) { // 仅在 PC 端触发
     activeRowIndex.value = rowIndex
     activeCardId.value = productId
-    
     const videoEl = productVideoMap.get(productId)
     if (videoEl) {
       videoEl.currentTime = 0
@@ -229,9 +231,43 @@ const handleMouseEnter = (rowIndex, productId) => {
 }
 
 const handleMouseLeave = () => {
+  // 清除状态
   activeRowIndex.value = null
   activeCardId.value = null
+  productVideoMap.forEach((videoEl) => {
+    videoEl.pause()
+  })
+}
+
+// 2. 移动端长按逻辑 (新增)
+const handleTouchStart = (productId) => {
+  // 如果是 PC 端，忽略触摸事件
+  if (window.innerWidth >= 768) return
+
+  // 设置定时器：500毫秒后视为长按
+  longPressTimer.value = setTimeout(() => {
+    // 激活视频
+    activeCardId.value = productId 
+    const videoEl = productVideoMap.get(productId)
+    if (videoEl) {
+      videoEl.currentTime = 0
+      videoEl.play().catch(() => {})
+    }
+  }, 500) // 长按阈值
+}
+
+const handleTouchEnd = () => {
+  // 如果是 PC 端，忽略
+  if (window.innerWidth >= 768) return
+
+  // 手指离开，清除定时器
+  if (longPressTimer.value) {
+    clearTimeout(longPressTimer.value)
+    longPressTimer.value = null
+  }
   
+  // 停止视频并重置状态
+  activeCardId.value = null
   productVideoMap.forEach((videoEl) => {
     videoEl.pause()
   })
