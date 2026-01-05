@@ -54,7 +54,7 @@
 /* --- 自动化规则区 --- */
 @layer base {
   body {
-    @apply font-body text-base font-normal bg-black text-white antialiased;
+    @apply font-body text-base font-normal text-white antialiased;
   }
   h1 {
     @apply font-hero font-bold;
