@@ -87,35 +87,46 @@
                  </div>
                </div>
              </div>
+             
              <div ref="col3" class="col-span-6 pl-8 opacity-0 translate-x-[-10px]">
                <transition name="fade" mode="out-in" :key="activeCategoryIndex">
                  <div v-if="currentSeries && currentSeries.products" :key="currentSeries.name"
                    class="flex gap-6 h-full items-start">
-                   <div v-for="(prod, pIndex) in currentSeries.products" :key="pIndex" class="group/prod cursor-pointer">
-                     <div
-                       class="relative w-48 h-48 bg-white/5 rounded-xl overflow-hidden border border-white/5 mb-3 transition-transform duration-500 group-hover/prod:border-white/20">
+                   
+                   <NuxtLink 
+                      v-for="(prod, pIndex) in currentSeries.products" 
+                      :key="pIndex" 
+                      :to="prod.link"
+                      @click.prevent="handleCategoryClick(prod)"
+                      class="group/prod cursor-pointer block"
+                   >
+                     <div class="relative w-48 h-48 bg-white/5 rounded-xl overflow-hidden border border-white/5 mb-3 transition-transform duration-500 group-hover/prod:border-white/20">
                        <NuxtImg :src="prod.image" :alt="prod.name"
-                         class="w-full h-full object-contain p-4 transition-transform duration-500 group-hover/prod:scale-105"
+                         class="w-full h-full object-contain p-4 transition-transform duration-500 group-hover/prod:scale-105 pointer-events-none"
                          sizes="500px" format="webp" loading="lazy" />
                      </div>
-                     <p
-                       class="text-center font-hero font-bold text-white group-hover/prod:text-blue-400 transition-colors">
-                       {{ prod.name }}</p>
+                     <p class="text-center font-hero font-bold text-white group-hover/prod:text-blue-400 transition-colors">
+                       {{ prod.name }}
+                     </p>
+                   </NuxtLink>
                    </div>
-                 </div>
                </transition>
              </div>
            </template>
 
            <div v-else-if="currentCategory && currentCategory.image" ref="col2"
              class="col-span-9 pl-8 opacity-0 translate-x-[-10px] flex items-center">
-             <div class="w-full h-full relative rounded-xl overflow-hidden group cursor-pointer border border-white/10"
-               @click="handleCategoryClick(currentCategory)">
+             
+             <NuxtLink 
+               :to="currentCategory.link"
+               @click.prevent="handleCategoryClick(currentCategory)"
+               class="w-full h-full relative rounded-xl overflow-hidden group cursor-pointer border border-white/10 block"
+             >
                <NuxtImg :src="currentCategory.image"
-                 class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-700 group-hover:scale-105 opacity-60"
+                 class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-700 group-hover:scale-105 opacity-60 pointer-events-none"
                  sizes="500px" format="webp" />
-               <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent"></div>
-               <div class="absolute inset-0 flex flex-col justify-center px-12 z-10">
+               <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent pointer-events-none"></div>
+               <div class="absolute inset-0 flex flex-col justify-center px-12 z-10 pointer-events-none">
                  <h3 class="text-4xl font-bold text-white mb-4 font-hero">{{ currentCategory.name }}</h3>
                  <p class="text-gray-300 text-lg max-w-lg leading-relaxed mb-8">{{ currentCategory.desc }}</p>
                  <div
@@ -128,8 +139,8 @@
                    </svg>
                  </div>
                </div>
+             </NuxtLink>
              </div>
-           </div>
 
         </div>
       </div>

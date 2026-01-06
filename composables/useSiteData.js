@@ -22,7 +22,7 @@ export const useSiteData = () => {
         },
         {
           name: "企业资讯",
-          link: "/about/news",
+          link: "/",
           image: "/images/about/news-bg.jpg",
           desc: "探索RAYDIENE最新动态与行业前沿。",
         },
@@ -39,40 +39,36 @@ export const useSiteData = () => {
           series: [
             {
               name: "坚石系列",
-              link: "/products/jianshi",
               image: "/images/products/jianshi.png",
               products: [
-                { name: "坚石", image: "/images/products/jianshi.png" },
+                { name: "坚石", link: "/products/jianshi", image: "/images/products/jianshi.png" },
               ],
             },
             {
               name: "磐石系列",
-              link: "/products/panshi",
               image: "/images/products/panshi-pro.png",
               products: [
-                { name: "磐石Max", image: "/images/products/panshi-max.png" },
-                { name: "磐石Pro", image: "/images/products/panshi-pro.png" },
+                { name: "磐石Max", link: "/products/panshi", image: "/images/products/panshi-max.png" },
+                { name: "磐石Pro", link: "/products/panshi", image: "/images/products/panshi-pro.png" },
               ],
             },
             {
               name: "星辰系列",
-              link: "/products/xingchen",
               image: "/images/products/xingchen.png",
               products: [
-                { name: "星辰", image: "/images/products/xingchen.png" },
+                { name: "星辰", link: "/products/xingchen", image: "/images/products/xingchen.png" },
               ],
             },
             {
               name: "星耀系列",
-              link: "/products/xingyao",
               image: "/images/products/xingyao.png",
               products: [
-                { name: "星耀", image: "/images/products/xingyao.png" },
+                { name: "星耀", link: "/products/xingyao", image: "/images/products/xingyao.png" },
               ],
             },
           ],
         },
-        { name: "产品路线图", link: "products/roadmap", image: "/images/products/roadmap-bg.jpg", },
+        { name: "产品路线图", link: "/products/roadmap", image: "/images/products/roadmap-bg.jpg", },
       ],
     },
     {

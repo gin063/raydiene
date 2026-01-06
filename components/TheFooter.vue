@@ -20,10 +20,10 @@
         <div>
           <h4 class="text-white font-bold mb-4 text-sm tracking-wide">关于我们</h4>
           <ul class="space-y-3 text-xs text-gray-400">
-            <li><NuxtLink to="/about/profile">企业简介</NuxtLink></li>
+            <li><NuxtLink to="/about/intro">企业简介</NuxtLink></li>
             <li><NuxtLink to="/about/culture">企业文化</NuxtLink></li>
-            <li><NuxtLink to="/about/news">企业资讯</NuxtLink></li>
-            <li><NuxtLink to="/about/join">加入我们</NuxtLink></li>
+            <li><NuxtLink to="/">企业资讯</NuxtLink></li>
+            <li><NuxtLink to="/contact/join">加入我们</NuxtLink></li>
           </ul>
         </div>
         <div>
@@ -111,10 +111,10 @@
             <div class="flex flex-col">
               <h4 class="text-white font-bold mb-5 text-sm tracking-wide">关于我们</h4>
               <ul class="space-y-3 text-xs text-gray-400">
-                <li><NuxtLink to="/about/profile" class="hover:text-white transition-colors block">企业简介</NuxtLink></li>
+                <li><NuxtLink to="/about/intro" class="hover:text-white transition-colors block">企业简介</NuxtLink></li>
                 <li><NuxtLink to="/about/culture" class="hover:text-white transition-colors block">企业文化</NuxtLink></li>
-                <li><NuxtLink to="/about/news" class="hover:text-white transition-colors block">企业资讯</NuxtLink></li>
-                <li><NuxtLink to="/about/join" class="hover:text-white transition-colors block">加入我们</NuxtLink></li>
+                <li><NuxtLink to="/" class="hover:text-white transition-colors block">企业资讯</NuxtLink></li>
+                <li><NuxtLink to="/contact/join" class="hover:text-white transition-colors block">加入我们</NuxtLink></li>
               </ul>
             </div>
             <div class="flex flex-col">

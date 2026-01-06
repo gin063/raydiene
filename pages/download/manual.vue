@@ -15,7 +15,7 @@
 
         <div class="lg:col-span-8 order-2 lg:order-1 animate-fade-up delay-100">
           <div class="w-full bg-gray-50 rounded-xl overflow-hidden border border-gray-100 shadow-sm flex flex-col">
-            <NuxtImg v-for="i in 5" :key="i" :src="`/images/manual/manual-part-${String(i).padStart(2, '0')}.jpg`"
+            <NuxtImg v-for="i in 5" :key="i" :src="`/images/download/manual/manual-part-${String(i).padStart(2, '0')}.jpg`"
               :alt="`雷迪恩产品说明书 - Part ${i}`" class="block w-full h-auto" loading="lazy" format="webp"
               :modifiers="{ withoutEnlargement: true }" />
           </div>

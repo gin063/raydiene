@@ -1,126 +1,206 @@
 <template>
-    <div class="bg-white text-slate-900 min-h-screen pt-20 font-sans selection:bg-blue-100">
+  <div class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-blue-500 selection:text-white overflow-x-hidden">
 
-        <div class="relative w-full py-20 md:py-32 flex flex-col items-center justify-center overflow-hidden">
-            <div
-                class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gray-50 blur-[100px] -z-10 rounded-full opacity-60">
-            </div>
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <div class="absolute top-[-10%] left-[20%] w-[50vw] h-[50vw] bg-purple-900/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+      
+      <div class="absolute top-[40%] right-[-10%] w-[60vw] h-[60vw] bg-conic-gradient from-blue-900/10 via-cyan-900/10 to-transparent blur-[80px] opacity-60 animate-spin-slow"></div>
 
-            <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-                <h1 class="text-5xl md:text-7xl font-hero font-bold tracking-tight mb-6 animate-fade-up text-black">
-                    企业简介
-                </h1>
-                <div class="w-20 h-1 bg-black mx-auto mb-6 animate-fade-up delay-100"></div>
-                <p
-                    class="text-gray-500 text-sm md:text-base tracking-[0.3em] uppercase animate-fade-up delay-200 font-medium">
-                    About Raydiene
-                </p>
-            </div>
-        </div>
-
-        <div class="container mx-auto px-6 pb-24">
-            <div class="max-w-4xl mx-auto">
-
-                <div class="mb-20 animate-fade-up delay-300">
-                    <div class="flex items-baseline mb-8 border-b border-gray-200 pb-4">
-                        <h2 class="text-2xl md:text-3xl font-bold text-black mr-4">
-                            公司概况
-                        </h2>
-                        <span class="text-sm text-gray-400 font-hero">Company Profile</span>
-                    </div>
-
-                    <div class="text-slate-600 leading-loose space-y-6 text-lg text-justify font-light">
-                        <p>
-                            <strong
-                                class="text-black font-bold">RAYDIENE雷迪恩</strong>，作为新能源充电领域的先锋品牌，始终致力于为全球用户提供卓越的能源解决方案。我们不仅仅是充电桩的制造者，更是绿色出行生活方式的倡导者。
-                        </p>
-                        <p>
-                            公司总部位于上海临港新片区，依托强大的研发团队与工业设计能力，我们将“坚若磐石”的品质与“星辰大海”的美学追求完美融合，推出了坚石、磐石、星辰、星耀等一系列备受赞誉的交流充电桩产品。
-                        </p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 animate-fade-up delay-400">
-                    <div class="rounded-2xl overflow-hidden aspect-video border border-gray-100 shadow-lg group">
-                        <NuxtImg src="/images/products/jianshi.png"
-                            class="w-full h-full object-contain p-8 bg-gray-50 transition-transform duration-700 group-hover:scale-105" />
-                    </div>
-                    <div class="rounded-2xl overflow-hidden aspect-video border border-gray-100 shadow-lg group">
-                        <NuxtImg src="/images/products/panshi-max.png"
-                            class="w-full h-full object-contain p-8 bg-gray-50 transition-transform duration-700 group-hover:scale-105" />
-                    </div>
-                </div>
-
-                <div class="mb-16 animate-fade-up delay-500">
-                    <div class="flex items-baseline mb-8 border-b border-gray-200 pb-4">
-                        <h2 class="text-2xl md:text-3xl font-bold text-black mr-4">
-                            愿景与使命
-                        </h2>
-                        <span class="text-sm text-gray-400 font-hero">Vision & Mission</span>
-                    </div>
-
-                    <div class="bg-gray-50 rounded-2xl p-10 border border-gray-100 relative overflow-hidden">
-
-                        <div class="absolute top-4 left-6 text-9xl text-gray-200 font-serif opacity-50 select-none">“
-                        </div>
-
-                        <div
-                            class="absolute -bottom-10 right-6 text-9xl text-gray-200 font-serif opacity-50 select-none leading-none">
-                            ”</div>
-
-                        <blockquote
-                            class="text-2xl md:text-3xl font-hero text-center text-slate-900 leading-normal relative z-10 font-bold">
-                            Charging For Better World
-                        </blockquote>
-                        <p
-                            class="text-center text-gray-500 mt-6 text-xs tracking-widest uppercase relative z-10 font-bold">
-                            — 我们的使命 —
-                        </p>
-                    </div>
-
-                    <div class="mt-10 text-slate-600 leading-loose text-lg text-justify font-light">
-                        <p>
-                            我们相信，每一次充电都是对未来的投资。RAYDIENE坚持以技术创新驱动可持续发展，让清洁能源触手可及。我们的愿景是成为全球信赖的能源补给伙伴，让电动汽车的每一次出发都充满信心。
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+      <div class="absolute inset-0 bg-noise opacity-[0.04] mix-blend-overlay"></div>
     </div>
+
+    <div class="relative z-10 container mx-auto px-6 md:px-12 py-24 md:py-32">
+      
+      <section class="max-w-4xl mx-auto mb-32 md:mb-48 text-center animate-fade-in-up">
+        <span class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-xs font-bold tracking-widest text-gray-400 mb-8 uppercase">
+          Our Story
+        </span>
+        <h1 class="text-4xl md:text-6xl font-bold font-hero tracking-tight mb-12 leading-tight">
+          一群「非典型创业者」的<br><br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-purple-200">科创热望</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-400 leading-relaxed font-light text-justify md:text-center">
+          2023年，在上海的科创浪潮里，一群不再年轻但心怀热望的「非典型创业者」，因一个共同的念头聚在了一起。
+        </p>
+      </section>
+
+      <section class="max-w-6xl mx-auto mb-32 md:mb-48 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1 space-y-8 animate-on-scroll">
+          <div class="space-y-6">
+            <p class="text-gray-300 text-lg leading-relaxed">
+              在他们眼里，充电桩不该只是 “呆笨” 的功能性设备 —— 
+              <span class="text-white font-bold">它应该是能融入生活的智能消费电子，是兼具安全与美感的出行伙伴。</span>
+            </p>
+            <div class="pl-6 border-l-2 border-blue-500/50">
+              <p class="text-2xl md:text-3xl font-bold italic text-white/90 font-hero">
+                “为什么充电桩<br>不能更好看、更好用？”
+              </p>
+            </div>
+            <p class="text-gray-400">
+              带着这个问号，雷迪恩充电桩，由此而生。
+            </p>
+          </div>
+        </div>
+        
+        <div class="order-1 md:order-2 flex justify-center animate-on-scroll">
+          <div class="relative w-full aspect-square max-w-sm">
+            <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl animate-blob"></div>
+            <div class="relative h-full bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between shadow-2xl overflow-hidden group hover:border-white/20 transition-colors duration-500">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
+              
+              <div class="text-6xl text-white/10 font-black font-hero">WHY?</div>
+              <div class="space-y-2">
+                <div class="h-1 w-12 bg-blue-500 rounded-full"></div>
+                <h3 class="text-xl font-bold text-white">打破工业刻板印象</h3>
+                <p class="text-sm text-gray-400">从功能设备到生活美学</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-5xl mx-auto mb-32 md:mb-48 relative animate-on-scroll">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] opacity-10 pointer-events-none">
+           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full animate-spin-super-slow">
+              <path fill="none" stroke="currentColor" stroke-width="0.5" d="M100,10 L190,100 L100,190 L10,100 Z M100,10 L145,55 M190,100 L145,55 M100,190 L55,145 M10,100 L55,145 M100,10 L55,55 M10,100 L55,55 M100,190 L145,145 M190,100 L145,145" />
+           </svg>
+        </div>
+
+        <div class="relative bg-gradient-to-b from-white/5 to-transparent border-t border-white/10 p-10 md:p-20 rounded-3xl text-center backdrop-blur-sm">
+          <h2 class="text-3xl md:text-5xl font-bold mb-8 font-hero">
+            为什么叫 <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-purple-300">雷迪恩</span> ?
+          </h2>
+          <div class="max-w-2xl mx-auto space-y-6 text-lg text-gray-300 leading-relaxed">
+            <p>
+              因为 <span class="text-white font-bold">Raydiene</span> 同时也是宝石切割界的顶级工艺。
+            </p>
+            <p>
+              以精准切面折射极致璀璨，正如我们想让充电桩，<br class="hidden md:block">
+              <span class="text-white border-b border-white/20 pb-1">跳出工业感的刻板，绽放出设计的光芒。</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="max-w-4xl mx-auto text-center animate-on-scroll pb-20">
+        <div class="grid md:grid-cols-2 gap-12 mb-24">
+          <div class="text-left space-y-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+              我们的底色
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              这份「把 “工具” 做成 “作品”」的执念，成了雷迪恩的底色：<span class="text-gray-200">以顶配工艺与原料打磨每一台产品，以赤诚真心服务每一位信任我们的用户。</span>
+            </p>
+          </div>
+          <div class="text-left space-y-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+              <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+              未来的愿景
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              我们想走得更远：成为全球领先的专业充电桩品牌，让安全、智能、充满设计感的产品，<span class="text-gray-200">为每一段绿色出行，充上满格的能量与愉悦。</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="relative py-16">
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-500/20 blur-[60px] rounded-full"></div>
+          <h2 class="relative text-2xl md:text-4xl font-bold text-white tracking-widest font-hero">
+            RAYDIENE
+          </h2>
+          <p class="relative text-sm text-gray-500 mt-4 tracking-widest uppercase">CHARGING FOR BETTER WORLD</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
 </template>
 
+<script setup>
+import { onMounted } from 'vue'
+
+// 简单的滚动显现动画逻辑 (Intersection Observer)
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible')
+      }
+    })
+  }, { threshold: 0.15 }) // 15% 可见时触发
+
+  document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+    observer.observe(el)
+  })
+})
+</script>
+
 <style scoped>
-.animate-fade-up {
-    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    opacity: 0;
-    transform: translateY(30px);
+/* 基础背景 */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-.delay-100 {
-    animation-delay: 0.1s;
+/* 锥形渐变背景 (模拟光芒) */
+.bg-conic-gradient {
+  background: conic-gradient(from 0deg at 50% 50%, rgba(15, 23, 42, 0), rgba(56, 189, 248, 0.1), rgba(168, 85, 247, 0.1), rgba(15, 23, 42, 0));
 }
 
-.delay-200 {
-    animation-delay: 0.2s;
+/* 动画定义 */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
 }
 
-.delay-300 {
-    animation-delay: 0.3s;
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
 }
 
-.delay-400 {
-    animation-delay: 0.4s;
+@keyframes spin-super-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-super-slow {
+  animation: spin-super-slow 60s linear infinite;
 }
 
-.delay-500 {
-    animation-delay: 0.5s;
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+.animate-blob {
+  animation: blob 7s infinite;
 }
 
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* 进场动画类 */
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 滚动触发动画 */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
