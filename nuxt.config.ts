@@ -2,20 +2,11 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxt/image'],
-
-  build: {
-    transpile: ['three', '@tresjs/core']
-  },
-  vite: {
-    optimizeDeps: {
-      include: ['three', '@tresjs/core']
-    }
-  },
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],  
   
   image: {
     quality: 80,
-    format: ['webp', 'avif', 'png', 'jpg'],
+    format: ['webp', 'avif', 'jpg', 'png'],
     screens: {
       xs: 320, sm: 640, md: 768, lg: 1024, xl: 1280, xxl: 1536,
     }
