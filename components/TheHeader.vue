@@ -331,10 +331,11 @@ const onMenuLeave = () => {
   cancelSwitchTimer()
 }
 
+// 修复: 增加判空保护
 const onCategoryEnter = async (index) => {
   if (activeCategoryIndex.value === index) return
 
-  const targetsToHide = [col2.value, col3.value].filter(el => el)
+  const targetsToHide = [col2.value, col3.value].filter(el => el && el.isConnected)
   if (targetsToHide.length > 0) gsap.set(targetsToHide, { opacity: 0 })
 
   activeCategoryIndex.value = index
@@ -342,7 +343,7 @@ const onCategoryEnter = async (index) => {
 
   await nextTick()
 
-  const targetsToShow = [col2.value, col3.value].filter(el => el)
+  const targetsToShow = [col2.value, col3.value].filter(el => el && el.isConnected)
 
   if (targetsToShow.length > 0) {
     gsap.killTweensOf(targetsToShow)
@@ -355,19 +356,28 @@ const onCategoryEnter = async (index) => {
 
 const onSeriesEnter = (index) => { activeSeriesIndex.value = index }
 
+// 修复: 增加判空保护
 const runStaggerAnimation = async () => {
-  const oldTargets = [col1.value, col2.value, col3.value].filter(el => el)
-  if (oldTargets.length > 0) gsap.set(oldTargets, { opacity: 0 })
+  // Helper to safely get existing DOM elements
+  const getValidTargets = () => [col1.value, col2.value, col3.value].filter(el => el && el.isConnected);
 
-  await nextTick()
+  const oldTargets = getValidTargets();
+  if (oldTargets.length > 0) {
+    gsap.set(oldTargets, { opacity: 0 });
+  }
 
-  const newTargets = [col1.value, col2.value, col3.value].filter(el => el)
-  gsap.killTweensOf(newTargets)
+  await nextTick();
 
-  gsap.fromTo(newTargets,
-    { opacity: 0, x: -30 },
-    { opacity: 1, x: 0, duration: 0.8, stagger: 0.3, ease: 'power3.out', overwrite: 'auto' }
-  )
+  const newTargets = getValidTargets();
+  
+  // Only animate if targets actually exist
+  if (newTargets.length > 0) {
+    gsap.killTweensOf(newTargets);
+    gsap.fromTo(newTargets,
+      { opacity: 0, x: -30 },
+      { opacity: 1, x: 0, duration: 0.8, stagger: 0.3, ease: 'power3.out', overwrite: 'auto' }
+    );
+  }
 }
 
 const openMenu = async () => {
@@ -380,36 +390,55 @@ const openMenu = async () => {
     isMenuOpen.value = true
     isClosing.value = false
 
-    const columnTargets = [col1.value, col2.value, col3.value].filter(el => el)
+    const columnTargets = [col1.value, col2.value, col3.value].filter(el => el && el.isConnected)
     gsap.killTweensOf(columnTargets)
-    gsap.killTweensOf(megaMenuRef.value)
-    gsap.to(megaMenuRef.value, { height: 'auto', opacity: 1, duration: 0.6, ease: 'expo.out' })
+    if (megaMenuRef.value) {
+        gsap.killTweensOf(megaMenuRef.value)
+        gsap.to(megaMenuRef.value, { height: 'auto', opacity: 1, duration: 0.6, ease: 'expo.out' })
+    }
 
     await runStaggerAnimation()
   }
 }
 
+// 修复: 增加判空保护
 const closeMenu = () => {
-  if (isMobileMenuOpen.value) return
+  if (isMobileMenuOpen.value) return;
+  
   closeTimer.value = setTimeout(() => {
-    isClosing.value = true
-    const targets = [col1.value, col2.value, col3.value].filter(el => el)
-    gsap.to(targets, { opacity: 0, duration: 0.2, overwrite: true })
+    isClosing.value = true;
+    
+    const targets = [col1.value, col2.value, col3.value].filter(el => el && el.isConnected);
+    if (targets.length > 0) {
+        gsap.to(targets, { opacity: 0, duration: 0.2, overwrite: true });
+    }
 
-    gsap.to(megaMenuRef.value, {
-      height: 0, duration: 0.5, delay: 0.1, ease: 'expo.inOut', overwrite: true,
-      onComplete: () => {
-        isMenuOpen.value = false
-        isClosing.value = false
-        activeMenuIndex.value = null
-        activeCategoryIndex.value = 0
-        activeSeriesIndex.value = 0
-        document.body.style.paddingRight = ''
-        document.body.style.overflow = ''
-        scrollbarWidth.value = 0
-      }
-    })
-  }, 100)
+    if (megaMenuRef.value) {
+        gsap.to(megaMenuRef.value, {
+          height: 0, 
+          duration: 0.5, 
+          delay: 0.1, 
+          ease: 'expo.inOut', 
+          overwrite: true,
+          onComplete: () => {
+            resetMenuState();
+          }
+        });
+    } else {
+        resetMenuState();
+    }
+  }, 100);
+}
+
+const resetMenuState = () => {
+    isMenuOpen.value = false;
+    isClosing.value = false;
+    activeMenuIndex.value = null;
+    activeCategoryIndex.value = 0;
+    activeSeriesIndex.value = 0;
+    document.body.style.paddingRight = '';
+    document.body.style.overflow = '';
+    scrollbarWidth.value = 0;
 }
 
 const scheduleCloseMenu = () => closeMenu()
@@ -421,106 +450,130 @@ const cancelCloseTimer = () => {
   }
 }
 
+// 修复: 增加判空保护
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
+  
   const container = mobileMenuContainer.value
   const mainLayer = mainMenuLayer.value
+  
+  if (!container || !mainLayer) return 
+
   const items = mainLayer.querySelectorAll('.mobile-menu-item')
 
   if (isMobileMenuOpen.value) {
     document.body.style.overflow = 'hidden'
     gsap.set(container, { autoAlpha: 1 })
     gsap.fromTo(container, { yPercent: -100 }, { yPercent: 0, duration: 0.8, ease: 'expo.out' })
-    gsap.fromTo(items, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.05, delay: 0.2, ease: 'expo.out' })
+    if (items.length) {
+       gsap.fromTo(items, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.05, delay: 0.2, ease: 'expo.out' })
+    }
   } else {
     gsap.to(container, {
       yPercent: -100, duration: 0.8, ease: 'expo.inOut',
       onComplete: () => {
         activeSubMenu.value = null;
-        gsap.set(subMenuLayer.value, { xPercent: 100 });
-        gsap.set(mainLayer, { xPercent: 0, autoAlpha: 1 })
+        if (subMenuLayer.value) gsap.set(subMenuLayer.value, { xPercent: 100 });
+        if (mainLayer) gsap.set(mainLayer, { xPercent: 0, autoAlpha: 1 })
         document.body.style.overflow = ''
       }
     })
   }
 }
 
+// 修复: 增加判空保护
 const handleMenuClick = async (item) => {
   if (item.children) {
-    gsap.killTweensOf([mainMenuLayer.value, subMenuLayer.value])
+    if (mainMenuLayer.value && subMenuLayer.value) {
+        gsap.killTweensOf([mainMenuLayer.value, subMenuLayer.value])
+    }
+    
     activeSubMenu.value = item
     await nextTick()
-    gsap.to(mainMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
-    gsap.fromTo(subMenuLayer.value, { xPercent: 100 }, { xPercent: 0, duration: 0.8, ease: 'expo.out' })
+    
+    if (mainMenuLayer.value) {
+        gsap.to(mainMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
+    }
+    if (subMenuLayer.value) {
+        gsap.fromTo(subMenuLayer.value, { xPercent: 100 }, { xPercent: 0, duration: 0.8, ease: 'expo.out' })
+    }
   } else { toggleMobileMenu() }
 }
 
-// 打开三级菜单 (从右侧滑入)
+// 修复: 增加判空保护
 const openThirdMenu = async (child) => {
-  // 保护机制：杀掉正在运行的动画
-  gsap.killTweensOf([subMenuLayer.value, thirdMenuLayer.value])
+  const layers = [subMenuLayer.value, thirdMenuLayer.value].filter(el => el && el.isConnected)
+  if (layers.length) gsap.killTweensOf(layers)
 
   activeThirdMenu.value = child
   await nextTick()
 
-  // 1. 二级菜单退后 (变淡、左移)
-  gsap.to(subMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
+  if (subMenuLayer.value) {
+     gsap.to(subMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
+  }
   
-  // 2. 三级菜单进场 (从右侧 100% 移到 0%)
-  // 先设置 visible 避免闪烁
-  gsap.set(thirdMenuLayer.value, { autoAlpha: 1 })
-  gsap.fromTo(thirdMenuLayer.value, 
-    { xPercent: 100 }, 
-    { xPercent: 0, duration: 0.8, ease: 'expo.out' }
-  )
+  if (thirdMenuLayer.value) {
+     gsap.set(thirdMenuLayer.value, { autoAlpha: 1 })
+     gsap.fromTo(thirdMenuLayer.value, 
+       { xPercent: 100 }, 
+       { xPercent: 0, duration: 0.8, ease: 'expo.out' }
+     )
+  }
 }
 
-// 关闭三级菜单 (返回二级)
+// 修复: 增加判空保护
 const closeThirdMenu = () => {
-  gsap.killTweensOf([subMenuLayer.value, thirdMenuLayer.value])
+  const layers = [subMenuLayer.value, thirdMenuLayer.value].filter(el => el && el.isConnected)
+  if (layers.length) gsap.killTweensOf(layers)
 
-  // 1. 二级菜单回归
-  gsap.to(subMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
+  if (subMenuLayer.value) {
+      gsap.to(subMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
+  }
 
-  // 2. 三级菜单退出
-  gsap.to(thirdMenuLayer.value, { 
-    xPercent: 100, 
-    duration: 0.8, 
-    ease: 'expo.out',
-    onComplete: () => { activeThirdMenu.value = null } // 清理数据
-  })
+  if (thirdMenuLayer.value) {
+      gsap.to(thirdMenuLayer.value, { 
+        xPercent: 100, 
+        duration: 0.8, 
+        ease: 'expo.out',
+        onComplete: () => { activeThirdMenu.value = null } 
+      })
+  } else {
+      activeThirdMenu.value = null
+  }
 }
 
+// 修复: 增加判空保护
 const closeSubMenu = () => {
-  gsap.killTweensOf([mainMenuLayer.value, subMenuLayer.value, thirdMenuLayer.value]) // 把 third 也加上
+  const layers = [mainMenuLayer.value, subMenuLayer.value, thirdMenuLayer.value].filter(el => el && el.isConnected)
+  if (layers.length) gsap.killTweensOf(layers)
 
-  // ... 原有逻辑不变 ...
-  gsap.to(mainMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
-  gsap.to(subMenuLayer.value, { 
-    xPercent: 100, 
-    duration: 0.8, 
-    ease: 'expo.out', 
-    onComplete: () => { 
-      activeSubMenu.value = null 
-      activeThirdMenu.value = null // 顺便清理三级
-    } 
-  })
+  if (mainMenuLayer.value) {
+      gsap.to(mainMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
+  }
+  
+  if (subMenuLayer.value) {
+      gsap.to(subMenuLayer.value, { 
+        xPercent: 100, 
+        duration: 0.8, 
+        ease: 'expo.out', 
+        onComplete: () => { 
+          activeSubMenu.value = null 
+          activeThirdMenu.value = null 
+        } 
+      })
+  } else {
+      activeSubMenu.value = null
+      activeThirdMenu.value = null
+  }
 }
 
 const handleCategoryClick = async (category) => {
-  // 只有当数据里配置了 link 属性时才跳转
   if (category.link) {
-
-    // 判断当前是移动端菜单打开，还是 PC 端菜单打开
     if (isMobileMenuOpen.value) {
-      // 如果是移动端，调用 toggleMobileMenu 来执行关闭动画
       toggleMobileMenu()
     } else {
-      // 如果是 PC 端，调用 closeMenu 关闭幕布
       closeMenu()
     }
-
-    // 执行跳转
     await navigateTo(category.link)
   }
 }
