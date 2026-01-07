@@ -33,94 +33,55 @@
       </div>
     </section>
 
-    <section class="w-full bg-black pt-20 pb-20 px-6 md:px-12 container mx-auto">
+    <section class="w-full bg-black pt-20 pb-12 px-6 md:px-12 container mx-auto text-center">
       <h2 class="text-3xl md:text-5xl text-white font-bold tracking-tight animate-fade-in-up">
-        即刻探索雷迪恩家用充电桩系列
+        即刻探索雷迪恩高端家用充电桩系列
       </h2>
     </section>
 
-    <section id="product-section" class="w-full bg-black text-white pb-32 select-none"> <div class="container mx-auto px-6 md:px-12 flex flex-col gap-6">
+    <section id="product-section" class="w-full bg-black text-white pb-32 select-none">
+      <div class="container mx-auto px-6 md:px-24 flex flex-col gap-8 max-w-7xl">
 
         <div v-for="(row, rowIndex) in productRows" :key="rowIndex" 
-          class="flex flex-col md:flex-row w-full gap-6 h-auto"
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full"
         >
           <div 
-            v-for="(product, index) in row" 
+            v-for="product in row" 
             :key="product.id"
-            class="relative flex-shrink-0 overflow-hidden cursor-pointer group/card rounded-3xl border border-white/10 transition-[flex-basis,border-width,padding] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] min-w-0"
-            :class="[
-              'w-full h-[100vw] md:h-[500px] lg:h-[600px] xl:h-[700px]',
-              activeRowIndex !== rowIndex ? 'md:basis-1/2' : '',
-              activeRowIndex === rowIndex && activeCardId === product.id ? 'md:basis-full' : '',
-              activeRowIndex === rowIndex && activeCardId !== product.id ? 'md:basis-0 md:border-0 md:p-0' : ''
-            ]"
-            @mouseenter="handleMouseEnter(rowIndex, product.id)"
-            @mouseleave="handleMouseLeave"
-            @touchstart="handleTouchStart(product.id)"
-            @touchend="handleTouchEnd"
-            @contextmenu.prevent 
+            class="relative overflow-hidden group/card rounded-3xl bg-gray-900 border border-white/10 cursor-pointer h-[120vw] md:h-[500px] lg:h-[600px]"
           >
-            <div 
-              class="absolute top-0 h-full transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-              :class="[
-                (activeRowIndex === rowIndex && activeCardId !== product.id) ? 'w-[50vw]' : 'w-full',
-                (index === 0) ? 'left-0' : 'right-0'
-              ]"
-            >
-              <div class="absolute inset-0 w-full h-full bg-gray-900">
-                <NuxtImg 
-                  :src="product.image" 
-                  :alt="product.name" 
-                  format="webp"
-                  quality="80"
-                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-105"
-                />
-                
-                <video 
-                  :ref="el => setVideoRef(el, product.id)"
-                  :src="product.video"
-                  class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
-                  :class="{ 'opacity-100': activeCardId === product.id }"
-                  muted loop playsinline
-                ></video>
-                <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/80 to-transparent pointer-events-none opacity-80"></div>
-                <div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none"></div>
-              </div>
+            <div class="absolute inset-0 w-full h-full overflow-hidden">
+              <NuxtImg 
+                :src="product.image" 
+                :alt="product.name" 
+                format="webp"
+                quality="85"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105"
+              />
+              <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/60 to-transparent pointer-events-none"></div>
+            </div>
 
-              <div class="absolute inset-0 z-20 flex flex-col justify-between p-8 md:p-12 transition-opacity duration-300"
-                :class="(activeRowIndex === rowIndex && activeCardId !== product.id) ? 'opacity-0' : 'opacity-100'"
-              >
-                <div class="w-full flex justify-center pt-2">
-                  <h3 class="text-3xl md:text-4xl font-hero font-bold uppercase tracking-widest drop-shadow-lg text-white group-hover/card:text-white/90 whitespace-nowrap">
-                    {{ product.name }}
-                  </h3>
-                </div>
-                <div class="w-full flex justify-between items-end px-4 md:px-12">
-                  <div class="flex flex-col items-start transform transition-transform duration-500 group-hover/card:translate-x-2">
-                    <p class="text-xl md:text-2xl font-bold text-white tracking-wide whitespace-nowrap drop-shadow-md">
-                      {{ product.slogan }}
-                    </p>
-                  </div>
-                  <div class="relative flex items-center justify-end h-12 min-w-[140px] pointer-events-auto">
-                    <div class="absolute right-0 transition-all duration-300 transform group-hover/card:opacity-0 group-hover/card:translate-x-4">
-                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10 text-white drop-shadow-md">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                      </svg>
-                    </div>
-                    <div class="absolute right-0 opacity-0 translate-x-4 transition-all duration-500 delay-75 group-hover/card:opacity-100 group-hover/card:translate-x-0">
-                      <div class="flex items-center gap-2 px-6 py-2.5 border border-white/40 rounded-full backdrop-blur-md bg-white/10 hover:bg-white hover:text-black hover:border-white transition-all shadow-lg">
-                        <span class="text-sm font-bold tracking-wide whitespace-nowrap">探索 {{ product.name }}</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div class="absolute inset-x-0 top-0 pt-12 md:pt-16 flex flex-col items-center text-center z-20 px-6">
+              <h3 class="text-3xl md:text-4xl font-hero font-bold tracking-widest text-white mb-3 drop-shadow-lg">
+                {{ product.name }}
+              </h3>
+              <p class="text-base md:text-lg text-gray-200 font-medium tracking-wide mb-8 drop-shadow-md">
+                {{ product.slogan }}
+              </p>
+              
+              <div class="flex gap-4 opacity-0 translate-y-4 transition-all duration-500 group-hover/card:opacity-100 group-hover/card:translate-y-0">
+                <button class="px-6 py-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-sm font-bold text-white hover:bg-white hover:text-black transition-colors">
+                  了解更多
+                </button>
+                <button class="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-bold hover:bg-blue-500 transition-colors border border-transparent shadow-lg">
+                  立即购买
+                </button>
               </div>
             </div>
+
           </div>
         </div>
+
       </div>
     </section>
 
@@ -205,90 +166,21 @@ const toggleHeroVideo = () => {
   }
 }
 
-// === 产品卡片交互逻辑 ===
-const activeRowIndex = ref(null)
-const activeCardId = ref(null)
-const productVideoMap = new Map()
-const longPressTimer = ref(null) // 新增：用于存储长按定时器
-
-const setVideoRef = (el, id) => {
-  if (el) {
-    productVideoMap.set(id, el)
-  }
-}
-
-// 1. PC 端悬停逻辑 (保持原样)
-const handleMouseEnter = (rowIndex, productId) => {
-  if (window.innerWidth >= 768) { // 仅在 PC 端触发
-    activeRowIndex.value = rowIndex
-    activeCardId.value = productId
-    const videoEl = productVideoMap.get(productId)
-    if (videoEl) {
-      videoEl.currentTime = 0
-      videoEl.play().catch(() => {})
-    }
-  }
-}
-
-const handleMouseLeave = () => {
-  // 清除状态
-  activeRowIndex.value = null
-  activeCardId.value = null
-  productVideoMap.forEach((videoEl) => {
-    videoEl.pause()
-  })
-}
-
-// 2. 移动端长按逻辑 (新增)
-const handleTouchStart = (productId) => {
-  // 如果是 PC 端，忽略触摸事件
-  if (window.innerWidth >= 768) return
-
-  // 设置定时器：500毫秒后视为长按
-  longPressTimer.value = setTimeout(() => {
-    // 激活视频
-    activeCardId.value = productId 
-    const videoEl = productVideoMap.get(productId)
-    if (videoEl) {
-      videoEl.currentTime = 0
-      videoEl.play().catch(() => {})
-    }
-  }, 500) // 长按阈值
-}
-
-const handleTouchEnd = () => {
-  // 如果是 PC 端，忽略
-  if (window.innerWidth >= 768) return
-
-  // 手指离开，清除定时器
-  if (longPressTimer.value) {
-    clearTimeout(longPressTimer.value)
-    longPressTimer.value = null
-  }
-  
-  // 停止视频并重置状态
-  activeCardId.value = null
-  productVideoMap.forEach((videoEl) => {
-    videoEl.pause()
-  })
-}
-
 // === 数据配置 ===
+// 移除了 video 字段，因为不再需要自动播放交互
 const productRows = [
   [
     {
       id: 'xingchen',
       name: '星辰系列',
       slogan: '智能科技，美学之光',
-      image: '/images/products/xingchen-cover.jpg',
-      video: '/videos/products/xingchen-demo.mp4',
+      image: '/images/products/xingchen-cover.png',
     },
     {
       id: 'xingyao',
       name: '星耀系列',
       slogan: '触控大屏，时代之巅',
-      image: '/images/products/xingyao-cover.jpg', 
-      video: '/videos/products/xingyao-demo.mp4',
+      image: '/images/products/xingyao-cover.png', 
     }
   ],
   [
@@ -296,15 +188,13 @@ const productRows = [
       id: 'jianshi',
       name: '坚石系列',
       slogan: '实用至上，大道至简',
-      image: '/images/products/jianshi-cover.jpg',
-      video: '/videos/products/jianshi-demo.mp4',
+      image: '/images/products/jianshi-cover.png',
     },
     {
       id: 'panshi',
       name: '磐石系列',
       slogan: '简约时尚，品质之选',
-      image: '/images/products/panshi-cover.jpg',
-      video: '/videos/products/panshi-demo.mp4',
+      image: '/images/products/panshi-cover.png',
     }
   ]
 ]
