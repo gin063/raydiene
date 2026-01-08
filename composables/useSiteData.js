@@ -68,14 +68,14 @@ export const useSiteData = () => {
             },
           ],
         },
-        { name: "产品路线图", link: "/products/roadmap", image: "/images/products/roadmap-bg.jpg", },
+        { name: "产品路线图", link: "/products/roadmap", image: "/images/products/roadmap-bg.jpg" },
       ],
     },
     {
       name: "产品服务",
       type: "mega",
       image: "/images/service/service-bg.jpg",
-      children: [{ name: "安装服务", image: "/images/service/install-bg.jpg" }, { name: "售后服务", image: "/images/service/aftersales-bg.jpg" }],
+      children: [{ name: "安装服务", link: "/service/install", image: "/images/service/install-bg.jpg" }, { name: "售后服务", link: "/service/aftersales", image: "/images/service/aftersales-bg.jpg" }],
     },
     {
       name: "下载中心",
@@ -101,9 +101,9 @@ export const useSiteData = () => {
       type: "mega",
       image: "/images/contact/contact-bg.jpg",
       children: [
-        { name: "联系方式", image: "/images/contact/info-bg.jpg" },
-        { name: "官方渠道", image: "/images/contact/official-bg.jpg" },
-        { name: "加入我们", image: "/images/contact/join-bg.jpg" },
+        { name: "联系方式", link: "/contact/info", image: "/images/contact/info-bg.jpg" },
+        { name: "官方渠道", link: "/contact/official", image: "/images/contact/official-bg.jpg" },
+        { name: "加入我们", link: "/", image: "/images/contact/join-bg.jpg" },
       ],
     },
   ];
