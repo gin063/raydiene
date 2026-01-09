@@ -3,10 +3,8 @@
 
     <div class="fixed inset-0 z-0 pointer-events-none">
       <div class="absolute top-[-10%] left-[20%] w-[50vw] h-[50vw] bg-purple-900/20 rounded-full blur-[120px] animate-pulse-slow"></div>
-      
       <div class="absolute top-[40%] right-[-10%] w-[60vw] h-[60vw] bg-conic-gradient from-blue-900/10 via-cyan-900/10 to-transparent blur-[80px] opacity-60 animate-spin-slow"></div>
-
-      <div class="absolute inset-0 bg-noise opacity-[0.04] mix-blend-overlay"></div>
+      <div class="absolute inset-0 bg-[url('/images/noise.svg')] opacity-20"></div>
     </div>
 
     <div class="relative z-10 container mx-auto px-6 md:px-12 py-24 md:py-32">
@@ -43,42 +41,61 @@
         </div>
         
         <div class="order-1 md:order-2 flex justify-center animate-on-scroll">
-          <div class="relative w-full aspect-square max-w-sm">
-            <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-purple-600/20 rounded-full blur-3xl animate-blob"></div>
-            <div class="relative h-full bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col justify-between shadow-2xl overflow-hidden group hover:border-white/20 transition-colors duration-500">
-              <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
-              
-              <div class="text-6xl text-white/10 font-black font-hero">WHY?</div>
-              <div class="space-y-2">
-                <div class="h-1 w-12 bg-blue-500 rounded-full"></div>
-                <h3 class="text-xl font-bold text-white">打破工业刻板印象</h3>
-                <p class="text-sm text-gray-400">从功能设备到生活美学</p>
+          <div class="relative w-full aspect-square max-w-sm group">
+            <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/30 to-purple-600/30 rounded-[2rem] blur-2xl animate-blob opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative h-full rounded-[2rem] border border-white/10 p-8 flex flex-col justify-between shadow-2xl overflow-hidden hover:border-white/30 transition-all duration-500 z-10">
+              <div class="absolute inset-0 z-0">
+                <NuxtImg 
+                  src="/images/about/about-charger-square.jpg" 
+                  alt="雷迪恩充电桩特效"
+                  class="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-700 ease-out" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-black/30 mix-blend-multiply"></div>
+              </div>
+              <div class="relative z-10 h-full flex flex-col justify-between">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10 mix-blend-overlay"></div>
+                <div class="text-6xl text-white/20 font-black font-hero drop-shadow-lg select-none">WHY?</div>
+                <div class="space-y-2 drop-shadow-md">
+                  <div class="h-1 w-12 bg-blue-500 rounded-full"></div>
+                  <h3 class="text-xl font-bold text-white">打破工业刻板印象</h3>
+                  <p class="text-sm text-gray-300">从功能设备到生活美学</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="max-w-5xl mx-auto mb-32 md:mb-48 relative animate-on-scroll">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] opacity-10 pointer-events-none">
-           <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full animate-spin-super-slow">
-              <path fill="none" stroke="currentColor" stroke-width="0.5" d="M100,10 L190,100 L100,190 L10,100 Z M100,10 L145,55 M190,100 L145,55 M100,190 L55,145 M10,100 L55,145 M100,10 L55,55 M10,100 L55,55 M100,190 L145,145 M190,100 L145,145" />
-           </svg>
-        </div>
-
-        <div class="relative bg-gradient-to-b from-white/5 to-transparent border-t border-white/10 p-10 md:p-20 rounded-3xl text-center backdrop-blur-sm">
-          <h2 class="text-3xl md:text-5xl font-bold mb-8 font-hero">
-            为什么叫 <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-purple-300">雷迪恩</span> ?
-          </h2>
-          <div class="max-w-2xl mx-auto space-y-6 text-lg text-gray-300 leading-relaxed">
-            <p>
-              因为 <span class="text-white font-bold">Raydiene</span> 同时也是宝石切割界的顶级工艺。
-            </p>
-            <p>
-              以精准切面折射极致璀璨，正如我们想让充电桩，<br class="hidden md:block">
-              <span class="text-white border-b border-white/20 pb-1">跳出工业感的刻板，绽放出设计的光芒。</span>
-            </p>
+      <section class="max-w-5xl mx-auto mb-32 md:mb-48 animate-on-scroll relative z-10">
+        <div class="relative bg-gradient-to-b from-white/5 to-[#0a0a0a] border-t border-x border-white/10 rounded-3xl text-center backdrop-blur-sm overflow-hidden">
+          
+          <div class="p-10 md:p-20 md:pb-10 relative z-20">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8 font-hero">
+              为什么叫 <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white to-purple-300">雷迪恩</span> ?
+            </h2>
+            <div class="max-w-2xl mx-auto space-y-6 text-lg text-gray-300 leading-relaxed">
+              <p>
+                因为 <span class="text-white font-bold">Raydiene</span> 同时也是宝石切割界的顶级工艺。
+              </p>
+              <p>
+                <span class="text-white border-b border-white/20 pb-1">以精准切面折射极致璀璨，正如我们想让充电桩，跳出工业感的刻板，绽放出设计的光芒。</span>
+              </p>
+            </div>
           </div>
+
+          <div class="relative w-full h-[300px] md:h-[400px] mt-8 z-10 group">
+            
+            <NuxtImg 
+              src="/images/about/about-craft-banner.jpg" 
+              alt="Raydiene 宝石切割工艺"
+              class="w-full h-full object-cover object-center mix-blend-multiply opacity-90 transform group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+            
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent pointer-events-none"></div>
+            
+            <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-blue-900/20 to-transparent mix-blend-overlay pointer-events-none"></div>
+          </div>
+
         </div>
       </section>
 
@@ -137,11 +154,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 基础背景 */
-.bg-noise {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
 /* 锥形渐变背景 (模拟光芒) */
 .bg-conic-gradient {
   background: conic-gradient(from 0deg at 50% 50%, rgba(15, 23, 42, 0), rgba(56, 189, 248, 0.1), rgba(168, 85, 247, 0.1), rgba(15, 23, 42, 0));
@@ -162,14 +174,6 @@ onMounted(() => {
 }
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
-}
-
-@keyframes spin-super-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-.animate-spin-super-slow {
-  animation: spin-super-slow 60s linear infinite;
 }
 
 @keyframes blob {

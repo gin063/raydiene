@@ -6,7 +6,6 @@
       
       <div class="absolute bottom-[-10%] left-0 w-full h-[60vh] bg-gradient-to-t from-teal-900/20 via-transparent to-transparent opacity-50"></div>
 
-      <div class="absolute inset-0 bg-noise opacity-[0.04] mix-blend-overlay"></div>
     </div>
 
     <div class="relative z-10 container mx-auto px-6 md:px-12 py-24 md:py-32">
@@ -22,7 +21,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
         
-        <div class="group relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.1s">
+        <div class="group relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:shadow-[0_0_35px_rgba(59,130,246,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.1s">
           <div class="absolute inset-0 bg-blue-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           
           <div class="relative z-10 flex flex-col h-full items-center text-center">
@@ -38,7 +37,7 @@
           </div>
         </div>
 
-        <div class="group relative p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.2s">
+        <div class="group relative p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 backdrop-blur-xl hover:shadow-[0_0_35px_rgba(168,85,247,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.2s">
           <div class="absolute inset-0 bg-purple-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           
           <div class="relative z-10 flex flex-col h-full items-center text-center">
@@ -54,7 +53,7 @@
           </div>
         </div>
 
-        <div class="group relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.3s">
+        <div class="group relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:shadow-[0_0_35px_rgba(20,184,166,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.3s">
           <div class="absolute inset-0 bg-teal-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           
           <div class="relative z-10 flex flex-col h-full items-center text-center">
@@ -133,11 +132,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 纹理背景 */
-.bg-noise {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
 /* 呼吸动画 */
 @keyframes pulse-slow {
   0%, 100% { opacity: 0.3; transform: scale(1); }

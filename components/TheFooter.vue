@@ -45,7 +45,7 @@
         <div>
           <h4 class="text-white font-bold mb-4 text-sm tracking-wide">下载中心</h4>
           <ul class="space-y-3 text-xs text-gray-400">
-            <li><NuxtLink to="/download/app">App下载</NuxtLink></li>
+            <li><NuxtLink to="/download/apps">App下载</NuxtLink></li>
             <li><NuxtLink to="/download/manual">说明书下载</NuxtLink></li>
           </ul>
         </div>

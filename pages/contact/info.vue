@@ -8,8 +8,7 @@
             </div>
             <div
                 class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-900/10 rounded-full blur-[100px] opacity-30">
-            </div>
-            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+            </div>           
         </div>
 
         <div class="relative z-10 container mx-auto px-6 md:px-12 py-32 md:py-48">
@@ -22,7 +21,9 @@
                             联系我们
                         </h1>
                         <p class="text-gray-400 text-lg leading-relaxed max-w-md">
-                            无论您是想咨询产品、寻求合作，还是需要售后支持，雷迪恩团队随时准备为您服务。
+                            无论您是想咨询产品、寻求合作，还是需要售后支持
+                            <br>
+                            雷迪恩团队随时准备为您服务
                         </p>
                     </div>
 

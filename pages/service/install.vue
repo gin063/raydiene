@@ -4,7 +4,6 @@
     <div class="fixed inset-0 z-0 pointer-events-none">
       <div class="absolute top-[-10%] right-[20%] w-[60vw] h-[40vw] bg-emerald-900/10 rounded-full blur-[120px] opacity-40 animate-pulse-slow"></div>
       <div class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-teal-900/10 rounded-full blur-[100px] opacity-20"></div>
-      <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
     </div>
 
     <div class="relative z-10 container mx-auto px-6 md:px-12 py-32 md:py-40">
@@ -14,14 +13,14 @@
           专业安装，一步到位
         </h1>
         <p class="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-          我们将原本复杂的充电桩安装工程，转化为标准化的省心服务。
-          <br>六大服务流程，全链路保障您的充电安全。
+          我们将原本复杂的充电桩安装工程，转化为标准化的省心服务
+          <br>六大服务流程，全链路保障您的充电安全
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.1s;">
+        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.1s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-1.jpg" alt="极速响应"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
@@ -40,7 +39,7 @@
           </div>
         </div>
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.2s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-2.jpg" alt="专属服务"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
@@ -59,7 +58,7 @@
           </div>
         </div>
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.3s;">
+        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.3s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-3.jpg" alt="资质齐全"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
@@ -78,7 +77,7 @@
           </div>
         </div>
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.4s;">
+        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.4s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-4.jpg" alt="上门安装"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
@@ -97,7 +96,7 @@
           </div>
         </div>
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.5s;">
+        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.5s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-5.jpg" alt="安装验收"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
@@ -110,13 +109,13 @@
             <div>
               <h3 class="text-2xl font-bold font-hero mb-2 text-white">严苛验收</h3>
               <p class="text-gray-400 text-sm leading-relaxed">
-                安装完成后进行 <span class="text-emerald-400 font-bold">18项安全检测</span>。并现场指导您如何使用充电桩及App功能，直到您满意。
+                安装完成后进行 <span class="text-emerald-400 font-bold">严苛安全检测</span>。并现场指导您如何使用充电桩及App功能，直到您满意。
               </p>
             </div>
           </div>
         </div>
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.6s;">
+        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.6s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-6.jpg" alt="客服回访"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />

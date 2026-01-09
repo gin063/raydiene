@@ -41,41 +41,76 @@ export const useSiteData = () => {
               name: "坚石系列",
               image: "/images/products/jianshi.png",
               products: [
-                { name: "坚石", link: "/products/jianshi", image: "/images/products/jianshi.png" },
+                {
+                  name: "坚石",
+                  link: "/products/jianshi",
+                  image: "/images/products/jianshi.png",
+                },
               ],
             },
             {
               name: "磐石系列",
               image: "/images/products/panshi-pro.png",
               products: [
-                { name: "磐石Max", link: "/products/panshi", image: "/images/products/panshi-max.png" },
-                { name: "磐石Pro", link: "/products/panshi", image: "/images/products/panshi-pro.png" },
+                {
+                  name: "磐石Max",
+                  link: "/products/panshi",
+                  image: "/images/products/panshi-max.png",
+                },
+                {
+                  name: "磐石Pro",
+                  link: "/products/panshi",
+                  image: "/images/products/panshi-pro.png",
+                },
               ],
             },
             {
               name: "星辰系列",
               image: "/images/products/xingchen.png",
               products: [
-                { name: "星辰", link: "/products/xingchen", image: "/images/products/xingchen.png" },
+                {
+                  name: "星辰",
+                  link: "/products/xingchen",
+                  image: "/images/products/xingchen.png",
+                },
               ],
             },
             {
               name: "星耀系列",
               image: "/images/products/xingyao.png",
               products: [
-                { name: "星耀", link: "/products/xingyao", image: "/images/products/xingyao.png" },
+                {
+                  name: "星耀",
+                  link: "/products/xingyao",
+                  image: "/images/products/xingyao.png",
+                },
               ],
             },
           ],
         },
-        { name: "产品路线图", link: "/products/roadmap", image: "/images/products/roadmap-bg.jpg" },
+        {
+          name: "产品路线图",
+          link: "/products/roadmap",
+          image: "/images/products/roadmap-bg.jpg",
+        },
       ],
     },
     {
       name: "产品服务",
       type: "mega",
       image: "/images/service/service-bg.jpg",
-      children: [{ name: "安装服务", link: "/service/install", image: "/images/service/install-bg.jpg" }, { name: "售后服务", link: "/service/aftersales", image: "/images/service/aftersales-bg.jpg" }],
+      children: [
+        {
+          name: "安装服务",
+          link: "/service/install",
+          image: "/images/service/install-bg.jpg",
+        },
+        {
+          name: "售后服务",
+          link: "/service/aftersales",
+          image: "/images/service/aftersales-bg.jpg",
+        },
+      ],
     },
     {
       name: "下载中心",
@@ -84,7 +119,7 @@ export const useSiteData = () => {
       children: [
         {
           name: "App下载",
-          link: "/download/app",
+          link: "/download/apps",
           image: "/images/download/app-bg.jpg",
           desc: "雷迪恩智能 App，掌控您的充电生活。",
         },
@@ -101,8 +136,16 @@ export const useSiteData = () => {
       type: "mega",
       image: "/images/contact/contact-bg.jpg",
       children: [
-        { name: "联系方式", link: "/contact/info", image: "/images/contact/info-bg.jpg" },
-        { name: "官方渠道", link: "/contact/official", image: "/images/contact/official-bg.jpg" },
+        {
+          name: "联系方式",
+          link: "/contact/info",
+          image: "/images/contact/info-bg.jpg",
+        },
+        {
+          name: "官方渠道",
+          link: "/contact/official",
+          image: "/images/contact/official-bg.jpg",
+        },
         { name: "加入我们", link: "/", image: "/images/contact/join-bg.jpg" },
       ],
     },

@@ -1,14 +1,9 @@
 <template>
-  <div
-    class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-blue-500 selection:text-white overflow-hidden font-sans">
+  <div class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-blue-500 selection:text-white overflow-hidden font-sans">
 
     <div class="fixed inset-0 z-0 pointer-events-none">
-      <div
-        class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80vw] h-[40vw] bg-blue-900/10 rounded-full blur-[120px] opacity-30 animate-pulse-slow">
-      </div>
-      <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-blue-900/10 to-transparent opacity-20">
-      </div>
-      <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+      <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80vw] h-[40vw] bg-blue-900/10 rounded-full blur-[120px] opacity-30 animate-pulse-slow"></div>
+      <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-blue-900/10 to-transparent opacity-20"></div>
     </div>
 
     <div class="relative z-10 container mx-auto px-6 md:px-12 py-32 md:py-40">
@@ -26,8 +21,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
 
-        <div
-          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-blue-500/50 transition-all duration-500 h-[320px] md:h-[360px]">
+        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-blue-500/50 hover:shadow-[0_0_35px_rgba(59,130,246,0.3)] transition-all duration-500 h-[320px] md:h-[360px]">
 
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/support-bg.jpg" alt="全时响应背景" class="w-full h-full object-cover object-center
@@ -35,13 +29,11 @@
                transition-all duration-700 ease-out transform-gpu" />
           </div>
 
-          <div
-            class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/60 to-transparent opacity-90">
+          <div class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/60 to-transparent opacity-90">
           </div>
 
           <div class="relative z-10 flex flex-col h-full justify-between p-8 md:p-10">
-            <div
-              class="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400 mb-6 backdrop-blur-md shadow-lg shadow-blue-900/20">
+            <div class="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400 mb-6 backdrop-blur-md shadow-lg shadow-blue-900/20">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-7 h-7">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -59,8 +51,7 @@
           </div>
         </div>
 
-        <div
-          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-teal-500/50 transition-all duration-500 h-[320px] md:h-[360px]">
+        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-teal-500/50 hover:shadow-[0_0_35px_rgba(20,184,166,0.3)] transition-all duration-500 h-[320px] md:h-[360px]">
 
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/ota-bg.jpg" alt="OTA升级背景" class="w-full h-full object-cover object-center
@@ -69,18 +60,13 @@
                transition-all duration-700 ease-out transform-gpu" />
           </div>
 
-          <div
-            class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/90 to-transparent opacity-90">
+          <div class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/90 to-transparent opacity-90">
           </div>
 
           <div class="relative z-10 flex flex-col h-full justify-between p-8 md:p-10">
-            <div
-              class="w-14 h-14 rounded-2xl bg-teal-500/20 flex items-center justify-center text-teal-400 mb-6 backdrop-blur-md shadow-lg shadow-teal-900/20">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-7 h-7">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M15.59 14.37a6 6 0 01-5.58 3.82c-1.03 0-1.99-.26-2.82-.72m0 0A7.003 7.003 0 015.02 9.5a7 7 0 015.82-7.24 7.003 7.003 0 0111.39 6.22 7.002 7.002 0 01-6.64 5.89z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-9" />
+            <div class="w-14 h-14 rounded-2xl bg-teal-500/20 flex items-center justify-center text-teal-400 mb-6 backdrop-blur-md shadow-lg shadow-teal-900/20">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
               </svg>
             </div>
 
@@ -93,8 +79,7 @@
           </div>
         </div>
 
-        <div
-          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-purple-500/50 transition-all duration-500 h-[320px] md:h-[360px]">
+        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.3)] transition-all duration-500 h-[320px] md:h-[360px]">
 
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/4g-bg.jpg" alt="4G网络背景" class="w-full h-full object-cover object-center
@@ -103,13 +88,11 @@
                transition-all duration-700 ease-out transform-gpu" />
           </div>
 
-          <div
-            class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/90 to-transparent opacity-90">
+          <div class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/90 to-transparent opacity-90">
           </div>
 
           <div class="relative z-10 flex flex-col h-full justify-between p-8 md:p-10">
-            <div
-              class="w-14 h-14 rounded-2xl bg-purple-500/20 flex items-center justify-center text-purple-400 mb-6 backdrop-blur-md shadow-lg shadow-purple-900/20">
+            <div class="w-14 h-14 rounded-2xl bg-purple-500/20 flex items-center justify-center text-purple-400 mb-6 backdrop-blur-md shadow-lg shadow-purple-900/20">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-7 h-7">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -126,8 +109,7 @@
           </div>
         </div>
 
-        <div
-          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-amber-500/50 transition-all duration-500 h-[320px] md:h-[360px]">
+        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-amber-500/50 hover:shadow-[0_0_35px_rgba(245,158,11,0.3)] transition-all duration-500 h-[320px] md:h-[360px]">
 
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/warranty-bg.jpg" alt="质保服务背景" class="w-full h-full object-cover object-center
@@ -136,13 +118,11 @@
                transition-all duration-700 ease-out transform-gpu" />
           </div>
 
-          <div
-            class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/90 to-transparent opacity-90">
+          <div class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/90 to-transparent opacity-90">
           </div>
 
           <div class="relative z-10 flex flex-col h-full justify-between p-8 md:p-10">
-            <div
-              class="w-14 h-14 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-400 mb-6 backdrop-blur-md shadow-lg shadow-amber-900/20">
+            <div class="w-14 h-14 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-400 mb-6 backdrop-blur-md shadow-lg shadow-amber-900/20">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-7 h-7">
                 <path stroke-linecap="round" stroke-linejoin="round"
