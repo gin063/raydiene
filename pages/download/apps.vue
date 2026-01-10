@@ -2,11 +2,12 @@
   <div class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-blue-500 selection:text-white font-sans">
 
     <div class="fixed inset-0 z-0 pointer-events-none">
-      <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80vw] h-[50vw] bg-blue-900/10 rounded-full blur-[120px] opacity-40 animate-pulse-slow"></div>
-      <div class="absolute bottom-0 right-0 w-[60vw] h-[60vw] bg-purple-900/10 rounded-full blur-[100px]"></div>
+      <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80vw] h-[50vw] bg-blue-900/10 rounded-full blur-[120px] opacity-50 animate-pulse-slow"></div>
+      <div class="absolute bottom-0 right-0 w-[70vw] h-[70vw] bg-purple-900/15 rounded-full blur-[120px] opacity-60"></div>
+      <div class="absolute inset-0 bg-[url('/images/noise.svg')] opacity-20"></div>
     </div>
 
-    <section class="relative z-10 pt-32 pb-20 md:pt-48 md:pb-24 container mx-auto px-6 md:px-12 border-b border-white/5">
+    <section class="relative z-10 pt-32 pb-20 md:pt-48 md:pb-24 container mx-auto px-6 md:px-12 border-b border-white/5 overflow-x-clip">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         <div class="space-y-12 animate-slide-in-left">
@@ -16,16 +17,11 @@
               <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">一手掌控</span>
             </h1>
             <p class="text-gray-400 text-lg md:text-xl max-w-lg leading-relaxed">
-              下载雷迪恩App，随时随地监控充电状态
-              <br>
-              远程控制，预约充电
-              <br>
-              让每一次补能都尽在掌握。
+              下载雷迪恩App，随时随地监控充电状态<br>远程控制，预约充电<br>让每一次补能都尽在掌握
             </p>
           </div>
 
           <div class="flex flex-col sm:flex-row gap-4">
-            
             <div class="relative group w-full sm:w-auto">
               <a href="https://apps.apple.com/cn/app/%E9%9B%B7%E8%BF%AA%E6%81%A9/id6746684577" target="_blank" 
                  class="w-full h-full flex items-center gap-4 bg-white/5 border border-white/10 hover:bg-white hover:text-black hover:border-white px-8 py-4 rounded-2xl transition-all duration-300 min-w-[200px]">
@@ -71,23 +67,32 @@
                 <div class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
               </div>
             </div>
-
           </div>
         </div>
 
-        <div class="relative h-[500px] lg:h-[600px] flex items-center justify-center animate-slide-in-right">
-          <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full blur-[100px] animate-pulse-slow"></div>
+        <div class="relative h-[600px] flex items-center justify-center animate-slide-in-right perspective-1000">
+          <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/30 rounded-full blur-[100px] animate-pulse-slow"></div>
           
-          <div class="relative w-[300px] h-[600px] bg-black border-4 border-gray-800 rounded-[3rem] shadow-2xl overflow-hidden transform rotate-[-6deg] hover:rotate-0 transition-transform duration-700 ease-out z-10">
-             <div class="absolute inset-0 bg-gray-900 overflow-hidden">
-                <NuxtImg 
-                  src="/images/download/app-preview.png" 
-                  alt="Raydiene App UI"
-                  class="w-full h-full object-cover" 
-                  placeholder
-                />
-             </div>
-             <div class="absolute top-2 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-20"></div>
+          <div class="relative w-[300px] h-[600px] group cursor-pointer transition-transform duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+            
+            <div class="absolute inset-0 translate-x-6 translate-y-6 bg-black/40 border border-white/5 rounded-[3rem] blur-sm transform rotate-[-6deg] group-hover:rotate-0 group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-700 ease-out z-0"></div>
+
+            <div class="absolute inset-0 rounded-[3rem] bg-[#00ff99] opacity-0 blur-[40px] group-hover:opacity-40 transition-all duration-1000 delay-100 z-0 transform scale-90 group-hover:scale-110"></div>
+
+            <div class="relative w-full h-full bg-black border-4 border-gray-800 rounded-[3rem] shadow-2xl overflow-hidden transform rotate-[-6deg] group-hover:rotate-0 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-10 group-hover:shadow-[0_0_50px_rgba(0,255,153,0.3)]">
+               <div class="absolute inset-0 bg-gray-900 overflow-hidden">
+                  <NuxtImg 
+                    src="/images/download/app-preview.png" 
+                    alt="Raydiene App UI"
+                    class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" 
+                    placeholder
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent translate-y-full group-hover:translate-y-[-100%] transition-transform duration-1000 ease-in-out pointer-events-none"></div>
+               </div>
+               <div class="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-20 flex items-center justify-center gap-2">
+                  <div class="w-1.5 h-1.5 rounded-full bg-[#00ff99] opacity-0 group-hover:opacity-100 transition-opacity delay-300 shadow-[0_0_10px_#00ff99]"></div>
+               </div>
+            </div>
           </div>
         </div>
 
@@ -118,9 +123,9 @@
             </div>
           </div>
 
-          <div class="w-full lg:w-[380px] flex-shrink-0 sticky top-32 animate-fade-up delay-200 z-20">
-            
+          <div class="w-full lg:w-[380px] flex-shrink-0 sticky top-32 z-20 animate-fade-up delay-200">
             <div class="space-y-8">
+              
               <div class="bg-[#111] border border-white/10 rounded-[2rem] p-8 shadow-2xl text-center backdrop-blur-md">
                 <h3 class="text-xl font-bold mb-2 text-white">雷迪恩充电桩使用手册</h3>
                 <p class="text-gray-500 text-sm mb-8">V2.0 | 更新于 2025.12</p>
@@ -145,8 +150,8 @@
                 </div>
                 <p class="text-xs text-gray-500 mt-4">关注“雷迪恩”官方公众号<br>获取更多服务</p>
               </div>
-            </div>
 
+            </div>
           </div>
 
         </div>
@@ -157,13 +162,14 @@
 </template>
 
 <style scoped>
+/* 保持原有动画 */
 .animate-pulse-slow {
   animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0.6; }
 }
 
 .animate-slide-in-left {

@@ -101,7 +101,7 @@
                         </div>
                     </div>
 
-                    <div class="absolute bottom-6 left-6 right-6 z-30 pointer-events-none">
+                    <div class="absolute bottom-6 left-72 right-6 z-30 pointer-events-none">
                         <a href="https://www.amap.com/search?query=上海市青浦区万达茂" target="_blank"
                             class="bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 flex justify-between items-center group pointer-events-auto hover:bg-black transition-colors shadow-lg">
                             <div>

@@ -145,7 +145,7 @@
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <h2 class="text-3xl md:text-4xl font-bold mb-6 font-hero">掌控 · 随心所欲</h2>
             <p class="text-gray-400 mb-10 text-lg">
-              通过 Raydiene App，您的手机就是充电桩的控制中心。数据可视化，管理更轻松。
+              通过雷迪恩App，您的手机就是充电桩的控制中心。数据可视化，管理更轻松。
             </p>
 
             <ul class="space-y-6">
