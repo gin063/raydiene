@@ -16,6 +16,10 @@ export default <Config>{
         'hero': ['"Michroma"', '"AlibabaPuHuiTi"', 'sans-serif'],
         'body': ['"Inter"', '"AlibabaPuHuiTi"', 'sans-serif'],
         'sans': ['"Inter"', '"AlibabaPuHuiTi"', 'sans-serif'],
+      },
+      colors: {
+        // 定义统一的主题色，命名为 brand (品牌色)
+        brand: '#2d9ed0', 
       }
     }
   }

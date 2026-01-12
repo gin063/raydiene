@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-screen w-full bg-[#050505] text-white overflow-x-hidden font-sans transition-colors duration-700">
+  <div class="relative min-h-screen w-full bg-[#050505] text-white overflow-x-hidden font-sans transition-colors duration-700 selection:bg-brand selection:text-white">
 
     <div class="relative w-full h-screen">
       <div class="absolute inset-0 z-0 overflow-hidden grid grid-cols-1 grid-rows-1">
@@ -32,12 +32,12 @@
         <div class="grid grid-cols-1 grid-rows-1 place-items-center mb-6">
           <Transition name="fade-up-stay">
             <h1 v-if="activeModel === 'pro'" class="text-5xl md:text-7xl font-bold font-hero tracking-tight col-start-1 row-start-1">
-              磐石 <span class="text-orange-500">Pro</span>
+              磐石 <span class="text-brand">Pro</span>
             </h1>
           </Transition>
           <Transition name="fade-up-stay">
             <h1 v-if="activeModel === 'max'" class="text-5xl md:text-7xl font-bold font-hero tracking-tight col-start-1 row-start-1">
-              磐石 <span class="text-amber-400">Max</span>
+              磐石 <span class="text-brand">Max</span>
             </h1>
           </Transition>
         </div>
@@ -57,8 +57,7 @@
         
         <div class="flex gap-4 animate-fade-in-up" style="animation-delay: 0.4s">
           <button 
-            class="px-8 py-3 rounded-full text-black font-bold transition-all duration-300 hover:scale-105"
-            :class="activeModel === 'pro' ? 'bg-orange-500 hover:bg-orange-400' : 'bg-amber-400 hover:bg-amber-300'"
+            class="px-8 py-3 rounded-full text-white font-bold transition-all duration-300 hover:scale-105 bg-brand hover:brightness-110"
           >
             立即订购
           </button>
@@ -74,8 +73,7 @@
         <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
           <div v-for="(item, index) in features" :key="index" class="flex flex-col items-center gap-3 group">
             <div 
-              class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center transition-colors duration-700 group-hover:scale-110"
-              :class="activeModel === 'pro' ? 'text-orange-500' : 'text-amber-400'"
+              class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center transition-colors duration-700 group-hover:scale-110 text-brand"
             >
               <component :is="item.icon" class="w-6 h-6" />
             </div>
@@ -122,22 +120,22 @@
 
             <p class="text-gray-400 mb-10 leading-relaxed min-h-[3rem]">
               工业级美学设计，IP65桩体+IP67枪头超高防护。20重安全保护，无惧极端天气。
-              <span :class="activeModel === 'pro' ? 'text-orange-500' : 'text-amber-400'" class="transition-colors duration-500">
+              <span class="transition-colors duration-500 text-brand">
                 {{ activeModel === 'pro' ? 'Pro版本采用极简呼吸灯设计，简约而不简单。' : 'Max版本配备高清显示屏，充电数据一目了然。' }}
               </span>
             </p>
 
             <div class="grid grid-cols-2 gap-6">
-              <div class="p-6 bg-white/5 rounded-xl border border-white/5 transition-colors duration-500" :class="activeModel === 'pro' ? 'hover:border-orange-500/30' : 'hover:border-amber-500/30'">
-                <div class="text-gray-400 mb-2 transition-colors duration-500" :class="activeModel === 'pro' ? 'text-orange-500' : 'text-amber-400'">
+              <div class="p-6 bg-white/5 rounded-xl border border-white/5 transition-colors duration-500 hover:border-brand/30">
+                <div class="mb-2 transition-colors duration-500 text-brand">
                   <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"></path></svg>
                 </div>
                 <h4 class="text-lg font-bold mb-1">IP67 / IP65</h4>
                 <p class="text-xs text-gray-400">枪头IP67 / 桩体IP65</p>
               </div>
               
-              <div class="p-6 bg-white/5 rounded-xl border border-white/5 transition-colors duration-500" :class="activeModel === 'pro' ? 'hover:border-orange-500/30' : 'hover:border-amber-500/30'">
-                <div class="mb-2 transition-colors duration-500" :class="activeModel === 'pro' ? 'text-orange-500' : 'text-amber-400'">
+              <div class="p-6 bg-white/5 rounded-xl border border-white/5 transition-colors duration-500 hover:border-brand/30">
+                <div class="mb-2 transition-colors duration-500 text-brand">
                   <div class="grid grid-cols-1 grid-rows-1">
                     <Transition name="fade">
                       <svg v-if="activeModel === 'pro'" class="w-8 h-8 col-start-1 row-start-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"></path></svg>
@@ -166,8 +164,7 @@
     </section>
 
     <section class="py-24 bg-[#050505] relative overflow-hidden">
-      <div class="absolute right-0 top-1/4 w-[50vw] h-[50vw] rounded-full blur-[120px] pointer-events-none transition-colors duration-700"
-           :class="activeModel === 'pro' ? 'bg-orange-900/10' : 'bg-amber-900/10'">
+      <div class="absolute right-0 top-1/4 w-[50vw] h-[50vw] rounded-full blur-[120px] pointer-events-none transition-colors duration-700 bg-brand/10">
       </div>
       
       <div class="container mx-auto px-6">
@@ -200,8 +197,7 @@
             <ul class="space-y-6">
               <li v-for="(item, i) in appFeatures" :key="i" class="flex items-start gap-4">
                 <div 
-                  class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-500"
-                  :class="activeModel === 'pro' ? 'bg-orange-500/10 text-orange-500' : 'bg-amber-500/10 text-amber-400'"
+                  class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-500 bg-brand/10 text-brand"
                 >
                   <component :is="item.icon" class="w-6 h-6" />
                 </div>
@@ -216,7 +212,7 @@
       </div>
     </section>
 
-    <section class="py-24 bg-[#0a0a0a] border-t border-white/5">
+    <section class="py-24 bg-[#0a0a0a] border-t border-white/5 pb-48">
       <div class="container mx-auto px-6">
         <h2 class="text-3xl font-bold text-center mb-16 font-hero">详细规格参数</h2>
         
@@ -232,7 +228,7 @@
             </div>
             <div class="text-center text-sm text-gray-500">
               当前展示：
-              <span class="font-bold transition-colors duration-500" :class="activeModel === 'pro' ? 'text-orange-500' : 'text-amber-400'">
+              <span class="font-bold transition-colors duration-500 text-brand">
                 磐石 {{ activeModel === 'pro' ? 'Pro' : 'Max' }}
               </span>
             </div>
@@ -252,7 +248,7 @@
                   </tr>
                   <tr class="bg-white/5">
                     <td class="p-4 font-bold text-gray-300">显示配置</td>
-                    <td class="p-4 font-bold transition-colors duration-500" :class="activeModel === 'pro' ? 'text-orange-500' : 'text-amber-400'">
+                    <td class="p-4 font-bold transition-colors duration-500 text-brand">
                       {{ activeModel === 'pro' ? '智能呼吸灯' : '智能高清屏显' }}
                     </td>
                   </tr>
@@ -286,11 +282,11 @@
           </Transition>
           
           <div class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 z-10">
-            <span class="text-sm font-bold tracking-wider transition-colors duration-500" :class="activeModel === 'pro' ? 'text-orange-500' : 'text-amber-400'">
-              PANSHI {{ activeModel === 'pro' ? 'PRO' : 'MAX' }}
+            <span class="text-sm font-bold tracking-wider transition-colors duration-500 text-brand">
+              磐石 {{ activeModel === 'pro' ? 'PRO' : 'MAX' }}
             </span>
             <span class="text-xs text-white ml-3 border-l border-white/30 pl-3">
-              {{ activeModel === 'pro' ? '品质之选' : '旗舰之选' }}
+              {{ activeModel === 'pro' ? '简约时尚' : '品质之选' }}
             </span>
           </div>
         </div>
@@ -300,9 +296,9 @@
     <div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center p-1.5 bg-black/70 backdrop-blur-xl border border-white/15 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.6)] animate-float-in">
       
       <div 
-        class="absolute top-1.5 bottom-1.5 w-[140px] rounded-full transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] shadow-lg"
+        class="absolute top-1.5 bottom-1.5 w-[140px] rounded-full transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] shadow-lg bg-brand"
         :class="[
-          activeModel === 'pro' ? 'left-1.5 bg-orange-600' : 'left-[146px] bg-amber-500'
+          activeModel === 'pro' ? 'left-1.5' : 'left-[146px]'
         ]"
       ></div>
 
@@ -318,10 +314,10 @@
       <button 
         @click="activeModel = 'max'"
         class="relative w-[140px] py-2.5 text-xs font-bold uppercase tracking-wider rounded-full transition-colors z-10 flex items-center justify-center gap-2"
-        :class="activeModel === 'max' ? 'text-black' : 'text-gray-400 hover:text-white'"
+        :class="activeModel === 'max' ? 'text-white' : 'text-gray-400 hover:text-white'"
       >
         <span>磐石 Max</span>
-        <span v-if="activeModel === 'max'" class="w-1.5 h-1.5 rounded-full bg-black animate-pulse"></span>
+        <span v-if="activeModel === 'max'" class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
       </button>
     </div>
 
@@ -333,7 +329,7 @@ import { ref, onMounted, defineComponent, h } from 'vue'
 
 const activeModel = ref('pro') // 默认 Pro
 
-// Icons
+// Icons (SVG代码省略，与之前一致，保持原样即可)
 const IconCheck = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12' })]) })
 const IconTool = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z' })]) })
 const IconClock = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z' })]) })
@@ -373,7 +369,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 保持基础动画 */
+/* 保持所有基础动画类不变 */
 .animate-fade-in-up {
   animation: fadeInUp 1s ease-out forwards;
   opacity: 0;
