@@ -23,7 +23,7 @@
             <li><NuxtLink to="/about/intro">企业简介</NuxtLink></li>
             <li><NuxtLink to="/about/culture">企业文化</NuxtLink></li>
             <li><NuxtLink to="/">企业资讯</NuxtLink></li>
-            <li><NuxtLink to="/contact/join">加入我们</NuxtLink></li>
+            <li><NuxtLink to="/">加入我们</NuxtLink></li>
           </ul>
         </div>
         <div>
@@ -114,7 +114,7 @@
                 <li><NuxtLink to="/about/intro" class="hover:text-white transition-colors block">企业简介</NuxtLink></li>
                 <li><NuxtLink to="/about/culture" class="hover:text-white transition-colors block">企业文化</NuxtLink></li>
                 <li><NuxtLink to="/" class="hover:text-white transition-colors block">企业资讯</NuxtLink></li>
-                <li><NuxtLink to="/contact/join" class="hover:text-white transition-colors block">加入我们</NuxtLink></li>
+                <li><NuxtLink to="/" class="hover:text-white transition-colors block">加入我们</NuxtLink></li>
               </ul>
             </div>
             <div class="flex flex-col">
@@ -136,7 +136,7 @@
             <div class="flex flex-col">
               <h4 class="text-white font-bold mb-5 text-sm tracking-wide">下载中心</h4>
               <ul class="space-y-3 text-xs text-gray-400">
-                <li><NuxtLink to="/download/app" class="hover:text-white transition-colors block">App下载</NuxtLink></li>
+                <li><NuxtLink to="/download/apps" class="hover:text-white transition-colors block">App下载</NuxtLink></li>
                 <li><NuxtLink to="/download/manual" class="hover:text-white transition-colors block">说明书下载</NuxtLink></li>
               </ul>
             </div>
