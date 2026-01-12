@@ -325,9 +325,29 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineComponent, h } from 'vue'
+import { ref, onMounted, watch } from 'vue' // 引入 watch
+import { useRoute, useRouter } from 'vue-router' // 引入路由工具
 
-const activeModel = ref('pro') // 默认 Pro
+// 1. 获取当前路由信息和路由器
+const route = useRoute()
+const router = useRouter()
+
+// 2. 初始化状态：检查 URL 中是否有 model=max
+// 如果 URL 是 /products/panshi?model=max，则初始值为 'max'，否则默认为 'pro'
+const activeModel = ref(route.query.model === 'max' ? 'max' : 'pro')
+
+// 3. 监听 activeModel 的变化，同步修改 URL (可选，但建议加上)
+// 这样当用户在页面内点击胶囊切换时，URL 也会跟着变，方便用户分享链接
+watch(activeModel, (newVal) => {
+  router.replace({ query: { ...route.query, model: newVal } })
+})
+
+// 监听路由参数变化（解决：如果用户在当前页面点击顶部菜单切换，页面不刷新但需要响应）
+watch(() => route.query.model, (newVal) => {
+  if (newVal === 'max' || newVal === 'pro') {
+    activeModel.value = newVal
+  }
+})
 
 // Icons (SVG代码省略，与之前一致，保持原样即可)
 const IconCheck = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12' })]) })

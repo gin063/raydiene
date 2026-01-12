@@ -54,12 +54,12 @@ export const useSiteData = () => {
               products: [
                 {
                   name: "磐石Pro",
-                  link: "/products/panshi",
+                  link: "/products/panshi?model=pro",
                   image: "/images/products/panshi-pro.png",
                 },
                 {
                   name: "磐石Max",
-                  link: "/products/panshi",
+                  link: "/products/panshi?model=max",
                   image: "/images/products/panshi-max.png",
                 },
               ],
