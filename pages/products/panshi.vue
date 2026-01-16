@@ -293,6 +293,57 @@
       </div>
     </section>
 
+    <section class="py-32 bg-[#050505] border-t border-white/5">
+      <div class="container mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-16 font-hero tracking-widest text-gray-500 uppercase">
+          探索更多系列
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <NuxtLink to="/products/jianshi" class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-brand/50 transition-all duration-500">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
+            <NuxtImg 
+              src="/images/products/jianshi/front.png" 
+              alt="坚石系列" 
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-auto object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out z-0"
+            />
+            <div class="absolute bottom-0 left-0 w-full p-8 z-20 text-center">
+              <p class="text-xs text-white font-bold tracking-widest mb-2 uppercase opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">实用至上 · 大道至简</p>
+              <h3 class="text-2xl font-bold text-white group-hover:text-brand transition-colors">坚石系列</h3>
+            </div>
+          </NuxtLink>
+
+          <NuxtLink to="/products/xingchen" class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-brand/50 transition-all duration-500">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
+            <NuxtImg 
+              src="/images/products/xingchen/front.png" 
+              alt="星辰系列" 
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-auto object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out z-0"
+            />
+            <div class="absolute bottom-0 left-0 w-full p-8 z-20 text-center">
+              <p class="text-xs text-white font-bold tracking-widest mb-2 uppercase opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">智能科技 · 美学之光</p>
+              <h3 class="text-2xl font-bold text-white group-hover:text-brand transition-colors">星辰系列</h3> 
+            </div>
+          </NuxtLink>
+
+          <NuxtLink to="/products/xingyao" class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-brand/50 transition-all duration-500">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
+            <NuxtImg 
+              src="/images/products/xingyao/front.png" 
+              alt="星耀系列" 
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-auto object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out z-0"
+            />
+            <div class="absolute bottom-0 left-0 w-full p-8 z-20 text-center">
+              <p class="text-xs text-white font-bold tracking-widest mb-2 uppercase opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">触控大屏 · 时代之巅</p>
+              <h3 class="text-2xl font-bold text-white group-hover:text-brand transition-colors">星耀系列</h3>
+            </div>
+          </NuxtLink>
+
+        </div>
+      </div>
+    </section>
+
     <div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center p-1.5 bg-black/70 backdrop-blur-xl border border-white/15 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.6)] animate-float-in">
       
       <div 
