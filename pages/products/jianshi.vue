@@ -127,7 +127,7 @@
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <div class="relative mx-auto max-w-2xl">
               <NuxtImg 
-                src="/images/products/jianshi/app-scene.png" 
+                src="/images/products/jianshi/app-scene.jpg" 
                 alt="手机智能控制" 
                 class="w-full h-auto rounded-3xl shadow-2xl border border-white/5"
               />
