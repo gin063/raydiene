@@ -275,7 +275,7 @@
           <NuxtLink to="/products/panshi" class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-brand/50 transition-all duration-500">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
             <NuxtImg 
-              src="/images/products/panshi/front.png" 
+              src="/images/products/panshi-cover.png" 
               alt="磐石系列" 
               class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-auto object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out z-0"
             />
@@ -288,7 +288,7 @@
           <NuxtLink to="/products/xingchen" class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-brand/50 transition-all duration-500">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
             <NuxtImg 
-              src="/images/products/xingchen/front.png" 
+              src="/images/products/xingchen-cover.png" 
               alt="星辰系列" 
               class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-auto object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out z-0"
             />
@@ -301,7 +301,7 @@
           <NuxtLink to="/products/xingyao" class="group relative aspect-3/4] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-brand/50 transition-all duration-500">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
             <NuxtImg 
-              src="/images/products/xingyao/front.png" 
+              src="/images/products/xingyao-cover.png" 
               alt="星耀系列" 
               class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-auto object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out z-0"
             />

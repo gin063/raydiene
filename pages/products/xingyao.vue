@@ -127,7 +127,7 @@
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <div class="relative mx-auto max-w-2xl">
               <NuxtImg 
-                src="/images/products/xingyao/app-scene.png" 
+                src="/images/products/xingyao/app-scene.jpg" 
                 alt="星耀智能交互" 
                 class="w-full h-auto rounded-3xl shadow-2xl border border-white/5"
               />
@@ -179,7 +179,7 @@
         <div class="flex flex-col md:flex-row gap-12 items-start mb-12">
           <div class="w-full md:w-1/3 flex justify-center sticky top-24">
             <NuxtImg 
-              src="/images/products/xingyao/front.png" 
+              src="/images/products/xingyao/front.jpg" 
               alt="星耀系列正视图" 
               class="w-full h-auto drop-shadow-2xl"
             />
@@ -287,7 +287,7 @@
           <NuxtLink to="/products/jianshi" class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-brand/50 transition-all duration-500">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
             <NuxtImg 
-              src="/images/products/jianshi/front.png" 
+              src="/images/products/jianshi-cover.png" 
               alt="坚石系列" 
               class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-auto object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out z-0"
             />
@@ -300,7 +300,7 @@
           <NuxtLink to="/products/panshi" class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-brand/50 transition-all duration-500">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
             <NuxtImg 
-              src="/images/products/panshi/front.png" 
+              src="/images/products/panshi-cover.png" 
               alt="磐石系列" 
               class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-auto object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out z-0"
             />
@@ -313,7 +313,7 @@
           <NuxtLink to="/products/xingchen" class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-brand/50 transition-all duration-500">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
             <NuxtImg 
-              src="/images/products/xingchen/front.png" 
+              src="/images/products/xingchen-cover.png" 
               alt="星辰系列" 
               class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-auto object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out z-0"
             />
