@@ -179,7 +179,7 @@
         <div class="flex flex-col md:flex-row gap-12 items-start mb-12">
           <div class="w-full md:w-1/3 flex justify-center sticky top-24">
             <NuxtImg 
-              src="/images/products/xingyao/front.jpg" 
+              src="/images/products/xingyao/front.png" 
               alt="星耀系列正视图" 
               class="w-full h-auto drop-shadow-2xl"
             />
@@ -265,7 +265,7 @@
           <NuxtImg 
             src="/images/products/xingyao/lifestyle.jpg" 
             alt="星耀系列旗舰生活" 
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hover:grayscale-0"
           />
           <div class="absolute bottom-6 left-6 bg-black/60 backdrop-blur px-4 py-2 rounded-lg">
             <span class="text-sm font-bold text-brand">XINGYAO</span>

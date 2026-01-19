@@ -257,7 +257,7 @@
           <NuxtImg 
             src="/images/products/xingchen/lifestyle.jpg" 
             alt="星辰系列生活场景" 
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hover:grayscale-0"
           />
           <div class="absolute bottom-6 left-6 bg-black/60 backdrop-blur px-4 py-2 rounded-lg">
             <span class="text-sm font-bold text-brand">XINGCHEN</span>
@@ -292,7 +292,7 @@
           <NuxtLink to="/products/panshi" class="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:border-brand/50 transition-all duration-500">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
             <NuxtImg 
-              src="/images/products/pansh-cover.png" 
+              src="/images/products/panshi-cover.png" 
               alt="磐石系列" 
               class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-auto object-contain group-hover:scale-110 transition-transform duration-700 ease-in-out z-0"
             />

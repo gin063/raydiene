@@ -44,7 +44,7 @@
             <div class="drop-shadow-lg">
               <h3 class="text-2xl md:text-3xl font-bold font-hero mb-3 text-white">全时响应</h3>
               <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-xs font-medium">
-                提供专业技术支持。<br>
+                提供专业技术支持<br>每日9:00-24:00,
                 <span class="text-blue-400 font-bold">7×15小时</span> 客服在线，您的疑问即刻解答。
               </p>
             </div>
@@ -73,7 +73,7 @@
             <div class="drop-shadow-lg">
               <h3 class="text-2xl md:text-3xl font-bold font-hero mb-3 text-white">云端进化 OTA</h3>
               <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-xs font-medium">
-                支持 <span class="text-teal-400 font-bold">免费云端升级</span>。无需更换硬件，持续优化体验，享受最新科技。
+                支持<span class="text-teal-400 font-bold">免费云端升级</span> <br>无需更换硬件，持续优化体验，享受最新科技。
               </p>
             </div>
           </div>
@@ -103,7 +103,7 @@
             <div class="drop-shadow-lg">
               <h3 class="text-2xl md:text-3xl font-bold font-hero mb-3 text-white">4G 终身免费</h3>
               <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-xs font-medium">
-                告别连接焦虑。每台设备提供 <span class="text-purple-400 font-bold">终身免费流量</span>，保持即时在线，0额外付费。
+                告别连接焦虑<br>每台设备提供 <span class="text-purple-400 font-bold">终身免费流量</span>保持即时在线，0额外付费。
               </p>
             </div>
           </div>
@@ -133,7 +133,7 @@
             <div class="drop-shadow-lg">
               <h3 class="text-2xl md:text-3xl font-bold font-hero mb-3 text-white">只换不修</h3>
               <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-xs font-medium">
-                品质承诺。质保期内非人为质量问题，提供 <span class="text-amber-400 font-bold">免费上门换新</span>，彻底免去等待。
+                品质承诺<br>质保期内非人为质量问题，提供 <span class="text-amber-400 font-bold">免费上门换新</span>，彻底免去等待。
               </p>
             </div>
           </div>
