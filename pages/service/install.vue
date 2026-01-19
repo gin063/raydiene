@@ -1,13 +1,18 @@
 <template>
-  <div class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-emerald-500 selection:text-white overflow-hidden font-sans">
+  <div
+    class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-emerald-500 selection:text-white overflow-hidden font-sans">
 
     <div class="fixed inset-0 z-0 pointer-events-none">
-      <div class="absolute top-[-10%] right-[20%] w-[60vw] h-[40vw] bg-emerald-900/10 rounded-full blur-[120px] opacity-40 animate-pulse-slow"></div>
-      <div class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-teal-900/10 rounded-full blur-[100px] opacity-20"></div>
+      <div
+        class="absolute top-[-10%] right-[20%] w-[60vw] h-[40vw] bg-emerald-900/10 rounded-full blur-[120px] opacity-40 animate-pulse-slow">
+      </div>
+      <div
+        class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-teal-900/10 rounded-full blur-[100px] opacity-20">
+      </div>
     </div>
 
     <div class="relative z-10 container mx-auto px-6 md:px-12 py-32 md:py-40">
-      
+
       <div class="text-center mb-20 animate-fade-in-up">
         <h1 class="text-4xl md:text-6xl font-bold font-hero tracking-tight mb-6">
           专业安装，一步到位
@@ -20,14 +25,19 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.1s;">
+        <div
+          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
+          style="animation-delay: 0.1s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-1.jpg" alt="极速响应"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
-          <div class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/90 to-transparent opacity-95"></div>
+          <div
+            class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent to-[80%] opacity-90">
+          </div>
           <div class="relative z-10 flex flex-col h-full justify-between p-8">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
               <span class="font-hero font-bold text-lg">01</span>
             </div>
             <div>
@@ -39,14 +49,19 @@
           </div>
         </div>
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div
+          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
+          style="animation-delay: 0.2s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-2.jpg" alt="专属服务"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
-          <div class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/90 to-transparent opacity-95"></div>
+          <div
+            class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent to-[80%] opacity-90">
+          </div>
           <div class="relative z-10 flex flex-col h-full justify-between p-8">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
               <span class="font-hero font-bold text-lg">02</span>
             </div>
             <div>
@@ -58,14 +73,19 @@
           </div>
         </div>
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.3s;">
+        <div
+          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
+          style="animation-delay: 0.3s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-3.jpg" alt="资质齐全"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
-          <div class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/90 to-transparent opacity-95"></div>
+          <div
+            class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent to-[80%] opacity-90">
+          </div>
           <div class="relative z-10 flex flex-col h-full justify-between p-8">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
               <span class="font-hero font-bold text-lg">03</span>
             </div>
             <div>
@@ -77,14 +97,19 @@
           </div>
         </div>
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.4s;">
+        <div
+          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
+          style="animation-delay: 0.4s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-4.jpg" alt="上门安装"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
-          <div class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/60 to-transparent opacity-95"></div>
+          <div
+            class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent to-[80%] opacity-90">
+          </div>
           <div class="relative z-10 flex flex-col h-full justify-between p-8">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
               <span class="font-hero font-bold text-lg">04</span>
             </div>
             <div>
@@ -96,14 +121,19 @@
           </div>
         </div>
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.5s;">
+        <div
+          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
+          style="animation-delay: 0.5s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-5.jpg" alt="安装验收"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
-          <div class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/90 to-transparent opacity-95"></div>
+          <div
+            class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent to-[80%] opacity-90">
+          </div>
           <div class="relative z-10 flex flex-col h-full justify-between p-8">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
               <span class="font-hero font-bold text-lg">05</span>
             </div>
             <div>
@@ -115,14 +145,19 @@
           </div>
         </div>
 
-        <div class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up" style="animation-delay: 0.6s;">
+        <div
+          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
+          style="animation-delay: 0.6s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-6.jpg" alt="客服回访"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
-          <div class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-tr from-[#050505] via-[#050505]/90 to-transparent opacity-95"></div>
+          <div
+            class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent to-[80%] opacity-90">
+          </div>
           <div class="relative z-10 flex flex-col h-full justify-between p-8">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
+            <div
+              class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 backdrop-blur-md">
               <span class="font-hero font-bold text-lg">06</span>
             </div>
             <div>
@@ -139,19 +174,16 @@
       <div class="mt-24 text-center animate-fade-in-up" style="animation-delay: 0.7s;">
         <p class="text-gray-400 mb-8">准备好安装了吗？</p>
         <div class="flex flex-col md:flex-row gap-6 justify-center">
-          <NuxtLink 
-            to="/contact/official" 
-            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg hover:bg-emerald-500 transition-colors group shadow-lg shadow-emerald-900/30"
-          >
+          <NuxtLink to="/contact/official"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-emerald-600 text-white rounded-full font-bold text-lg hover:bg-emerald-500 transition-colors group shadow-lg shadow-emerald-900/30">
             <span>预约安装服务</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 group-hover:translate-x-1 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5 group-hover:translate-x-1 transition-transform">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </NuxtLink>
-          <NuxtLink 
-            to="/download/manual" 
-            class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-colors"
-          >
+          <NuxtLink to="/download/manual"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/10 transition-colors">
             <span>下载安装指南</span>
           </NuxtLink>
         </div>
@@ -170,8 +202,15 @@
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.4; }
+
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .animate-fade-in-up {
