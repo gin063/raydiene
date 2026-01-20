@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="relative z-10 container mx-auto px-6 md:px-12 py-32 md:py-40">
+    <div class="relative z-10 container mx-auto px-6 md:px-12 pt-32 md:pt-40 pb-16">
 
       <div class="text-center mb-20 animate-fade-in-up">
         <h1 class="text-4xl md:text-6xl font-bold font-hero tracking-tight mb-6">
@@ -159,13 +159,12 @@
 
       </div>
 
-      <div class="mt-24 text-center animate-fade-in-up" style="animation-delay: 0.4s;">
-        <p class="text-gray-400 mb-8">遇到问题？请立即联系我们</p>
+      <div class="mt-16 text-center animate-fade-in-up" style="animation-delay: 0.4s;">
         <NuxtLink to="/contact/info"
-          class="inline-flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:bg-gray-200 transition-colors group">
+          class="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-black rounded-full font-bold text-sm hover:bg-gray-200 transition-colors group">
           <span>联系客服</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-            class="w-5 h-5 group-hover:translate-x-1 transition-transform">
+            class="w-4 h-4 group-hover:translate-x-1 transition-transform">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
           </svg>
         </NuxtLink>

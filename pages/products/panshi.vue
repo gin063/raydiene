@@ -55,14 +55,11 @@
           </Transition>
         </div>
         
-        <div class="flex gap-4 animate-fade-in-up" style="animation-delay: 0.4s">
+        <div class="flex animate-fade-in-up" style="animation-delay: 0.4s">
           <button 
-            class="px-8 py-3 rounded-full text-white font-bold transition-all duration-300 hover:scale-105 bg-brand hover:brightness-110"
+            class="px-8 py-3 rounded-full border border-white/10 font-bold bg-brand/80 backdrop-blur-md text-white hover:bg-white hover:text-black transition-colors"
           >
             立即订购
-          </button>
-          <button class="px-8 py-3 rounded-full border border-white/30 backdrop-blur-md hover:bg-white/10 transition-colors">
-            预约安装
           </button>
         </div>
       </div>

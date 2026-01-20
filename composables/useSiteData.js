@@ -20,12 +20,12 @@ export const useSiteData = () => {
           image: "/images/about/culture-bg.jpg",
           desc: "不仅是制造者，更是绿色出行生活方式的倡导者。",
         },
-        {
+        /*{
           name: "企业资讯",
           link: "/",
           image: "/images/about/news-bg.jpg",
           desc: "探索RAYDIENE最新动态与行业前沿。",
-        },
+        },*/
       ],
     },
     {
@@ -146,7 +146,7 @@ export const useSiteData = () => {
           link: "/contact/official",
           image: "/images/contact/official-bg.jpg",
         },
-        { name: "加入我们", link: "/", image: "/images/contact/join-bg.jpg" },
+        /*{ name: "加入我们", link: "/", image: "/images/contact/join-bg.jpg" },*/
       ],
     },
   ];

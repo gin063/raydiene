@@ -39,8 +39,8 @@
       </h2>
     </section>
 
-    <section id="product-section" class="w-full bg-black text-white pb-32 select-none">
-      <div class="container mx-auto px-6 md:px-24 flex flex-col gap-8 max-w-7xl">
+    <section id="product-section" class="w-full bg-black text-white pb-16 select-none">
+      <div class="container mx-auto px-6 md:px-24 flex flex-col gap-8 max-w-[1600px]">
 
         <div v-for="(row, rowIndex) in productRows" :key="rowIndex" 
           class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full"
@@ -48,7 +48,7 @@
           <div 
             v-for="product in row" 
             :key="product.id"
-            class="relative overflow-hidden group/card rounded-3xl bg-gray-900 border border-white/10 cursor-pointer h-[120vw] md:h-[500px] lg:h-[600px]"
+            class="relative overflow-hidden group/card rounded-3xl bg-gray-900 border border-white/10 cursor-pointer w-full aspect-[4/3]"
           >
             <div class="absolute inset-0 w-full h-full overflow-hidden">
               <NuxtImg 
@@ -56,7 +56,7 @@
                 :alt="product.name" 
                 format="webp"
                 quality="85"
-                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105"
+                class="absolute inset-0 w-full h-full object-contain transition-transform duration-700 ease-out group-hover/card:scale-105"
               />
               <div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/60 to-transparent pointer-events-none"></div>
             </div>
@@ -69,12 +69,9 @@
                 {{ product.slogan }}
               </p>
               
-              <div class="flex gap-4 opacity-0 translate-y-4 transition-all duration-500 group-hover/card:opacity-100 group-hover/card:translate-y-0">
-                <button class="px-6 py-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-sm font-bold text-white hover:bg-white hover:text-black transition-colors">
+              <div class="flex opacity-0 translate-y-4 transition-all duration-500 group-hover/card:opacity-100 group-hover/card:translate-y-0">
+                <button class="px-6 py-2 rounded-full border border-white/10 bg-blue-600/80 backdrop-blur-md text-sm font-bold text-white hover:bg-white hover:text-black transition-colors">
                   了解更多
-                </button>
-                <button class="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-bold hover:bg-blue-500 transition-colors border border-transparent shadow-lg">
-                  立即购买
                 </button>
               </div>
             </div>
@@ -85,10 +82,10 @@
       </div>
     </section>
 
-    <section class="w-full bg-black text-white pb-32">
-      <div class="container mx-auto px-6 md:px-12 flex flex-col gap-10 items-center">
+    <section class="w-full bg-black text-white pb-16">
+      <div class="container mx-auto px-6 md:px-24 flex flex-col gap-10 items-center max-w-[1600px]">
 
-        <div class="w-full max-w-6xl aspect-[4/5] md:aspect-[3/1] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer relative bg-gray-900 flex flex-col md:flex-row">
+        <div class="w-full aspect-[4/5] md:aspect-[3/1] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer relative bg-gray-900 flex flex-col md:flex-row">
           <div class="w-full md:w-[40%] h-full bg-black p-8 md:p-12 flex flex-col justify-center items-start z-10 relative">
              <h3 class="text-3xl md:text-5xl font-bold mb-6 text-white group-hover:text-blue-100 transition-colors">
                安装服务
@@ -97,7 +94,7 @@
                每一款雷迪恩充电桩都包含专业的一站式安装服务。我们将为您提供全方位的勘测与施工支持。
              </p>
              <button class="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2 text-lg">
-               预约安装
+               了解详情
                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                </svg>
@@ -115,7 +112,7 @@
           </div>
         </div>
 
-        <div class="w-full max-w-6xl aspect-[4/5] md:aspect-[3/1] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer relative bg-gray-900 flex flex-col md:flex-row">
+        <div class="w-full aspect-[4/5] md:aspect-[3/1] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer relative bg-gray-900 flex flex-col md:flex-row">
           <div class="w-full md:w-[60%] h-full relative overflow-hidden">
              <NuxtImg 
                src="/images/service-aftersales.jpg" 
@@ -134,7 +131,7 @@
                雷迪恩授权服务商和专业的客服团队随时待命。查看我们的服务网络，找到您身边的技术支持。
              </p>
              <button class="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2 text-lg">
-               联系我们
+               了解详情
                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                </svg>
@@ -171,30 +168,30 @@ const toggleHeroVideo = () => {
 const productRows = [
   [
     {
-      id: 'xingchen',
-      name: '星辰系列',
-      slogan: '智能科技，美学之光',
-      image: '/images/products/xingchen-cover.png',
-    },
-    {
       id: 'xingyao',
       name: '星耀系列',
       slogan: '触控大屏，时代之巅',
       image: '/images/products/xingyao-cover.png', 
+    },
+    {
+      id: 'xingchen',
+      name: '星辰系列',
+      slogan: '智能科技，美学之光',
+      image: '/images/products/xingchen-cover.png',
     }
   ],
   [
-    {
-      id: 'jianshi',
-      name: '坚石系列',
-      slogan: '实用至上，大道至简',
-      image: '/images/products/jianshi-cover.png',
-    },
     {
       id: 'panshi',
       name: '磐石系列',
       slogan: '简约时尚，品质之选',
       image: '/images/products/panshi-cover.png',
+    },
+    {
+      id: 'jianshi',
+      name: '坚石系列',
+      slogan: '实用至上，大道至简',
+      image: '/images/products/jianshi-cover.png',
     }
   ]
 ]
