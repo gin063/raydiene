@@ -89,8 +89,8 @@ export const useSiteData = () => {
           ],
         },
         {
-          name: "产品路线图",
-          link: "/products/roadmap",
+          name: "选购指南",
+          link: "/products/purchase",
           image: "/images/products/roadmap-bg.jpg",
         },
       ],

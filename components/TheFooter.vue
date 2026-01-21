@@ -249,8 +249,12 @@
         <div class="border-t border-white/10 pt-2 flex flex-row justify-between items-center text-[10px] text-gray-600">
           <p class="font-medium">© 2026 Raydiene. All rights reserved.</p>
           <div class="flex items-center space-x-6">
-            <span class="hover:text-gray-400 cursor-pointer transition-colors">隐私政策</span>
-            <span class="hover:text-gray-400 cursor-pointer transition-colors">沪ICP备2025109966号-1</span>
+            <NuxtLink to="/privacy" class="hover:text-gray-400 cursor-pointer transition-colors">隐私政策
+            </NuxtLink>
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer"
+              class="hover:text-gray-400 transition-colors">
+              沪ICP备2025109966号-1
+            </a>
           </div>
         </div>
 
