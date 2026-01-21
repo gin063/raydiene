@@ -245,12 +245,11 @@
       </div>
 
       <div class="text-center mt-24 animate-fade-in-up" style="animation-delay: 0.5s">
-        <p class="text-gray-400 mb-8">还是无法决定？</p>
         <NuxtLink to="/contact/info"
-          class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-colors">
+          class="inline-flex items-center gap-2 px-8 py-3 rounded-full tracking-widest font-bold duration-300 transition-all backdrop-blur-md border border-transparent bg-white text-black hover:bg-white/10 hover:text-white hover:border-white/50">
           联系客服咨询
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-            class="w-4 h-4">
+            class="w-4 h-4 group-hover:translate-x-1 transition-transform">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
           </svg>
         </NuxtLink>

@@ -349,7 +349,7 @@
                 </div>
 
                 <span
-                  class="absolute inset-0 flex items-center justify-center text-sm font-bold text-white group-hover/btn:text-black whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 hover:bg-white hover:text-black">
+                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white group-hover/btn:text-black whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 hover:bg-white hover:text-black">
                   了解更多
                 </span>
               </div>
@@ -389,7 +389,7 @@
                   </svg>
                 </div>
                 <span
-                  class="absolute inset-0 flex items-center justify-center text-sm font-bold text-white group-hover/btn:text-black whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 hover:bg-white hover:text-black">
+                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white group-hover/btn:text-black whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 hover:bg-white hover:text-black">
                   了解更多
                 </span>
               </div>
@@ -429,7 +429,7 @@
                   </svg>
                 </div>
                 <span
-                  class="absolute inset-0 flex items-center justify-center text-sm font-bold text-white group-hover/btn:text-black whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 hover:bg-white hover:text-black">
+                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white group-hover/btn:text-black whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 hover:bg-white hover:text-black">
                   了解更多
                 </span>
               </div>

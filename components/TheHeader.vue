@@ -321,7 +321,7 @@ const onMenuEnter = (index) => {
   }
 
   if (!isMenuOpen.value) {
-    performSwitch()
+    switchTimer.value = setTimeout(performSwitch, 200)
   } else {
     switchTimer.value = setTimeout(performSwitch, 200)
   }
