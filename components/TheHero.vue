@@ -168,14 +168,14 @@ const productRows = [
       id: 'xingyao',
       name: '星耀系列',
       slogan: '触控大屏，时代之巅',
-      image: '/images/products/xingyao-cover.png',
+      image: '/images/products/xingyao-cover2.png',
       link: "/products/xingyao"
     },
     {
       id: 'xingchen',
       name: '星辰系列',
       slogan: '智能科技，美学之光',
-      image: '/images/products/xingchen-cover.png',
+      image: '/images/products/xingchen-cover2.png',
       link: "/products/xingchen"
     }
   ],
@@ -184,14 +184,14 @@ const productRows = [
       id: 'panshi',
       name: '磐石系列',
       slogan: '简约时尚，品质之选',
-      image: '/images/products/panshi-cover.png',
+      image: '/images/products/panshi-cover2.png',
       link: "/products/panshi?model=pro"
     },
     {
       id: 'jianshi',
       name: '坚石系列',
       slogan: '实用至上，大道至简',
-      image: '/images/products/jianshi-cover.png',
+      image: '/images/products/jianshi-cover2.png',
       link: "/products/jianshi"
     }
   ]
