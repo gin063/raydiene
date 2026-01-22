@@ -21,7 +21,7 @@
       </div>
 
       <div
-        class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end items-center text-center pb-16 md:pb-16">
+        class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end items-center text-center pb-16 md:pb-28">
 
         <div class="grid grid-cols-1 grid-rows-1 place-items-center mb-6">
           <Transition name="fade-up-stay">
@@ -38,7 +38,7 @@
           </Transition>
         </div>
 
-        <div class="grid grid-cols-1 grid-rows-1 place-items-center mb-12 h-8">
+        <div class="grid grid-cols-1 grid-rows-1 place-items-center mb-6 h-8">
           <Transition name="fade-up-stay">
             <p v-if="activeModel === 'pro'"
               class="text-xl md:text-2xl text-gray-200 font-light tracking-wide col-start-1 row-start-1 whitespace-nowrap">

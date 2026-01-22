@@ -10,11 +10,11 @@
       </div>
 
       <div
-        class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end items-center text-center pb-16 md:pb-16">
+        class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end items-center text-center pb-16 md:pb-28">
         <h1 class="text-5xl md:text-7xl font-bold font-hero tracking-tight mb-6 animate-fade-in-up">
           星耀系列
         </h1>
-        <p class="text-xl md:text-2xl text-gray-200 font-light tracking-wide mb-12 animate-fade-in-up"
+        <p class="text-xl md:text-2xl text-gray-200 font-light tracking-wide mb-6 animate-fade-in-up"
           style="animation-delay: 0.2s">
           7kW / 21kW 家用交流充电桩 · 触控大屏，时代之巅
         </p>

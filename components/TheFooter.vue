@@ -126,18 +126,23 @@
 
         <div class="flex flex-row justify-between items-start mb-4">
 
-          <div class="w-auto xl:w-80 flex flex-col flex-shrink-0 items-center pt-1">
+          <div class="w-auto xl:w-80 flex flex-col flex-shrink-0 items-center h-36 justify-between">
 
-            <img src="/images/logo-cn2.svg" alt="Raydiene Logo" class="w-72 h-auto opacity-90 object-contain -mb-3" />
+            <div class="flex-grow flex items-center justify-center mt-2">
+              <img src="/images/logo-cn2.svg" alt="Raydiene Logo" class="w-72 h-auto opacity-90 object-contain" />
+            </div>
 
-            <p class="text-[26px] tracking-[0.18em] text-white opacity-90 leading-none whitespace-nowrap mb-4">
-              智享充电，悦享安全
-            </p>
+            <div class="flex flex-col items-center pb-1">
+              <p class="text-[24px] tracking-[0.18em] text-white opacity-90 leading-none whitespace-nowrap mb-4">
+                智享充电，悦享安全
+              </p>
 
-            <p
-              class="text-[10px] tracking-[0.18em] text-white font-['Michroma'] uppercase opacity-90 leading-none whitespace-nowrap">
-              CHARGING FOR BETTER WORLD
-            </p>
+              <p
+                class="text-[10px] tracking-[0.18em] text-white font-['Michroma'] uppercase opacity-90 leading-none whitespace-nowrap">
+                CHARGING FOR BETTER WORLD
+              </p>
+            </div>
+
           </div>
 
           <div class="flex flex-row gap-x-10 lg:gap-x-16 mx-auto pt-1">
@@ -251,7 +256,7 @@
           <div class="flex items-center space-x-6">
             <NuxtLink to="/privacy" class="hover:text-gray-400 cursor-pointer transition-colors">隐私政策
             </NuxtLink>
-            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer"
+            <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noopener noreferrer"
               class="hover:text-gray-400 transition-colors">
               沪ICP备2025109966号-1
             </a>

@@ -158,7 +158,7 @@ export const useSiteData = () => {
       icon: "/images/social/jd.svg",
       url: "https://mall.jd.com/index-13360593.html",
       mobileUrl: "https://shop.m.jd.com/?shopId=13360593",
-      qr: "/images/qrcode/qr-jd.png",
+      qr: "/images/qr/jd-official.jpg",
       filterClass: "filter brightness-0 invert opacity-40",
       padding: "p-0",
       offset: "translate-y-[1px]",

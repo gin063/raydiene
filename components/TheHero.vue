@@ -69,7 +69,7 @@
               <div
                 class="flex opacity-0 translate-y-4 transition-all duration-500 group-hover/card:opacity-100 group-hover/card:translate-y-0">
                 <NuxtLink :to="product.link"
-                  class="px-6 py-2 rounded-full border border-white/10 bg-blue-600/80 backdrop-blur-md text-sm font-bold text-white hover:bg-white hover:text-black transition-colors">
+                  class="px-6 py-2 rounded-full border border-white/10 bg-blue-600/80 backdrop-blur-md text-sm font-bold text-white hover:bg-white hover:text-black duration-300 transition-colors">
                   了解更多
                 </NuxtLink>
               </div>
@@ -95,7 +95,7 @@
               每一款雷迪恩充电桩都包含专业的一站式安装服务。我们将为您提供全方位的勘测与施工支持。
             </p>
             <NuxtLink to="service/install"
-              class="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2 text-lg">
+              class="px-8 py-3 bg-white text-black font-bold rounded-full duration-300 transition-all backdrop-blur-md border border-transparent hover:bg-white/10 hover:text-white hover:border-white/50 flex items-center gap-2 text-lg">
               了解详情
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                 stroke="currentColor" class="w-5 h-5">
@@ -126,7 +126,7 @@
               雷迪恩授权服务商和专业的客服团队随时待命。查看我们的服务网络，找到您身边的技术支持。
             </p>
             <NuxtLink to="service/aftersales"
-              class="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2 text-lg">
+              class="px-8 py-3 bg-white text-black font-bold rounded-full duration-300 transition-all backdrop-blur-md border border-transparent hover:bg-white/10 hover:text-white hover:border-white/50 flex items-center gap-2 text-lg">
               了解详情
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                 stroke="currentColor" class="w-5 h-5">
