@@ -73,7 +73,8 @@
            </div>
            
            <template v-if="currentCategory && currentCategory.series">
-             <div ref="col2" class="col-span-3 border-r border-white/10 pr-4 opacity-0 translate-x-[-10px]">
+             <div ref="col2" class="col-span-3 border-r border-white/10 pr-4 opacity-0 translate-x-[-10px]"
+               @mouseenter="cancelCategoryTimer">
                 <div class="space-y-1">
                  <div v-for="(ser, sIndex) in currentCategory.series" :key="sIndex"
                    class="px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex justify-between items-center"
@@ -88,7 +89,8 @@
                </div>
              </div>
              
-             <div ref="col3" class="col-span-6 pl-8 opacity-0 translate-x-[-10px]">
+             <div ref="col3" class="col-span-6 pl-8 opacity-0 translate-x-[-10px]"
+               @mouseenter="onContentEnter">
                <transition name="fade" mode="out-in" :key="activeCategoryIndex">
                  <div v-if="currentSeries && currentSeries.products" :key="currentSeries.name"
                    class="flex gap-6 h-full items-start">
@@ -115,7 +117,8 @@
            </template>
 
            <div v-else-if="currentCategory && currentCategory.image" ref="col2"
-             class="col-span-9 pl-8 opacity-0 translate-x-[-10px] flex items-center">
+             class="col-span-9 pl-8 opacity-0 translate-x-[-10px] flex items-center"
+             @mouseenter="cancelCategoryTimer">
              
              <NuxtLink 
                :to="currentCategory.link"
@@ -269,6 +272,8 @@ const closeTimer = ref(null)
 const isClosing = ref(false)
 const switchTimer = ref(null)
 const scrollbarWidth = ref(0)
+const categoryTimer = ref(null)
+const seriesTimer = ref(null)
 
 const col1 = ref(null)
 const col2 = ref(null)
@@ -300,9 +305,25 @@ const cancelSwitchTimer = () => {
   }
 }
 
+const cancelCategoryTimer = () => {
+  if (categoryTimer.value) {
+    clearTimeout(categoryTimer.value)
+    categoryTimer.value = null
+  }
+}
+
+const cancelSeriesTimer = () => {
+  if (seriesTimer.value) {
+    clearTimeout(seriesTimer.value)
+    seriesTimer.value = null
+  }
+}
+
 const onMenuEnter = (index) => {
   cancelCloseTimer()
   cancelSwitchTimer()
+  cancelCategoryTimer()
+  cancelSeriesTimer()
 
   if (isMobileMenuOpen.value) return
   if (activeMenuIndex.value === index) return
@@ -327,34 +348,63 @@ const onMenuEnter = (index) => {
   }
 }
 
+// 【新增】当鼠标进入右侧内容区（安全区）时，取消所有待执行的菜单切换
+const onContentEnter = () => {
+  cancelCategoryTimer() // 取消一级菜单的切换任务
+  cancelSeriesTimer()   // 取消二级菜单的切换任务
+}
+
 const onMenuLeave = () => {
   cancelSwitchTimer()
+  cancelCategoryTimer()
+  cancelSeriesTimer()
 }
 
-// 修复: 增加判空保护
-const onCategoryEnter = async (index) => {
+// 修改后的 onCategoryEnter 函数
+const onCategoryEnter = (index) => {
+  // 1. 清除自己的旧定时器（原逻辑）
+  cancelCategoryTimer()
+
+  // 【新增】2. 既然已经回到了父级(Category)，子级(Series)的任何待执行切换都应作废
+  // 这解决了从右向左移动时的“回溯冲突”
+  cancelSeriesTimer() 
+  
   if (activeCategoryIndex.value === index) return
 
-  const targetsToHide = [col2.value, col3.value].filter(el => el && el.isConnected)
-  if (targetsToHide.length > 0) gsap.set(targetsToHide, { opacity: 0 })
+  categoryTimer.value = setTimeout(async () => {
+    const targetsToHide = [col2.value, col3.value].filter(el => el && el.isConnected)
+    if (targetsToHide.length > 0) gsap.set(targetsToHide, { opacity: 0 })
 
-  activeCategoryIndex.value = index
-  activeSeriesIndex.value = 0
+    activeCategoryIndex.value = index
+    activeSeriesIndex.value = 0
 
-  await nextTick()
+    await nextTick()
 
-  const targetsToShow = [col2.value, col3.value].filter(el => el && el.isConnected)
+    const targetsToShow = [col2.value, col3.value].filter(el => el && el.isConnected)
 
-  if (targetsToShow.length > 0) {
-    gsap.killTweensOf(targetsToShow)
-    gsap.fromTo(targetsToShow,
-      { opacity: 0, x: -30 },
-      { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', stagger: 0.3, overwrite: 'auto' }
-    )
-  }
+    if (targetsToShow.length > 0) {
+      gsap.killTweensOf(targetsToShow)
+      gsap.fromTo(targetsToShow,
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', stagger: 0.3, overwrite: 'auto' }
+      )
+    }
+  }, 200)
 }
 
-const onSeriesEnter = (index) => { activeSeriesIndex.value = index }
+// 修改后的 onSeriesEnter
+const onSeriesEnter = (index) => {
+  // 1. 清除旧定时器
+  cancelSeriesTimer()
+  
+  // 2. 状态检查
+  if (activeSeriesIndex.value === index) return
+
+  // 3. 设置 200ms 延迟
+  seriesTimer.value = setTimeout(() => {
+    activeSeriesIndex.value = index
+  }, 200)
+}
 
 // 修复: 增加判空保护
 const runStaggerAnimation = async () => {

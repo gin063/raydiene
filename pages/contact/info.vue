@@ -11,7 +11,7 @@
             </div>           
         </div>
 
-        <div class="relative z-10 container mx-auto px-6 md:px-12 py-32 md:py-48">
+        <div class="relative z-10 container mx-auto px-6 md:px-12 pt-32 md:pt-48 pb-16">
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
@@ -82,6 +82,10 @@
                                 <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">总部地址</h3>
                                 <p class="text-lg text-white leading-snug group-hover:text-teal-400 transition-colors">
                                     上海市青浦区万达茂A区<br>1号楼809室
+                                </p>
+                                <br>
+                                <p class="text-lg text-white leading-snug group-hover:text-teal-400 transition-colors">
+                                    长沙市岳麓区麓谷企业广场F区<br>F2栋1703室
                                 </p>
                             </div>
                         </div>

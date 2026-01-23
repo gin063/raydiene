@@ -21,7 +21,7 @@
 
         <div class="flex animate-fade-in-up" style="animation-delay: 0.4s">
           <a href="https://item.jd.com/10193535139932.html" target="_blank" rel="noopener noreferrer"
-            class="px-8 py-3 rounded-full border border-white/10 font-bold bg-brand/80 backdrop-blur-md text-white hover:bg-white hover:text-black transition-colors">
+            class="px-8 py-3 rounded-full border border-white/10 font-bold bg-brand/80 backdrop-blur-md text-white hover:bg-white hover:text-black transition-colors duration-500">
             立即订购
           </a>
         </div>
@@ -317,7 +317,7 @@
               class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700">
             </div>
 
-            <div class="absolute top-8 left-8 z-20">
+            <div class="absolute top-8 left-0 w-full z-20 flex flex-col items-center">
               <h3 class="text-3xl font-bold text-white mb-2 font-hero">磐石系列</h3>
               <p
                 class="text-xs text-gray-400 tracking-widest uppercase group-hover:text-cyan-400 transition-colors duration-300">
@@ -330,9 +330,10 @@
                 class="w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
 
-            <div class="absolute bottom-8 right-8 z-20">
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
               <div
-                class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30">
+                class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30 group/btn hover:!bg-white hover:!border-white">
+
                 <div
                   class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-50 group-hover:-rotate-45">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -342,10 +343,12 @@
                       clip-rule="evenodd" />
                   </svg>
                 </div>
+
                 <span
-                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 hover:bg-white hover:text-black">
+                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover/btn:text-black">
                   了解更多
                 </span>
+
               </div>
             </div>
           </NuxtLink>
@@ -357,7 +360,7 @@
               class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700">
             </div>
 
-            <div class="absolute top-8 left-8 z-20">
+            <div class="absolute top-8 left-0 w-full z-20 flex flex-col items-center">
               <h3 class="text-3xl font-bold text-white mb-2 font-hero">星辰系列</h3>
               <p
                 class="text-xs text-gray-400 tracking-widest uppercase group-hover:text-cyan-400 transition-colors duration-300">
@@ -370,9 +373,10 @@
                 class="w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
 
-            <div class="absolute bottom-8 right-8 z-20">
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
               <div
-                class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30">
+                class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30 group/btn hover:!bg-white hover:!border-white">
+
                 <div
                   class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-50 group-hover:-rotate-45">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -382,10 +386,12 @@
                       clip-rule="evenodd" />
                   </svg>
                 </div>
+
                 <span
-                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 hover:bg-white hover:text-black">
+                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover/btn:text-black">
                   了解更多
                 </span>
+
               </div>
             </div>
           </NuxtLink>
@@ -397,7 +403,7 @@
               class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700">
             </div>
 
-            <div class="absolute top-8 left-8 z-20">
+            <div class="absolute top-8 left-0 w-full z-20 flex flex-col items-center">
               <h3 class="text-3xl font-bold text-white mb-2 font-hero">星耀系列</h3>
               <p
                 class="text-xs text-gray-400 tracking-widest uppercase group-hover:text-cyan-400 transition-colors duration-300">
@@ -410,9 +416,10 @@
                 class="w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
 
-            <div class="absolute bottom-8 right-8 z-20">
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
               <div
-                class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30">
+                class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30 group/btn hover:!bg-white hover:!border-white">
+
                 <div
                   class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-50 group-hover:-rotate-45">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -422,10 +429,12 @@
                       clip-rule="evenodd" />
                   </svg>
                 </div>
+
                 <span
-                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 hover:bg-white hover:text-black">
+                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover/btn:text-black">
                   了解更多
                 </span>
+
               </div>
             </div>
           </NuxtLink>

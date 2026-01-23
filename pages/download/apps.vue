@@ -82,7 +82,7 @@
             <div class="relative w-full h-full bg-black border-4 border-gray-800 rounded-[3rem] shadow-2xl overflow-hidden transform rotate-[-6deg] group-hover:rotate-0 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-10 group-hover:shadow-[0_0_50px_rgba(0,255,153,0.3)]">
                <div class="absolute inset-0 bg-gray-900 overflow-hidden">
                   <NuxtImg 
-                    src="/images/download/app-preview.png" 
+                    src="/images/download/app-preview.jpg" 
                     alt="Raydiene App UI"
                     class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" 
                     placeholder

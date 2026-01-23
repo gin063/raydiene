@@ -42,24 +42,22 @@
                   class="px-4 py-1.5 rounded-full bg-cyan-600/80 border border-white/20 text-xs font-bold tracking-wider text-white">入门首选</span>
               </div>
 
-              <NuxtLink to="/products/jianshi" class="absolute bottom-6 right-6 group/btn z-20">
+              <NuxtLink to="/products/jianshi" class="absolute bottom-6 right-6 z-20 group/btn">
                 <div
-                  class="relative flex items-center justify-center backdrop-blur-md border border-white/20 rounded-full transition-all duration-500 ease-out w-10 h-10 group-hover/btn:w-[88px] overflow-hidden">
+                  class="relative flex items-center justify-center w-10 h-10 overflow-hidden text-white transition-all duration-500 ease-out border rounded-full backdrop-blur-md border-white/20 group-hover/btn:w-[88px] hover:bg-white hover:border-white hover:text-black">
 
-                  <div
-                    class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover/btn:opacity-0 group-hover/btn:scale-50 group-hover/btn:-rotate-45">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                      class="w-5 h-5 text-white">
-                      <path fill-rule="evenodd"
-                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                        clip-rule="evenodd" />
-                    </svg>
-                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="absolute w-5 h-5 transition-all duration-500 ease-out group-hover/btn:opacity-0 group-hover/btn:scale-50 group-hover/btn:-rotate-45">
+                    <path fill-rule="evenodd"
+                      d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                      clip-rule="evenodd" />
+                  </svg>
 
                   <span
-                    class="absolute inset-0 flex items-center justify-center text-sm font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover/btn:opacity-100 group-hover/btn:scale-100 group-hover/btn:translate-y-0">
+                    class="absolute text-sm font-bold whitespace-nowrap transition-all duration-500 ease-out opacity-0 translate-y-4 scale-50 group-hover/btn:opacity-100 group-hover/btn:scale-100 group-hover/btn:translate-y-0">
                     了解更多
                   </span>
+
                 </div>
               </NuxtLink>
             </div>
@@ -96,24 +94,22 @@
                   class="px-4 py-1.5 rounded-full bg-cyan-600/80 border border-white/20 text-xs font-bold tracking-wider text-white">销量冠军</span>
               </div>
 
-              <NuxtLink to="/products/panshi?model=pro" class="absolute bottom-6 right-6 group/btn z-20">
+              <NuxtLink to="/products/jianshi" class="absolute bottom-6 right-6 z-20 group/btn">
                 <div
-                  class="relative flex items-center justify-center backdrop-blur-md border border-white/20 rounded-full transition-all duration-500 ease-out w-10 h-10 group-hover/btn:w-[88px] overflow-hidden">
+                  class="relative flex items-center justify-center w-10 h-10 overflow-hidden text-white transition-all duration-500 ease-out border rounded-full backdrop-blur-md border-white/20 group-hover/btn:w-[88px] hover:bg-white hover:border-white hover:text-black">
 
-                  <div
-                    class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover/btn:opacity-0 group-hover/btn:scale-50 group-hover/btn:-rotate-45">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                      class="w-5 h-5 text-white">
-                      <path fill-rule="evenodd"
-                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                        clip-rule="evenodd" />
-                    </svg>
-                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="absolute w-5 h-5 transition-all duration-500 ease-out group-hover/btn:opacity-0 group-hover/btn:scale-50 group-hover/btn:-rotate-45">
+                    <path fill-rule="evenodd"
+                      d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                      clip-rule="evenodd" />
+                  </svg>
 
                   <span
-                    class="absolute inset-0 flex items-center justify-center text-sm font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover/btn:opacity-100 group-hover/btn:scale-100 group-hover/btn:translate-y-0">
+                    class="absolute text-sm font-bold whitespace-nowrap transition-all duration-500 ease-out opacity-0 translate-y-4 scale-50 group-hover/btn:opacity-100 group-hover/btn:scale-100 group-hover/btn:translate-y-0">
                     了解更多
                   </span>
+
                 </div>
               </NuxtLink>
             </div>
@@ -149,24 +145,22 @@
                   class="px-4 py-1.5 rounded-full bg-cyan-600/80 border border-white/20 text-xs font-bold tracking-wider text-white">科技美学</span>
               </div>
 
-              <NuxtLink to="/products/xingchen" class="absolute bottom-6 right-6 group/btn z-20">
+              <NuxtLink to="/products/jianshi" class="absolute bottom-6 right-6 z-20 group/btn">
                 <div
-                  class="relative flex items-center justify-center backdrop-blur-md border border-white/20 rounded-full transition-all duration-500 ease-out w-10 h-10 group-hover/btn:w-[88px] overflow-hidden">
+                  class="relative flex items-center justify-center w-10 h-10 overflow-hidden text-white transition-all duration-500 ease-out border rounded-full backdrop-blur-md border-white/20 group-hover/btn:w-[88px] hover:bg-white hover:border-white hover:text-black">
 
-                  <div
-                    class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover/btn:opacity-0 group-hover/btn:scale-50 group-hover/btn:-rotate-45">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                      class="w-5 h-5 text-white">
-                      <path fill-rule="evenodd"
-                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                        clip-rule="evenodd" />
-                    </svg>
-                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="absolute w-5 h-5 transition-all duration-500 ease-out group-hover/btn:opacity-0 group-hover/btn:scale-50 group-hover/btn:-rotate-45">
+                    <path fill-rule="evenodd"
+                      d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                      clip-rule="evenodd" />
+                  </svg>
 
                   <span
-                    class="absolute inset-0 flex items-center justify-center text-sm font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover/btn:opacity-100 group-hover/btn:scale-100 group-hover/btn:translate-y-0">
+                    class="absolute text-sm font-bold whitespace-nowrap transition-all duration-500 ease-out opacity-0 translate-y-4 scale-50 group-hover/btn:opacity-100 group-hover/btn:scale-100 group-hover/btn:translate-y-0">
                     了解更多
                   </span>
+
                 </div>
               </NuxtLink>
             </div>
@@ -202,24 +196,22 @@
                   class="px-4 py-1.5 rounded-full bg-cyan-600/80 border border-white/20 text-xs font-bold tracking-wider text-white">行业旗舰</span>
               </div>
 
-              <NuxtLink to="/products/xingyao" class="absolute bottom-6 right-6 group/btn z-20">
+              <NuxtLink to="/products/jianshi" class="absolute bottom-6 right-6 z-20 group/btn">
                 <div
-                  class="relative flex items-center justify-center backdrop-blur-md border border-white/20 rounded-full transition-all duration-500 ease-out w-10 h-10 group-hover/btn:w-[88px] overflow-hidden">
+                  class="relative flex items-center justify-center w-10 h-10 overflow-hidden text-white transition-all duration-500 ease-out border rounded-full backdrop-blur-md border-white/20 group-hover/btn:w-[88px] hover:bg-white hover:border-white hover:text-black">
 
-                  <div
-                    class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover/btn:opacity-0 group-hover/btn:scale-50 group-hover/btn:-rotate-45">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                      class="w-5 h-5 text-white">
-                      <path fill-rule="evenodd"
-                        d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                        clip-rule="evenodd" />
-                    </svg>
-                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="absolute w-5 h-5 transition-all duration-500 ease-out group-hover/btn:opacity-0 group-hover/btn:scale-50 group-hover/btn:-rotate-45">
+                    <path fill-rule="evenodd"
+                      d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                      clip-rule="evenodd" />
+                  </svg>
 
                   <span
-                    class="absolute inset-0 flex items-center justify-center text-sm font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover/btn:opacity-100 group-hover/btn:scale-100 group-hover/btn:translate-y-0">
+                    class="absolute text-sm font-bold whitespace-nowrap transition-all duration-500 ease-out opacity-0 translate-y-4 scale-50 group-hover/btn:opacity-100 group-hover/btn:scale-100 group-hover/btn:translate-y-0">
                     了解更多
                   </span>
+
                 </div>
               </NuxtLink>
             </div>

@@ -6,9 +6,9 @@
       <div class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-purple-900/10 rounded-full blur-[100px] opacity-20"></div>
     </div>
 
-    <div class="relative z-10 container mx-auto px-6 md:px-12 py-32 md:py-40">
+    <div class="relative z-10 container mx-auto px-6 md:px-12 py-32 md:pt-36 md:pb-16">
       
-      <div class="text-center mb-24 animate-fade-in-up">
+      <div class="text-center mb-16 animate-fade-in-up">
         <h1 class="text-4xl md:text-6xl font-bold font-hero tracking-tight mb-6">
           官方渠道
         </h1>
@@ -19,18 +19,18 @@
         </p>
       </div>
 
-      <div class="mb-32">
-        <div class="flex items-center gap-4 mb-12 animate-fade-in-up" style="animation-delay: 0.1s;">
+      <div class="mb-16">
+        <div class="flex items-center gap-4 mb-16 animate-fade-in-up" style="animation-delay: 0.1s;">
           <div class="h-8 w-1 bg-blue-500 rounded-full"></div>
           <h2 class="text-2xl md:text-3xl font-bold font-hero tracking-wide">立即购买</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
-          <div class="group relative h-[420px] bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-red-500/50 transition-all duration-500 animate-fade-in-up" style="animation-delay: 0.2s;">
+          <div class="group relative h-[420px] bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 animate-fade-in-up" style="animation-delay: 0.2s;">
             
             <div class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 group-hover:opacity-0 p-8">
-              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(closest-side,rgba(227,29,25,0.4)_0%,transparent_100%)] pointer-events-none"></div>
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(closest-side,#0891b266_40%,transparent_100%)] pointer-events-none"></div>
 
               <div class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mb-6 relative z-10">
                  <img src="/images/social/jd.svg" alt="JD" class="w-14 h-14 object-contain" />
@@ -43,15 +43,15 @@
                <div class="px-4 py-2 bg-white/10 rounded-full text-xs text-gray-300">
                 双店可选
               </div>
-            </div>
+            </div>  
 
-            <div class="absolute inset-0 bg-[#e31d19]/20 backdrop-blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-6 z-20">
+            <div class="absolute inset-0 bg-cyan-600/20 backdrop-blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-6 z-20">
               <div class="w-full flex justify-center gap-2 mb-6 bg-black/40 p-1 rounded-xl">
                 <button 
                   @click.stop="jdTab = 'official'" 
                   @mouseenter="jdTab = 'official'"
                   class="flex-1 py-2 text-sm font-bold rounded-lg transition-colors"
-                  :class="jdTab === 'official' ? 'bg-white text-red-600' : 'text-gray-400 hover:text-white'"
+                  :class="jdTab === 'official' ? 'bg-white text-brand' : 'text-gray-400 hover:text-white'"
                 >
                   官方旗舰店
                 </button>
@@ -59,7 +59,7 @@
                   @click.stop="jdTab = 'self'" 
                   @mouseenter="jdTab = 'self'"
                   class="flex-1 py-2 text-sm font-bold rounded-lg transition-colors"
-                  :class="jdTab === 'self' ? 'bg-white text-red-600' : 'text-gray-400 hover:text-white'"
+                  :class="jdTab === 'self' ? 'bg-white text-brand' : 'text-gray-400 hover:text-white'"
                 >
                   自营旗舰店
                 </button>
@@ -132,7 +132,7 @@
       </div>
 
       <div>
-        <div class="flex items-center gap-4 mb-12 animate-fade-in-up">
+        <div class="flex items-center gap-4 mb-16 animate-fade-in-up">
           <div class="h-8 w-1 bg-purple-500 rounded-full"></div>
           <h2 class="text-2xl md:text-3xl font-bold font-hero tracking-wide">关注我们</h2>
         </div>
@@ -195,10 +195,10 @@ const salesChannels = [
     iconPath: '/images/social/tmall.svg',
     qr: '/images/qr/tmall.jpg',
     searchWord: '雷迪恩汽车用品旗舰店',
-    hoverBorder: 'hover:border-red-500/50',
-    hoverBg: 'bg-[#fe7500]/20',
+    hoverBorder: 'hover:border-cyan-500/50',
+    hoverBg: 'bg-cyan-600/20',
     // 橙色光源
-    glowClass: 'bg-[radial-gradient(closest-side,rgba(254,117,0,0.5)_0%,transparent_100%)]'
+    glowClass: 'bg-[radial-gradient(closest-side,#0891b266_40%,transparent_100%)]'
   },
   { 
     name: '拼多多', 
@@ -206,10 +206,10 @@ const salesChannels = [
     iconPath: '/images/social/pdd.svg',
     qr: '/images/qr/pdd.jpg',
     searchWord: '雷迪恩汽车用品旗舰店',
-    hoverBorder: 'hover:border-orange-500/50',
-    hoverBg: 'bg-[#f40009]/20',
+    hoverBorder: 'hover:border-cyan-500/50',
+    hoverBg: 'bg-cyan-600/20',
     // 红色光源
-    glowClass: 'bg-[radial-gradient(closest-side,rgba(244,0,9,0.5)_0%,transparent_100%)]'
+    glowClass: 'bg-[radial-gradient(closest-side,#0891b266_40%,transparent_100%)]'
   },
   { 
     name: '抖音商城', 
@@ -217,10 +217,10 @@ const salesChannels = [
     iconPath: '/images/social/douyin.svg',
     qr: '/images/qr/douyin-shop.jpg',
     searchWord: '雷迪恩官方旗舰店',
-    hoverBorder: 'hover:border-gray/50',
-    hoverBg: 'bg-black/80',
+    hoverBorder: 'hover:border-cyan-500/50',
+    hoverBg: 'bg-cyan-600/20',
     // ✅ 抖音：白色光源
-    glowClass: 'bg-[radial-gradient(closest-side,rgba(255,255,255,0.35)_0%,transparent_100%)]'
+    glowClass: 'bg-[radial-gradient(closest-side,#0891b266_40%,transparent_100%)]'
   }
 ]
 
@@ -232,10 +232,10 @@ const socialChannels = [
     iconPath: '/images/social/douyin.svg',
     qr: '/images/qr/douyin-social.jpg',
     id: '雷迪恩官方旗舰店',
-    hoverBorder: 'hover:border-gray/50',
-    hoverBg: 'bg-black/80',
+    hoverBorder: 'hover:border-cyan-500/50',
+    hoverBg: 'bg-cyan-600/20',
     // ✅ 抖音：白色光源
-    glowClass: 'bg-[radial-gradient(closest-side,rgba(255,255,255,0.35)_0%,transparent_100%)]'
+    glowClass: 'bg-[radial-gradient(closest-side,#0891b266_40%,transparent_100%)]'
   },
   {
     name: '小红书',
@@ -243,10 +243,10 @@ const socialChannels = [
     iconPath: '/images/social/xhs.svg',
     qr: '/images/qr/xhs.jpg',
     id: '雷迪恩充电桩',
-    hoverBorder: 'hover:border-pink-500/50',
-    hoverBg: 'bg-[#ff2741]/20',
+    hoverBorder: 'hover:border-cyan-500/50',
+    hoverBg: 'bg-cyan-600/20',
     // 粉色光源
-    glowClass: 'bg-[radial-gradient(closest-side,rgba(255,39,65,0.5)_0%,transparent_100%)]'
+    glowClass: 'bg-[radial-gradient(closest-side,#0891b266_40%,transparent_100%)]'
   },
   {
     name: '微信服务号',
@@ -254,10 +254,10 @@ const socialChannels = [
     iconPath: '/images/social/wechat.svg',
     qr: '/images/qr/wechat.jpg',
     id: '雷迪恩',
-    hoverBorder: 'hover:border-green-500/50',
-    hoverBg: 'bg-[#2adc70]/20',
+    hoverBorder: 'hover:border-cyan-500/50',
+    hoverBg: 'bg-cyan-600/20',
     // 绿色光源
-    glowClass: 'bg-[radial-gradient(closest-side,rgba(42,220,112,0.4)_0%,transparent_100%)]'
+    glowClass: 'bg-[radial-gradient(closest-side,#0891b266_40%,transparent_100%)]'
   }
 ]
 </script>

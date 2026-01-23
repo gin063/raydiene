@@ -86,14 +86,14 @@
           <div class="relative w-full overflow-hidden min-h-[80vh] flex items-center justify-center bg-[#050505] group">
 
             <div class="absolute inset-0 z-0">
-              <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/70 via-black/20 to-transparent pointer-events-none"></div>
-              <NuxtImg src="/images/about/why-radiant-bg.jpg" alt="雷迪恩产品艺术图"
-                class="w-full h-full object-cover animate-float-slow brightness-150 contrast-125" />
+              <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/20 to-transparent pointer-events-none"></div>
+              <NuxtImg src="/images/about/6why-radiant-bg.jpg" alt="雷迪恩产品艺术图"
+                class="w-full h-full object-cover animate-float-slow brightness-125" />
             </div>
 
             <div class="relative z-20 container mx-auto px-6 text-center">
 
-              <h2 class="text-4xl -translate-y-20 md:text-7xl font-bold mb-12 font-hero tracking-tight">
+              <h2 class="text-4xl -translate-y-32 md:text-7xl font-bold mb-12 font-hero tracking-tight">
                 <span class="drop-shadow-2xl text-white">为什么叫</span>
                 <span class="relative inline-block mx-2 align-bottom px-2">
                   <span class="text-cyan-300/80 font-black relative z-0">雷迪恩</span>
@@ -112,7 +112,7 @@
               </h2>
 
               <div
-                class="max-w-3xl mx-auto translate-y-24 backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl transform transition-all hover:scale-[1.01] duration-500">
+                class="max-w-3xl mx-auto translate-y-40 backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 md:py-4 md:px-16 shadow-2xl transform transition-all hover:scale-[1.01] duration-500">
                 <div class="space-y-8 text-lg md:text-xl text-gray-300 leading-relaxed font-light">
                   <p class="animate-fade-in-up" style="animation-delay: 0.1s">
                     因为 <strong class="text-white font-bold text-2xl mx-1">雷迪恩</strong>
