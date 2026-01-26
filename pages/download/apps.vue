@@ -5,12 +5,12 @@
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
       <!-- 蓝色光晕：提高亮度 (bg-blue-600)，调整初始不透明度 -->
       <div
-        class="absolute top-[-10%] left-[-10%] w-[70vw] h-[60vw] bg-blue-900/80 rounded-full blur-[120px] opacity-20 animate-pulse-slow">
+        class="absolute top-[-10%] left-[-10%] w-[70vw] h-[60vw] bg-blue-600/90 rounded-full blur-[120px] opacity-20 animate-pulse-slow">
       </div>
 
       <!-- 紫色光晕：更明显 (bg-purple-600)，增加延迟让呼吸错开 -->
       <div
-        class="absolute bottom-[-10%] right-[-10%] w-[70vw] h-[60vw] bg-purple-900/80 rounded-full blur-[120px] opacity-20 animate-pulse-slow"
+        class="absolute bottom-[-10%] right-[-10%] w-[70vw] h-[60vw] bg-purple-600/90 rounded-full blur-[120px] opacity-20 animate-pulse-slow"
         style="animation-delay: 2s;"></div>
 
       <!-- 噪点纹理：保持不变，增加混合模式让质感更好 -->
@@ -18,7 +18,8 @@
     </div>
 
     <section
-      class="relative z-10 pt-32 pb-20 md:pt-48 md:pb-24 container mx-auto px-6 md:px-12 border-b border-white/5 overflow-x-clip">
+      class="relative z-10 pt-32 pb-20 md:pt-48 md:pb-24 w-full border-b border-white/5 overflow-hidden">
+      <div class="container mx-auto px-6 md:px-12">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         <div class="space-y-12 animate-slide-in-left">
@@ -37,7 +38,7 @@
               <a href="https://apps.apple.com/cn/app/%E9%9B%B7%E8%BF%AA%E6%81%A9/id6746684577" target="_blank"
                 class="w-full h-full flex items-center gap-4 bg-white/5 border border-white/10 hover:bg-white hover:text-black hover:border-white px-8 py-4 rounded-2xl transition-all duration-300 min-w-[200px]">
                 <img src="/images/social/apple.svg" alt="Apple"
-                  class="w-8 h-8 object-contain group-hover:invert transition-all" />
+                  class="w-9 h-9 object-contain group-hover:invert transition-all" />
                 <div class="text-left">
                   <p class="text-[10px] uppercase tracking-wider opacity-60 group-hover:opacity-100">Download on the</p>
                   <p class="text-lg font-bold font-hero leading-none">App Store</p>
@@ -53,9 +54,9 @@
             <div class="relative group w-full sm:w-auto">
               <a href="https://sj.qq.com/appdetail/uni.UNICBA3BB2" target="_blank"
                 class="w-full h-full flex items-center gap-4 bg-white/5 border border-white/10 hover:bg-[#3DDC84] hover:text-black hover:border-[#3DDC84] px-8 py-4 rounded-2xl transition-all duration-300 min-w-[200px]">
-                <div class="w-8 h-8 flex items-center justify-center">
+                <div class="w-full h-full flex items-center justify-center">
                   <img src="/images/social/android.svg" alt="Android"
-                    class="w-full h-full scale-[2] object-contain group-hover:brightness-0 transition-all origin-center" />
+                    class="w-9 h-9 scale-[2] object-contain group-hover:brightness-0 transition-all origin-center" />
                 </div>
                 <div class="text-left">
                   <p class="text-[10px] uppercase tracking-wider opacity-60 group-hover:opacity-100">Get it on</p>
@@ -71,11 +72,11 @@
 
             <div class="relative group w-full sm:w-auto">
               <button
-                class="w-full h-full flex items-center gap-4 bg-white/5 border border-white/10 hover:bg-[#07C160] hover:text-white hover:border-[#07C160] px-8 py-4 rounded-2xl transition-all duration-300 min-w-[200px]">
+                class="w-full h-full flex items-center gap-4 bg-white/5 border border-white/10 hover:bg-[#07C160] hover:text-black hover:border-[#07C160] px-8 py-4 rounded-2xl transition-all duration-300 min-w-[200px]">
                 <img src="/images/social/wechat-miniprogram.svg" alt="Mini Program"
-                  class="w-8 h-8 object-contain brightness-0 invert" />
+                  class="w-8=9 h-9 object-contain group-hover:brightness-0 transition-all origin-center" />
                 <div class="text-left">
-                  <p class="text-[10px] uppercase tracking-wider opacity-60">Scan to Use</p>
+                  <p class="text-[10px] uppercase tracking-wider opacity-60 group-hover:opacity-100">Scan to Use</p>
                   <p class="text-lg font-bold font-hero leading-none">微信小程序</p>
                 </div>
               </button>
@@ -125,6 +126,7 @@
         </div>
 
       </div>
+      </div>
     </section>
 
     <section class="relative z-10 py-20 md:py-32">
@@ -154,7 +156,7 @@
           <div class="w-full lg:w-[380px] flex-shrink-0 sticky top-32 z-20 animate-fade-up delay-200">
             <div class="space-y-8">
 
-              <div class="bg-[#111] border border-white/10 rounded-[2rem] p-8 shadow-2xl text-center backdrop-blur-md">
+              <div class="bg-black/40 border border-white/10 rounded-[2rem] p-8 shadow-2xl text-center backdrop-blur-md">
                 <h3 class="text-xl font-bold mb-2 text-white">雷迪恩充电桩使用手册</h3>
                 <p class="text-gray-500 text-sm mb-8">V2.0 | 更新于 2025.12</p>
 
@@ -175,7 +177,7 @@
                 <p class="text-xs text-gray-500 mt-4">文件大小: 10.3 MB</p>
               </div>
 
-              <div class="bg-[#111] border border-white/10 rounded-[2rem] p-8 text-center backdrop-blur-md">
+              <div class="bg-black/40 border border-white/10 rounded-[2rem] p-8 text-center backdrop-blur-md">
                 <p class="text-sm font-bold text-gray-300 mb-4">手机扫码阅读</p>
                 <div class="rounded-xl overflow-hidden mx-auto max-w-[280px] border border-white/5">
                   <NuxtImg src="/images/qrcode/wechat-banner.png" alt="关注雷迪恩公众号"
@@ -223,7 +225,7 @@
 .animate-slide-in-left {
   animation: slideInLeft 1s ease-out forwards;
   opacity: 0;
-  transform: translateX(-30px);
+  transform: translateX(-30px); 
 }
 
 .animate-slide-in-right {

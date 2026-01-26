@@ -4,13 +4,14 @@
     <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
       <!-- 修改点：去掉了 bg-blue-600/15 中的 /15，添加了 opacity-20 -->
       <div
-        class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-blue-600/80 opacity-20 rounded-full blur-[120px] animate-pulse-slow">
+        class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-blue-600/90 opacity-20 rounded-full blur-[120px] animate-pulse-slow">
       </div>
 
       <!-- 修改点：去掉了 bg-purple-600/10 中的 /10，添加了 opacity-20 -->
       <div
-        class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-purple-600/80 opacity-20 rounded-full blur-[130px] animate-pulse-slow"
-        style="animation-delay: 1s;"></div>
+        class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-purple-600/90 opacity-20 rounded-full blur-[120px] animate-pulse-slow"
+        style="animation-delay: 2s;"></div>
+      <div class="absolute inset-0 bg-[url('/images/noise.svg')] opacity-20 mix-blend-overlay"></div>
     </div>
 
     <div class="relative z-10 container mx-auto px-6 mb-16 text-center animate-fade-up">
@@ -18,7 +19,7 @@
         产品说明书
       </h1>
       <p class="text-gray-500 text-xs md:text-sm tracking-[0.3em] uppercase font-bold">
-        User Manual Download
+        User Manual
       </p>
     </div>
 
@@ -27,7 +28,7 @@
 
         <div class="lg:col-span-8 order-2 lg:order-1 animate-fade-up delay-100">
           <div
-            class="w-full bg-[#111] rounded-xl overflow-hidden border border-white/10 shadow-2xl flex flex-col min-h-[500px]">
+            class="w-full bg-white/5 backdrop-blur-xl rounded-xl overflow-hidden border border-white/10 shadow-2xl flex flex-col min-h-[500px]">
             <div :key="currentProduct" class="transition-opacity duration-300">
               <NuxtImg v-for="i in 5" :key="i"
                 :src="`/images/download/manual/manual-part-${String(i).padStart(2, '0')}.jpg`"
@@ -41,7 +42,7 @@
 
           <div class="sticky top-28 space-y-4 animate-fade-up delay-200">
 
-            <div class="bg-[#111] border border-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-md">
+            <div class="bg-black/40 border border-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-md">
               <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4 px-1">选择产品系列</h3>
               <div class="space-y-2">
                 <button v-for="item in products" :key="item.id" @click="currentProduct = item.id"
@@ -64,12 +65,12 @@
               </div>
             </div>
 
-            <div class="bg-[#111] border border-white/10 rounded-2xl p-6 shadow-xl text-center backdrop-blur-md">
+            <div class="bg-black/40 border border-white/10 rounded-2xl p-6 shadow-xl text-center backdrop-blur-md">
               <h3 class="text-xl font-bold mb-2 text-white">{{ currentProductText }}使用手册</h3>
               <p class="text-gray-500 text-sm mb-8">V2.0 | 更新于 2025.12</p>
 
               <a :href="currentDownloadLink" target="_blank"
-                class="group relative flex items-center justify-center w-full bg-white text-black font-bold py-4 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg overflow-hidden cursor-pointer">
+                class="group relative flex items-center justify-center w-full bg-white text-black font-bold py-4 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-white/20 overflow-hidden cursor-pointer">
                 <div
                   class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-[100%] group-hover:animate-shine">
                 </div>
@@ -86,7 +87,7 @@
               <p class="text-xs text-gray-500 mt-4">文件大小: 10.3 MB</p>
             </div>
 
-            <div class="bg-[#111] border border-white/10 rounded-2xl p-6 text-center backdrop-blur-md">
+            <div class="bg-black/40 border border-white/10 rounded-2xl p-6 text-center backdrop-blur-md">
               <p class="text-sm font-bold text-gray-300 mb-4">手机扫码阅读</p>
               <div class="rounded-lg overflow-hidden mx-auto max-w-[280px] border border-white/5 p-2 bg-white/5">
                 <div class="bg-white rounded overflow-hidden">
