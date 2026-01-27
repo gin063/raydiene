@@ -6,7 +6,7 @@
       <div class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-purple-900/10 rounded-full blur-[100px] opacity-20"></div>
     </div>
 
-    <div class="relative z-10 container mx-auto px-6 md:px-12 py-32 md:pt-36 md:pb-16">
+    <div class="relative z-10 container mx-auto px-6 md:px-12 pt-32 pb-16 md:pt-36 md:pb-16">
       
       <div class="text-center mb-16 animate-fade-in-up">
         <h1 class="text-4xl md:text-6xl font-bold font-hero tracking-tight mb-6">
@@ -25,9 +25,9 @@
           <h2 class="text-2xl md:text-3xl font-bold font-hero tracking-wide">立即购买</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 -mx-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:overflow-visible md:pb-0 md:px-0 md:mx-0 no-scrollbar">
           
-          <div class="group relative h-[420px] bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 animate-fade-in-up" style="animation-delay: 0.2s;">
+          <div class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative h-[420px] bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-cyan-500/50 transition-all duration-500 animate-fade-in-up" style="animation-delay: 0.2s;">
             
             <div class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 group-hover:opacity-0 p-8">
               <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(closest-side,#0891b266_40%,transparent_100%)] pointer-events-none"></div>
@@ -91,7 +91,7 @@
 
           <template v-for="(shop, index) in salesChannels" :key="shop.name">
             <div 
-              class="group relative h-[420px] bg-white/5 border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 animate-fade-in-up" 
+              class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative h-[420px] bg-white/5 border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 animate-fade-in-up" 
               :style="{ animationDelay: (0.3 + index * 0.1) + 's' }"
               :class="shop.hoverBorder" 
             >
@@ -137,9 +137,9 @@
           <h2 class="text-2xl md:text-3xl font-bold font-hero tracking-wide">关注我们</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 -mx-4 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:pb-0 md:px-0 md:mx-0 no-scrollbar">
           <div v-for="(social, index) in socialChannels" :key="social.name"
-            class="group relative h-[360px] bg-white/5 border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 animate-fade-in-up"
+            class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative h-[360px] bg-white/5 border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 animate-fade-in-up"
             :style="{ animationDelay: (0.1 + index * 0.1) + 's' }"
             :class="social.hoverBorder"
           >
@@ -293,5 +293,16 @@ const socialChannels = [
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* 隐藏 Chrome, Safari, Opera 的滚动条 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* 隐藏 IE, Edge, Firefox 的滚动条 */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 </style>

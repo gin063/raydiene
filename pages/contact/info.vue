@@ -83,7 +83,6 @@
                                 <p class="text-lg text-white leading-snug group-hover:text-teal-400 transition-colors">
                                     上海市青浦区万达茂A区<br>1号楼809室
                                 </p>
-                                <br>
                                 <p class="text-lg text-white leading-snug group-hover:text-teal-400 transition-colors">
                                     长沙市岳麓区麓谷企业广场F区<br>F2栋1703室
                                 </p>
@@ -105,7 +104,7 @@
                         </div>
                     </div>
 
-                    <div class="absolute bottom-6 left-72 right-6 z-30 pointer-events-none">
+                    <div class="absolute bottom-2 left-32 md:left-72 right-2 z-30 pointer-events-none">
                         <a href="https://www.amap.com/search?query=上海市青浦区万达茂" target="_blank"
                             class="bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 flex justify-between items-center group pointer-events-auto hover:bg-black transition-colors shadow-lg">
                             <div>

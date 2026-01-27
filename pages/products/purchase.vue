@@ -14,7 +14,7 @@
       <div class="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay"></div>
     </div>
 
-    <div class="relative z-10 container mx-auto px-6 md:px-12 py-24">
+    <div class="relative z-10 container mx-auto px-6 md:px-12 pt-24 pb-16">
 
       <div class="text-center mt-12 mb-20 animate-fade-in-up">
         <h1

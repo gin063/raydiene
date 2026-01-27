@@ -9,7 +9,8 @@
       <div class="container mx-auto px-6 h-20 flex items-center justify-between relative">
 
         <div class="flex-shrink-0 cursor-pointer z-50 transition-[filter] duration-300"
-          :class="{ 'invert': isMobileMenuOpen }">
+          :class="{ 'invert': isMobileMenuOpen }"
+          @click="handleLogoClick">
           <NuxtLink to="/">
             <img 
               src="/images/logo.svg" 
@@ -500,34 +501,67 @@ const cancelCloseTimer = () => {
   }
 }
 
-// 修复: 增加判空保护
+// 修改后的 toggleMobileMenu
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
   
   const container = mobileMenuContainer.value
   const mainLayer = mainMenuLayer.value
+  // 获取所有图层引用
+  const subLayer = subMenuLayer.value
+  const thirdLayer = thirdMenuLayer.value
   
   if (!container || !mainLayer) return 
 
   const items = mainLayer.querySelectorAll('.mobile-menu-item')
 
   if (isMobileMenuOpen.value) {
+    // --- 开启菜单逻辑 ---
     document.body.style.overflow = 'hidden'
+    
+    // 【关键修复 1】: 在开启瞬间，强制重置所有状态和图层位置
+    // 这就像每次打开电脑都重启一次，确保画面干干净净
+    activeSubMenu.value = null
+    activeThirdMenu.value = null
+    
+    // 强制主菜单归位并显示
+    gsap.set(mainLayer, { xPercent: 0, autoAlpha: 1 })
+    
+    // 强制子菜单和三级菜单归位到右侧屏幕外
+    if (subLayer) gsap.set(subLayer, { xPercent: 100, autoAlpha: 1 })
+    if (thirdLayer) gsap.set(thirdLayer, { xPercent: 100, autoAlpha: 1 })
+
+    // 开始进场动画
     gsap.set(container, { autoAlpha: 1 })
     gsap.fromTo(container, { yPercent: -100 }, { yPercent: 0, duration: 0.8, ease: 'expo.out' })
     if (items.length) {
        gsap.fromTo(items, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.05, delay: 0.2, ease: 'expo.out' })
     }
   } else {
+    // --- 关闭菜单逻辑 ---
     gsap.to(container, {
       yPercent: -100, duration: 0.8, ease: 'expo.inOut',
       onComplete: () => {
+        // 【关键修复 2】: 动画结束后清理所有数据
         activeSubMenu.value = null;
-        if (subMenuLayer.value) gsap.set(subMenuLayer.value, { xPercent: 100 });
+        activeThirdMenu.value = null; // 原代码漏掉了这个
+        
+        // 恢复图层位置
+        if (subLayer) gsap.set(subLayer, { xPercent: 100 });
+        if (thirdLayer) gsap.set(thirdLayer, { xPercent: 100 }); // 原代码漏掉了这个
         if (mainLayer) gsap.set(mainLayer, { xPercent: 0, autoAlpha: 1 })
+        
         document.body.style.overflow = ''
       }
     })
+  }
+}
+
+// 在 script setup 中新增这个函数
+const handleLogoClick = () => {
+  // 只有在移动端菜单打开时，才执行关闭逻辑
+  if (isMobileMenuOpen.value) {
+    toggleMobileMenu()
   }
 }
 
@@ -618,13 +652,22 @@ const closeSubMenu = () => {
 }
 
 const handleCategoryClick = async (category) => {
-  if (category.link) {
+  // 1. 尝试获取直接链接
+  let targetLink = category.link
+
+  // 2. [移动端修复] 如果没有直接链接，但包含 products (说明是系列对象)，则取第一个产品的链接
+  if (!targetLink && category.products && category.products.length > 0) {
+    targetLink = category.products[0].link
+  }
+
+  // 3. 执行跳转
+  if (targetLink) {
     if (isMobileMenuOpen.value) {
       toggleMobileMenu()
     } else {
       closeMenu()
     }
-    await navigateTo(category.link)
+    await navigateTo(targetLink)
   }
 }
 

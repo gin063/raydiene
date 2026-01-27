@@ -3,11 +3,11 @@
 
     <div class="md:hidden pt-10 pb-20 px-6">
 
-      <div class="flex flex-col items-start mb-10">
+      <div class="flex flex-col items-center w-fit mb-10">
 
-        <img src="/images/logo-cn2.svg" alt="Raydiene Logo" class="w-64 h-auto opacity-90 -ml-1 mb-1" />
+        <img src="/images/logo-cn2.svg" alt="Raydiene Logo" class="w-72 h-auto opacity-90 mb-6" />
 
-        <p class="-mt-2 text-2xl tracking-[0.18em] text-white opacity-90 leading-none whitespace-nowrap">
+        <p class="-mt-2 text-xl tracking-[0.18em] text-white opacity-90 leading-none whitespace-nowrap">
           智享充电，悦享安全
         </p>
 
@@ -19,36 +19,19 @@
 
       <div class="grid grid-cols-2 gap-x-4 gap-y-10 mb-12 border-t border-white/5 pt-8">
         <div>
-          <h4 class="text-white font-bold mb-4 text-sm tracking-wide">关于我们</h4>
-          <ul class="space-y-3 text-xs text-gray-400">
-            <li>
-              <NuxtLink to="/about/intro">企业简介</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/about/culture">企业文化</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/">企业资讯</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/">加入我们</NuxtLink>
-            </li>
-          </ul>
-        </div>
-        <div>
           <h4 class="text-white font-bold mb-4 text-sm tracking-wide">产品介绍</h4>
           <ul class="space-y-3 text-xs text-gray-400">
             <li>
-              <NuxtLink to="/products/jianshi">坚石系列</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/products/panshi">磐石系列</NuxtLink>
+              <NuxtLink to="/products/xingyao">星耀系列</NuxtLink>
             </li>
             <li>
               <NuxtLink to="/products/xingchen">星辰系列</NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/products/xingyao">星耀系列</NuxtLink>
+              <NuxtLink to="/products/panshi">磐石系列</NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/products/jianshi">坚石系列</NuxtLink>
             </li>
           </ul>
         </div>
@@ -72,6 +55,23 @@
             <li>
               <NuxtLink to="/download/manual">说明书下载</NuxtLink>
             </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4 text-sm tracking-wide">关于我们</h4>
+          <ul class="space-y-3 text-xs text-gray-400">
+            <li>
+              <NuxtLink to="/about/intro">企业简介</NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/about/culture">企业文化</NuxtLink>
+            </li>
+            <!--<li>
+              <NuxtLink to="/">企业资讯</NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/">加入我们</NuxtLink>
+            </li>-->
           </ul>
         </div>
       </div>
@@ -113,8 +113,12 @@
         class="border-t border-white/10 pt-3 w-full flex flex-col gap-y-0.5 text-[10px] text-gray-600 items-start whitespace-normal">
         <p class="w-full break-words">© 2025 Raydiene. All rights reserved.</p>
         <div class="flex flex-wrap gap-x-4">
-          <span>隐私政策</span>
-          <span>沪ICP备2025109966号-1</span>
+          <NuxtLink to="/privacy" class="hover:text-gray-400 cursor-pointer transition-colors">隐私政策
+          </NuxtLink>
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer"
+            class="hover:text-gray-400 transition-colors">
+            沪ICP备2025109966号-1
+          </a>
         </div>
       </div>
     </div>
@@ -256,7 +260,7 @@
           <div class="flex items-center space-x-6">
             <NuxtLink to="/privacy" class="hover:text-gray-400 cursor-pointer transition-colors">隐私政策
             </NuxtLink>
-            <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noopener noreferrer"
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer"
               class="hover:text-gray-400 transition-colors">
               沪ICP备2025109966号-1
             </a>

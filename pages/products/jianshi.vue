@@ -10,7 +10,7 @@
       </div>
 
       <div
-        class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end items-center text-center pb-16 md:pb-28">
+        class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end items-center text-center pb-48 md:pb-28">
         <h1 class="text-5xl md:text-7xl font-bold font-hero tracking-tight mb-6 animate-fade-in-up">
           坚石系列
         </h1>
@@ -293,7 +293,7 @@
         <div class="w-full relative aspect-[21/9] rounded-xl overflow-hidden border border-white/10 shadow-2xl group">
           <NuxtImg src="/images/products/jianshi/lifestyle.jpg" alt="坚石系列生活场景"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hover:grayscale-0" />
-          <div class="absolute bottom-6 left-6 bg-black/60 backdrop-blur px-4 py-2 rounded-lg">
+          <div class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 z-10 scale-50 origin-bottom-left md:scale-100">
             <span class="text-sm font-bold text-brand">坚石</span>
             <span class="text-xs text-white ml-2">实用至上 · 大道至简</span>
           </div>
@@ -308,10 +308,10 @@
           探索更多系列
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 -mx-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:px-0 md:mx-0 no-scrollbar">
 
           <NuxtLink to="/products/panshi"
-            class="group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
+            class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
 
             <div
               class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700">
@@ -327,7 +327,7 @@
 
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
               <NuxtImg src="/images/products/panshi-cover.png" alt="磐石系列"
-                class="w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
+                class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
 
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -354,7 +354,7 @@
           </NuxtLink>
 
           <NuxtLink to="/products/xingchen"
-            class="group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
+            class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
 
             <div
               class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700">
@@ -370,7 +370,7 @@
 
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
               <NuxtImg src="/images/products/xingchen-cover.png" alt="星辰系列"
-                class="w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
+                class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
 
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -397,7 +397,7 @@
           </NuxtLink>
 
           <NuxtLink to="/products/xingyao"
-            class="group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
+            class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
 
             <div
               class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700">
@@ -413,7 +413,7 @@
 
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
               <NuxtImg src="/images/products/xingyao-cover.png" alt="星耀系列"
-                class="w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
+                class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
 
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -502,5 +502,16 @@ onMounted(() => {
 
 .animate-ken-burns {
   animation: ken-burns 20s ease-out forwards;
+}
+
+/* 隐藏 Chrome, Safari, Opera 的滚动条 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* 隐藏 IE, Edge, Firefox 的滚动条 */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 </style>
