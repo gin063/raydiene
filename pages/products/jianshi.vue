@@ -4,8 +4,13 @@
 
     <div class="relative w-full h-screen">
       <div class="absolute inset-0 z-0 overflow-hidden">
-        <NuxtImg src="/images/products/jianshi/scene-bg.jpg" alt="坚石系列场景"
-          class="w-full h-full object-cover animate-ken-burns" placeholder />
+
+        <NuxtImg src="/images/products/jianshi/scene-bg-mobile.jpg" alt="坚石系列场景-移动端"
+          class="block md:hidden w-full h-full object-cover animate-ken-burns" placeholder />
+
+        <NuxtImg src="/images/products/jianshi/scene-bg.jpg" alt="坚石系列场景-PC端"
+          class="hidden md:block w-full h-full object-cover animate-ken-burns" placeholder />
+
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
       </div>
 
@@ -293,7 +298,8 @@
         <div class="w-full relative aspect-[21/9] rounded-xl overflow-hidden border border-white/10 shadow-2xl group">
           <NuxtImg src="/images/products/jianshi/lifestyle.jpg" alt="坚石系列生活场景"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hover:grayscale-0" />
-          <div class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 z-10 scale-50 origin-bottom-left md:scale-100">
+          <div
+            class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 z-10 scale-50 origin-bottom-left md:scale-100">
             <span class="text-sm font-bold text-brand">坚石</span>
             <span class="text-xs text-white ml-2">实用至上 · 大道至简</span>
           </div>
@@ -308,7 +314,8 @@
           探索更多系列
         </h2>
 
-        <div class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 -mx-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:px-0 md:mx-0 no-scrollbar">
+        <div
+          class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 -mx-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:px-0 md:mx-0 no-scrollbar">
 
           <NuxtLink to="/products/panshi"
             class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
@@ -511,7 +518,9 @@ onMounted(() => {
 
 /* 隐藏 IE, Edge, Firefox 的滚动条 */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 </style>

@@ -4,20 +4,31 @@
 
     <div class="relative w-full h-screen">
       <div class="absolute inset-0 z-0 overflow-hidden grid grid-cols-1 grid-rows-1">
+
         <Transition name="fade-slow">
           <div v-if="activeModel === 'pro'" class="col-start-1 row-start-1 w-full h-full">
-            <NuxtImg src="/images/products/panshi/scene-bg-pro.jpg" alt="磐石Pro场景"
-              class="w-full h-full object-cover animate-ken-burns" placeholder />
+            <NuxtImg src="/images/products/panshi/scene-bg-pro-mobile.jpg" alt="磐石Pro场景-移动端"
+              class="block md:hidden w-full h-full object-cover animate-ken-burns" placeholder />
+
+            <NuxtImg src="/images/products/panshi/scene-bg-pro.jpg" alt="磐石Pro场景-PC端"
+              class="hidden md:block w-full h-full object-cover animate-ken-burns" placeholder />
+
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90"></div>
           </div>
         </Transition>
+
         <Transition name="fade-slow">
           <div v-if="activeModel === 'max'" class="col-start-1 row-start-1 w-full h-full">
-            <NuxtImg src="/images/products/panshi/scene-bg-max.jpg" alt="磐石Max场景"
-              class="w-full h-full object-cover animate-ken-burns" placeholder />
+            <NuxtImg src="/images/products/panshi/scene-bg-max-mobile.jpg" alt="磐石Max场景-移动端"
+              class="block md:hidden w-full h-full object-cover animate-ken-burns" placeholder />
+
+            <NuxtImg src="/images/products/panshi/scene-bg-max.jpg" alt="磐石Max场景-PC端"
+              class="hidden md:block w-full h-full object-cover animate-ken-burns" placeholder />
+
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90"></div>
           </div>
         </Transition>
+
       </div>
 
       <div
@@ -243,7 +254,7 @@
                   <tr>
                     <td class="p-4 font-bold text-gray-300">产品名称</td>
                     <td class="p-4 text-white transition-all duration-300">磐石{{ activeModel === 'pro' ? 'Pro' : 'Max'
-                      }}系列交流充电桩</td>
+                    }}系列交流充电桩</td>
                   </tr>
                   <tr class="bg-white/5">
                     <td class="p-4 font-bold text-gray-300">显示配置</td>
@@ -336,7 +347,8 @@
           探索更多系列
         </h2>
 
-        <div class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 -mx-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:px-0 md:mx-0 no-scrollbar">
+        <div
+          class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 -mx-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:px-0 md:mx-0 no-scrollbar">
 
           <NuxtLink to="/products/jianshi"
             class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
@@ -682,7 +694,9 @@ onMounted(() => {
 
 /* 隐藏 IE, Edge, Firefox 的滚动条 */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 </style>

@@ -4,9 +4,14 @@
 
     <div class="relative w-full h-screen">
       <div class="absolute inset-0 z-0 overflow-hidden">
-        <NuxtImg src="/images/products/xingchen/scene-bg.jpg" alt="星辰系列场景"
-          class="w-full h-full object-cover animate-ken-burns" placeholder />
-        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90"></div>
+
+        <NuxtImg src="/images/products/xingchen/scene-bg-mobile.jpg" alt="坚石系列场景-移动端"
+          class="block md:hidden w-full h-full object-cover animate-ken-burns" placeholder />
+
+        <NuxtImg src="/images/products/xingchen/scene-bg.jpg" alt="坚石系列场景-PC端"
+          class="hidden md:block w-full h-full object-cover animate-ken-burns" placeholder />
+
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
       </div>
 
       <div
