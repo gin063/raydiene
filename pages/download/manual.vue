@@ -2,12 +2,9 @@
   <div class="min-h-screen w-full bg-[#050505] text-white selection:bg-cyan-500/30 font-sans pt-24 pb-20">
 
     <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-      <!-- 修改点：去掉了 bg-blue-600/15 中的 /15，添加了 opacity-20 -->
       <div
         class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-blue-600/90 opacity-20 rounded-full blur-[120px] animate-pulse-slow">
       </div>
-
-      <!-- 修改点：去掉了 bg-purple-600/10 中的 /10，添加了 opacity-20 -->
       <div
         class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-purple-600/90 opacity-20 rounded-full blur-[120px] animate-pulse-slow"
         style="animation-delay: 2s;"></div>
@@ -15,12 +12,8 @@
     </div>
 
     <div class="relative z-10 container mx-auto px-6 mb-16 text-center animate-fade-up">
-      <h1 class="text-4xl md:text-5xl font-hero font-bold tracking-tight mb-4 mt-12 text-white">
-        产品说明书
-      </h1>
-      <p class="text-gray-500 text-xs md:text-sm tracking-[0.3em] uppercase font-bold">
-        User Manual
-      </p>
+      <h1 class="text-4xl md:text-5xl font-hero font-bold tracking-tight mb-4 mt-12 text-white">用户手册</h1>
+      <p class="text-gray-500 text-xs md:text-sm tracking-[0.3em] uppercase font-bold">User Manual</p>
     </div>
 
     <div class="relative z-10 container mx-auto px-6">
@@ -29,17 +22,19 @@
         <div class="lg:col-span-8 order-2 lg:order-1 animate-fade-up delay-100">
           <div
             class="w-full bg-white/5 backdrop-blur-xl rounded-xl overflow-hidden border border-white/10 shadow-2xl flex flex-col min-h-[500px]">
-            <div :key="currentProduct" class="transition-opacity duration-300">
-              <NuxtImg v-for="i in 5" :key="i"
-                :src="`/images/download/manual/manual-part-${String(i).padStart(2, '0')}.jpg`"
-                :alt="`雷迪恩产品说明书 - Part ${i}`" class="block w-full h-auto opacity-90" loading="lazy" format="webp"
-                :modifiers="{ withoutEnlargement: true }" />
-            </div>
+            <Transition name="fade" mode="out-in">
+              <div :key="currentProduct" class="w-full">
+                <NuxtImg v-for="i in currentProductPages" :key="i"
+                  :src="`/images/download/manual/${currentProduct}/manual-part-${String(i).padStart(2, '0')}.jpg`"
+                  :alt="`${currentProductText}说明书 - Part ${i}`"
+                  class="block w-full h-auto opacity-90 hover:opacity-100 transition-opacity duration-500"
+                  loading="lazy" format="webp" :modifiers="{ withoutEnlargement: true }" />
+              </div>
+            </Transition>
           </div>
         </div>
 
         <div class="lg:col-span-4 order-1 lg:order-2">
-
           <div class="sticky top-28 space-y-4 animate-fade-up delay-200">
 
             <div class="bg-black/40 border border-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-md">
@@ -83,8 +78,7 @@
                   下载 PDF 文件
                 </span>
               </a>
-
-              <p class="text-xs text-gray-500 mt-4">文件大小: 10.3 MB</p>
+              <p class="text-xs text-gray-500 mt-4 transition-all duration-300">文件大小: {{ currentFileSize }}</p>
             </div>
 
             <div class="bg-black/40 border border-white/10 rounded-2xl p-6 text-center backdrop-blur-md">
@@ -109,22 +103,39 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-// 产品配置
+// 确保您的 link 路径正确对应了准备好的 PDF 文件
 const products = [
-  { id: 'jianshi', name: '坚石系列', link: '/downloads/jianshi-manual.pdf' },
-  { id: 'panshi', name: '磐石系列', link: '/downloads/panshi-manual.pdf' },
-  { id: 'xingchen', name: '星辰系列', link: '/downloads/xingchen-manual.pdf' },
-  { id: 'xingyao', name: '星耀系列', link: '/downloads/xingyao-manual.pdf' },
+  { id: 'jianshi', name: '坚石系列', link: '/downloads/jianshi-manual.pdf', pages: 14, size: '1.20 MB' },
+  { id: 'panshi', name: '磐石系列', link: '/downloads/panshi-manual.pdf', pages: 15, size: '1.67 MB' },
+  { id: 'xingchen', name: '星辰系列', link: '/downloads/xingchen-manual.pdf', pages: 15, size: '1.39 MB' },
+  { id: 'xingyao', name: '星耀系列', link: '/downloads/xingyao-manual.pdf', pages: 15, size: '1.35 MB' },
 ]
 
 const currentProduct = ref('jianshi')
 
+// 自动计算当前选中的产品信息
 const currentProductObj = computed(() => products.find(p => p.id === currentProduct.value))
 const currentProductText = computed(() => currentProductObj.value?.name || '雷迪恩产品')
 const currentDownloadLink = computed(() => currentProductObj.value?.link || '#')
+const currentProductPages = computed(() => currentProductObj.value?.pages || 15)
+
+const currentFileSize = computed(() => currentProductObj.value?.size || '10.0 MB')
+
 </script>
 
 <style scoped>
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* 原有动画保持不变 */
 .animate-fade-up {
   animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
@@ -160,7 +171,6 @@ const currentDownloadLink = computed(() => currentProductObj.value?.link || '#')
   animation: shine 0.7s ease-in-out;
 }
 
-/* 简单的呼吸光效 */
 .animate-pulse-slow {
   animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full bg-black">
 
-    <section class="relative w-full h-screen overflow-hidden bg-black group/hero">
+    <section class="relative w-full h-[100svh] overflow-hidden bg-black group/hero">
       <video ref="heroVideoRef"
         class="absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500" autoplay
         muted loop playsinline :class="{ 'opacity-60': !isHeroPlaying }">
@@ -10,14 +10,14 @@
       <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80 pointer-events-none">
       </div>
       <div class="absolute inset-0 z-10 w-full h-full">
-        <div class="absolute bottom-[10%] left-1/2 -translate-x-1/2 flex flex-col items-center">
+        <div class="absolute bottom-24 md:bottom-[10%] left-1/2 -translate-x-1/2 flex flex-col items-center z-20 pb-[env(safe-area-inset-bottom)]">
           <NuxtLink to="products/purchase"
             class="px-10 py-3 border border-white/60 rounded-full text-white hover:bg-white hover:text-black hover:border-white transition-all duration-500 backdrop-blur-md bg-white/5 tracking-widest font-bold text-lg">
             了解更多
           </NuxtLink>
         </div>
         <div
-          class="absolute bottom-12 right-6 md:right-12 cursor-pointer transition-transform duration-300 hover:scale-105"
+          class="absolute bottom-24 md:bottom-12 right-6 md:right-12 cursor-pointer transition-transform duration-300 hover:scale-105"
           @click="toggleHeroVideo">
           <div
             class="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/30 bg-black/20 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white/10 transition-colors group-hover/hero:border-white/60">

@@ -261,7 +261,7 @@
                   </tr>
                   <tr class="bg-white/5">
                     <td class="p-4 font-bold text-gray-300">外壳材质</td>
-                    <td class="p-4 text-white">PC + ABS（VO级阻燃）</td>
+                    <td class="p-4 text-white">PC + ABS（V0级阻燃）</td>
                   </tr>
                   <tr>
                     <td class="p-4 font-bold text-gray-300">防护等级</td>

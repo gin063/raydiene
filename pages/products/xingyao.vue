@@ -130,7 +130,7 @@
                   </svg>
                 </div>
                 <h4 class="text-lg font-bold mb-1">21重安全防护</h4>
-                <p class="text-xs text-gray-400">新增浪涌/防盗充等防护</p>
+                <p class="text-xs text-gray-400">新增枪温保护/浪涌/防盗充等防护</p>
               </div>
               <div class="p-6 bg-white/5 rounded-xl border border-white/5 hover:border-brand/30 transition-colors">
                 <div class="text-brand mb-2">

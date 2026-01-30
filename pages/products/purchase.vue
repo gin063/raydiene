@@ -94,7 +94,7 @@
                   class="px-4 py-1.5 rounded-full bg-cyan-600/80 border border-white/20 text-xs font-bold tracking-wider text-white">销量冠军</span>
               </div>
 
-              <NuxtLink to="/products/jianshi" class="absolute bottom-6 right-6 z-20 group/btn">
+              <NuxtLink to="/products/panshi" class="absolute bottom-6 right-6 z-20 group/btn">
                 <div
                   class="relative flex items-center justify-center w-10 h-10 overflow-hidden text-white transition-all duration-500 ease-out border rounded-full backdrop-blur-md border-white/20 group-hover/btn:w-[88px] hover:bg-white hover:border-white hover:text-black">
 
@@ -145,7 +145,7 @@
                   class="px-4 py-1.5 rounded-full bg-cyan-600/80 border border-white/20 text-xs font-bold tracking-wider text-white">科技美学</span>
               </div>
 
-              <NuxtLink to="/products/jianshi" class="absolute bottom-6 right-6 z-20 group/btn">
+              <NuxtLink to="/products/xingchen" class="absolute bottom-6 right-6 z-20 group/btn">
                 <div
                   class="relative flex items-center justify-center w-10 h-10 overflow-hidden text-white transition-all duration-500 ease-out border rounded-full backdrop-blur-md border-white/20 group-hover/btn:w-[88px] hover:bg-white hover:border-white hover:text-black">
 
@@ -196,7 +196,7 @@
                   class="px-4 py-1.5 rounded-full bg-cyan-600/80 border border-white/20 text-xs font-bold tracking-wider text-white">行业旗舰</span>
               </div>
 
-              <NuxtLink to="/products/jianshi" class="absolute bottom-6 right-6 z-20 group/btn">
+              <NuxtLink to="/products/xingyao" class="absolute bottom-6 right-6 z-20 group/btn">
                 <div
                   class="relative flex items-center justify-center w-10 h-10 overflow-hidden text-white transition-all duration-500 ease-out border rounded-full backdrop-blur-md border-white/20 group-hover/btn:w-[88px] hover:bg-white hover:border-white hover:text-black">
 

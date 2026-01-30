@@ -124,7 +124,7 @@ export const useSiteData = () => {
           desc: "雷迪恩智能 App，掌控您的充电生活。",
         },
         {
-          name: "说明书下载",
+          name: "用户手册",
           link: "/download/manual",
           image: "/images/download/manual-bg.jpg", // 记得在 public 放这张图，用于 Header 右侧预览
           desc: "获取雷迪恩全系产品使用指南与技术文档。",

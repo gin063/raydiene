@@ -53,7 +53,7 @@
               <NuxtLink to="/download/apps">App下载</NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/download/manual">说明书下载</NuxtLink>
+              <NuxtLink to="/download/manual">用户手册</NuxtLink>
             </li>
           </ul>
         </div>
@@ -185,7 +185,7 @@
                   <NuxtLink to="/download/apps" class="hover:text-white transition-colors block">App下载</NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink to="/download/manual" class="hover:text-white transition-colors block">说明书下载</NuxtLink>
+                  <NuxtLink to="/download/manual" class="hover:text-white transition-colors block">用户手册</NuxtLink>
                 </li>
               </ul>
             </div>
