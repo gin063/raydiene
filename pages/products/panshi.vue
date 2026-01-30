@@ -223,7 +223,7 @@
         <h2 class="text-3xl font-bold text-center mb-16 font-hero">详细规格参数</h2>
 
         <div class="flex flex-col md:flex-row gap-12 items-start mb-16">
-          <div class="w-full md:w-1/3 flex flex-col items-center gap-6 relative md:sticky md:top-24">
+          <div class="w-full md:w-1/3 flex flex-col items-center gap-6 relative md:top-24">
             <div class="relative w-full aspect-square grid grid-cols-1 grid-rows-1">
               <Transition name="fade-scale">
                 <NuxtImg v-if="activeModel === 'pro'" src="/images/products/panshi/pro-front.png" alt="Pro"
