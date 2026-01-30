@@ -223,7 +223,7 @@
         <h2 class="text-3xl font-bold text-center mb-16 font-hero">详细规格参数</h2>
 
         <div class="flex flex-col md:flex-row gap-12 items-start mb-16">
-          <div class="w-full md:w-1/3 flex flex-col items-center gap-6 sticky top-24">
+          <div class="w-full md:w-1/3 flex flex-col items-center gap-6 relative md:sticky md:top-24">
             <div class="relative w-full aspect-square grid grid-cols-1 grid-rows-1">
               <Transition name="fade-scale">
                 <NuxtImg v-if="activeModel === 'pro'" src="/images/products/panshi/pro-front.png" alt="Pro"
@@ -484,7 +484,7 @@
     </section>
 
     <div
-      class="fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center p-1.5 bg-black/70 backdrop-blur-xl border border-white/15 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.6)] animate-float-in">
+      class="fixed bottom-10 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center p-1.5 bg-black/70 backdrop-blur-xl border border-white/15 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.6)] animate-float-in">
 
       <div
         class="absolute top-1.5 bottom-1.5 w-[140px] rounded-full transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] shadow-lg bg-brand"
