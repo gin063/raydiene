@@ -201,30 +201,26 @@
 </template>
 
 <style scoped>
-/* 保持原有动画 */
-/* 优化后的呼吸光效 */
-.animate-pulse-slow {
-  /* 延长动画时间到 7s，使其更舒缓 */
-  animation: pulse 7s ease-in-out infinite;
-}
-
-@keyframes pulse {
+/* 保留定制版呼吸动画 (因为它的参数比较特殊：0.2->0.5透明度，7s时长) */
+@keyframes pulse-custom {
 
   0%,
   100% {
     opacity: 0.2;
-    /* 最暗状态 */
     transform: scale(1);
   }
 
   50% {
     opacity: 0.5;
-    /* 最亮状态：提高到 0.5 让颜色更明显 */
     transform: scale(1.1);
-    /* 增加 10% 的体积膨胀，制造呼吸感 */
   }
 }
 
+.animate-pulse-slow {
+  animation: pulse-custom 7s ease-in-out infinite;
+}
+
+/* 保留左右滑入 (如果没用全局fade-right的话) */
 .animate-slide-in-left {
   animation: slideInLeft 1s ease-out forwards;
   opacity: 0;
@@ -249,40 +245,5 @@
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-.animate-fade-up {
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.delay-100 {
-  animation-delay: 0.1s;
-}
-
-.delay-200 {
-  animation-delay: 0.2s;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shine {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.group-hover\:animate-shine:hover {
-  animation: shine 0.7s ease-in-out;
 }
 </style>

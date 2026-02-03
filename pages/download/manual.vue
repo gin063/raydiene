@@ -108,7 +108,7 @@ const products = [
   { id: 'jianshi', name: '坚石系列', link: '/downloads/jianshi-manual.pdf', pages: 14, size: '1.20 MB' },
   { id: 'panshi', name: '磐石系列', link: '/downloads/panshi-manual.pdf', pages: 15, size: '1.67 MB' },
   { id: 'xingchen', name: '星辰系列', link: '/downloads/xingchen-manual.pdf', pages: 15, size: '1.39 MB' },
-  { id: 'xingyao', name: '星耀系列', link: '/downloads/xingyao-manual.pdf', pages: 15, size: '1.35 MB' },
+  { id: 'xingyao', name: '星耀系列', link: '/downloads/xingyao-manual.pdf', pages: 15, size: '1.65 MB' },
 ]
 
 const currentProduct = ref('jianshi')
@@ -124,68 +124,12 @@ const currentFileSize = computed(() => currentProductObj.value?.size || '10.0 MB
 </script>
 
 <style scoped>
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease-in-out;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-/* 原有动画保持不变 */
-.animate-fade-up {
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.delay-100 {
-  animation-delay: 0.1s;
-}
-
-.delay-200 {
-  animation-delay: 0.2s;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shine {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.group-hover\:animate-shine:hover {
-  animation: shine 0.7s ease-in-out;
-}
-
+/* 保留定制版呼吸动画 (6s 版本) */
 .animate-pulse-slow {
-  animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse-custom 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
-
-@keyframes pulse {
-
-  0%,
-  100% {
-    opacity: 0.2;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.4;
-    transform: scale(1.05);
-  }
+@keyframes pulse-custom {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.05); }
 }
 </style>

@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- @font-face 定义区 --- */
+/* --- @font-face 定义区 (保持不变) --- */
 
 /* 1. Michroma (英文标题) */
 @font-face {
@@ -11,7 +11,6 @@
   src: url('/fonts/Michroma-Regular.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
-  /* ★ 修改点：改为 block (阻塞显示，直到加载完成) */
   font-display: swap; 
 }
 
@@ -21,37 +20,30 @@
   src: url('/fonts/Inter-Regular.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
-  /* ★ 修改点：改为 block */
   font-display: swap;
 }
 
 /* 3. 中文体系：阿里巴巴普惠体 */
-/* Bold (700) */
 @font-face {
   font-family: 'AlibabaPuHuiTi';
   src: url('/fonts/AlibabaPuHuiTi-3-85-Bold.woff2') format('woff2');
   font-weight: 700;
-  /* ★ 修改点：改为 block */
   font-display: swap;
 }
-/* Medium (500) */
 @font-face {
   font-family: 'AlibabaPuHuiTi';
   src: url('/fonts/AlibabaPuHuiTi-3-65-Medium.woff2') format('woff2');
   font-weight: 500;
-  /* ★ 修改点：改为 block */
   font-display: swap;
 }
-/* Regular (400) */
 @font-face {
   font-family: 'AlibabaPuHuiTi';
   src: url('/fonts/AlibabaPuHuiTi-3-55-Regular.woff2') format('woff2');
   font-weight: 400;
-  /* ★ 修改点：改为 block */
   font-display: swap;
 }
 
-/* --- 自动化规则区 --- */
+/* --- 自动化规则区 (保持不变) --- */
 @layer base {
   body {
     @apply font-body text-base font-normal text-white antialiased;
@@ -69,21 +61,105 @@
     @apply font-bold;
   }
 }
-/* ★ 全局滚动条美化 (Webkit内核浏览器) ★ */
+
+/* ★ 全局滚动条美化 (保持不变) ★ */
 ::-webkit-scrollbar {
-  width: 8px; /* 稍微宽一点点，方便鼠标抓取 */
+  width: 8px;
   height: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #000000; /* 轨道纯黑 */
+  background: #000000;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #333333; /* 滑块深灰 */
-  border-radius: 4px; /* 圆角 */
+  background: #333333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555555; /* 悬停变亮 */
+/* === 新增：全局动画样式 (从各组件 style 中提取) === */
+
+/* 1. 隐藏滚动条工具类 (用于横向滚动区域) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* 2. 滚动触发动画 (配合 IntersectionObserver) */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === 新增：Vue Transition 过渡动画 === */
+
+/* 淡入淡出 (基础) */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* 缓慢淡入淡出 (Hero背景切换) */
+.fade-slow-enter-active,
+.fade-slow-leave-active {
+  transition: opacity 1.2s ease-in-out;
+}
+.fade-slow-enter-from,
+.fade-slow-leave-to {
+  opacity: 0;
+}
+
+/* 向上位移淡出 (文字切换) */
+.fade-up-stay-enter-active,
+.fade-up-stay-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-up-stay-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.fade-up-stay-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* 缩放淡入 (图片切换) */
+.fade-scale-enter-active,
+.fade-scale-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-scale-enter-from {
+  opacity: 0;
+  transform: scale(0.95);
+}
+.fade-scale-leave-to {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+/* 右侧滑入 (标题切换) */
+.fade-right-enter-active,
+.fade-right-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.fade-right-enter-from {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.fade-right-leave-to {
+  opacity: 0;
+  transform: translateX(20px);
 }

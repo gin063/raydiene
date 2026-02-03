@@ -37,7 +37,7 @@
                 <span class="text-white font-bold block mt-2">它应该是能融入生活的智能消费电子，<br>是兼具安全与美感的出行伙伴。</span>
               </p>
             </div>
-            
+
             <div class="pl-6 border-l-2 border-blue-500/50">
               <p class="text-xl md:text-2xl font-bold italic text-white/90 font-hero leading-relaxed">
                 “为什么充电桩<br>不能更好看、更好用？”
@@ -86,7 +86,9 @@
           <div class="relative w-full overflow-hidden min-h-[80vh] flex items-center justify-center bg-[#050505] group">
 
             <div class="absolute inset-0 z-0">
-              <div class="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/20 to-transparent pointer-events-none"></div>
+              <div
+                class="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/20 to-transparent pointer-events-none">
+              </div>
               <NuxtImg src="/images/about/6why-radiant-bg.jpg" alt="雷迪恩产品艺术图"
                 class="w-full h-full object-cover animate-float-slow brightness-125" />
             </div>
@@ -97,8 +99,7 @@
                 <span class="drop-shadow-2xl text-white">为什么叫</span>
                 <span class="relative inline-block mx-2 align-bottom px-2">
                   <span class="text-cyan-300/80 font-black relative z-0">雷迪恩</span>
-                  <span
-                    class="absolute inset-0 z-10 font-black
+                  <span class="absolute inset-0 z-10 font-black
                     bg-gradient-to-r from-cyan-300/0 via-white to-cyan-300/0 
                     bg-[length:50%_100%] bg-no-repeat animate-shimmer-slide 
                     bg-clip-text text-transparent 
@@ -124,7 +125,8 @@
                     <span class="block mb-2 text-white">以精准切面，折射极致璀璨</span>
                     <span class="text-gray-400 text-base md:text-lg">
                       正如我们想让充电桩，跳出工业感的刻板<br>
-                      <span class="text-cyan-300 font-medium drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]">绽放出设计的光芒</span>
+                      <span
+                        class="text-cyan-300 font-medium drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]">绽放出设计的光芒</span>
                     </span>
                   </p>
                 </div>
@@ -182,67 +184,96 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 保持样式不变 */
+/* 保持页面特有样式 */
 .bg-conic-gradient {
   background: conic-gradient(from 0deg at 50% 50%, rgba(15, 23, 42, 0), rgba(56, 189, 248, 0.1), rgba(168, 85, 247, 0.1), rgba(15, 23, 42, 0));
 }
 
+/* 页面特有动画：缓慢脉冲 */
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.1); }
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
 }
+
 .animate-pulse-slow {
   animation: pulse-slow 8s ease-in-out infinite;
 }
 
+/* 页面特有动画：缓慢旋转 */
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
 }
 
+/* 页面特有动画：变形气泡 */
 @keyframes blob {
-  0% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0px, 0px) scale(1); }
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
 }
+
 .animate-blob {
   animation: blob 7s infinite;
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 1s ease-out forwards;
-}
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.animate-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+/* 页面特有动画：文字扫光 */
 @keyframes shimmer-slide {
-  0% { background-position: -100% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -100% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
+
 .animate-shimmer-slide {
   animation: shimmer-slide 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
+/* 页面特有动画：图片浮动 */
 @keyframes float-slow {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
 }
+
 .animate-float-slow {
   animation: float-slow 10s ease-in-out infinite;
 }

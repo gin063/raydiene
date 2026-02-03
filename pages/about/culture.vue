@@ -1,10 +1,15 @@
 <template>
-  <div class="relative min-h-screen w-full bg-[#050505] text-white overflow-hidden selection:bg-teal-500 selection:text-white">
+  <div
+    class="relative min-h-screen w-full bg-[#050505] text-white overflow-hidden selection:bg-teal-500 selection:text-white">
 
     <div class="fixed inset-0 z-0 pointer-events-none">
-      <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[80vw] h-[50vw] bg-blue-900/20 rounded-full blur-[120px] opacity-60"></div>
-      
-      <div class="absolute bottom-[-10%] left-0 w-full h-[60vh] bg-gradient-to-t from-teal-900/20 via-transparent to-transparent opacity-50"></div>
+      <div
+        class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[80vw] h-[50vw] bg-blue-900/20 rounded-full blur-[120px] opacity-60">
+      </div>
+
+      <div
+        class="absolute bottom-[-10%] left-0 w-full h-[60vh] bg-gradient-to-t from-teal-900/20 via-transparent to-transparent opacity-50">
+      </div>
 
     </div>
 
@@ -20,14 +25,21 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        
-        <div class="group relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:shadow-[0_0_35px_rgba(20,184,166,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.3s">
-          <div class="absolute inset-0 bg-teal-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          
+
+        <div
+          class="group relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:shadow-[0_0_35px_rgba(20,184,166,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in-up"
+          style="animation-delay: 0.3s">
+          <div
+            class="absolute inset-0 bg-teal-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+
           <div class="relative z-10 flex flex-col h-full items-center text-center">
-            <div class="w-16 h-16 mb-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-300 group-hover:scale-110 transition-transform duration-500">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+            <div
+              class="w-16 h-16 mb-6 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-300 group-hover:scale-110 transition-transform duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
               </svg>
             </div>
             <h2 class="text-gray-400 text-sm font-bold tracking-widest uppercase mb-4">企业价值观</h2>
@@ -37,13 +49,20 @@
           </div>
         </div>
 
-        <div class="group relative p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 backdrop-blur-xl hover:shadow-[0_0_35px_rgba(168,85,247,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.2s">
-          <div class="absolute inset-0 bg-purple-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          
+        <div
+          class="group relative p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 backdrop-blur-xl hover:shadow-[0_0_35px_rgba(168,85,247,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in-up"
+          style="animation-delay: 0.2s">
+          <div
+            class="absolute inset-0 bg-purple-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+
           <div class="relative z-10 flex flex-col h-full items-center text-center">
-            <div class="w-16 h-16 mb-6 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-300 group-hover:scale-110 transition-transform duration-500">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            <div
+              class="w-16 h-16 mb-6 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-300 group-hover:scale-110 transition-transform duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
               </svg>
             </div>
             <h2 class="text-gray-400 text-sm font-bold tracking-widest uppercase mb-4">企业愿景</h2>
@@ -53,13 +72,20 @@
           </div>
         </div>
 
-        <div class="group relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:shadow-[0_0_35px_rgba(59,130,246,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.1s">
-          <div class="absolute inset-0 bg-blue-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          
+        <div
+          class="group relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:shadow-[0_0_35px_rgba(59,130,246,0.3)] transition-all duration-500 hover:-translate-y-2 animate-fade-in-up"
+          style="animation-delay: 0.1s">
+          <div
+            class="absolute inset-0 bg-blue-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          </div>
+
           <div class="relative z-10 flex flex-col h-full items-center text-center">
-            <div class="w-16 h-16 mb-6 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-300 group-hover:scale-110 transition-transform duration-500">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            <div
+              class="w-16 h-16 mb-6 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-300 group-hover:scale-110 transition-transform duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
               </svg>
             </div>
             <h2 class="text-gray-400 text-sm font-bold tracking-widest uppercase mb-4">企业使命</h2>
@@ -72,30 +98,33 @@
       </div>
 
       <section class="relative max-w-5xl mx-auto text-center animate-on-scroll z-10">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-teal-500/50 to-transparent"></div>
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-teal-500/50 to-transparent">
+        </div>
 
         <div class="pt-24 pb-0">
           <h2 class="text-3xl md:text-4xl font-bold mb-12 font-hero tracking-wide">
             社会责任
           </h2>
-          
+
           <div class="group relative rounded-[2.5rem] overflow-hidden border border-white/10 bg-[#0a0a0a]">
-            
+
             <div class="absolute inset-0 z-0">
-              <NuxtImg 
-                src="/images/about/responsibility-bg.jpg" 
-                alt="可持续未来" 
-                class="w-full h-full object-cover opacity-60 transition-all duration-[2000ms] ease-out scale-100 group-hover:scale-105 saturate-110"
-              />
-              
-              <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-teal-950/50 to-black/90 mix-blend-multiply"></div>
+              <NuxtImg src="/images/about/responsibility-bg.jpg" alt="可持续未来"
+                class="w-full h-full object-cover opacity-60 transition-all duration-[2000ms] ease-out scale-100 group-hover:scale-105 saturate-110" />
+
+              <div
+                class="absolute inset-0 bg-gradient-to-b from-black/60 via-teal-950/50 to-black/90 mix-blend-multiply">
+              </div>
               <div class="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-transparent opacity-80"></div>
             </div>
 
-            <div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-teal-500/20 rounded-full blur-[120px] animate-pulse-slow pointer-events-none mix-blend-screen"></div>
+            <div
+              class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-teal-500/20 rounded-full blur-[120px] animate-pulse-slow pointer-events-none mix-blend-screen">
+            </div>
 
             <div class="relative z-10 p-8 md:p-20 flex flex-col items-center">
-              
+
               <h3 class="text-2xl md:text-4xl font-bold text-white mb-8 leading-snug drop-shadow-lg">
                 选择雷迪恩，<br class="md:hidden">不止是选一台充电桩
               </h3>
@@ -105,34 +134,46 @@
                   是省心的居家充电服务，<br>
                   更是以 <span class="text-teal-400 font-bold glow-text">科技兑现的低碳承诺</span>。
                 </p>
-                
+
                 <div class="grid md:grid-cols-2 gap-6 w-full">
-                  <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 flex flex-col items-center gap-4 group/item">
-                    <div class="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-300 mb-2 group-hover/item:scale-110 transition-transform">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                  <div
+                    class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 flex flex-col items-center gap-4 group/item">
+                    <div
+                      class="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-300 mb-2 group-hover/item:scale-110 transition-transform">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                       </svg>
                     </div>
-                    <p class="text-base text-gray-300">用安全智能的产品<br><span class="text-white font-bold">让每一次充电都成为减碳实践</span></p>
+                    <p class="text-base text-gray-300">用安全智能的产品<br><span
+                        class="text-white font-bold">让每一次充电都成为减碳实践</span></p>
                   </div>
 
-                  <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 flex flex-col items-center gap-4 group/item">
-                    <div class="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-300 mb-2 group-hover/item:scale-110 transition-transform">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                  <div
+                    class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 flex flex-col items-center gap-4 group/item">
+                    <div
+                      class="w-10 h-10 rounded-full bg-teal-500/20 flex items-center justify-center text-teal-300 mb-2 group-hover/item:scale-110 transition-transform">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                       </svg>
                     </div>
-                    <p class="text-base text-gray-300">以可靠的服务<br><span class="text-white font-bold">让绿色出行轻松融入日常</span></p>
+                    <p class="text-base text-gray-300">以可靠的服务<br><span class="text-white font-bold">让绿色出行轻松融入日常</span>
+                    </p>
                   </div>
                 </div>
 
                 <div class="relative pt-6">
-                   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-transparent via-teal-500/50 to-transparent"></div>
-                   <p class="text-xl md:text-2xl font-bold text-white font-hero italic">
+                  <div
+                    class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-transparent via-teal-500/50 to-transparent">
+                  </div>
+                  <p class="text-xl md:text-2xl font-bold text-white font-hero italic">
                     “我们以微小的充电环节，<br>共筑可持续的出行未来。”
                   </p>
                 </div>
-               
+
               </div>
             </div>
           </div>
@@ -162,39 +203,26 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 呼吸动画 */
+/* 呼吸动画 (页面特有，保留) */
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.1); }
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
 }
+
 .animate-pulse-slow {
   animation: pulse-slow 6s ease-in-out infinite;
 }
 
-/* 进场动画 */
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-@keyframes fadeInUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 滚动触发 */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.animate-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 文字微发光效果 */
+/* 文字微发光效果 (页面特有，保留) */
 .glow-text {
   text-shadow: 0 0 20px rgba(45, 212, 191, 0.5);
 }

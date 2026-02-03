@@ -215,18 +215,3 @@ const productRows = [
   ]
 ]
 </script>
-
-<style scoped>
-.animate-fade-in-up {
-  animation: fadeInUp 1s ease-out forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>

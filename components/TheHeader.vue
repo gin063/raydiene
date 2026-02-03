@@ -5,22 +5,18 @@
         ? 'bg-white/60 backdrop-blur-xl'
         : 'bg-black/60 backdrop-blur-xl'
     ]" :style="{ paddingRight: scrollbarWidth + 'px' }" @mouseleave="scheduleCloseMenu" @mouseenter="cancelCloseTimer">
-      
+
       <div class="container mx-auto px-6 h-20 flex items-center justify-between relative">
 
         <div class="flex-shrink-0 cursor-pointer z-50 transition-[filter] duration-300"
-          :class="{ 'invert': isMobileMenuOpen }"
-          @click="handleLogoClick">
+          :class="{ 'invert': isMobileMenuOpen }" @click="handleLogoClick">
           <NuxtLink to="/">
-            <img 
-              src="/images/logo.svg" 
-              alt="Raydiene Logo" 
-              class="h-12 md:h-16 w-auto object-contain" 
-            />
+            <img src="/images/logo.svg" alt="Raydiene Logo" class="h-12 md:h-16 w-auto object-contain" />
           </NuxtLink>
         </div>
 
-        <nav class="hidden md:flex h-full items-center justify-center space-x-1 absolute left-1/2 top-0 -translate-x-1/2">
+        <nav
+          class="hidden md:flex h-full items-center justify-center space-x-1 absolute left-1/2 top-0 -translate-x-1/2">
           <div v-for="(item, index) in menuItems" :key="index"
             class="h-full flex items-center px-5 relative cursor-pointer group" @mouseenter="onMenuEnter(index)"
             @mouseleave="onMenuLeave">
@@ -56,102 +52,96 @@
       @mouseleave="scheduleCloseMenu" @wheel.stop>
       <div class="container mx-auto px-6 py-10 h-full max-h-[50vh] overflow-y-auto custom-scrollbar"
         v-if="activeItem && activeItem.children" :key="activeMenuIndex">
-        
+
         <div class="grid grid-cols-12 gap-8 h-full min-h-[300px]">
           <div ref="col1" class="col-span-3 border-r border-white/10 pr-4 opacity-0 translate-x-[-10px]">
-             <div class="space-y-1">
-               <div v-for="(cat, cIndex) in activeItem.children" :key="cIndex"
-                 class="px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex justify-between items-center group/cat"
-                 :class="activeCategoryIndex === cIndex ? 'bg-white/10 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'"
-                 @mouseenter="onCategoryEnter(cIndex)">
-                 <span class="font-hero font-bold text-lg">{{ cat.name }}</span>
-                 <svg v-if="activeCategoryIndex === cIndex" xmlns="http://www.w3.org/2000/svg" fill="none"
-                   viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white">
-                   <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                 </svg>
-               </div>
-             </div>
-           </div>
-           
-           <template v-if="currentCategory && currentCategory.series">
-             <div ref="col2" class="col-span-3 border-r border-white/10 pr-4 opacity-0 translate-x-[-10px]"
-               @mouseenter="cancelCategoryTimer">
-                <div class="space-y-1">
-                 <div v-for="(ser, sIndex) in currentCategory.series" :key="sIndex"
-                   class="px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex justify-between items-center"
-                   :class="activeSeriesIndex === sIndex ? 'bg-white/10 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'"
-                   @mouseenter="onSeriesEnter(sIndex)">
-                   <span class="font-body font-medium">{{ ser.name }}</span>
-                   <svg v-if="activeSeriesIndex === sIndex" xmlns="http://www.w3.org/2000/svg" fill="none"
-                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white">
-                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                   </svg>
-                 </div>
-               </div>
-             </div>
-             
-             <div ref="col3" class="col-span-6 pl-8 opacity-0 translate-x-[-10px]"
-               @mouseenter="onContentEnter">
-               <transition name="fade" mode="out-in" :key="activeCategoryIndex">
-                 <div v-if="currentSeries && currentSeries.products" :key="currentSeries.name"
-                   class="flex gap-6 h-full items-start">
-                   
-                   <NuxtLink 
-                      v-for="(prod, pIndex) in currentSeries.products" 
-                      :key="pIndex" 
-                      :to="prod.link"
-                      @click.prevent="handleCategoryClick(prod)"
-                      class="group/prod cursor-pointer block"
-                   >
-                     <div class="relative w-48 h-48 bg-white/5 rounded-xl overflow-hidden border border-white/5 mb-3 transition-transform duration-500 group-hover/prod:border-white/20">
-                       <NuxtImg :src="prod.image" :alt="prod.name"
-                         class="w-full h-full object-contain p-4 transition-transform duration-500 group-hover/prod:scale-105 pointer-events-none"
-                         sizes="500px" format="webp" loading="lazy" />
-                     </div>
-                     <p class="text-center font-hero font-bold text-white group-hover/prod:text-blue-400 transition-colors">
-                       {{ prod.name }}
-                     </p>
-                   </NuxtLink>
-                   </div>
-               </transition>
-             </div>
-           </template>
+            <div class="space-y-1">
+              <div v-for="(cat, cIndex) in activeItem.children" :key="cIndex"
+                class="px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex justify-between items-center group/cat"
+                :class="activeCategoryIndex === cIndex ? 'bg-white/10 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'"
+                @mouseenter="onCategoryEnter(cIndex)">
+                <span class="font-hero font-bold text-lg">{{ cat.name }}</span>
+                <svg v-if="activeCategoryIndex === cIndex" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </div>
+            </div>
+          </div>
 
-           <div v-else-if="currentCategory && currentCategory.image" ref="col2"
-             class="col-span-9 pl-8 opacity-0 translate-x-[-10px] flex items-center"
-             @mouseenter="cancelCategoryTimer">
-             
-             <NuxtLink 
-               :to="currentCategory.link"
-               @click.prevent="handleCategoryClick(currentCategory)"
-               class="w-full h-full relative rounded-xl overflow-hidden group cursor-pointer border border-white/10 block"
-             >
-               <NuxtImg :src="currentCategory.image"
-                 class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-700 group-hover:scale-105 opacity-60 pointer-events-none"
-                 sizes="500px" format="webp" />
-               <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent pointer-events-none"></div>
-               <div class="absolute inset-0 flex flex-col justify-center px-12 z-10 pointer-events-none">
-                 <h3 class="text-4xl font-bold text-white mb-4 font-hero">{{ currentCategory.name }}</h3>
-                 <p class="text-gray-300 text-lg max-w-lg leading-relaxed mb-8">{{ currentCategory.desc }}</p>
-                 <div
-                   class="flex items-center text-white/80 font-bold tracking-wider uppercase text-sm group-hover:text-white transition-colors">
-                   <span class="group-hover:translate-x-1 transition-transform duration-300">了解更多</span>
-                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                     stroke="currentColor"
-                     class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300">
-                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                   </svg>
-                 </div>
-               </div>
-             </NuxtLink>
-             </div>
+          <template v-if="currentCategory && currentCategory.series">
+            <div ref="col2" class="col-span-3 border-r border-white/10 pr-4 opacity-0 translate-x-[-10px]"
+              @mouseenter="cancelCategoryTimer">
+              <div class="space-y-1">
+                <div v-for="(ser, sIndex) in currentCategory.series" :key="sIndex"
+                  class="px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex justify-between items-center"
+                  :class="activeSeriesIndex === sIndex ? 'bg-white/10 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'"
+                  @mouseenter="onSeriesEnter(sIndex)">
+                  <span class="font-body font-medium">{{ ser.name }}</span>
+                  <svg v-if="activeSeriesIndex === sIndex" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div ref="col3" class="col-span-6 pl-8 opacity-0 translate-x-[-10px]" @mouseenter="onContentEnter">
+              <transition name="fade" mode="out-in" :key="activeCategoryIndex">
+                <div v-if="currentSeries && currentSeries.products" :key="currentSeries.name"
+                  class="flex gap-6 h-full items-start">
+
+                  <NuxtLink v-for="(prod, pIndex) in currentSeries.products" :key="pIndex" :to="prod.link"
+                    @click.prevent="handleCategoryClick(prod)" class="group/prod cursor-pointer block">
+                    <div
+                      class="relative w-48 h-48 bg-white/5 rounded-xl overflow-hidden border border-white/5 mb-3 transition-transform duration-500 group-hover/prod:border-white/20">
+                      <NuxtImg :src="prod.image" :alt="prod.name"
+                        class="w-full h-full object-contain p-4 transition-transform duration-500 group-hover/prod:scale-105 pointer-events-none"
+                        sizes="500px" format="webp" loading="lazy" />
+                    </div>
+                    <p
+                      class="text-center font-hero font-bold text-white group-hover/prod:text-blue-400 transition-colors">
+                      {{ prod.name }}
+                    </p>
+                  </NuxtLink>
+                </div>
+              </transition>
+            </div>
+          </template>
+
+          <div v-else-if="currentCategory && currentCategory.image" ref="col2"
+            class="col-span-9 pl-8 opacity-0 translate-x-[-10px] flex items-center" @mouseenter="cancelCategoryTimer">
+
+            <NuxtLink :to="currentCategory.link" @click.prevent="handleCategoryClick(currentCategory)"
+              class="w-full h-full relative rounded-xl overflow-hidden group cursor-pointer border border-white/10 block">
+              <NuxtImg :src="currentCategory.image"
+                class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-700 group-hover:scale-105 opacity-60 pointer-events-none"
+                sizes="500px" format="webp" />
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent pointer-events-none">
+              </div>
+              <div class="absolute inset-0 flex flex-col justify-center px-12 z-10 pointer-events-none">
+                <h3 class="text-4xl font-bold text-white mb-4 font-hero">{{ currentCategory.name }}</h3>
+                <p class="text-gray-300 text-lg max-w-lg leading-relaxed mb-8">{{ currentCategory.desc }}</p>
+                <div
+                  class="flex items-center text-white/80 font-bold tracking-wider uppercase text-sm group-hover:text-white transition-colors">
+                  <span class="group-hover:translate-x-1 transition-transform duration-300">了解更多</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor"
+                    class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                  </svg>
+                </div>
+              </div>
+            </NuxtLink>
+          </div>
 
         </div>
       </div>
     </div>
 
     <Teleport to="body">
-       <div v-if="isMenuMounted" ref="mobileMenuContainer"
+      <div v-if="isMenuMounted" ref="mobileMenuContainer"
         class="fixed inset-0 bg-white/60 backdrop-blur-xl shadow-2xl z-40 md:hidden overflow-hidden invisible">
         <div ref="mainMenuLayer" class="absolute inset-0 pt-28 px-8 w-full h-full overflow-y-auto">
           <div class="flex flex-col space-y-1">
@@ -159,7 +149,7 @@
               <div class="flex justify-between items-center py-5 cursor-pointer group" @click="handleMenuClick(item)">
                 <span
                   class="text-slate-900 text-xl font-bold tracking-tight group-active:text-gray-500 transition-colors">{{
-                  item.name }}</span>
+                    item.name }}</span>
                 <span v-if="item.children" class="text-black"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -169,8 +159,8 @@
           </div>
         </div>
         <div ref="subMenuLayer" class="absolute inset-0 w-full h-full overflow-y-auto bg-white z-50 custom-scrollbar">
-           <div v-if="activeSubMenu" class="pt-24 px-6 pb-20">
-             <div
+          <div v-if="activeSubMenu" class="pt-24 px-6 pb-20">
+            <div
               class="flex items-center space-x-2 mb-6 cursor-pointer text-slate-500 hover:text-black transition-colors inline-flex"
               @click="closeSubMenu">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
@@ -179,7 +169,7 @@
               </svg>
               <span class="text-sm font-bold tracking-wide uppercase">返回</span>
             </div>
-            
+
             <div v-if="activeSubMenu && activeSubMenu.image"
               class="w-full aspect-[16/9] rounded-lg overflow-hidden mb-8 bg-gray-50 shadow-sm">
               <NuxtImg :src="activeSubMenu.image" class="w-full h-full object-cover" sizes="500px" format="webp"
@@ -213,12 +203,12 @@
                 </div>
               </div>
             </div>
-           </div>
+          </div>
         </div>
         <div ref="thirdMenuLayer"
           class="absolute inset-0 w-full h-full overflow-y-auto bg-white z-[60] custom-scrollbar invisible">
-           <div v-if="activeThirdMenu" class="pt-24 px-6 pb-20">
-             <div
+          <div v-if="activeThirdMenu" class="pt-24 px-6 pb-20">
+            <div
               class="flex items-center space-x-2 mb-8 cursor-pointer text-slate-500 hover:text-black transition-colors inline-flex"
               @click="closeThirdMenu">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
@@ -236,10 +226,7 @@
                 <div class="w-full aspect-[4/5] bg-gray-50 rounded-lg overflow-hidden mb-3 relative">
                   <NuxtImg v-if="ser.image" :src="ser.image"
                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                    format="webp"       
-                    sizes="500px" 
-                  />
+                    loading="lazy" format="webp" sizes="500px" />
                   <div v-else class="w-full h-full flex items-center justify-center text-gray-200">
                     No Image
                   </div>
@@ -249,9 +236,9 @@
                 </span>
               </div>
             </div>
-           </div>
+          </div>
         </div>
-       </div>
+      </div>
     </Teleport>
   </div>
 </template>
@@ -368,8 +355,8 @@ const onCategoryEnter = (index) => {
 
   // 【新增】2. 既然已经回到了父级(Category)，子级(Series)的任何待执行切换都应作废
   // 这解决了从右向左移动时的“回溯冲突”
-  cancelSeriesTimer() 
-  
+  cancelSeriesTimer()
+
   if (activeCategoryIndex.value === index) return
 
   categoryTimer.value = setTimeout(async () => {
@@ -397,7 +384,7 @@ const onCategoryEnter = (index) => {
 const onSeriesEnter = (index) => {
   // 1. 清除旧定时器
   cancelSeriesTimer()
-  
+
   // 2. 状态检查
   if (activeSeriesIndex.value === index) return
 
@@ -420,7 +407,7 @@ const runStaggerAnimation = async () => {
   await nextTick();
 
   const newTargets = getValidTargets();
-  
+
   // Only animate if targets actually exist
   if (newTargets.length > 0) {
     gsap.killTweensOf(newTargets);
@@ -444,8 +431,8 @@ const openMenu = async () => {
     const columnTargets = [col1.value, col2.value, col3.value].filter(el => el && el.isConnected)
     gsap.killTweensOf(columnTargets)
     if (megaMenuRef.value) {
-        gsap.killTweensOf(megaMenuRef.value)
-        gsap.to(megaMenuRef.value, { height: 'auto', opacity: 1, duration: 0.6, ease: 'expo.out' })
+      gsap.killTweensOf(megaMenuRef.value)
+      gsap.to(megaMenuRef.value, { height: 'auto', opacity: 1, duration: 0.6, ease: 'expo.out' })
     }
 
     await runStaggerAnimation()
@@ -455,41 +442,41 @@ const openMenu = async () => {
 // 修复: 增加判空保护
 const closeMenu = () => {
   if (isMobileMenuOpen.value) return;
-  
+
   closeTimer.value = setTimeout(() => {
     isClosing.value = true;
-    
+
     const targets = [col1.value, col2.value, col3.value].filter(el => el && el.isConnected);
     if (targets.length > 0) {
-        gsap.to(targets, { opacity: 0, duration: 0.2, overwrite: true });
+      gsap.to(targets, { opacity: 0, duration: 0.2, overwrite: true });
     }
 
     if (megaMenuRef.value) {
-        gsap.to(megaMenuRef.value, {
-          height: 0, 
-          duration: 0.5, 
-          delay: 0.1, 
-          ease: 'expo.inOut', 
-          overwrite: true,
-          onComplete: () => {
-            resetMenuState();
-          }
-        });
+      gsap.to(megaMenuRef.value, {
+        height: 0,
+        duration: 0.5,
+        delay: 0.1,
+        ease: 'expo.inOut',
+        overwrite: true,
+        onComplete: () => {
+          resetMenuState();
+        }
+      });
     } else {
-        resetMenuState();
+      resetMenuState();
     }
   }, 100);
 }
 
 const resetMenuState = () => {
-    isMenuOpen.value = false;
-    isClosing.value = false;
-    activeMenuIndex.value = null;
-    activeCategoryIndex.value = 0;
-    activeSeriesIndex.value = 0;
-    document.body.style.paddingRight = '';
-    document.body.style.overflow = '';
-    scrollbarWidth.value = 0;
+  isMenuOpen.value = false;
+  isClosing.value = false;
+  activeMenuIndex.value = null;
+  activeCategoryIndex.value = 0;
+  activeSeriesIndex.value = 0;
+  document.body.style.paddingRight = '';
+  document.body.style.overflow = '';
+  scrollbarWidth.value = 0;
 }
 
 const scheduleCloseMenu = () => closeMenu()
@@ -504,29 +491,29 @@ const cancelCloseTimer = () => {
 // 修改后的 toggleMobileMenu
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
-  
+
   const container = mobileMenuContainer.value
   const mainLayer = mainMenuLayer.value
   // 获取所有图层引用
   const subLayer = subMenuLayer.value
   const thirdLayer = thirdMenuLayer.value
-  
-  if (!container || !mainLayer) return 
+
+  if (!container || !mainLayer) return
 
   const items = mainLayer.querySelectorAll('.mobile-menu-item')
 
   if (isMobileMenuOpen.value) {
     // --- 开启菜单逻辑 ---
     document.body.style.overflow = 'hidden'
-    
+
     // 【关键修复 1】: 在开启瞬间，强制重置所有状态和图层位置
     // 这就像每次打开电脑都重启一次，确保画面干干净净
     activeSubMenu.value = null
     activeThirdMenu.value = null
-    
+
     // 强制主菜单归位并显示
     gsap.set(mainLayer, { xPercent: 0, autoAlpha: 1 })
-    
+
     // 强制子菜单和三级菜单归位到右侧屏幕外
     if (subLayer) gsap.set(subLayer, { xPercent: 100, autoAlpha: 1 })
     if (thirdLayer) gsap.set(thirdLayer, { xPercent: 100, autoAlpha: 1 })
@@ -535,7 +522,7 @@ const toggleMobileMenu = () => {
     gsap.set(container, { autoAlpha: 1 })
     gsap.fromTo(container, { yPercent: -100 }, { yPercent: 0, duration: 0.8, ease: 'expo.out' })
     if (items.length) {
-       gsap.fromTo(items, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.05, delay: 0.2, ease: 'expo.out' })
+      gsap.fromTo(items, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.05, delay: 0.2, ease: 'expo.out' })
     }
   } else {
     // --- 关闭菜单逻辑 ---
@@ -545,12 +532,12 @@ const toggleMobileMenu = () => {
         // 【关键修复 2】: 动画结束后清理所有数据
         activeSubMenu.value = null;
         activeThirdMenu.value = null; // 原代码漏掉了这个
-        
+
         // 恢复图层位置
         if (subLayer) gsap.set(subLayer, { xPercent: 100 });
         if (thirdLayer) gsap.set(thirdLayer, { xPercent: 100 }); // 原代码漏掉了这个
         if (mainLayer) gsap.set(mainLayer, { xPercent: 0, autoAlpha: 1 })
-        
+
         document.body.style.overflow = ''
       }
     })
@@ -569,17 +556,17 @@ const handleLogoClick = () => {
 const handleMenuClick = async (item) => {
   if (item.children) {
     if (mainMenuLayer.value && subMenuLayer.value) {
-        gsap.killTweensOf([mainMenuLayer.value, subMenuLayer.value])
+      gsap.killTweensOf([mainMenuLayer.value, subMenuLayer.value])
     }
-    
+
     activeSubMenu.value = item
     await nextTick()
-    
+
     if (mainMenuLayer.value) {
-        gsap.to(mainMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
+      gsap.to(mainMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
     }
     if (subMenuLayer.value) {
-        gsap.fromTo(subMenuLayer.value, { xPercent: 100 }, { xPercent: 0, duration: 0.8, ease: 'expo.out' })
+      gsap.fromTo(subMenuLayer.value, { xPercent: 100 }, { xPercent: 0, duration: 0.8, ease: 'expo.out' })
     }
   } else { toggleMobileMenu() }
 }
@@ -593,15 +580,15 @@ const openThirdMenu = async (child) => {
   await nextTick()
 
   if (subMenuLayer.value) {
-     gsap.to(subMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
+    gsap.to(subMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
   }
-  
+
   if (thirdMenuLayer.value) {
-     gsap.set(thirdMenuLayer.value, { autoAlpha: 1 })
-     gsap.fromTo(thirdMenuLayer.value, 
-       { xPercent: 100 }, 
-       { xPercent: 0, duration: 0.8, ease: 'expo.out' }
-     )
+    gsap.set(thirdMenuLayer.value, { autoAlpha: 1 })
+    gsap.fromTo(thirdMenuLayer.value,
+      { xPercent: 100 },
+      { xPercent: 0, duration: 0.8, ease: 'expo.out' }
+    )
   }
 }
 
@@ -611,18 +598,18 @@ const closeThirdMenu = () => {
   if (layers.length) gsap.killTweensOf(layers)
 
   if (subMenuLayer.value) {
-      gsap.to(subMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
+    gsap.to(subMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
   }
 
   if (thirdMenuLayer.value) {
-      gsap.to(thirdMenuLayer.value, { 
-        xPercent: 100, 
-        duration: 0.8, 
-        ease: 'expo.out',
-        onComplete: () => { activeThirdMenu.value = null } 
-      })
+    gsap.to(thirdMenuLayer.value, {
+      xPercent: 100,
+      duration: 0.8,
+      ease: 'expo.out',
+      onComplete: () => { activeThirdMenu.value = null }
+    })
   } else {
-      activeThirdMenu.value = null
+    activeThirdMenu.value = null
   }
 }
 
@@ -632,22 +619,22 @@ const closeSubMenu = () => {
   if (layers.length) gsap.killTweensOf(layers)
 
   if (mainMenuLayer.value) {
-      gsap.to(mainMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
+    gsap.to(mainMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
   }
-  
+
   if (subMenuLayer.value) {
-      gsap.to(subMenuLayer.value, { 
-        xPercent: 100, 
-        duration: 0.8, 
-        ease: 'expo.out', 
-        onComplete: () => { 
-          activeSubMenu.value = null 
-          activeThirdMenu.value = null 
-        } 
-      })
+    gsap.to(subMenuLayer.value, {
+      xPercent: 100,
+      duration: 0.8,
+      ease: 'expo.out',
+      onComplete: () => {
+        activeSubMenu.value = null
+        activeThirdMenu.value = null
+      }
+    })
   } else {
-      activeSubMenu.value = null
-      activeThirdMenu.value = null
+    activeSubMenu.value = null
+    activeThirdMenu.value = null
   }
 }
 
