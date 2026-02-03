@@ -89,7 +89,7 @@
               <div
                 class="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/20 to-transparent pointer-events-none">
               </div>
-              <NuxtImg src="/images/about/6why-radiant-bg.jpg" alt="雷迪恩产品艺术图"
+              <NuxtImg src="/images/about/why-radiant-bg.jpg" alt="雷迪恩产品艺术图"
                 class="w-full h-full object-cover animate-float-slow brightness-125" />
             </div>
 
