@@ -2,15 +2,24 @@
   <div class="w-full bg-black">
 
     <section class="relative w-full h-[100svh] overflow-hidden bg-black group/hero">
-      <video ref="heroVideoRef"
-        class="absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500" autoplay
-        muted loop playsinline :class="{ 'opacity-60': !isHeroPlaying }">
+
+      <video ref="mobileVideoRef"
+        class="block md:hidden absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500"
+        autoplay muted loop playsinline :class="{ 'opacity-60': !isHeroPlaying }">
+        <source src="/video-mobile.mp4" type="video/mp4" />
+      </video>
+
+      <video ref="pcVideoRef"
+        class="hidden md:block absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500"
+        autoplay muted loop playsinline :class="{ 'opacity-60': !isHeroPlaying }">
         <source src="/video-placeholder.mp4" type="video/mp4" />
       </video>
+
       <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80 pointer-events-none">
       </div>
       <div class="absolute inset-0 z-10 w-full h-full">
-        <div class="absolute bottom-24 md:bottom-[10%] left-1/2 -translate-x-1/2 flex flex-col items-center z-20 pb-[env(safe-area-inset-bottom)]">
+        <div
+          class="absolute bottom-24 md:bottom-[10%] left-1/2 -translate-x-1/2 flex flex-col items-center z-20 pb-[env(safe-area-inset-bottom)]">
           <NuxtLink to="products/purchase"
             class="px-10 py-3 border border-white/60 rounded-full text-white hover:bg-white hover:text-black hover:border-white transition-all duration-500 backdrop-blur-md bg-white/5 tracking-widest font-bold text-lg">
             了解更多
@@ -145,19 +154,28 @@
 import { ref } from 'vue'
 
 // === 顶部视频控制 ===
-const heroVideoRef = ref(null)
+const mobileVideoRef = ref(null) // 新增：移动端视频引用
+const pcVideoRef = ref(null)     // 新增：PC端视频引用
 const isHeroPlaying = ref(true)
 
 const toggleHeroVideo = () => {
-  if (heroVideoRef.value) {
-    if (heroVideoRef.value.paused) {
-      heroVideoRef.value.play()
-      isHeroPlaying.value = true
+  // 定义一个辅助函数来切换单个视频
+  const toggleVideo = (videoEl) => {
+    if (!videoEl) return
+    if (videoEl.paused) {
+      videoEl.play()
     } else {
-      heroVideoRef.value.pause()
-      isHeroPlaying.value = false
+      videoEl.pause()
     }
   }
+
+  // 同时尝试切换两个视频的状态
+  // 这样无论当前显示的是哪个，状态都能保持同步
+  toggleVideo(mobileVideoRef.value)
+  toggleVideo(pcVideoRef.value)
+
+  // 更新播放状态标识 (以任意一个存在的视频状态为准，或直接取反)
+  isHeroPlaying.value = !isHeroPlaying.value
 }
 
 // === 数据配置 ===
