@@ -26,7 +26,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
 
         <div
-          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-blue-500/50 hover:shadow-[0_0_35px_rgba(59,130,246,0.3)] transition-all duration-500 h-[320px] md:h-[360px]">
+          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-blue-500/50 hover:shadow-[0_0_35px_rgba(59,130,246,0.3)] transition-all duration-500 h-[320px] md:h-[360px] animate-fade-in-up"
+          style="animation-delay: 0.1s;">
 
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/support.jpg" alt="全时响应背景" class="w-full h-full object-cover object-center
@@ -59,7 +60,8 @@
         </div>
 
         <div
-          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-teal-500/50 hover:shadow-[0_0_35px_rgba(20,184,166,0.3)] transition-all duration-500 h-[320px] md:h-[360px]">
+          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-teal-500/50 hover:shadow-[0_0_35px_rgba(20,184,166,0.3)] transition-all duration-500 h-[320px] md:h-[360px] animate-fade-in-up"
+          style="animation-delay: 0.2s;">
 
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/ota-bg.jpg" alt="OTA升级背景" class="w-full h-full object-cover object-center
@@ -92,7 +94,8 @@
         </div>
 
         <div
-          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.3)] transition-all duration-500 h-[320px] md:h-[360px]">
+          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-purple-500/50 hover:shadow-[0_0_35px_rgba(168,85,247,0.3)] transition-all duration-500 h-[320px] md:h-[360px] animate-fade-in-up"
+          style="animation-delay: 0.3s;">
 
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/4g-bg.jpg" alt="4G网络背景" class="w-full h-full object-cover object-center
@@ -125,7 +128,8 @@
         </div>
 
         <div
-          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-amber-500/50 hover:shadow-[0_0_35px_rgba(245,158,11,0.3)] transition-all duration-500 h-[320px] md:h-[360px]">
+          class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-amber-500/50 hover:shadow-[0_0_35px_rgba(245,158,11,0.3)] transition-all duration-500 h-[320px] md:h-[360px] animate-fade-in-up"
+          style="animation-delay: 0.4s;">
 
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/warranty-bg.jpg" alt="质保服务背景" class="w-full h-full object-cover object-center
@@ -163,4 +167,46 @@
 </template>
 
 <script setup>
+// --- SEO 配置 ---
+useSeoMeta({
+  title: '售后服务 - 只换不修 & 全时响应 | 无忧保障 | Raydiene 雷迪恩',
+  description: '雷迪恩(Raydiene)致力于打造无忧充电体验。提供7*15小时人工客服全时响应、终身免费4G流量及OTA云端升级服务。承诺质保期内非人为质量问题“只换不修”，免费上门换新，全程守护您的每一次充电。',
+  keywords: '雷迪恩售后, 充电桩质保, 只换不修, 充电桩OTA升级, 免费4G流量, 7x15小时客服, 充电桩维修, Raydiene服务',
+  // 社交分享优化
+  ogTitle: '雷迪恩无忧售后：只换不修，全程守护',
+  ogDescription: '7*15h全时响应，终身免费流量，OTA持续进化。我们承诺质保期内“只换不修”。',
+  ogImage: '/images/service/support.jpg', // 使用页面中“全时响应”的背景图作为分享封面
+})
 </script>
+
+<style scoped>
+/* 保持原有动画代码不变，确保质感一致 */
+.animate-pulse-slow {
+  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>

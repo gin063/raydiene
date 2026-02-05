@@ -7,17 +7,17 @@
 
 /* 1. Michroma (英文标题) */
 @font-face {
-  font-family: 'Michroma';
-  src: url('/fonts/Michroma-Regular.woff2') format('woff2');
+  font-family: "Michroma";
+  src: url("/fonts/Michroma-Regular.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
-  font-display: swap; 
+  font-display: swap;
 }
 
 /* 2. Inter (英文正文) */
 @font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter-Regular.woff2') format('woff2');
+  font-family: "Inter";
+  src: url("/fonts/Inter-Regular.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -25,20 +25,20 @@
 
 /* 3. 中文体系：阿里巴巴普惠体 */
 @font-face {
-  font-family: 'AlibabaPuHuiTi';
-  src: url('/fonts/AlibabaPuHuiTi-3-85-Bold.woff2') format('woff2');
+  font-family: "AlibabaPuHuiTi";
+  src: url("/fonts/AlibabaPuHuiTi-3-85-Bold.woff2") format("woff2");
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
-  font-family: 'AlibabaPuHuiTi';
-  src: url('/fonts/AlibabaPuHuiTi-3-65-Medium.woff2') format('woff2');
+  font-family: "AlibabaPuHuiTi";
+  src: url("/fonts/AlibabaPuHuiTi-3-65-Medium.woff2") format("woff2");
   font-weight: 500;
   font-display: swap;
 }
 @font-face {
-  font-family: 'AlibabaPuHuiTi';
-  src: url('/fonts/AlibabaPuHuiTi-3-55-Regular.woff2') format('woff2');
+  font-family: "AlibabaPuHuiTi";
+  src: url("/fonts/AlibabaPuHuiTi-3-55-Regular.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
@@ -51,13 +51,19 @@
   h1 {
     @apply font-hero font-bold;
   }
-  h2, h3, h4, .subtitle {
+  h2,
+  h3,
+  h4,
+  .subtitle {
     @apply font-hero font-medium;
   }
-  button, nav a, .btn {
+  button,
+  nav a,
+  .btn {
     @apply font-body font-medium;
   }
-  strong, b {
+  strong,
+  b {
     @apply font-bold;
   }
 }
@@ -85,15 +91,17 @@
   display: none;
 }
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* 2. 滚动触发动画 (配合 IntersectionObserver) */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
 .animate-on-scroll.is-visible {
   opacity: 1;
@@ -125,7 +133,9 @@
 /* 向上位移淡出 (文字切换) */
 .fade-up-stay-enter-active,
 .fade-up-stay-leave-active {
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 .fade-up-stay-enter-from {
   opacity: 0;
@@ -139,7 +149,9 @@
 /* 缩放淡入 (图片切换) */
 .fade-scale-enter-active,
 .fade-scale-leave-active {
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 .fade-scale-enter-from {
   opacity: 0;
@@ -153,7 +165,9 @@
 /* 右侧滑入 (标题切换) */
 .fade-right-enter-active,
 .fade-right-leave-active {
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 .fade-right-enter-from {
   opacity: 0;

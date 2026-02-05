@@ -1,18 +1,16 @@
 <template>
   <div class="w-full bg-black">
-
     <section class="relative w-full h-[100svh] overflow-hidden bg-black group/hero">
-
       <video ref="mobileVideoRef"
         class="block md:hidden absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500"
         autoplay muted loop playsinline :class="{ 'opacity-60': !isHeroPlaying }">
-        <source src="/video-mobile.mp4" type="video/mp4" />
+        <source :src="useVideoUrl('video-mobile.mp4')" type="video/mp4" />
       </video>
 
       <video ref="pcVideoRef"
         class="hidden md:block absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500"
         autoplay muted loop playsinline :class="{ 'opacity-60': !isHeroPlaying }">
-        <source src="/video-placeholder.mp4" type="video/mp4" />
+        <source :src="useVideoUrl('video-placeholder.mp4')" type="video/mp4" />
       </video>
 
       <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80 pointer-events-none">
@@ -54,7 +52,6 @@
 
     <section id="product-section" class="w-full bg-black text-white pb-16 select-none">
       <div class="container mx-auto px-6 md:px-24 flex flex-col gap-8 max-w-[1600px]">
-
         <div v-for="(row, rowIndex) in productRows" :key="rowIndex"
           class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
           <div v-for="product in row" :key="product.id"
@@ -83,16 +80,13 @@
                 </NuxtLink>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
 
     <section class="w-full bg-black text-white pb-16">
       <div class="container mx-auto px-6 md:px-24 flex flex-col gap-10 items-center max-w-[1600px]">
-
         <div
           class="w-full aspect-[4/5] md:aspect-[3/1] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer relative bg-gray-900 flex flex-col md:flex-row">
           <div
@@ -144,74 +138,73 @@
             </NuxtLink>
           </div>
         </div>
-
       </div>
     </section>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
 // === 顶部视频控制 ===
-const mobileVideoRef = ref(null) // 新增：移动端视频引用
-const pcVideoRef = ref(null)     // 新增：PC端视频引用
-const isHeroPlaying = ref(true)
+const mobileVideoRef = ref(null); // 新增：移动端视频引用
+const pcVideoRef = ref(null); // 新增：PC端视频引用
+const isHeroPlaying = ref(true);
 
 const toggleHeroVideo = () => {
   // 定义一个辅助函数来切换单个视频
   const toggleVideo = (videoEl) => {
-    if (!videoEl) return
+    if (!videoEl) return;
     if (videoEl.paused) {
-      videoEl.play()
+      videoEl.play();
     } else {
-      videoEl.pause()
+      videoEl.pause();
     }
-  }
+  };
 
   // 同时尝试切换两个视频的状态
   // 这样无论当前显示的是哪个，状态都能保持同步
-  toggleVideo(mobileVideoRef.value)
-  toggleVideo(pcVideoRef.value)
+  toggleVideo(mobileVideoRef.value);
+  toggleVideo(pcVideoRef.value);
 
   // 更新播放状态标识 (以任意一个存在的视频状态为准，或直接取反)
-  isHeroPlaying.value = !isHeroPlaying.value
-}
+  isHeroPlaying.value = !isHeroPlaying.value;
+};
 
 // === 数据配置 ===
 // 移除了 video 字段，因为不再需要自动播放交互
 const productRows = [
   [
     {
-      id: 'xingyao',
-      name: '星耀系列',
-      slogan: '触控大屏，时代之巅',
-      image: '/images/products/xingyao-cover2.png',
-      link: "/products/xingyao"
+      id: "xingyao",
+      name: "星耀系列",
+      slogan: "触控大屏，时代之巅",
+      image: "/images/products/xingyao-cover2.png",
+      link: "/products/xingyao",
     },
     {
-      id: 'xingchen',
-      name: '星辰系列',
-      slogan: '智能科技，美学之光',
-      image: '/images/products/xingchen-cover2.png',
-      link: "/products/xingchen"
-    }
+      id: "xingchen",
+      name: "星辰系列",
+      slogan: "智能科技，美学之光",
+      image: "/images/products/xingchen-cover2.png",
+      link: "/products/xingchen",
+    },
   ],
   [
     {
-      id: 'panshi',
-      name: '磐石系列',
-      slogan: '简约时尚，品质之选',
-      image: '/images/products/panshi-cover2.png',
-      link: "/products/panshi?model=pro"
+      id: "panshi",
+      name: "磐石系列",
+      slogan: "简约时尚，品质之选",
+      image: "/images/products/panshi-cover2.png",
+      link: "/products/panshi?model=pro",
     },
     {
-      id: 'jianshi',
-      name: '坚石系列',
-      slogan: '实用至上，大道至简',
-      image: '/images/products/jianshi-cover2.png',
-      link: "/products/jianshi"
-    }
-  ]
-]
+      id: "jianshi",
+      name: "坚石系列",
+      slogan: "实用至上，大道至简",
+      image: "/images/products/jianshi-cover2.png",
+      link: "/products/jianshi",
+    },
+  ],
+];
 </script>

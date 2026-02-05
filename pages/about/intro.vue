@@ -1,7 +1,6 @@
 <template>
   <div
     class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-blue-500 selection:text-white overflow-x-hidden">
-
     <div class="fixed inset-0 z-0 pointer-events-none">
       <div
         class="absolute top-[-10%] left-[20%] w-[50vw] h-[50vw] bg-purple-900/20 rounded-full blur-[120px] animate-pulse-slow">
@@ -13,18 +12,17 @@
     </div>
 
     <div class="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-0">
-
       <section class="max-w-4xl mx-auto mb-16 md:mb-24 text-center animate-fade-in-up">
         <span
           class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-xs font-bold tracking-widest text-gray-400 mb-8 uppercase">
           Our Story
         </span>
         <h1 class="text-4xl md:text-6xl font-bold font-hero tracking-tight mb-12 leading-tight">
-          一群「非典型创业者」的<br><br>
+          一群「非典型创业者」的<br /><br />
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-purple-200">科创热望</span>
         </h1>
         <p class="text-lg md:text-xl text-gray-400 leading-relaxed font-light text-justify md:text-center">
-          2023年，在上海的科创浪潮里，<br>一群不再年轻但心怀热望的「非典型创业者」，因一个共同的念头聚在了一起。
+          2023年，在上海的科创浪潮里，<br />一群不再年轻但心怀热望的「非典型创业者」，因一个共同的念头聚在了一起。
         </p>
       </section>
 
@@ -34,13 +32,13 @@
             <div class="space-y-4">
               <p class="text-gray-300 text-lg leading-relaxed">
                 在他们眼里，充电桩不该只是 “呆笨” 的功能性设备 ——
-                <span class="text-white font-bold block mt-2">它应该是能融入生活的智能消费电子，<br>是兼具安全与美感的出行伙伴。</span>
+                <span class="text-white font-bold block mt-2">它应该是能融入生活的智能消费电子，<br />是兼具安全与美感的出行伙伴。</span>
               </p>
             </div>
 
             <div class="pl-6 border-l-2 border-blue-500/50">
               <p class="text-xl md:text-2xl font-bold italic text-white/90 font-hero leading-relaxed">
-                “为什么充电桩<br>不能更好看、更好用？”
+                “为什么充电桩<br />不能更好看、更好用？”
               </p>
             </div>
             <p class="text-gray-400 text-base">
@@ -67,7 +65,9 @@
                 <div
                   class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10 mix-blend-overlay">
                 </div>
-                <div class="text-6xl text-white/20 font-black font-hero drop-shadow-lg select-none">WHY?</div>
+                <div class="text-6xl text-white/20 font-black font-hero drop-shadow-lg select-none">
+                  WHY?
+                </div>
                 <div class="space-y-2 drop-shadow-md">
                   <div class="h-1 w-12 bg-blue-500 rounded-full"></div>
                   <h3 class="text-xl font-bold text-white">打破工业刻板印象</h3>
@@ -82,9 +82,7 @@
       <section class="w-full mx-auto mb-16 md:mb-24 animate-on-scroll relative z-10">
         <div
           class="relative bg-gradient-to-b from-white/5 to-[#0a0a0a] border-t border-x border-white/10 rounded-3xl text-center backdrop-blur-sm overflow-hidden">
-
           <div class="relative w-full overflow-hidden min-h-[80vh] flex items-center justify-center bg-[#050505] group">
-
             <div class="absolute inset-0 z-0">
               <div
                 class="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/20 to-transparent pointer-events-none">
@@ -94,18 +92,12 @@
             </div>
 
             <div class="relative z-20 container mx-auto px-6 text-center">
-
               <h2 class="text-4xl -translate-y-32 md:text-7xl font-bold mb-12 font-hero tracking-tight">
                 <span class="drop-shadow-2xl text-white">为什么叫</span>
                 <span class="relative inline-block mx-2 align-bottom px-2">
                   <span class="text-cyan-300/80 font-black relative z-0">雷迪恩</span>
-                  <span class="absolute inset-0 z-10 font-black
-                    bg-gradient-to-r from-cyan-300/0 via-white to-cyan-300/0 
-                    bg-[length:50%_100%] bg-no-repeat animate-shimmer-slide 
-                    bg-clip-text text-transparent 
-                    brightness-150 contrast-125
-                    drop-shadow-[0_4px_10px_rgba(0,0,0,1)]
-                    drop-shadow-[0_0_20px_rgba(34,211,238,0.6)]">
+                  <span
+                    class="absolute inset-0 z-10 font-black bg-gradient-to-r from-cyan-300/0 via-white to-cyan-300/0 bg-[length:50%_100%] bg-no-repeat animate-shimmer-slide bg-clip-text text-transparent brightness-150 contrast-125 drop-shadow-[0_4px_10px_rgba(0,0,0,1)] drop-shadow-[0_0_20px_rgba(34,211,238,0.6)]">
                     雷迪恩
                   </span>
                 </span>
@@ -116,25 +108,24 @@
                 class="max-w-3xl mx-auto translate-y-40 backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 md:py-4 md:px-16 shadow-2xl transform transition-all hover:scale-[1.01] duration-500">
                 <div class="space-y-8 text-lg md:text-xl text-gray-300 leading-relaxed font-light">
                   <p class="animate-fade-in-up" style="animation-delay: 0.1s">
-                    因为 <strong class="text-white font-bold text-2xl mx-1">雷迪恩</strong>
-                    <br>同时也是宝石切割界的顶级工艺
+                    因为
+                    <strong class="text-white font-bold text-2xl mx-1">雷迪恩</strong>
+                    <br />同时也是宝石切割界的顶级工艺
                   </p>
 
                   <div class="w-16 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent mx-auto"></div>
                   <p class="animate-fade-in-up" style="animation-delay: 0.3s">
                     <span class="block mb-2 text-white">以精准切面，折射极致璀璨</span>
                     <span class="text-gray-400 text-base md:text-lg">
-                      正如我们想让充电桩，跳出工业感的刻板<br>
+                      正如我们想让充电桩，跳出工业感的刻板<br />
                       <span
                         class="text-cyan-300 font-medium drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]">绽放出设计的光芒</span>
                     </span>
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
       </section>
 
@@ -146,7 +137,7 @@
               我们的底色
             </h3>
             <p class="text-gray-400 leading-relaxed">
-              这份「把 “工具” 做成 “作品”」的执念，成了雷迪恩的底色<br><span class="text-gray-200">以顶配工艺与原料打磨每一台产品，以赤诚真心服务每一位信任我们的用户。</span>
+              这份「把 “工具” 做成 “作品”」的执念，成了雷迪恩的底色<br /><span class="text-gray-200">以顶配工艺与原料打磨每一台产品，以赤诚真心服务每一位信任我们的用户。</span>
             </p>
           </div>
           <div class="text-left space-y-4">
@@ -155,41 +146,55 @@
               未来的愿景
             </h3>
             <p class="text-gray-400 leading-relaxed">
-              我们想走得更远：成为全球第一的家用充电桩品牌<br><span class="text-gray-200">让安全、智能、充满设计感的产品，为每一段绿色出行，充上满格的能量与愉悦。</span>
+              我们想走得更远：成为全球第一的家用充电桩品牌<br /><span class="text-gray-200">让安全、智能、充满设计感的产品，为每一段绿色出行，充上满格的能量与愉悦。</span>
             </p>
           </div>
         </div>
       </section>
-
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted } from "vue";
+
+// --- SEO 配置 ---
+useSeoMeta({
+  title: "品牌故事 - 雷迪恩(Raydiene)起源与理念 | Raydiene",
+  description:
+    "了解雷迪恩(Raydiene)的诞生故事。一群在上海科创浪潮中的“非典型创业者”，致力于打破工业刻板印象，打造兼具安全与美感的智能家用充电桩。",
+  keywords:
+    "雷迪恩品牌故事, Raydiene起源, 充电桩设计理念, 智能充电设备, 充电桩美学, 上海科创品牌",
+  // 社交分享优化
+  ogTitle: "雷迪恩品牌故事：一群“非典型创业者”的科创热望",
+  ogDescription: "为什么充电桩不能更好看、更好用？这就是雷迪恩诞生的起点。",
+  ogImage: "/images/about/why-radiant-bg.jpg", // 复用页面中那张核心的“宝石切割”背景图
+});
 
 onMounted(() => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible')
-      }
-    })
-  }, { threshold: 0.15 })
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
+      });
+    },
+    { threshold: 0.15 },
+  );
 
-  document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-    observer.observe(el)
-  })
-})
+  document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+    observer.observe(el);
+  });
+});
 </script>
 
 <style scoped>
-/* 保持页面特有样式 */
+/* 保持样式不变 */
 .bg-conic-gradient {
   background: conic-gradient(from 0deg at 50% 50%, rgba(15, 23, 42, 0), rgba(56, 189, 248, 0.1), rgba(168, 85, 247, 0.1), rgba(15, 23, 42, 0));
 }
 
-/* 页面特有动画：缓慢脉冲 */
 @keyframes pulse-slow {
 
   0%,
@@ -208,7 +213,6 @@ onMounted(() => {
   animation: pulse-slow 8s ease-in-out infinite;
 }
 
-/* 页面特有动画：缓慢旋转 */
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);
@@ -223,7 +227,6 @@ onMounted(() => {
   animation: spin-slow 20s linear infinite;
 }
 
-/* 页面特有动画：变形气泡 */
 @keyframes blob {
   0% {
     transform: translate(0px, 0px) scale(1);
@@ -246,7 +249,33 @@ onMounted(() => {
   animation: blob 7s infinite;
 }
 
-/* 页面特有动画：文字扫光 */
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes shimmer-slide {
   0% {
     background-position: -100% 0;
@@ -261,7 +290,6 @@ onMounted(() => {
   animation: shimmer-slide 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-/* 页面特有动画：图片浮动 */
 @keyframes float-slow {
 
   0%,

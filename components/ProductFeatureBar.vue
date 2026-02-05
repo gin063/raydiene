@@ -12,6 +12,6 @@
 
 <script setup>
 defineProps({
-    features: { type: Array, required: true }
-})
+    features: { type: Array, required: true },
+});
 </script>

@@ -123,10 +123,32 @@
 </template>
 
 <script setup>
-useHead({
-    title: '隐私政策 - 雷迪恩 Raydiene',
-    meta: [
-        { name: 'robots', content: 'noindex, nofollow' } // 隐私政策页面通常不需要被SEO重点收录
-    ]
+// --- SEO 配置 (替换原有的 useHead) ---
+useSeoMeta({
+    title: '隐私政策 - 个人信息保护声明 | Raydiene 雷迪恩',
+    description: '雷迪恩(Raydiene)高度重视您的隐私安全。本政策详细说明了我们在充电桩销售、安装、App联网及售后服务过程中如何收集、使用及保护您的个人信息。我们承诺数据加密存储，全方位保障您的用车数据安全。',
+    keywords: '雷迪恩隐私政策, 个人信息保护, 充电桩数据安全, Raydiene用户协议, 隐私声明, 车辆数据安全',
+    // 社交分享优化
+    ogTitle: '雷迪恩隐私政策：我们如何保护您的信息',
+    ogDescription: '点击查看雷迪恩关于个人信息保护的详细承诺与措施。',
+    ogImage: '/images/og-share.png',
+    // 注意：我去掉了原有的 noindex，以便提升品牌透明度。
+    // 如果您确实不希望此页面被搜索引擎搜到，请取消下面这行的注释：
+    // robots: 'noindex, nofollow',
 })
 </script>
+
+<style scoped>
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>

@@ -187,6 +187,17 @@
 <script setup>
 import { onMounted } from 'vue'
 
+// --- SEO 配置 ---
+useSeoMeta({
+  title: '雷迪恩精神内核 - 企业愿景与使命价值观 | Raydiene',
+  description: '探索雷迪恩(Raydiene)的品牌精神。我们秉持“用户第一、正道成功”的价值观，致力于成为全球第一的家用充电桩品牌。了解我们的使命：让充电更安全、更便捷，以及我们以科技兑现低碳承诺的社会责任。',
+  keywords: '雷迪恩文化, Raydiene愿景, 充电桩企业使命, 绿色出行, 企业社会责任, 碳中和, 家用充电桩品牌',
+  // 社交分享优化
+  ogTitle: '雷迪恩的精神内核：信仰与准则',
+  ogDescription: '成为全球第一的家用充电桩品牌，让每一次充电都成为减碳实践。',
+  ogImage: '/images/about/responsibility-bg.jpg', // 直接复用您页面里的这张背景图作为分享封面
+})
+
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -203,7 +214,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* 呼吸动画 (页面特有，保留) */
+/* 呼吸动画 */
 @keyframes pulse-slow {
 
   0%,
@@ -222,7 +233,33 @@ onMounted(() => {
   animation: pulse-slow 6s ease-in-out infinite;
 }
 
-/* 文字微发光效果 (页面特有，保留) */
+/* 进场动画 */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 滚动触发 */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 文字微发光效果 */
 .glow-text {
   text-shadow: 0 0 20px rgba(45, 212, 191, 0.5);
 }

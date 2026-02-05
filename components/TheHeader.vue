@@ -3,13 +3,11 @@
     <header class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 shadow-2xl" :class="[
       isMobileMenuOpen
         ? 'bg-white/60 backdrop-blur-xl'
-        : 'bg-black/60 backdrop-blur-xl'
+        : 'bg-black/60 backdrop-blur-xl',
     ]" :style="{ paddingRight: scrollbarWidth + 'px' }" @mouseleave="scheduleCloseMenu" @mouseenter="cancelCloseTimer">
-
       <div class="container mx-auto px-6 h-20 flex items-center justify-between relative">
-
         <div class="flex-shrink-0 cursor-pointer z-50 transition-[filter] duration-300"
-          :class="{ 'invert': isMobileMenuOpen }" @click="handleLogoClick">
+          :class="{ invert: isMobileMenuOpen }" @click="handleLogoClick">
           <NuxtLink to="/">
             <img src="/images/logo.svg" alt="Raydiene Logo" class="h-12 md:h-16 w-auto object-contain" />
           </NuxtLink>
@@ -20,13 +18,12 @@
           <div v-for="(item, index) in menuItems" :key="index"
             class="h-full flex items-center px-5 relative cursor-pointer group" @mouseenter="onMenuEnter(index)"
             @mouseleave="onMenuLeave">
-
             <span
               class="text-base font-bold tracking-wide transition-all duration-500 ease-in-out origin-center font-hero"
               :class="[
                 activeMenuIndex === index && !isClosing
                   ? 'text-white scale-110'
-                  : 'text-gray-300 group-hover:text-white group-hover:scale-110'
+                  : 'text-gray-300 group-hover:text-white group-hover:scale-110',
               ]">
               {{ item.name }}
             </span>
@@ -36,30 +33,37 @@
         <button
           class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50 group"
           @click="toggleMobileMenu">
-          <span class="block w-6 h-0.5 transition-all duration-300 ease-out origin-center shadow-sm"
-            :class="[isMobileMenuOpen ? 'bg-black rotate-45 translate-y-2' : 'bg-white']"></span>
+          <span class="block w-6 h-0.5 transition-all duration-300 ease-out origin-center shadow-sm" :class="[
+            isMobileMenuOpen
+              ? 'bg-black rotate-45 translate-y-2'
+              : 'bg-white',
+          ]"></span>
           <span class="block w-6 h-0.5 transition-all duration-300 ease-out shadow-sm"
             :class="[isMobileMenuOpen ? 'bg-black opacity-0' : 'bg-white']"></span>
-          <span class="block w-6 h-0.5 transition-all duration-300 ease-out origin-center shadow-sm"
-            :class="[isMobileMenuOpen ? 'bg-black -rotate-45 -translate-y-2' : 'bg-white']"></span>
+          <span class="block w-6 h-0.5 transition-all duration-300 ease-out origin-center shadow-sm" :class="[
+            isMobileMenuOpen
+              ? 'bg-black -rotate-45 -translate-y-2'
+              : 'bg-white',
+          ]"></span>
         </button>
       </div>
     </header>
 
     <div ref="megaMenuRef"
       class="fixed top-20 left-0 w-full bg-black/60 backdrop-blur-xl shadow-2xl overflow-hidden origin-top z-40 custom-scrollbar"
-      style="height: 0; opacity: 0; max-height: calc(100vh - 80px);" @mouseenter="cancelCloseTimer"
+      style="height: 0; opacity: 0; max-height: calc(100vh - 80px)" @mouseenter="cancelCloseTimer"
       @mouseleave="scheduleCloseMenu" @wheel.stop>
       <div class="container mx-auto px-6 py-10 h-full max-h-[50vh] overflow-y-auto custom-scrollbar"
         v-if="activeItem && activeItem.children" :key="activeMenuIndex">
-
         <div class="grid grid-cols-12 gap-8 h-full min-h-[300px]">
           <div ref="col1" class="col-span-3 border-r border-white/10 pr-4 opacity-0 translate-x-[-10px]">
             <div class="space-y-1">
               <div v-for="(cat, cIndex) in activeItem.children" :key="cIndex"
                 class="px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex justify-between items-center group/cat"
-                :class="activeCategoryIndex === cIndex ? 'bg-white/10 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'"
-                @mouseenter="onCategoryEnter(cIndex)">
+                :class="activeCategoryIndex === cIndex
+                  ? 'bg-white/10 text-white'
+                  : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                  " @mouseenter="onCategoryEnter(cIndex)">
                 <span class="font-hero font-bold text-lg">{{ cat.name }}</span>
                 <svg v-if="activeCategoryIndex === cIndex" xmlns="http://www.w3.org/2000/svg" fill="none"
                   viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white">
@@ -75,8 +79,10 @@
               <div class="space-y-1">
                 <div v-for="(ser, sIndex) in currentCategory.series" :key="sIndex"
                   class="px-4 py-3 rounded-lg cursor-pointer transition-all duration-300 flex justify-between items-center"
-                  :class="activeSeriesIndex === sIndex ? 'bg-white/10 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white'"
-                  @mouseenter="onSeriesEnter(sIndex)">
+                  :class="activeSeriesIndex === sIndex
+                    ? 'bg-white/10 text-white'
+                    : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                    " @mouseenter="onSeriesEnter(sIndex)">
                   <span class="font-body font-medium">{{ ser.name }}</span>
                   <svg v-if="activeSeriesIndex === sIndex" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-white">
@@ -90,7 +96,6 @@
               <transition name="fade" mode="out-in" :key="activeCategoryIndex">
                 <div v-if="currentSeries && currentSeries.products" :key="currentSeries.name"
                   class="flex gap-6 h-full items-start">
-
                   <NuxtLink v-for="(prod, pIndex) in currentSeries.products" :key="pIndex" :to="prod.link"
                     @click.prevent="handleCategoryClick(prod)" class="group/prod cursor-pointer block">
                     <div
@@ -111,7 +116,6 @@
 
           <div v-else-if="currentCategory && currentCategory.image" ref="col2"
             class="col-span-9 pl-8 opacity-0 translate-x-[-10px] flex items-center" @mouseenter="cancelCategoryTimer">
-
             <NuxtLink :to="currentCategory.link" @click.prevent="handleCategoryClick(currentCategory)"
               class="w-full h-full relative rounded-xl overflow-hidden group cursor-pointer border border-white/10 block">
               <NuxtImg :src="currentCategory.image"
@@ -121,8 +125,12 @@
                 class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent pointer-events-none">
               </div>
               <div class="absolute inset-0 flex flex-col justify-center px-12 z-10 pointer-events-none">
-                <h3 class="text-4xl font-bold text-white mb-4 font-hero">{{ currentCategory.name }}</h3>
-                <p class="text-gray-300 text-lg max-w-lg leading-relaxed mb-8">{{ currentCategory.desc }}</p>
+                <h3 class="text-4xl font-bold text-white mb-4 font-hero">
+                  {{ currentCategory.name }}
+                </h3>
+                <p class="text-gray-300 text-lg max-w-lg leading-relaxed mb-8">
+                  {{ currentCategory.desc }}
+                </p>
                 <div
                   class="flex items-center text-white/80 font-bold tracking-wider uppercase text-sm group-hover:text-white transition-colors">
                   <span class="group-hover:translate-x-1 transition-transform duration-300">了解更多</span>
@@ -135,7 +143,6 @@
               </div>
             </NuxtLink>
           </div>
-
         </div>
       </div>
     </div>
@@ -176,16 +183,17 @@
                 loading="lazy" />
             </div>
 
-            <h2 class="text-3xl font-bold text-black mb-8 font-hero">{{ activeSubMenu.name }}</h2>
+            <h2 class="text-3xl font-bold text-black mb-8 font-hero">
+              {{ activeSubMenu.name }}
+            </h2>
 
             <div class="flex flex-col space-y-2">
               <div class="flex flex-col space-y-2">
                 <div v-for="(child, ci) in activeSubMenu.children" :key="ci">
                   <div v-if="child.series"
                     class="py-5 border-b border-gray-100 cursor-pointer flex justify-between items-center group active:bg-gray-50 transition-colors"
-                    @click="openThirdMenu(child)"> <span
-                      class="text-lg font-bold text-gray-900 group-hover:text-black">{{
-                        child.name }}</span>
+                    @click="openThirdMenu(child)">
+                    <span class="text-lg font-bold text-gray-900 group-hover:text-black">{{ child.name }}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                       stroke="currentColor" class="w-5 h-5 text-gray-400 group-hover:text-black">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -218,7 +226,9 @@
               <span class="text-sm font-bold tracking-wide uppercase">返回 {{ activeSubMenu?.name }}</span>
             </div>
 
-            <h2 class="text-3xl font-bold text-black mb-8 font-hero">{{ activeThirdMenu.name }}</h2>
+            <h2 class="text-3xl font-bold text-black mb-8 font-hero">
+              {{ activeThirdMenu.name }}
+            </h2>
 
             <div class="grid grid-cols-2 gap-x-4 gap-y-8">
               <div v-for="(ser, si) in activeThirdMenu.series" :key="si" class="group cursor-pointer flex flex-col"
@@ -244,160 +254,179 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
-import gsap from 'gsap'
+import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
+import gsap from "gsap";
 
 // 菜单数据
-const { menuItems } = useSiteData()
+const { menuItems } = useSiteData();
 
 // 状态
-const activeMenuIndex = ref(null)
-const activeCategoryIndex = ref(0)
-const activeSeriesIndex = ref(0)
-const isMenuOpen = ref(false)
-const megaMenuRef = ref(null)
-const closeTimer = ref(null)
-const isClosing = ref(false)
-const switchTimer = ref(null)
-const scrollbarWidth = ref(0)
-const categoryTimer = ref(null)
-const seriesTimer = ref(null)
+const activeMenuIndex = ref(null);
+const activeCategoryIndex = ref(0);
+const activeSeriesIndex = ref(0);
+const isMenuOpen = ref(false);
+const megaMenuRef = ref(null);
+const closeTimer = ref(null);
+const isClosing = ref(false);
+const switchTimer = ref(null);
+const scrollbarWidth = ref(0);
+const categoryTimer = ref(null);
+const seriesTimer = ref(null);
 
-const col1 = ref(null)
-const col2 = ref(null)
-const col3 = ref(null)
+const col1 = ref(null);
+const col2 = ref(null);
+const col3 = ref(null);
 
-const isMobileMenuOpen = ref(false)
-const activeSubMenu = ref(null)
-const activeThirdMenu = ref(null) // 当前激活的三级菜单数据
-const thirdMenuLayer = ref(null)  // DOM 引用
-const isMenuMounted = ref(false)
-const mobileMenuContainer = ref(null)
-const mainMenuLayer = ref(null)
-const subMenuLayer = ref(null)
-const dropdownRefs = ref([])
+const isMobileMenuOpen = ref(false);
+const activeSubMenu = ref(null);
+const activeThirdMenu = ref(null); // 当前激活的三级菜单数据
+const thirdMenuLayer = ref(null); // DOM 引用
+const isMenuMounted = ref(false);
+const mobileMenuContainer = ref(null);
+const mainMenuLayer = ref(null);
+const subMenuLayer = ref(null);
+const dropdownRefs = ref([]);
 
-const activeItem = computed(() => activeMenuIndex.value !== null ? menuItems[activeMenuIndex.value] : null)
-const currentCategory = computed(() => activeItem.value?.children?.[activeCategoryIndex.value])
-const currentSeries = computed(() => currentCategory.value?.series?.[activeSeriesIndex.value])
+const activeItem = computed(() =>
+  activeMenuIndex.value !== null ? menuItems[activeMenuIndex.value] : null,
+);
+const currentCategory = computed(
+  () => activeItem.value?.children?.[activeCategoryIndex.value],
+);
+const currentSeries = computed(
+  () => currentCategory.value?.series?.[activeSeriesIndex.value],
+);
 
 const getScrollbarWidth = () => {
-  if (typeof window === 'undefined') return 0
-  return window.innerWidth - document.documentElement.clientWidth
-}
+  if (typeof window === "undefined") return 0;
+  return window.innerWidth - document.documentElement.clientWidth;
+};
 
 const cancelSwitchTimer = () => {
   if (switchTimer.value) {
-    clearTimeout(switchTimer.value)
-    switchTimer.value = null
+    clearTimeout(switchTimer.value);
+    switchTimer.value = null;
   }
-}
+};
 
 const cancelCategoryTimer = () => {
   if (categoryTimer.value) {
-    clearTimeout(categoryTimer.value)
-    categoryTimer.value = null
+    clearTimeout(categoryTimer.value);
+    categoryTimer.value = null;
   }
-}
+};
 
 const cancelSeriesTimer = () => {
   if (seriesTimer.value) {
-    clearTimeout(seriesTimer.value)
-    seriesTimer.value = null
+    clearTimeout(seriesTimer.value);
+    seriesTimer.value = null;
   }
-}
+};
 
 const onMenuEnter = (index) => {
-  cancelCloseTimer()
-  cancelSwitchTimer()
-  cancelCategoryTimer()
-  cancelSeriesTimer()
+  cancelCloseTimer();
+  cancelSwitchTimer();
+  cancelCategoryTimer();
+  cancelSeriesTimer();
 
-  if (isMobileMenuOpen.value) return
-  if (activeMenuIndex.value === index) return
+  if (isMobileMenuOpen.value) return;
+  if (activeMenuIndex.value === index) return;
 
   const performSwitch = () => {
-    activeMenuIndex.value = index
-    activeCategoryIndex.value = 0
-    activeSeriesIndex.value = 0
+    activeMenuIndex.value = index;
+    activeCategoryIndex.value = 0;
+    activeSeriesIndex.value = 0;
 
-    if (menuItems[index].type === 'mega') {
-      openMenu()
-      runStaggerAnimation()
+    if (menuItems[index].type === "mega") {
+      openMenu();
+      runStaggerAnimation();
     } else {
-      closeMenu()
+      closeMenu();
     }
-  }
+  };
 
   if (!isMenuOpen.value) {
-    switchTimer.value = setTimeout(performSwitch, 200)
+    switchTimer.value = setTimeout(performSwitch, 200);
   } else {
-    switchTimer.value = setTimeout(performSwitch, 200)
+    switchTimer.value = setTimeout(performSwitch, 200);
   }
-}
+};
 
 // 【新增】当鼠标进入右侧内容区（安全区）时，取消所有待执行的菜单切换
 const onContentEnter = () => {
-  cancelCategoryTimer() // 取消一级菜单的切换任务
-  cancelSeriesTimer()   // 取消二级菜单的切换任务
-}
+  cancelCategoryTimer(); // 取消一级菜单的切换任务
+  cancelSeriesTimer(); // 取消二级菜单的切换任务
+};
 
 const onMenuLeave = () => {
-  cancelSwitchTimer()
-  cancelCategoryTimer()
-  cancelSeriesTimer()
-}
+  cancelSwitchTimer();
+  cancelCategoryTimer();
+  cancelSeriesTimer();
+};
 
 // 修改后的 onCategoryEnter 函数
 const onCategoryEnter = (index) => {
   // 1. 清除自己的旧定时器（原逻辑）
-  cancelCategoryTimer()
+  cancelCategoryTimer();
 
   // 【新增】2. 既然已经回到了父级(Category)，子级(Series)的任何待执行切换都应作废
   // 这解决了从右向左移动时的“回溯冲突”
-  cancelSeriesTimer()
+  cancelSeriesTimer();
 
-  if (activeCategoryIndex.value === index) return
+  if (activeCategoryIndex.value === index) return;
 
   categoryTimer.value = setTimeout(async () => {
-    const targetsToHide = [col2.value, col3.value].filter(el => el && el.isConnected)
-    if (targetsToHide.length > 0) gsap.set(targetsToHide, { opacity: 0 })
+    const targetsToHide = [col2.value, col3.value].filter(
+      (el) => el && el.isConnected,
+    );
+    if (targetsToHide.length > 0) gsap.set(targetsToHide, { opacity: 0 });
 
-    activeCategoryIndex.value = index
-    activeSeriesIndex.value = 0
+    activeCategoryIndex.value = index;
+    activeSeriesIndex.value = 0;
 
-    await nextTick()
+    await nextTick();
 
-    const targetsToShow = [col2.value, col3.value].filter(el => el && el.isConnected)
+    const targetsToShow = [col2.value, col3.value].filter(
+      (el) => el && el.isConnected,
+    );
 
     if (targetsToShow.length > 0) {
-      gsap.killTweensOf(targetsToShow)
-      gsap.fromTo(targetsToShow,
+      gsap.killTweensOf(targetsToShow);
+      gsap.fromTo(
+        targetsToShow,
         { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', stagger: 0.3, overwrite: 'auto' }
-      )
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.3,
+          overwrite: "auto",
+        },
+      );
     }
-  }, 200)
-}
+  }, 200);
+};
 
 // 修改后的 onSeriesEnter
 const onSeriesEnter = (index) => {
   // 1. 清除旧定时器
-  cancelSeriesTimer()
+  cancelSeriesTimer();
 
   // 2. 状态检查
-  if (activeSeriesIndex.value === index) return
+  if (activeSeriesIndex.value === index) return;
 
   // 3. 设置 200ms 延迟
   seriesTimer.value = setTimeout(() => {
-    activeSeriesIndex.value = index
-  }, 200)
-}
+    activeSeriesIndex.value = index;
+  }, 200);
+};
 
 // 修复: 增加判空保护
 const runStaggerAnimation = async () => {
   // Helper to safely get existing DOM elements
-  const getValidTargets = () => [col1.value, col2.value, col3.value].filter(el => el && el.isConnected);
+  const getValidTargets = () =>
+    [col1.value, col2.value, col3.value].filter((el) => el && el.isConnected);
 
   const oldTargets = getValidTargets();
   if (oldTargets.length > 0) {
@@ -411,33 +440,48 @@ const runStaggerAnimation = async () => {
   // Only animate if targets actually exist
   if (newTargets.length > 0) {
     gsap.killTweensOf(newTargets);
-    gsap.fromTo(newTargets,
+    gsap.fromTo(
+      newTargets,
       { opacity: 0, x: -30 },
-      { opacity: 1, x: 0, duration: 0.8, stagger: 0.3, ease: 'power3.out', overwrite: 'auto' }
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        stagger: 0.3,
+        ease: "power3.out",
+        overwrite: "auto",
+      },
     );
   }
-}
+};
 
 const openMenu = async () => {
   if (!isMenuOpen.value || isClosing.value) {
-    const width = getScrollbarWidth()
-    scrollbarWidth.value = width
-    document.body.style.paddingRight = `${width}px`
-    document.body.style.overflow = 'hidden'
+    const width = getScrollbarWidth();
+    scrollbarWidth.value = width;
+    document.body.style.paddingRight = `${width}px`;
+    document.body.style.overflow = "hidden";
 
-    isMenuOpen.value = true
-    isClosing.value = false
+    isMenuOpen.value = true;
+    isClosing.value = false;
 
-    const columnTargets = [col1.value, col2.value, col3.value].filter(el => el && el.isConnected)
-    gsap.killTweensOf(columnTargets)
+    const columnTargets = [col1.value, col2.value, col3.value].filter(
+      (el) => el && el.isConnected,
+    );
+    gsap.killTweensOf(columnTargets);
     if (megaMenuRef.value) {
-      gsap.killTweensOf(megaMenuRef.value)
-      gsap.to(megaMenuRef.value, { height: 'auto', opacity: 1, duration: 0.6, ease: 'expo.out' })
+      gsap.killTweensOf(megaMenuRef.value);
+      gsap.to(megaMenuRef.value, {
+        height: "auto",
+        opacity: 1,
+        duration: 0.6,
+        ease: "expo.out",
+      });
     }
 
-    await runStaggerAnimation()
+    await runStaggerAnimation();
   }
-}
+};
 
 // 修复: 增加判空保护
 const closeMenu = () => {
@@ -446,7 +490,9 @@ const closeMenu = () => {
   closeTimer.value = setTimeout(() => {
     isClosing.value = true;
 
-    const targets = [col1.value, col2.value, col3.value].filter(el => el && el.isConnected);
+    const targets = [col1.value, col2.value, col3.value].filter(
+      (el) => el && el.isConnected,
+    );
     if (targets.length > 0) {
       gsap.to(targets, { opacity: 0, duration: 0.2, overwrite: true });
     }
@@ -456,17 +502,17 @@ const closeMenu = () => {
         height: 0,
         duration: 0.5,
         delay: 0.1,
-        ease: 'expo.inOut',
+        ease: "expo.inOut",
         overwrite: true,
         onComplete: () => {
           resetMenuState();
-        }
+        },
       });
     } else {
       resetMenuState();
     }
   }, 100);
-}
+};
 
 const resetMenuState = () => {
   isMenuOpen.value = false;
@@ -474,60 +520,77 @@ const resetMenuState = () => {
   activeMenuIndex.value = null;
   activeCategoryIndex.value = 0;
   activeSeriesIndex.value = 0;
-  document.body.style.paddingRight = '';
-  document.body.style.overflow = '';
+  document.body.style.paddingRight = "";
+  document.body.style.overflow = "";
   scrollbarWidth.value = 0;
-}
+};
 
-const scheduleCloseMenu = () => closeMenu()
+const scheduleCloseMenu = () => closeMenu();
 
 const cancelCloseTimer = () => {
   if (closeTimer.value) {
-    clearTimeout(closeTimer.value)
-    closeTimer.value = null
+    clearTimeout(closeTimer.value);
+    closeTimer.value = null;
   }
-}
+};
 
 // 修改后的 toggleMobileMenu
 const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
 
-  const container = mobileMenuContainer.value
-  const mainLayer = mainMenuLayer.value
+  const container = mobileMenuContainer.value;
+  const mainLayer = mainMenuLayer.value;
   // 获取所有图层引用
-  const subLayer = subMenuLayer.value
-  const thirdLayer = thirdMenuLayer.value
+  const subLayer = subMenuLayer.value;
+  const thirdLayer = thirdMenuLayer.value;
 
-  if (!container || !mainLayer) return
+  if (!container || !mainLayer) return;
 
-  const items = mainLayer.querySelectorAll('.mobile-menu-item')
+  const items = mainLayer.querySelectorAll(".mobile-menu-item");
 
   if (isMobileMenuOpen.value) {
     // --- 开启菜单逻辑 ---
-    document.body.style.overflow = 'hidden'
+    document.body.style.overflow = "hidden";
 
     // 【关键修复 1】: 在开启瞬间，强制重置所有状态和图层位置
     // 这就像每次打开电脑都重启一次，确保画面干干净净
-    activeSubMenu.value = null
-    activeThirdMenu.value = null
+    activeSubMenu.value = null;
+    activeThirdMenu.value = null;
 
     // 强制主菜单归位并显示
-    gsap.set(mainLayer, { xPercent: 0, autoAlpha: 1 })
+    gsap.set(mainLayer, { xPercent: 0, autoAlpha: 1 });
 
     // 强制子菜单和三级菜单归位到右侧屏幕外
-    if (subLayer) gsap.set(subLayer, { xPercent: 100, autoAlpha: 1 })
-    if (thirdLayer) gsap.set(thirdLayer, { xPercent: 100, autoAlpha: 1 })
+    if (subLayer) gsap.set(subLayer, { xPercent: 100, autoAlpha: 1 });
+    if (thirdLayer) gsap.set(thirdLayer, { xPercent: 100, autoAlpha: 1 });
 
     // 开始进场动画
-    gsap.set(container, { autoAlpha: 1 })
-    gsap.fromTo(container, { yPercent: -100 }, { yPercent: 0, duration: 0.8, ease: 'expo.out' })
+    gsap.set(container, { autoAlpha: 1 });
+    gsap.fromTo(
+      container,
+      { yPercent: -100 },
+      { yPercent: 0, duration: 0.8, ease: "expo.out" },
+    );
     if (items.length) {
-      gsap.fromTo(items, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.05, delay: 0.2, ease: 'expo.out' })
+      gsap.fromTo(
+        items,
+        { autoAlpha: 0, y: 20 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.05,
+          delay: 0.2,
+          ease: "expo.out",
+        },
+      );
     }
   } else {
     // --- 关闭菜单逻辑 ---
     gsap.to(container, {
-      yPercent: -100, duration: 0.8, ease: 'expo.inOut',
+      yPercent: -100,
+      duration: 0.8,
+      ease: "expo.inOut",
       onComplete: () => {
         // 【关键修复 2】: 动画结束后清理所有数据
         activeSubMenu.value = null;
@@ -536,139 +599,177 @@ const toggleMobileMenu = () => {
         // 恢复图层位置
         if (subLayer) gsap.set(subLayer, { xPercent: 100 });
         if (thirdLayer) gsap.set(thirdLayer, { xPercent: 100 }); // 原代码漏掉了这个
-        if (mainLayer) gsap.set(mainLayer, { xPercent: 0, autoAlpha: 1 })
+        if (mainLayer) gsap.set(mainLayer, { xPercent: 0, autoAlpha: 1 });
 
-        document.body.style.overflow = ''
-      }
-    })
+        document.body.style.overflow = "";
+      },
+    });
   }
-}
+};
 
 // 在 script setup 中新增这个函数
 const handleLogoClick = () => {
   // 只有在移动端菜单打开时，才执行关闭逻辑
   if (isMobileMenuOpen.value) {
-    toggleMobileMenu()
+    toggleMobileMenu();
   }
-}
+};
 
 // 修复: 增加判空保护
 const handleMenuClick = async (item) => {
   if (item.children) {
     if (mainMenuLayer.value && subMenuLayer.value) {
-      gsap.killTweensOf([mainMenuLayer.value, subMenuLayer.value])
+      gsap.killTweensOf([mainMenuLayer.value, subMenuLayer.value]);
     }
 
-    activeSubMenu.value = item
-    await nextTick()
+    activeSubMenu.value = item;
+    await nextTick();
 
     if (mainMenuLayer.value) {
-      gsap.to(mainMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
+      gsap.to(mainMenuLayer.value, {
+        xPercent: -30,
+        autoAlpha: 0,
+        duration: 0.8,
+        ease: "expo.out",
+      });
     }
     if (subMenuLayer.value) {
-      gsap.fromTo(subMenuLayer.value, { xPercent: 100 }, { xPercent: 0, duration: 0.8, ease: 'expo.out' })
+      gsap.fromTo(
+        subMenuLayer.value,
+        { xPercent: 100 },
+        { xPercent: 0, duration: 0.8, ease: "expo.out" },
+      );
     }
-  } else { toggleMobileMenu() }
-}
+  } else {
+    toggleMobileMenu();
+  }
+};
 
 // 修复: 增加判空保护
 const openThirdMenu = async (child) => {
-  const layers = [subMenuLayer.value, thirdMenuLayer.value].filter(el => el && el.isConnected)
-  if (layers.length) gsap.killTweensOf(layers)
+  const layers = [subMenuLayer.value, thirdMenuLayer.value].filter(
+    (el) => el && el.isConnected,
+  );
+  if (layers.length) gsap.killTweensOf(layers);
 
-  activeThirdMenu.value = child
-  await nextTick()
+  activeThirdMenu.value = child;
+  await nextTick();
 
   if (subMenuLayer.value) {
-    gsap.to(subMenuLayer.value, { xPercent: -30, autoAlpha: 0, duration: 0.8, ease: 'expo.out' })
+    gsap.to(subMenuLayer.value, {
+      xPercent: -30,
+      autoAlpha: 0,
+      duration: 0.8,
+      ease: "expo.out",
+    });
   }
 
   if (thirdMenuLayer.value) {
-    gsap.set(thirdMenuLayer.value, { autoAlpha: 1 })
-    gsap.fromTo(thirdMenuLayer.value,
+    gsap.set(thirdMenuLayer.value, { autoAlpha: 1 });
+    gsap.fromTo(
+      thirdMenuLayer.value,
       { xPercent: 100 },
-      { xPercent: 0, duration: 0.8, ease: 'expo.out' }
-    )
+      { xPercent: 0, duration: 0.8, ease: "expo.out" },
+    );
   }
-}
+};
 
 // 修复: 增加判空保护
 const closeThirdMenu = () => {
-  const layers = [subMenuLayer.value, thirdMenuLayer.value].filter(el => el && el.isConnected)
-  if (layers.length) gsap.killTweensOf(layers)
+  const layers = [subMenuLayer.value, thirdMenuLayer.value].filter(
+    (el) => el && el.isConnected,
+  );
+  if (layers.length) gsap.killTweensOf(layers);
 
   if (subMenuLayer.value) {
-    gsap.to(subMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
+    gsap.to(subMenuLayer.value, {
+      xPercent: 0,
+      autoAlpha: 1,
+      duration: 0.8,
+      ease: "expo.out",
+    });
   }
 
   if (thirdMenuLayer.value) {
     gsap.to(thirdMenuLayer.value, {
       xPercent: 100,
       duration: 0.8,
-      ease: 'expo.out',
-      onComplete: () => { activeThirdMenu.value = null }
-    })
+      ease: "expo.out",
+      onComplete: () => {
+        activeThirdMenu.value = null;
+      },
+    });
   } else {
-    activeThirdMenu.value = null
+    activeThirdMenu.value = null;
   }
-}
+};
 
 // 修复: 增加判空保护
 const closeSubMenu = () => {
-  const layers = [mainMenuLayer.value, subMenuLayer.value, thirdMenuLayer.value].filter(el => el && el.isConnected)
-  if (layers.length) gsap.killTweensOf(layers)
+  const layers = [
+    mainMenuLayer.value,
+    subMenuLayer.value,
+    thirdMenuLayer.value,
+  ].filter((el) => el && el.isConnected);
+  if (layers.length) gsap.killTweensOf(layers);
 
   if (mainMenuLayer.value) {
-    gsap.to(mainMenuLayer.value, { xPercent: 0, autoAlpha: 1, duration: 0.8, ease: 'expo.out' })
+    gsap.to(mainMenuLayer.value, {
+      xPercent: 0,
+      autoAlpha: 1,
+      duration: 0.8,
+      ease: "expo.out",
+    });
   }
 
   if (subMenuLayer.value) {
     gsap.to(subMenuLayer.value, {
       xPercent: 100,
       duration: 0.8,
-      ease: 'expo.out',
+      ease: "expo.out",
       onComplete: () => {
-        activeSubMenu.value = null
-        activeThirdMenu.value = null
-      }
-    })
+        activeSubMenu.value = null;
+        activeThirdMenu.value = null;
+      },
+    });
   } else {
-    activeSubMenu.value = null
-    activeThirdMenu.value = null
+    activeSubMenu.value = null;
+    activeThirdMenu.value = null;
   }
-}
+};
 
 const handleCategoryClick = async (category) => {
   // 1. 尝试获取直接链接
-  let targetLink = category.link
+  let targetLink = category.link;
 
   // 2. [移动端修复] 如果没有直接链接，但包含 products (说明是系列对象)，则取第一个产品的链接
   if (!targetLink && category.products && category.products.length > 0) {
-    targetLink = category.products[0].link
+    targetLink = category.products[0].link;
   }
 
   // 3. 执行跳转
   if (targetLink) {
     if (isMobileMenuOpen.value) {
-      toggleMobileMenu()
+      toggleMobileMenu();
     } else {
-      closeMenu()
+      closeMenu();
     }
-    await navigateTo(targetLink)
+    await navigateTo(targetLink);
   }
-}
+};
 
 onMounted(() => {
-  isMenuMounted.value = true
+  isMenuMounted.value = true;
   setTimeout(() => {
-    if (mobileMenuContainer.value) gsap.set(mobileMenuContainer.value, { yPercent: -100 })
-    if (subMenuLayer.value) gsap.set(subMenuLayer.value, { xPercent: 100 })
-  }, 0)
-})
+    if (mobileMenuContainer.value)
+      gsap.set(mobileMenuContainer.value, { yPercent: -100 });
+    if (subMenuLayer.value) gsap.set(subMenuLayer.value, { xPercent: 100 });
+  }, 0);
+});
 onUnmounted(() => {
-  document.body.style.paddingRight = ''
-  document.body.style.overflow = ''
-})
+  document.body.style.paddingRight = "";
+  document.body.style.overflow = "";
+});
 </script>
 
 <style scoped>
@@ -691,7 +792,9 @@ onUnmounted(() => {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .fade-enter-from {

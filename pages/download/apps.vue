@@ -163,7 +163,7 @@
                 <h3 class="text-xl font-bold mb-2 text-white">雷迪恩充电桩使用手册</h3>
                 <p class="text-gray-500 text-sm mb-8">V2.0 | 更新于 2025.12</p>
 
-                <a href="/downloads/raydiene-manual.pdf" target="_blank"
+                <a :href="usePdfUrl('raydiene-manual.pdf')" target="_blank"
                   class="group relative flex items-center justify-center w-full bg-white text-black font-bold py-4 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-white/20 overflow-hidden cursor-pointer">
                   <div
                     class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-[100%] group-hover:animate-shine">
@@ -200,27 +200,44 @@
   </div>
 </template>
 
+<script setup>
+// --- SEO 配置 ---
+useSeoMeta({
+  title: '应用下载 - 雷迪恩(Raydiene) App 与使用指南 | Raydiene',
+  description: '下载雷迪恩(Raydiene) App，体验智能充电管理。支持 iOS、Android 及微信小程序。提供充电桩详细使用手册(PDF)下载与在线阅读指南，助您轻松掌控每一次补能。',
+  keywords: '雷迪恩App下载, Raydiene App, 充电桩远程控制, 充电桩使用说明书, 智能充电小程序',
+  // 社交分享优化
+  ogTitle: '雷迪恩 App：智享充电，一手掌控',
+  ogDescription: '随时随地监控状态、远程预约充电。点击下载 App 或查看使用手册。',
+  ogImage: '/images/download/app-preview.jpg', // 使用页面中那张手机 App 预览图作为分享封面
+})
+</script>
+
 <style scoped>
-/* 保留定制版呼吸动画 (因为它的参数比较特殊：0.2->0.5透明度，7s时长) */
-@keyframes pulse-custom {
+/* 保持原有动画 */
+/* 优化后的呼吸光效 */
+.animate-pulse-slow {
+  /* 延长动画时间到 7s，使其更舒缓 */
+  animation: pulse 7s ease-in-out infinite;
+}
+
+@keyframes pulse {
 
   0%,
   100% {
     opacity: 0.2;
+    /* 最暗状态 */
     transform: scale(1);
   }
 
   50% {
     opacity: 0.5;
+    /* 最亮状态：提高到 0.5 让颜色更明显 */
     transform: scale(1.1);
+    /* 增加 10% 的体积膨胀，制造呼吸感 */
   }
 }
 
-.animate-pulse-slow {
-  animation: pulse-custom 7s ease-in-out infinite;
-}
-
-/* 保留左右滑入 (如果没用全局fade-right的话) */
 .animate-slide-in-left {
   animation: slideInLeft 1s ease-out forwards;
   opacity: 0;
@@ -245,5 +262,40 @@
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.group-hover\:animate-shine:hover {
+  animation: shine 0.7s ease-in-out;
 }
 </style>

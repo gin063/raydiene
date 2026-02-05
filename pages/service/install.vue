@@ -176,4 +176,45 @@
 </template>
 
 <script setup>
+// --- SEO 配置 ---
+useSeoMeta({
+  title: '安装服务 - 6大标准化流程 | 专业上门安装 | Raydiene 雷迪恩',
+  description: '雷迪恩(Raydiene)提供专业的一站式充电桩安装服务。包含极速响应、专属管家统筹、持证电工上岗、标准化精工交付、严苛安全验收及售后回访六大环节。全链路保障施工质量与用电安全，让您省心更放心。',
+  keywords: '充电桩安装服务, 充电桩施工标准, 免费勘测, 充电桩安装流程, 持证电工, Raydiene安装, 私人充电桩安装',
+  // 社交分享优化
+  ogTitle: '雷迪恩专业安装：6大流程，一步到位',
+  ogDescription: '从勘测到交付，全程标准化服务。持证上岗，安全无忧。',
+  ogImage: '/images/service/install-4.jpg', // 使用页面中代表“精工交付”的图片作为分享封面
+})
 </script>
+
+<style scoped>
+.animate-pulse-slow {
+  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>

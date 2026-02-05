@@ -3,7 +3,6 @@
         <table class="w-full text-left text-sm md:text-base">
             <tbody class="divide-y divide-white/10">
                 <tr v-for="(row, index) in specs" :key="index" :class="index % 2 === 0 ? 'bg-white/5' : ''">
-
                     <td class="p-4 font-bold text-gray-300 w-1/3 align-top">
                         {{ row.label }}
                     </td>
@@ -25,6 +24,6 @@ defineProps({
         type: Array,
         required: true,
         // 数据格式示例: [{ label: '型号', value: 'X1', highlight: false }]
-    }
-})
+    },
+});
 </script>

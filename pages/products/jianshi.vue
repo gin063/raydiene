@@ -1,22 +1,28 @@
 <template>
-  <div class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-brand selection:text-white overflow-x-hidden font-sans">
+  <div
+    class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-brand selection:text-white overflow-x-hidden font-sans">
 
     <div class="relative w-full h-screen">
       <div class="absolute inset-0 z-0 overflow-hidden">
-        <NuxtImg src="/images/products/jianshi/scene-bg-mobile.jpg" alt="坚石系列场景-移动端" class="block md:hidden w-full h-full object-cover animate-ken-burns" placeholder />
-        <NuxtImg src="/images/products/jianshi/scene-bg.jpg" alt="坚石系列场景-PC端" class="hidden md:block w-full h-full object-cover animate-ken-burns" placeholder />
+        <NuxtImg src="/images/products/jianshi/scene-bg-mobile.jpg" alt="坚石系列场景-移动端"
+          class="block md:hidden w-full h-full object-cover animate-ken-burns" placeholder />
+        <NuxtImg src="/images/products/jianshi/scene-bg.jpg" alt="坚石系列场景-PC端"
+          class="hidden md:block w-full h-full object-cover animate-ken-burns" placeholder />
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
       </div>
 
-      <div class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end items-center text-center pb-48 md:pb-28">
+      <div
+        class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-end items-center text-center pb-48 md:pb-28">
         <h1 class="text-5xl md:text-7xl font-bold font-hero tracking-tight mb-6 animate-fade-in-up">
           坚石系列
         </h1>
-        <p class="text-xl md:text-2xl text-gray-200 font-light tracking-wide mb-6 animate-fade-in-up" style="animation-delay: 0.2s">
+        <p class="text-xl md:text-2xl text-gray-200 font-light tracking-wide mb-6 animate-fade-in-up"
+          style="animation-delay: 0.2s">
           7kW 家用交流充电桩 · 实用至上，大道至简
         </p>
         <div class="flex animate-fade-in-up" style="animation-delay: 0.4s">
-          <a href="https://item.jd.com/10193535139932.html" target="_blank" rel="noopener noreferrer" class="px-8 py-3 rounded-full border border-white/10 font-bold bg-brand/80 backdrop-blur-md text-white hover:bg-white hover:text-black transition-colors duration-500">
+          <a href="https://item.jd.com/10193535139932.html" target="_blank" rel="noopener noreferrer"
+            class="px-8 py-3 rounded-full border border-white/10 font-bold bg-brand/80 backdrop-blur-md text-white hover:bg-white hover:text-black transition-colors duration-500">
             立即订购
           </a>
         </div>
@@ -34,7 +40,8 @@
         <div class="flex flex-col lg:flex-row items-center gap-16">
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <div class="relative aspect-[16/9] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-              <NuxtImg src="/images/products/jianshi/detail.jpg" alt="坚石产品质感" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+              <NuxtImg src="/images/products/jianshi/detail.jpg" alt="坚石产品质感"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
           </div>
           <div class="w-full lg:w-1/2 animate-on-scroll">
@@ -42,7 +49,7 @@
             <p class="text-gray-400 mb-10 leading-relaxed">
               专为户外复杂环境设计。无论是严寒酷暑，还是高原低谷，坚石系列始终如一地提供安全、稳定的充电服务。
             </p>
-            
+
             <ProductHighlightGrid :items="highlightCards" />
           </div>
         </div>
@@ -50,12 +57,14 @@
     </section>
 
     <section class="py-16 bg-[#050505] relative overflow-hidden">
-      <div class="absolute right-0 top-1/4 w-[50vw] h-[50vw] bg-brand/10 rounded-full blur-[120px] pointer-events-none"></div>
+      <div class="absolute right-0 top-1/4 w-[50vw] h-[50vw] bg-brand/10 rounded-full blur-[120px] pointer-events-none">
+      </div>
       <div class="container mx-auto px-6">
         <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <div class="relative mx-auto max-w-2xl">
-              <NuxtImg src="/images/products/jianshi/app-scene.jpg" alt="手机智能控制" class="w-full h-auto rounded-3xl shadow-2xl border border-white/5" />
+              <NuxtImg src="/images/products/jianshi/app-scene.jpg" alt="手机智能控制"
+                class="w-full h-auto rounded-3xl shadow-2xl border border-white/5" />
             </div>
           </div>
           <div class="w-full lg:w-1/2 animate-on-scroll">
@@ -63,7 +72,7 @@
             <p class="text-gray-400 mb-10 text-lg">
               通过雷迪恩App，您的手机就是充电桩的控制中心。数据可视化，管理更轻松。
             </p>
-            
+
             <ProductAppList :items="appFeatures" />
           </div>
         </div>
@@ -83,8 +92,10 @@
         </div>
 
         <div class="w-full relative aspect-[21/9] rounded-xl overflow-hidden border border-white/10 shadow-2xl group">
-          <NuxtImg src="/images/products/jianshi/lifestyle.jpg" alt="坚石系列生活场景" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hover:grayscale-0" />
-          <div class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 z-10 scale-50 origin-bottom-left md:scale-100">
+          <NuxtImg src="/images/products/jianshi/lifestyle.jpg" alt="坚石系列生活场景"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hover:grayscale-0" />
+          <div
+            class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 z-10 scale-50 origin-bottom-left md:scale-100">
             <span class="text-sm font-bold text-brand">坚石</span>
             <span class="text-xs text-white ml-2">实用至上 · 大道至简</span>
           </div>
@@ -97,61 +108,104 @@
         <h2 class="text-2xl md:text-3xl font-bold text-center mb-16 font-hero tracking-widest text-white uppercase">
           探索更多系列
         </h2>
-        <div class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 -mx-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:px-0 md:mx-0 no-scrollbar">
-          
-          <NuxtLink to="/products/panshi" class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700"></div>
+        <div
+          class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-4 px-4 -mx-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:px-0 md:mx-0 no-scrollbar">
+
+          <NuxtLink to="/products/panshi"
+            class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
+            <div
+              class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+            </div>
             <div class="absolute top-8 left-0 w-full z-20 flex flex-col items-center">
               <h3 class="text-3xl font-bold text-white mb-2 font-hero">磐石系列</h3>
-              <p class="text-xs text-gray-400 tracking-widest uppercase group-hover:text-cyan-400 transition-colors duration-300">简约时尚 · 品质之选</p>
+              <p
+                class="text-xs text-gray-400 tracking-widest uppercase group-hover:text-cyan-400 transition-colors duration-300">
+                简约时尚 · 品质之选</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/panshi-cover.png" alt="磐石系列" class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
+              <NuxtImg src="/images/products/panshi-cover.png" alt="磐石系列"
+                class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-              <div class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30 group/btn hover:!bg-white hover:!border-white">
-                <div class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-50 group-hover:-rotate-45">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-white/70"><path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+              <div
+                class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30 group/btn hover:!bg-white hover:!border-white">
+                <div
+                  class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-50 group-hover:-rotate-45">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="w-5 h-5 text-white/70">
+                    <path fill-rule="evenodd"
+                      d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                      clip-rule="evenodd" />
+                  </svg>
                 </div>
-                <span class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover/btn:text-black">了解更多</span>
+                <span
+                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover/btn:text-black">了解更多</span>
               </div>
             </div>
           </NuxtLink>
 
-          <NuxtLink to="/products/xingchen" class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700"></div>
+          <NuxtLink to="/products/xingchen"
+            class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
+            <div
+              class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+            </div>
             <div class="absolute top-8 left-0 w-full z-20 flex flex-col items-center">
               <h3 class="text-3xl font-bold text-white mb-2 font-hero">星辰系列</h3>
-              <p class="text-xs text-gray-400 tracking-widest uppercase group-hover:text-cyan-400 transition-colors duration-300">智能科技 · 美学之光</p>
+              <p
+                class="text-xs text-gray-400 tracking-widest uppercase group-hover:text-cyan-400 transition-colors duration-300">
+                智能科技 · 美学之光</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/xingchen-cover.png" alt="星辰系列" class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
+              <NuxtImg src="/images/products/xingchen-cover.png" alt="星辰系列"
+                class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-              <div class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30 group/btn hover:!bg-white hover:!border-white">
-                <div class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-50 group-hover:-rotate-45">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-white/70"><path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+              <div
+                class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30 group/btn hover:!bg-white hover:!border-white">
+                <div
+                  class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-50 group-hover:-rotate-45">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="w-5 h-5 text-white/70">
+                    <path fill-rule="evenodd"
+                      d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                      clip-rule="evenodd" />
+                  </svg>
                 </div>
-                <span class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover/btn:text-black">了解更多</span>
+                <span
+                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover/btn:text-black">了解更多</span>
               </div>
             </div>
           </NuxtLink>
 
-          <NuxtLink to="/products/xingyao" class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700"></div>
+          <NuxtLink to="/products/xingyao"
+            class="flex-shrink-0 w-[85vw] snap-center md:w-auto group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] hover:border-cyan-400/50 hover:shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] transition-all duration-500">
+            <div
+              class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/30 to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+            </div>
             <div class="absolute top-8 left-0 w-full z-20 flex flex-col items-center">
               <h3 class="text-3xl font-bold text-white mb-2 font-hero">星耀系列</h3>
-              <p class="text-xs text-gray-400 tracking-widest uppercase group-hover:text-cyan-400 transition-colors duration-300">触控大屏 · 时代之巅</p>
+              <p
+                class="text-xs text-gray-400 tracking-widest uppercase group-hover:text-cyan-400 transition-colors duration-300">
+                触控大屏 · 时代之巅</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/xingyao-cover.png" alt="星耀系列" class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
+              <NuxtImg src="/images/products/xingyao-cover.png" alt="星耀系列"
+                class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-              <div class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30 group/btn hover:!bg-white hover:!border-white">
-                <div class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-50 group-hover:-rotate-45">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-white/70"><path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /></svg>
+              <div
+                class="relative flex items-center justify-center backdrop-blur-md border border-white/10 bg-white/5 rounded-full transition-all duration-500 ease-out w-12 h-12 group-hover:w-32 overflow-hidden group-hover:bg-cyan-900/20 group-hover:border-cyan-500/30 group/btn hover:!bg-white hover:!border-white">
+                <div
+                  class="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-50 group-hover:-rotate-45">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="w-5 h-5 text-white/70">
+                    <path fill-rule="evenodd"
+                      d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                      clip-rule="evenodd" />
+                  </svg>
                 </div>
-                <span class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover/btn:text-black">了解更多</span>
+                <span
+                  class="absolute inset-0 flex items-center justify-center text-sm tracking-widest font-bold text-white whitespace-nowrap opacity-0 scale-50 translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover/btn:text-black">了解更多</span>
               </div>
             </div>
           </NuxtLink>
@@ -165,6 +219,18 @@
 
 <script setup>
 import { onMounted, defineComponent, h } from 'vue'
+
+// --- SEO 配置 ---
+useSeoMeta({
+  title: '坚石系列 - 7kW家用交流充电桩 | 硬核防护 | Raydiene 雷迪恩',
+  description: '雷迪恩(Raydiene)坚石系列7kW家用充电桩，专为复杂环境设计。具备IP65/IP67高等级防护与20重安全保障，支持App远程控制与预约错峰充电。适配99%新能源车型，提供专业上门安装与2年只换不修服务。',
+  keywords: '雷迪恩坚石系列, 7kW充电桩, 家用交流充电桩, 户外充电桩, IP65防护, 预约充电, 汽车充电桩安装, Raydiene',
+  // 社交分享优化
+  ogTitle: '雷迪恩坚石系列：实用至上，硬核防护',
+  ogDescription: '7kW家用交流充电桩，IP65级防尘防水，支持App智能互联。让每一次充电都安全无忧。',
+  // 使用PC端场景图作为分享封面，视觉冲击力更强
+  ogImage: '/images/products/jianshi/scene-bg.jpg',
+})
 
 // === 1. 通用图标 ===
 const IconCheck = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12' })]) })
@@ -222,9 +288,9 @@ const jianshiSpecs = [
   { label: '线缆长度', value: '5 米' },
   { label: '安装方式', value: '壁挂式 / 立柱式' },
   { label: '执行标准', value: 'GB/T 18487.1-2023' },
-  { 
-    label: '安全设计', 
-    value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等20余项主动安全防护。' 
+  {
+    label: '安全设计',
+    value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等20余项主动安全防护。'
   },
 ]
 
@@ -242,3 +308,33 @@ onMounted(() => {
   })
 })
 </script>
+
+<style scoped>
+/* 保持所有动画代码不变 */
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 20s ease-out forwards;
+}
+</style>

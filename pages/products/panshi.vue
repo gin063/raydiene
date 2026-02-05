@@ -292,6 +292,18 @@
 import { ref, computed, onMounted, watch, defineComponent, h } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+// --- SEO 配置 ---
+useSeoMeta({
+  title: '磐石系列 Pro/Max - 7kW智能家用交流充电桩 | Raydiene 雷迪恩',
+  description: '雷迪恩(Raydiene)磐石系列提供Pro与Max双版本选择。Pro版采用极简呼吸灯设计，Max版配备高清显示屏。全系标配7kW功率、IP65/IP67级防护、20重安全保护及App智能互联，适配99%新能源车型。',
+  keywords: '雷迪恩磐石系列, 磐石Pro, 磐石Max, 7kW充电桩, 家用充电桩, 带屏幕充电桩, 智能充电桩, 汽车充电桩安装',
+  // 社交分享优化
+  ogTitle: '雷迪恩磐石系列：智能屏显与极简美学的双重选择',
+  ogDescription: '7kW家用交流充电桩，Pro版呼吸灯交互，Max版高清屏显。安全防护与智能互联的完美结合。',
+  // 使用 Max 版本的场景图作为分享封面，视觉更丰富
+  ogImage: '/images/products/panshi/scene-bg-max.jpg',
+})
+
 const route = useRoute()
 const router = useRouter()
 const activeModel = ref(route.query.model === 'max' ? 'max' : 'pro')
@@ -389,3 +401,46 @@ onMounted(() => {
   })
 })
 </script>
+
+<style scoped>
+/* 保持所有基础动画类不变 */
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 20s ease-out forwards;
+}
+
+.animate-float-in {
+  animation: floatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translate(-50%, 100px);
+  opacity: 0;
+}
+
+@keyframes floatIn {
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+</style>

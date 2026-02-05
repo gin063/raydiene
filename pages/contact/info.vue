@@ -1,20 +1,17 @@
 <template>
     <div
         class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-blue-500 selection:text-white overflow-hidden">
-
         <div class="fixed inset-0 z-0 pointer-events-none">
             <div
                 class="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-blue-900/20 rounded-full blur-[120px] opacity-40 animate-pulse-slow">
             </div>
             <div
                 class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-purple-900/10 rounded-full blur-[100px] opacity-30">
-            </div>           
+            </div>
         </div>
 
         <div class="relative z-10 container mx-auto px-6 md:px-12 pt-32 md:pt-48 pb-16">
-
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
                 <div class="space-y-12 animate-slide-in-left">
                     <div>
                         <h1 class="text-4xl md:text-6xl font-bold font-hero tracking-tight mb-6">
@@ -22,7 +19,7 @@
                         </h1>
                         <p class="text-gray-400 text-lg leading-relaxed max-w-md">
                             无论您是想咨询产品、寻求合作，还是需要售后支持
-                            <br>
+                            <br />
                             雷迪恩团队随时准备为您服务
                         </p>
                     </div>
@@ -39,7 +36,9 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">服务热线</h3>
+                                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">
+                                    服务热线
+                                </h3>
                                 <a href="tel:4006992659"
                                     class="text-2xl md:text-3xl font-hero font-bold text-white group-hover:text-blue-400 transition-colors">
                                     400-699-2659
@@ -58,7 +57,9 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">官方邮箱</h3>
+                                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">
+                                    官方邮箱
+                                </h3>
                                 <a href="mailto:service@raydiene.cn"
                                     class="text-xl md:text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">
                                     service@raydiene.cn
@@ -79,12 +80,14 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">总部地址</h3>
+                                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">
+                                    总部地址
+                                </h3>
                                 <p class="text-lg text-white leading-snug group-hover:text-teal-400 transition-colors">
-                                    上海市青浦区万达茂A区<br>1号楼809室
+                                    上海市青浦区万达茂A区<br />1号楼809室
                                 </p>
                                 <p class="text-lg text-white leading-snug group-hover:text-teal-400 transition-colors">
-                                    长沙市岳麓区麓谷企业广场F区<br>F2栋1703室
+                                    长沙市岳麓区麓谷企业广场F区<br />F2栋1703室
                                 </p>
                             </div>
                         </div>
@@ -122,56 +125,69 @@
                         </a>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from "vue";
+
+// --- SEO 配置 ---
+useSeoMeta({
+    title: "联系我们 - 售后支持与商务合作 | Raydiene",
+    description:
+        "联系雷迪恩(Raydiene)官方团队。获取产品咨询、商务合作洽谈及售后支持服务。总部地址：上海市青浦区万达茂A区1号楼。服务热线：400-699-2659。",
+    keywords:
+        "雷迪恩联系电话, Raydiene客服, 充电桩售后, 商务合作, 雷迪恩地址, 上海青浦万达茂",
+    // 社交分享优化
+    ogTitle: "联系雷迪恩：随时为您服务",
+    ogDescription: "无论是产品咨询还是售后支持，雷迪恩专业团队随时待命。",
+    // 这里没有特定的大图，可以使用通用的 Logo 分享图，或者如果不设置会自动回退到全局默认图
+    ogImage: "/images/og-share.png",
+});
 
 // 状态
-const isMapLoaded = ref(false)
-let map = null
+const isMapLoaded = ref(false);
+let map = null;
 
 // 设置您的公司坐标 (上海市青浦区万达茂)
 // 请使用高德坐标拾取器确认准确位置
-const COMPANY_POSITION = [121.080457, 31.132366]
+const COMPANY_POSITION = [121.080457, 31.132366];
 
 onMounted(async () => {
-    const AMapLoader = (await import('@amap/amap-jsapi-loader')).default
+    const AMapLoader = (await import("@amap/amap-jsapi-loader")).default;
     // 1. 配置安全密钥 (必须在 loader 加载前配置)
     // 请替换为您控制台里的【安全密钥】(Web端 JS API)
     window._AMapSecurityConfig = {
-        securityJsCode: 'd5a1e19eb2d34320e4a33a07bc5b677c',
-    }
+        securityJsCode: "d5a1e19eb2d34320e4a33a07bc5b677c",
+    };
 
     // 2. 加载地图
     AMapLoader.load({
         key: "7993cd4aeb060c491c7569bc429ebbc5", // 替换为您控制台里的【Key】
-        version: "2.0",      // 指定要加载的 JSAPI 的版本
-        plugins: ['AMap.Scale', 'AMap.ToolBar'], // 需要使用的插件列表
+        version: "2.0", // 指定要加载的 JSAPI 的版本
+        plugins: ["AMap.Scale", "AMap.ToolBar"], // 需要使用的插件列表
     })
         .then((AMap) => {
-            isMapLoaded.value = true
+            isMapLoaded.value = true;
 
             // 初始化地图
             map = new AMap.Map("amap-container", {
                 viewMode: "3D", // 是否为3D地图模式
-                zoom: 16,       // 初始化地图级别
+                zoom: 16, // 初始化地图级别
                 center: COMPANY_POSITION, // 初始化地图中心点位置
-                mapStyle: 'amap://styles/grey', // 设置地图风格 (深色模式: grey, dark, blue, darkblue)
+                mapStyle: "amap://styles/grey", // 设置地图风格 (深色模式: grey, dark, blue, darkblue)
             });
 
             // 添加工具条
-            map.addControl(new AMap.Scale())
-            map.addControl(new AMap.ToolBar({ position: 'RT' })) // 右上角缩放工具
+            map.addControl(new AMap.Scale());
+            map.addControl(new AMap.ToolBar({ position: "RT" })); // 右上角缩放工具
 
             // 添加标记点 (Marker)
             const marker = new AMap.Marker({
                 position: COMPANY_POSITION,
-                title: '雷迪恩 Raydiene', // 鼠标滑过显示的文字
+                title: "雷迪恩 Raydiene", // 鼠标滑过显示的文字
             });
 
             // 创建信息窗体
@@ -182,11 +198,11 @@ onMounted(async () => {
             <p style="font-size:12px;">上海市青浦区万达茂A区1号楼809室</p>
           </div>
         `,
-                offset: new AMap.Pixel(0, -30)
+                offset: new AMap.Pixel(0, -30),
             });
 
             // 绑定点击事件：点击标记打开信息窗体
-            marker.on('click', () => {
+            marker.on("click", () => {
                 infoWindow.open(map, marker.getPosition());
             });
 
@@ -194,18 +210,17 @@ onMounted(async () => {
 
             // 默认打开信息窗体 (可选)
             // infoWindow.open(map, marker.getPosition());
-
         })
         .catch((e) => {
             console.error(e);
         });
-})
+});
 
 onUnmounted(() => {
     if (map) {
         map.destroy();
     }
-})
+});
 </script>
 
 <style scoped>

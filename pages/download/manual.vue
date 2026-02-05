@@ -103,33 +103,130 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-// 确保您的 link 路径正确对应了准备好的 PDF 文件
+// --- SEO 配置 ---
+useSeoMeta({
+  title: '用户手册下载 - 产品说明书与使用指南 | Raydiene',
+  description: '访问雷迪恩(Raydiene)下载中心，获取坚石、磐石、星辰及星耀系列充电桩的最新用户手册与安装指南(PDF)。包含详细的产品参数、操作说明及故障排除信息。',
+  keywords: '雷迪恩说明书, 充电桩用户手册, 坚石系列说明书, 磐石系列, 星辰系列, 星耀系列, PDF下载',
+  // 社交分享优化
+  ogTitle: '雷迪恩产品使用手册下载',
+  ogDescription: '全系列产品说明书在线预览与下载，助您快速掌握产品使用方法。',
+  // 使用坚石系列的第一页作为默认分享图，非常直观
+  ogImage: '/images/download/manual/jianshi/manual-part-01.jpg',
+})
+
+// 1. 修改数据源：只保留文件名 (Filename only)
+// 注意：请确保您本地 public/downloads/ 文件夹或 OSS 的 downloads/ 文件夹里有这些文件
 const products = [
-  { id: 'jianshi', name: '坚石系列', link: '/downloads/jianshi-manual.pdf', pages: 14, size: '1.20 MB' },
-  { id: 'panshi', name: '磐石系列', link: '/downloads/panshi-manual.pdf', pages: 15, size: '1.67 MB' },
-  { id: 'xingchen', name: '星辰系列', link: '/downloads/xingchen-manual.pdf', pages: 15, size: '1.39 MB' },
-  { id: 'xingyao', name: '星耀系列', link: '/downloads/xingyao-manual.pdf', pages: 15, size: '1.65 MB' },
+  {
+    id: 'jianshi',
+    name: '坚石系列',
+    fileName: 'jianshi-manual.pdf', // 以前是 link: '/downloads/...'
+    pages: 14,
+    size: '1.20 MB'
+  },
+  {
+    id: 'panshi',
+    name: '磐石系列',
+    fileName: 'panshi-manual.pdf',
+    pages: 15,
+    size: '1.67 MB'
+  },
+  {
+    id: 'xingchen',
+    name: '星辰系列',
+    fileName: 'xingchen-manual.pdf',
+    pages: 15,
+    size: '1.39 MB'
+  },
+  {
+    id: 'xingyao',
+    name: '星耀系列',
+    fileName: 'xingyao-manual.pdf',
+    pages: 15,
+    size: '1.65 MB'
+  },
 ]
 
 const currentProduct = ref('jianshi')
 
-// 自动计算当前选中的产品信息
+// 自动计算当前选中的产品对象
 const currentProductObj = computed(() => products.find(p => p.id === currentProduct.value))
+
+// 2. 关键修改：在这里调用全局配置的 usePdfUrl
+const currentDownloadLink = computed(() => {
+  const file = currentProductObj.value?.fileName
+  // 如果找到了文件名，就用 usePdfUrl 转换；否则返回 #
+  return file ? usePdfUrl(file) : '#'
+})
+
 const currentProductText = computed(() => currentProductObj.value?.name || '雷迪恩产品')
-const currentDownloadLink = computed(() => currentProductObj.value?.link || '#')
 const currentProductPages = computed(() => currentProductObj.value?.pages || 15)
-
 const currentFileSize = computed(() => currentProductObj.value?.size || '10.0 MB')
-
 </script>
 
 <style scoped>
-/* 保留定制版呼吸动画 (6s 版本) */
-.animate-pulse-slow {
-  animation: pulse-custom 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
 }
-@keyframes pulse-custom {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.05); }
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* 原有动画保持不变 */
+.animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.group-hover\:animate-shine:hover {
+  animation: shine 0.7s ease-in-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
 }
 </style>
