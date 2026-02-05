@@ -99,7 +99,7 @@
               <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold font-hero tracking-tight leading-tight">
                 <span class="drop-shadow-2xl text-white block md:inline mb-2 md:mb-0">为什么叫</span>
                 <span class="relative inline-block mx-2 align-bottom px-2">
-                  <span class="text-cyan-300/80 font-black relative z-0">雷迪恩</span>
+                  <span class="text-cyan-600/80 font-black relative z-0">雷迪恩</span>
                   <span
                     class="absolute inset-0 z-10 font-black bg-gradient-to-r from-cyan-300/0 via-white to-cyan-300/0 bg-[length:50%_100%] bg-no-repeat animate-shimmer-slide bg-clip-text text-transparent brightness-150 contrast-125 drop-shadow-[0_4px_10px_rgba(0,0,0,1)] drop-shadow-[0_0_20px_rgba(34,211,238,0.6)]">
                     雷迪恩
@@ -128,7 +128,7 @@
                     <span class="text-gray-400 text-base md:text-lg block">
                       正如我们想让充电桩，跳出工业感的刻板<br class="hidden md:block" />
                       <span
-                        class="text-cyan-300 font-medium drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] mt-1 inline-block">
+                        class="text-cyan-600 font-medium drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] mt-1 inline-block">
                         绽放出设计的光芒
                       </span>
                     </span>
