@@ -10,7 +10,7 @@
 
       <!-- 紫色光晕：更明显 (bg-purple-600)，增加延迟让呼吸错开 -->
       <div
-        class="absolute bottom-[-10%] right-[-10%] w-[70vw] h-[60vw] bg-purple-600/90 rounded-full blur-[120px] opacity-20 animate-pulse-slow"
+        class="absolute bottom-[-10%] right-[-10%] w-[70vw] h-[60vw] bg-purple-900/90 rounded-full blur-[120px] opacity-20 animate-pulse-slow"
         style="animation-delay: 2s;"></div>
 
       <!-- 噪点纹理：保持不变，增加混合模式让质感更好 -->
@@ -25,7 +25,7 @@
             <div>
               <h1 class="text-5xl md:text-7xl font-bold font-hero tracking-tight mb-6">
                 智享充电<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">一手掌控</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">一手掌控</span>
               </h1>
               <p class="text-gray-400 text-lg md:text-xl max-w-lg leading-relaxed">
                 下载雷迪恩App，随时随地监控充电状态<br>远程控制，预约充电<br>让每一次补能都尽在掌握
@@ -91,7 +91,7 @@
 
           <div class="relative h-[600px] flex items-center justify-center animate-slide-in-right perspective-1000">
             <div
-              class="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/30 rounded-full blur-[100px] animate-pulse-slow">
+              class="absolute inset-0 bg-gradient-to-tr from-blue-500/30 to-purple-500/30 rounded-full blur-[100px] animate-pulse-slow">
             </div>
 
             <div
