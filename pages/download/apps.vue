@@ -10,7 +10,7 @@
 
       <!-- 紫色光晕：更明显 (bg-purple-600)，增加延迟让呼吸错开 -->
       <div
-        class="absolute bottom-[-10%] right-[-10%] w-[70vw] h-[60vw] bg-purple-900/90 rounded-full blur-[120px] opacity-20 animate-pulse-slow"
+        class="absolute bottom-[-10%] right-[-10%] w-[70vw] h-[60vw] bg-purple-600/90 rounded-full blur-[120px] opacity-20 animate-pulse-slow"
         style="animation-delay: 2s;"></div>
 
       <!-- 噪点纹理：保持不变，增加混合模式让质感更好 -->
@@ -91,7 +91,7 @@
 
           <div class="relative h-[600px] flex items-center justify-center animate-slide-in-right perspective-1000">
             <div
-              class="absolute inset-0 bg-gradient-to-tr from-blue-500/30 to-purple-500/30 rounded-full blur-[100px] animate-pulse-slow">
+              class="absolute inset-0 bg-gradient-to-tr from-purple-600/90 to-blue-600/90 rounded-full blur-[100px] animate-pulse-slow">
             </div>
 
             <div
