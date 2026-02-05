@@ -79,21 +79,25 @@
         </div>
       </section>
 
-      <section class="w-full mx-auto mb-16 md:mb-24 animate-on-scroll relative z-10">
+      <section class="w-full mx-auto mb-16 md:mb-24 animate-on-scroll relative z-10 px-4 md:px-0">
         <div
           class="relative bg-gradient-to-b from-white/5 to-[#0a0a0a] border-t border-x border-white/10 rounded-3xl text-center backdrop-blur-sm overflow-hidden">
-          <div class="relative w-full overflow-hidden min-h-[80vh] flex items-center justify-center bg-[#050505] group">
-            <div class="absolute inset-0 z-0">
+          <div
+            class="relative w-full overflow-hidden min-h-[600px] lg:min-h-[80vh] flex flex-col items-center justify-center bg-[#050505] group py-20 md:py-0">
+            <div class="absolute inset-0 z-0 select-none pointer-events-none">
               <div
-                class="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/20 to-transparent pointer-events-none">
+                class="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/10 to-black/80 pointer-events-none">
               </div>
               <NuxtImg src="/images/about/why-radiant-bg.jpg" alt="雷迪恩产品艺术图"
-                class="w-full h-full object-cover animate-float-slow brightness-125" />
+                class="w-full h-full object-cover object-center animate-float-slow brightness-125 transform scale-105 md:scale-100"
+                loading="lazy" />
             </div>
 
-            <div class="relative z-20 container mx-auto px-6 text-center">
-              <h2 class="text-4xl -translate-y-32 md:text-7xl font-bold mb-12 font-hero tracking-tight">
-                <span class="drop-shadow-2xl text-white">为什么叫</span>
+            <div
+              class="relative z-20 container mx-auto px-4 md:px-6 text-center flex flex-col items-center justify-center h-full gap-8 md:gap-16">
+
+              <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold font-hero tracking-tight leading-tight">
+                <span class="drop-shadow-2xl text-white block md:inline mb-2 md:mb-0">为什么叫</span>
                 <span class="relative inline-block mx-2 align-bottom px-2">
                   <span class="text-cyan-300/80 font-black relative z-0">雷迪恩</span>
                   <span
@@ -101,25 +105,32 @@
                     雷迪恩
                   </span>
                 </span>
-                <span class="text-4xl md:text-7xl align-top text-white font-light drop-shadow-xl">?</span>
+                <span
+                  class="text-4xl md:text-7xl align-top text-white font-light drop-shadow-xl hidden md:inline">?</span>
+                <span class="text-4xl align-middle text-white font-light drop-shadow-xl md:hidden">?</span>
               </h2>
 
+              <div class="hidden md:block h-[10vh] lg:h-[20vh]"></div>
+
               <div
-                class="max-w-3xl mx-auto translate-y-40 backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 md:py-4 md:px-16 shadow-2xl transform transition-all hover:scale-[1.01] duration-500">
-                <div class="space-y-8 text-lg md:text-xl text-gray-300 leading-relaxed font-light">
+                class="w-full max-w-3xl mx-auto backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 md:py-8 md:px-12 shadow-2xl transform transition-all hover:scale-[1.01] duration-500">
+                <div class="space-y-6 md:space-y-8 text-lg md:text-xl text-gray-300 leading-relaxed font-light">
                   <p class="animate-fade-in-up" style="animation-delay: 0.1s">
                     因为
                     <strong class="text-white font-bold text-2xl mx-1">雷迪恩</strong>
-                    <br />同时也是宝石切割界的顶级工艺
+                    <br class="md:hidden" />同时也是宝石切割界的顶级工艺
                   </p>
 
                   <div class="w-16 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent mx-auto"></div>
+
                   <p class="animate-fade-in-up" style="animation-delay: 0.3s">
-                    <span class="block mb-2 text-white">以精准切面，折射极致璀璨</span>
-                    <span class="text-gray-400 text-base md:text-lg">
-                      正如我们想让充电桩，跳出工业感的刻板<br />
+                    <span class="block mb-2 text-white font-medium">以精准切面，折射极致璀璨</span>
+                    <span class="text-gray-400 text-base md:text-lg block">
+                      正如我们想让充电桩，跳出工业感的刻板<br class="hidden md:block" />
                       <span
-                        class="text-cyan-300 font-medium drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]">绽放出设计的光芒</span>
+                        class="text-cyan-300 font-medium drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] mt-1 inline-block">
+                        绽放出设计的光芒
+                      </span>
                     </span>
                   </p>
                 </div>
