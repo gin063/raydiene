@@ -83,7 +83,7 @@
         <div
           class="relative bg-gradient-to-b from-white/5 to-[#0a0a0a] border-t border-x border-white/10 rounded-3xl text-center backdrop-blur-sm overflow-hidden">
           <div
-            class="relative w-full overflow-hidden min-h-[600px] lg:min-h-[80vh] flex flex-col items-center justify-center bg-[#050505] group py-20 md:py-0">
+            class="relative w-full overflow-hidden min-h-[600px] lg:min-h-[80vh] flex flex-col items-center justify-center bg-[#050505] group py-20 md:py-24">
             <div class="absolute inset-0 z-0 select-none pointer-events-none">
               <div
                 class="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/10 to-black/80 pointer-events-none">
@@ -94,8 +94,7 @@
             </div>
 
             <div
-              class="relative z-20 container mx-auto px-4 md:px-6 text-center flex flex-col items-center justify-center h-full gap-8 md:gap-16">
-
+              class="relative z-20 container mx-auto px-4 md:px-6 text-center flex flex-col items-center justify-center h-full gap-10 md:gap-12 lg:gap-16">
               <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold font-hero tracking-tight leading-tight">
                 <span class="drop-shadow-2xl text-white block md:inline mb-2 md:mb-0">为什么叫</span>
                 <span class="relative inline-block mx-2 align-bottom px-2">
@@ -110,7 +109,7 @@
                 <span class="text-4xl align-middle text-white font-light drop-shadow-xl md:hidden">?</span>
               </h2>
 
-              <div class="hidden md:block h-[10vh] lg:h-[20vh]"></div>
+              <div class="hidden md:block h-8 md:h-[12vh] min-h-[40px]"></div>
 
               <div
                 class="w-full max-w-3xl mx-auto backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-6 md:py-8 md:px-12 shadow-2xl transform transition-all hover:scale-[1.01] duration-500">
