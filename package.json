@@ -7,7 +7,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare && patch-package"
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
@@ -19,6 +19,7 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "nuxt-svgo": "^4.2.6"
+    "nuxt-svgo": "^4.2.6",
+    "patch-package": "^8.0.1"
   }
 }

@@ -1,0 +1,54 @@
+diff --git a/node_modules/@nuxt/image/dist/runtime/providers/aliyun.js b/node_modules/@nuxt/image/dist/runtime/providers/aliyun.js
+index 21f142d..449efc9 100644
+--- a/node_modules/@nuxt/image/dist/runtime/providers/aliyun.js
++++ b/node_modules/@nuxt/image/dist/runtime/providers/aliyun.js
+@@ -37,8 +37,46 @@ export default defineProvider({
+       _modifiers.quality = `Q_${quality}`;
+     }
+     const operations = operationsGenerator(_modifiers);
+-    return {
+-      url: joinURL(baseURL, src + (operations ? "?image_process=" + operations : ""))
+-    };
++    // 1. 获取原始参数
++let ops = operations || "";
++
++// 2. 暴力清洗：移除阿里云不支持的“方言”
++
++// ★★★ 核心修复：同时移除 withoutEnlargement 和它的值 (,true)
++// 使用正则 /withoutEnlargement[^/]*\/?/g 
++// 含义：匹配 withoutEnlargement 后面直到遇到下一个斜杠前的所有内容，彻底删干净
++ops = ops.replace(/withoutEnlargement[^/]*\/?/g, '');
++
++// 移除 blur (防止占位图报错)
++ops = ops.replace(/blur[^/]*\/?/g, '');
++
++// 3. 语法修正：纠正参数写法
++// 将 fw_ (Fixed Width) 改为 w_，fh_ 改为 h_
++ops = ops.replace(/fw_/g, 'w_').replace(/fh_/g, 'h_');
++
++// 将大写 Q_ 改为小写 q_
++ops = ops.replace(/quality,Q_/g, 'quality,q_');
++
++// 4. 清理残留符号 (防止出现多余的斜杠)
++// 比如删掉中间的参数后，可能会留下 //，这里统一压成一个 /
++ops = ops.replace(/\/+/g, '/').replace(/\/$/, '').replace(/^/, '');
++
++// 5. 强制追加：格式转换 (WebP)
++if (!ops.includes('format')) {
++  ops = ops ? `${ops}/format,webp` : 'format,webp';
++}
++
++// 6. 强制追加：质量压缩 (q_80)
++if (!ops.includes('quality')) {
++  ops = ops ? `${ops}/quality,q_80` : 'quality,q_80';
++}
++
++// 7. 返回最终 URL
++// 如果 ops 被删空了，就只返回默认参数
++const finalOps = ops ? `image/${ops}` : 'image/format,webp/quality,q_80';
++
++return {
++  url: joinURL(baseURL, src) + `?x-oss-process=${finalOps}`
++};
+   }
+ });
