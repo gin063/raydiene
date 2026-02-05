@@ -25,7 +25,7 @@
             <div>
               <h1 class="text-5xl md:text-7xl font-bold font-hero tracking-tight mb-6">
                 智享充电<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">一手掌控</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">一手掌控</span>
               </h1>
               <p class="text-gray-400 text-lg md:text-xl max-w-lg leading-relaxed">
                 下载雷迪恩App，随时随地监控充电状态<br>远程控制，预约充电<br>让每一次补能都尽在掌握
