@@ -19,7 +19,7 @@
         </span>
         <h1 class="text-4xl md:text-6xl font-bold font-hero tracking-tight mb-12 leading-tight">
           一群「非典型创业者」的<br /><br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-purple-200">科创热望</span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">科创热望</span>
         </h1>
         <p class="text-lg md:text-xl text-gray-400 leading-relaxed font-light text-justify md:text-center">
           2023年，在上海的科创浪潮里，<br />一群不再年轻但心怀热望的「非典型创业者」，因一个共同的念头聚在了一起。
