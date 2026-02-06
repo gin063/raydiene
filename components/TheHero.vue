@@ -3,13 +3,13 @@
     <section class="relative w-full h-[100svh] overflow-hidden bg-black group/hero">
       <video ref="mobileVideoRef"
         class="block md:hidden absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500"
-        autoplay muted loop playsinline :class="{ 'opacity-60': !isHeroPlaying }">
+        autoplay muted loop playsinline preload="auto" fetchpriority="high" :class="{ 'opacity-60': !isHeroPlaying }">
         <source :src="useVideoUrl('video-mobile.mp4')" type="video/mp4" />
       </video>
 
       <video ref="pcVideoRef"
         class="hidden md:block absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500"
-        autoplay muted loop playsinline :class="{ 'opacity-60': !isHeroPlaying }">
+        autoplay muted loop playsinline preload="auto" fetchpriority="high" :class="{ 'opacity-60': !isHeroPlaying }">
         <source :src="useVideoUrl('video-placeholder.mp4')" type="video/mp4" />
       </video>
 

@@ -30,9 +30,9 @@
           style="animation-delay: 0.1s;">
 
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/support.jpg" alt="全时响应背景" class="w-full h-full object-cover object-center
-               brightness-100 contrast-110  group-hover:scale-105 group-hover:brightness-110
-               transition-all duration-700 ease-out transform-gpu" />
+            <NuxtImg src="/images/service/support.jpg" alt="全时响应背景"
+              class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu"
+              loading="eager" fetchpriority="high" preload :placeholder="false" />
           </div>
 
           <div

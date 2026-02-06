@@ -30,7 +30,8 @@
           style="animation-delay: 0.1s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-1.jpg" alt="极速响应"
-              class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
+              class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu"
+              loading="eager" fetchpriority="high" preload :placeholder="false" />
           </div>
           <div
             class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent to-[80%] opacity-90">

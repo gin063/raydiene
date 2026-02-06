@@ -110,7 +110,8 @@
                 <div class="absolute inset-0 bg-gray-900 overflow-hidden">
                   <NuxtImg src="/images/download/app-preview.jpg" alt="Raydiene App UI"
                     class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
-                    placeholder />
+                    loading="eager" fetchpriority="high" preload :placeholder="false" />
+
                   <div
                     class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent translate-y-full group-hover:translate-y-[-100%] transition-transform duration-1000 ease-in-out pointer-events-none">
                   </div>

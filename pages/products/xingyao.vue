@@ -5,9 +5,10 @@
     <div class="relative w-full h-screen">
       <div class="absolute inset-0 z-0 overflow-hidden">
         <NuxtImg src="/images/products/xingyao/scene-bg-mobile.jpg" alt="星耀系列场景-移动端"
-          class="block md:hidden w-full h-full object-cover animate-ken-burns" placeholder />
+          class="block md:hidden w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high"
+          preload :placeholder="false" />
         <NuxtImg src="/images/products/xingyao/scene-bg.jpg" alt="星耀系列场景-PC端"
-          class="hidden md:block w-full h-full object-cover animate-ken-burns" placeholder />
+          class="hidden md:block w-full h-full object-cover animate-ken-burns" loading="eager" :placeholder="false" />
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
       </div>
 

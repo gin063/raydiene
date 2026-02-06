@@ -111,7 +111,8 @@
 
             <div class="absolute inset-0 z-0">
               <NuxtImg src="/images/about/responsibility-bg.jpg" alt="可持续未来"
-                class="w-full h-full object-cover opacity-60 transition-all duration-[2000ms] ease-out scale-100 group-hover:scale-105 saturate-110" />
+                class="w-full h-full object-cover opacity-60 transition-all duration-[2000ms] ease-out scale-100 group-hover:scale-105 saturate-110"
+                loading="eager" fetchpriority="high" preload :placeholder="false" />
 
               <div
                 class="absolute inset-0 bg-gradient-to-b from-black/60 via-teal-950/50 to-black/90 mix-blend-multiply">

@@ -36,7 +36,8 @@
             <div
               class="w-full md:w-2/5 relative min-h-[300px] md:min-h-full bg-gradient-to-b from-cyan-900/20 to-transparent flex items-center justify-center p-8 group/image">
               <NuxtImg src="/images/products/solid-series.png" alt="坚石系列"
-                class="w-full max-w-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105" />
+                class="w-full max-w-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"
+                loading="eager" fetchpriority="high" preload :placeholder="false" />
               <div class="absolute top-6 left-6">
                 <span
                   class="px-4 py-1.5 rounded-full bg-cyan-600/80 border border-white/20 text-xs font-bold tracking-wider text-white">入门首选</span>

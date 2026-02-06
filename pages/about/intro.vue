@@ -56,7 +56,9 @@
               class="relative h-full rounded-[2rem] border border-white/10 p-8 flex flex-col justify-between shadow-2xl overflow-hidden hover:border-white/30 transition-all duration-500 z-10">
               <div class="absolute inset-0 z-0">
                 <NuxtImg src="/images/about/about-charger-square.jpg" alt="雷迪恩充电桩特效"
-                  class="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-700 ease-out" />
+                  class="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
+                  loading="eager" fetchpriority="high" preload :placeholder="false" />
+
                 <div
                   class="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-black/30 mix-blend-multiply">
                 </div>

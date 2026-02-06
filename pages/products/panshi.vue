@@ -7,18 +7,22 @@
         <Transition name="fade-slow">
           <div v-if="activeModel === 'pro'" class="col-start-1 row-start-1 w-full h-full">
             <NuxtImg src="/images/products/panshi/scene-bg-pro-mobile.jpg" alt="磐石Pro-Mobile"
-              class="block md:hidden w-full h-full object-cover animate-ken-burns" />
+              class="block md:hidden w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high"
+              preload :placeholder="false" />
             <NuxtImg src="/images/products/panshi/scene-bg-pro.jpg" alt="磐石Pro-PC"
-              class="hidden md:block w-full h-full object-cover animate-ken-burns" />
+              class="hidden md:block w-full h-full object-cover animate-ken-burns" loading="eager"
+              :placeholder="false" />
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90"></div>
           </div>
         </Transition>
         <Transition name="fade-slow">
           <div v-if="activeModel === 'max'" class="col-start-1 row-start-1 w-full h-full">
             <NuxtImg src="/images/products/panshi/scene-bg-max-mobile.jpg" alt="磐石Max-Mobile"
-              class="block md:hidden w-full h-full object-cover animate-ken-burns" />
+              class="block md:hidden w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high"
+              preload :placeholder="false" />
             <NuxtImg src="/images/products/panshi/scene-bg-max.jpg" alt="磐石Max-PC"
-              class="hidden md:block w-full h-full object-cover animate-ken-burns" />
+              class="hidden md:block w-full h-full object-cover animate-ken-burns" loading="eager"
+              :placeholder="false" />
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90"></div>
           </div>
         </Transition>
