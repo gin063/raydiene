@@ -146,6 +146,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { onMounted } from 'vue';
 
 // === 顶部视频控制 ===
 const mobileVideoRef = ref(null); // 新增：移动端视频引用
@@ -172,6 +173,21 @@ const toggleHeroVideo = () => {
   isHeroPlaying.value = !isHeroPlaying.value;
 };
 
+onMounted(() => {
+  const video = mobileVideoRef.value;
+
+  // 微信专用：监听 JSBridgeReady 事件
+  // 只要微信准备好了，就立刻强制触发播放
+  if (typeof WeixinJSBridge === "undefined") {
+    document.addEventListener("WeixinJSBridgeReady", () => {
+      video?.play();
+    }, false);
+  } else {
+    WeixinJSBridge.invoke("getNetworkType", {}, () => {
+      video?.play();
+    });
+  }
+});
 // === 数据配置 ===
 // 移除了 video 字段，因为不再需要自动播放交互
 const productRows = [
