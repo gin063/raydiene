@@ -11,7 +11,7 @@
       <video ref="pcVideoRef"
         class="hidden md:block absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500"
         autoplay muted loop playsinline preload="auto" :class="{ 'opacity-60': !isHeroPlaying }">
-        <source :src="useVideoUrl('video-placeholder.mp4')" type="video/mp4" />
+        <source :src="useVideoUrl('video-pc.mp4')" type="video/mp4" />
       </video>
 
       <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80 pointer-events-none">
