@@ -18,7 +18,7 @@
 
       <div class="text-center mt-12 mb-20 animate-fade-in-up">
         <h1
-          class="text-4xl md:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white/80">
+          class="text-4xl md:text-6xl font-bold tracking-tight mb-6 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white/80">
           选购指南 · 找到您的专属家用充电桩
         </h1>
         <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
