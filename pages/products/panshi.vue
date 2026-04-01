@@ -70,6 +70,7 @@
               <Transition name="fade-scale">
                 <NuxtImg :key="activeModel"
                   :src="activeModel === 'pro' ? '/images/products/panshi/detail-pro.jpg' : '/images/products/panshi/detail-max.jpg'"
+                  :alt="activeModel === 'pro' ? '磐石Pro充电桩细节图' : '磐石Max充电桩细节图'"
                   class="w-full h-full object-cover col-start-1 row-start-1" />
               </Transition>
             </div>
@@ -84,7 +85,7 @@
               </Transition>
             </div>
             <p class="text-gray-400 mb-10 leading-relaxed min-h-[3rem]">
-              工业级美学设计，IP65桩体+IP67枪头超高防护。20重安全保护，无惧极端天气。
+              工业级美学设计，IP65桩体+IP67枪头超高防护。28重安全防护，无惧极端天气。
               <span class="transition-colors duration-500 text-brand">
                 {{ activeModel === 'pro' ? 'Pro版本采用极简呼吸灯设计，简约而不简单。' : 'Max版本配备高清显示屏，充电数据一目了然。' }}
               </span>
@@ -107,6 +108,7 @@
               <Transition name="fade-scale">
                 <NuxtImg :key="activeModel"
                   :src="activeModel === 'pro' ? '/images/products/panshi/app-scene-pro.jpg' : '/images/products/panshi/app-scene-max.jpg'"
+                  :alt="activeModel === 'pro' ? '磐石Pro雷迪恩App界面展示' : '磐石Max雷迪恩App界面展示'"
                   class="w-full h-auto rounded-3xl shadow-2xl border border-white/5 col-start-1 row-start-1" />
               </Transition>
             </div>
@@ -129,6 +131,7 @@
               <Transition name="fade-scale">
                 <NuxtImg :key="activeModel"
                   :src="activeModel === 'pro' ? '/images/products/panshi/pro-front.png' : '/images/products/panshi/max-front.png'"
+                  :alt="activeModel === 'pro' ? '磐石Pro充电桩正面图' : '磐石Max充电桩正面图'"
                   class="w-full h-auto drop-shadow-2xl col-start-1 row-start-1" />
               </Transition>
             </div>
@@ -147,6 +150,7 @@
           <Transition name="fade-slow">
             <NuxtImg :key="activeModel"
               :src="activeModel === 'pro' ? '/images/products/panshi/lifestyle-pro.jpg' : '/images/products/panshi/lifestyle-max.jpg'"
+              :alt="activeModel === 'pro' ? '磐石Pro充电桩家居场景图' : '磐石Max充电桩家居场景图'"
               class="w-full h-full object-cover col-start-1 row-start-1 group-hover:scale-105 transition-transform duration-700" />
           </Transition>
           <div
@@ -295,11 +299,39 @@
 <script setup>
 import { ref, computed, onMounted, watch, defineComponent, h } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useProductSchema } from '~/composables/useJsonLd'
+
+const route = useRoute()
+const router = useRouter()
+const activeModel = ref(route.query.model === 'max' ? 'max' : 'pro')
+
+// --- 动态 Product JSON-LD Schema（根据 Pro/Max 切换）---
+const panshiProSchema = {
+  name: '雷迪恩磐石Pro 7kW家用交流充电桩',
+  description: '雷迪恩磐石Pro系列7kW家用充电桩，极简呼吸灯设计，IP65/IP67级防护，28重安全防护，支持App远程管理与峰谷定时充电。已通过中国强制性3C认证，适配99%新能源车型。',
+  price: 999,
+  url: '/products/panshi?model=pro',
+  image: '/images/products/panshi-pro.png',
+  sku: 'A1507-GB01-002-PRO',
+  warranty: '4年（前2年只换不修，后2年免费维修）',
+  hasCertification: true,
+}
+const panshiMaxSchema = {
+  name: '雷迪恩磐石Max 7kW智能屏显家用交流充电桩',
+  description: '雷迪恩磐石Max系列7kW家用充电桩，配备4.3寸高清液晶显示屏，IP65/IP67级防护，28重安全防护，支持App远程管理与峰谷定时充电。已通过中国强制性3C认证，适配99%新能源车型。',
+  price: 1199,
+  url: '/products/panshi?model=max',
+  image: '/images/products/panshi-max.png',
+  sku: 'A1507-GB01-002-MAX',
+  warranty: '4年（前2年只换不修，后2年免费维修）',
+  hasCertification: true,
+}
+useProductSchema(activeModel.value === 'max' ? panshiMaxSchema : panshiProSchema)
 
 // --- SEO 配置 ---
 useSeoMeta({
   title: '磐石系列 Pro/Max - 7kW智能家用交流充电桩 | Raydiene 雷迪恩',
-  description: '雷迪恩(Raydiene)磐石系列提供Pro与Max双版本选择。Pro版采用极简呼吸灯设计，Max版配备高清显示屏。全系标配7kW功率、IP65/IP67级防护、20重安全保护及App智能互联，适配99%新能源车型。',
+  description: '雷迪恩(Raydiene)磐石系列提供Pro与Max双版本选择。Pro版采用极简呼吸灯设计，Max版配备高清显示屏。全系标配7kW功率、IP65/IP67级防护、28重安全防护及App智能互联，适配99%新能源车型。',
   keywords: '雷迪恩磐石系列, 磐石Pro, 磐石Max, 7kW充电桩, 家用充电桩, 带屏幕充电桩, 智能充电桩, 汽车充电桩安装',
   // 社交分享优化
   ogTitle: '雷迪恩磐石系列：智能屏显与极简美学的双重选择',
@@ -307,10 +339,6 @@ useSeoMeta({
   // 使用 Max 版本的场景图作为分享封面，视觉更丰富
   ogImage: '/images/products/panshi/scene-bg-max.jpg',
 })
-
-const route = useRoute()
-const router = useRouter()
-const activeModel = ref(route.query.model === 'max' ? 'max' : 'pro')
 
 watch(activeModel, (newVal) => {
   router.replace({ query: { ...route.query, model: newVal } })
@@ -339,7 +367,7 @@ const features = [
   { text: '适配99%车型', icon: IconCheck },
   { text: '专业上门安装', icon: IconTool },
   { text: '7*15h 响应', icon: IconClock },
-  { text: '2年质保只换不修', icon: IconVerified },
+  { text: '4年质保（前2年只换不修+后2年免费维修）', icon: IconVerified },
   { text: '终身免费流量 & OTA', icon: IconWifi },
 ]
 
@@ -356,7 +384,7 @@ const highlightCards = computed(() => [
     icon: activeModel.value === 'pro' ? IconLight : IconScreen
   },
   {
-    title: '20重安全保护',
+    title: '28重安全防护',
     desc: '过压/过流/漏电/防雷等',
     icon: IconShield
   },

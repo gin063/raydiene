@@ -110,6 +110,12 @@ export const useSiteData = () => {
           link: "/service/aftersales",
           image: "/images/service/aftersales-bg.jpg",
         },
+        {
+          name: "常见问题",
+          link: "/faq",
+          image: "/images/service/service-bg.jpg",
+          desc: "选购、安装、售后常见问题，一站解答。",
+        },
       ],
     },
     {

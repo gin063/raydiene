@@ -45,6 +45,9 @@
             <li>
               <NuxtLink to="/service/aftersales">售后服务</NuxtLink>
             </li>
+            <li>
+              <NuxtLink to="/faq">常见问题</NuxtLink>
+            </li>
           </ul>
         </div>
         <div>
@@ -182,6 +185,9 @@
                 </li>
                 <li>
                   <NuxtLink to="/service/aftersales" class="hover:text-white transition-colors block">售后服务</NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/faq" class="hover:text-white transition-colors block">常见问题</NuxtLink>
                 </li>
               </ul>
             </div>

@@ -7,7 +7,33 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/image"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image", "nuxt-gtag", "@nuxtjs/sitemap"],
+
+  site: {
+    url: "https://www.raydiene.cn",
+    name: "雷迪恩RAYDIENE官方网站",
+  },
+
+  sitemap: {
+    strictNuxtContentPaths: false,
+    urls: [
+      { loc: "/", priority: 1.0, changefreq: "weekly" },
+      { loc: "/faq", priority: 0.9, changefreq: "monthly" },
+      { loc: "/products/jianshi", priority: 0.8, changefreq: "monthly" },
+      { loc: "/products/panshi", priority: 0.8, changefreq: "monthly" },
+      { loc: "/products/xingchen", priority: 0.8, changefreq: "monthly" },
+      { loc: "/products/xingyao", priority: 0.8, changefreq: "monthly" },
+      { loc: "/products/purchase", priority: 0.8, changefreq: "monthly" },
+      { loc: "/service/install", priority: 0.7, changefreq: "monthly" },
+      { loc: "/service/aftersales", priority: 0.7, changefreq: "monthly" },
+      { loc: "/about/intro", priority: 0.6, changefreq: "yearly" },
+      { loc: "/about/culture", priority: 0.6, changefreq: "yearly" },
+      { loc: "/download/apps", priority: 0.6, changefreq: "monthly" },
+      { loc: "/download/manual", priority: 0.7, changefreq: "monthly" },
+      { loc: "/contact/info", priority: 0.5, changefreq: "yearly" },
+      { loc: "/contact/official", priority: 0.5, changefreq: "yearly" },
+    ],
+  },
 
   app: {
     head: {
@@ -67,6 +93,13 @@ export default defineNuxtConfig({
       lg: 1024,
       xl: 1280,
       xxl: 1536,
+    },
+  },
+
+  gtag: {
+    id: "G-B7L17SX3XZ", // 替换为您刚才复制的真实 衡量 ID
+    config: {
+      page_title: "Raydiene 雷迪恩", // 可选：设置默认的页面标题
     },
   },
 

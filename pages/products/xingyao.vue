@@ -48,7 +48,7 @@
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 font-hero">旗舰机型 · 面面俱到</h2>
             <p class="text-gray-400 mb-10 leading-relaxed">
-              被誉为“六边形战士”的顶奢智能配置。7寸智能触控大屏，21重安全防护，重新定义家用充电桩的体验天花板。
+              被誉为”六边形战士”的顶奢智能配置。7寸智能触控大屏，28重安全防护，重新定义家用充电桩的体验天花板。
             </p>
 
             <ProductHighlightGrid :items="highlightCards" />
@@ -219,11 +219,23 @@
 
 <script setup>
 import { onMounted, defineComponent, h } from 'vue'
+import { useProductSchema } from '~/composables/useJsonLd'
+
+// --- Product JSON-LD Schema（星耀系列：3C未通过，不注入认证信息）---
+useProductSchema({
+  name: '雷迪恩星耀系列 7kW/21kW旗舰触控家用充电桩',
+  description: '雷迪恩星耀系列旗舰级家用充电桩，搭载7寸高清触控大屏与智能语音交互，支持7kW及21kW超快充，28重安全防护，4年全程只换不修，特斯拉版支持一键开盖功能，适配99%国标新能源车型。',
+  price: 1999,
+  url: '/products/xingyao',
+  image: '/images/products/xingyao.png',
+  sku: 'A1507-GB01-101',
+  warranty: '4年只换不修',
+})
 
 // --- SEO 配置 ---
 useSeoMeta({
   title: '星耀系列 - 7kW/21kW旗舰触控家用充电桩 | 时代之巅 | Raydiene 雷迪恩',
-  description: '雷迪恩(Raydiene)星耀系列，行业旗舰级家用充电桩。搭载7寸高清触控大屏与智能语音交互系统，支持7kW及21kW超快充。标配特斯拉一键开盖功能、21重顶格安全防护及4年超长质保，支持自定义屏保与流光氛围灯，定义未来充电体验。',
+  description: '雷迪恩(Raydiene)星耀系列，行业旗舰级家用充电桩。搭载7寸高清触控大屏与智能语音交互系统，支持7kW及21kW超快充。标配特斯拉一键开盖功能、28重安全防护及4年超长质保，支持自定义屏保与流光氛围灯，定义未来充电体验。',
   keywords: '雷迪恩星耀系列, 21kW充电桩, 触控屏充电桩, 特斯拉一键开盖, 语音控制充电桩, 高端家用充电桩, 智能充电桩旗舰, Raydiene',
   // 社交分享优化
   ogTitle: '雷迪恩星耀系列：触控大屏，时代之巅',
@@ -259,7 +271,7 @@ const features = [
 
 const highlightCards = [
   { title: '7寸智能触控', desc: '大屏交互 如手机般流畅', icon: IconTouch },
-  { title: '21重安全防护', desc: '新增枪温保护/浪涌/防盗充等防护', icon: IconShield },
+  { title: '28重安全防护', desc: '新增枪温保护/浪涌/防盗充等防护', icon: IconShield },
   { title: '特斯拉一键开盖', desc: '智能感应 便捷体验', icon: IconCar },
   { title: '智能语音助手', desc: '语音播报 & 充满自停', icon: IconVoice },
 ]
@@ -293,7 +305,7 @@ const xingyaoSpecs = [
   { label: '线缆长度', value: '7.5 米' },
   { label: '安装方式', value: '壁挂式 / 立柱式' },
   { label: '执行标准', value: 'GB/T 18487.1-2023' },
-  { label: '安全设计', value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等21重主动安全防护。' },
+  { label: '安全设计', value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等28重主动安全防护。' },
 ]
 
 onMounted(() => {

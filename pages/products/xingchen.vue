@@ -48,7 +48,7 @@
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 font-hero">高级曜石黑 · 科技美学</h2>
             <p class="text-gray-400 mb-10 leading-relaxed">
-              采用一体式钢化玻璃面板与高强度合金机身。20重安全保护，无惧户外风雨，诠释科技与美学的完美融合。
+              采用一体式钢化玻璃面板与高强度合金机身。28重安全防护，无惧户外风雨，诠释科技与美学的完美融合。
             </p>
 
             <ProductHighlightGrid :items="highlightCards" />
@@ -220,6 +220,17 @@
 <script setup>
 import { onMounted, defineComponent, h } from 'vue'
 
+// --- Product JSON-LD Schema（星辰系列：3C未通过，不注入认证信息）---
+useProductSchema({
+  name: '雷迪恩星辰系列 7kW智能家用交流充电桩',
+  description: '雷迪恩星辰系列7kW家用充电桩，采用高级曜石黑钢化玻璃面板与高强度合金机身，配备智能高清显示屏，支持28重安全防护、App远程管理与峰谷定时充电，适配99%新能源车型。',
+  price: 1499,
+  url: '/products/xingchen',
+  image: '/images/products/xingchen.png',
+  sku: 'A1507-GB01-001',
+  warranty: '4年（前2年只换不修，后2年免费维修）',
+})
+
 // --- SEO 配置 ---
 useSeoMeta({
   title: '星辰系列 - 7kW智能屏显家用充电桩 | 曜石黑科技美学 | Raydiene 雷迪恩',
@@ -264,7 +275,7 @@ const features = [
   { text: '适配99%车型', icon: IconCheck },
   { text: '专业上门安装', icon: IconTool },
   { text: '7*15h 响应', icon: IconClock },
-  { text: '2年质保只换不修', icon: IconVerified },
+  { text: '4年质保（前2年只换不修+后2年免费维修）', icon: IconVerified },
   { text: '终身免费流量 & OTA', icon: IconWifi },
 ]
 
@@ -295,7 +306,7 @@ const xingchenSpecs = [
   { label: '线缆长度', value: '6m / 7.5m' },
   { label: '安装方式', value: '壁挂式 / 立柱式' },
   { label: '执行标准', value: 'GB/T 18487.1-2023' },
-  { label: '安全设计', value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等20余项主动安全防护。' },
+  { label: '安全设计', value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等28重主动安全防护。' },
 ]
 
 onMounted(() => {

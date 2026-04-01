@@ -84,10 +84,10 @@
                                     总部地址
                                 </h3>
                                 <p class="text-lg text-white leading-snug group-hover:text-teal-400 transition-colors">
-                                    上海市青浦区万达茂A区<br />1号楼809室
+                                    上海市青浦区万达茂A区<br />1号楼
                                 </p>
                                 <p class="text-lg text-white leading-snug group-hover:text-teal-400 transition-colors">
-                                    长沙市岳麓区麓谷企业广场F区<br />F2栋1703室
+                                    长沙市岳麓区麓谷企业广场F区<br />F2栋
                                 </p>
                             </div>
                         </div>
