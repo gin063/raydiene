@@ -34,7 +34,15 @@ useSeoMeta({
 </script>
 
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <div>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+
+    <ClientOnly>
+      <div class="fixed inset-0 pointer-events-none z-[9999]">
+        <SleekLineCursor />
+      </div>
+    </ClientOnly>
+  </div>
 </template>
