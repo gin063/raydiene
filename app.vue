@@ -41,7 +41,7 @@ useSeoMeta({
 
     <ClientOnly>
       <div class="fixed inset-0 pointer-events-none z-[9999]">
-        <SleekLineCursor />
+        <FluidCursor />
       </div>
     </ClientOnly>
   </div>
