@@ -4,8 +4,8 @@
     <!-- Hero 区域 -->
     <div class="relative w-full h-[50vh] min-h-[360px] flex items-end">
       <div class="absolute inset-0 z-0">
-        <NuxtImg src="/images/service/service-bg.jpg" alt="家用充电桩常见问题解答背景" class="w-full h-full object-cover"
-          loading="eager" fetchpriority="high" />
+        <NuxtImg src="/images/service/faq.jpg" alt="家用充电桩常见问题解答背景" class="w-full h-full object-cover" loading="eager"
+          fetchpriority="high" />
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-[#050505]"></div>
       </div>
       <div class="relative z-10 container mx-auto px-6 pb-16 text-center w-full">

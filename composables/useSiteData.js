@@ -113,7 +113,7 @@ export const useSiteData = () => {
         {
           name: "常见问题",
           link: "/faq",
-          image: "/images/service/service-bg.jpg",
+          image: "/images/service/faq-bg.jpg",
           desc: "选购、安装、售后常见问题，一站解答。",
         },
       ],
