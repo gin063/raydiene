@@ -4,10 +4,10 @@
 
     <div class="relative w-full h-screen">
       <div class="absolute inset-0 z-0 overflow-hidden">
-        <NuxtImg src="/images/products/xingchen/scene-bg-mobile.jpg" alt="星辰系列场景-移动端"
+        <NuxtImg src="/images/products/xingchen/scene-bg-mobile.jpg" alt="雷迪恩星辰系列家用充电桩安装场景-移动端"
           class="block md:hidden w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high"
           preload :placeholder="false" />
-        <NuxtImg src="/images/products/xingchen/scene-bg.jpg" alt="星辰系列场景-PC端"
+        <NuxtImg src="/images/products/xingchen/scene-bg.jpg" alt="雷迪恩星辰系列家用充电桩安装场景"
           class="hidden md:block w-full h-full object-cover animate-ken-burns" loading="eager" :placeholder="false" />
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
       </div>
@@ -41,7 +41,7 @@
         <div class="flex flex-col lg:flex-row items-center gap-16">
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <div class="relative aspect-[16/9] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-              <NuxtImg src="/images/products/xingchen/detail.jpg" alt="星辰系列曜石黑质感"
+              <NuxtImg src="/images/products/xingchen/detail.jpg" alt="雷迪恩星辰系列家用充电桩曜石黑质感细节"
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
           </div>
@@ -64,7 +64,7 @@
         <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <div class="relative mx-auto max-w-2xl">
-              <NuxtImg src="/images/products/xingchen/app-scene.jpg" alt="手机智能控制"
+              <NuxtImg src="/images/products/xingchen/app-scene.jpg" alt="雷迪恩App智能控制星辰系列充电桩"
                 class="w-full h-auto rounded-3xl shadow-2xl border border-white/5" />
             </div>
           </div>
@@ -85,7 +85,7 @@
         <h2 class="text-3xl font-bold text-center mb-16 font-hero">详细规格参数</h2>
         <div class="flex flex-col md:flex-row gap-12 items-start mb-16">
           <div class="w-full md:w-1/3 flex justify-center sticky top-24">
-            <NuxtImg src="/images/products/xingchen/front.png" alt="星辰系列正视图" class="w-full h-auto drop-shadow-2xl" />
+            <NuxtImg src="/images/products/xingchen/front.png" alt="雷迪恩星辰系列家用充电桩正视图" class="w-full h-auto drop-shadow-2xl" />
           </div>
           <div class="w-full md:w-2/3">
             <ProductSpecsTable :specs="xingchenSpecs" />
@@ -93,7 +93,7 @@
         </div>
 
         <div class="w-full relative aspect-[21/9] rounded-xl overflow-hidden border border-white/10 shadow-2xl group">
-          <NuxtImg src="/images/products/xingchen/lifestyle.jpg" alt="星辰系列生活场景"
+          <NuxtImg src="/images/products/xingchen/lifestyle.jpg" alt="雷迪恩星辰系列家用充电桩生活使用场景"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hover:grayscale-0" />
           <div
             class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 z-10 scale-50 origin-bottom-left md:scale-100">
@@ -123,7 +123,7 @@
                 实用至上 · 大道至简</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/jianshi-cover.png" alt="坚石系列"
+              <NuxtImg src="/images/products/jianshi-cover.png" alt="雷迪恩坚石系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -156,7 +156,7 @@
                 简约时尚 · 品质之选</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/panshi-cover.png" alt="磐石系列"
+              <NuxtImg src="/images/products/panshi-cover.png" alt="雷迪恩磐石系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -189,7 +189,7 @@
                 触控大屏 · 时代之巅</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/xingyao-cover.png" alt="星耀系列"
+              <NuxtImg src="/images/products/xingyao-cover.png" alt="雷迪恩星耀系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -225,10 +225,10 @@ useProductSchema({
   name: '雷迪恩星辰系列 7kW智能家用交流充电桩',
   description: '雷迪恩星辰系列7kW家用充电桩，采用高级曜石黑钢化玻璃面板与高强度合金机身，配备智能高清显示屏，支持28重安全防护、App远程管理与峰谷定时充电，适配99%新能源车型。',
   price: 1499,
-  url: '/products/xingchen',
-  image: '/images/products/xingchen.png',
+  url: 'https://www.raydiene.cn/products/xingchen',
+  image: 'https://assets.raydiene.cn/images/products/xingchen.png',
   sku: 'A1507-GB01-001',
-  warranty: '4年（前2年只换不修，后2年免费维修）',
+  warranty: '2年质保只换不修',
 })
 
 // --- SEO 配置 ---
@@ -240,7 +240,7 @@ useSeoMeta({
   ogTitle: '雷迪恩星辰系列：智能科技，美学之光',
   ogDescription: '7kW家用交流充电桩，配备高清显示屏与曜石黑钢化玻璃面板，重新定义充电桩颜值。',
   // 使用PC端场景大图作为分享封面，展现高端质感
-  ogImage: '/images/products/xingchen/scene-bg.jpg',
+  ogImage: 'https://assets.raydiene.cn/images/products/xingchen/scene-bg.jpg',
 })
 
 // === 1. 通用图标定义 ===
@@ -275,7 +275,7 @@ const features = [
   { text: '适配99%车型', icon: IconCheck },
   { text: '专业上门安装', icon: IconTool },
   { text: '7*15h 响应', icon: IconClock },
-  { text: '4年质保（前2年只换不修+后2年免费维修）', icon: IconVerified },
+  { text: '2年质保只换不修', icon: IconVerified },
   { text: '终身免费流量 & OTA', icon: IconWifi },
 ]
 
@@ -294,7 +294,7 @@ const appFeatures = [
 
 const xingchenSpecs = [
   { label: '产品型号', value: 'A1507-GB01-001' },
-  { label: '产品名称', value: '星辰系列交流充电桩' },
+  { label: '产品名称', value: '星辰交流充电桩' },
   { label: '最大功率', value: '7 kW', highlight: true },
   { label: '输出电流', value: '32A' },
   { label: '输入/输出电压', value: 'AC 220V ± 20%' },
@@ -305,7 +305,7 @@ const xingchenSpecs = [
   { label: '工作温度', value: '-30°C ~ 50°C' },
   { label: '线缆长度', value: '6m / 7.5m' },
   { label: '安装方式', value: '壁挂式 / 立柱式' },
-  { label: '执行标准', value: 'GB/T 18487.1-2023' },
+  { label: '执行标准', value: 'GB 39752-2024 / GB 44263-2024' },
   { label: '安全设计', value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等28重主动安全防护。' },
 ]
 

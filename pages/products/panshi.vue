@@ -6,10 +6,10 @@
       <div class="absolute inset-0 z-0 overflow-hidden grid grid-cols-1 grid-rows-1">
         <Transition name="fade-slow">
           <div v-if="activeModel === 'pro'" class="col-start-1 row-start-1 w-full h-full">
-            <NuxtImg src="/images/products/panshi/scene-bg-pro-mobile.jpg" alt="磐石Pro-Mobile"
+            <NuxtImg src="/images/products/panshi/scene-bg-pro-mobile.jpg" alt="雷迪恩磐石Pro家用充电桩安装场景-移动端"
               class="block md:hidden w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high"
               preload :placeholder="false" />
-            <NuxtImg src="/images/products/panshi/scene-bg-pro.jpg" alt="磐石Pro-PC"
+            <NuxtImg src="/images/products/panshi/scene-bg-pro.jpg" alt="雷迪恩磐石Pro家用充电桩安装场景"
               class="hidden md:block w-full h-full object-cover animate-ken-burns" loading="eager"
               :placeholder="false" />
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90"></div>
@@ -17,10 +17,10 @@
         </Transition>
         <Transition name="fade-slow">
           <div v-if="activeModel === 'max'" class="col-start-1 row-start-1 w-full h-full">
-            <NuxtImg src="/images/products/panshi/scene-bg-max-mobile.jpg" alt="磐石Max-Mobile"
+            <NuxtImg src="/images/products/panshi/scene-bg-max-mobile.jpg" alt="雷迪恩磐石Max家用充电桩安装场景-移动端"
               class="block md:hidden w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high"
               preload :placeholder="false" />
-            <NuxtImg src="/images/products/panshi/scene-bg-max.jpg" alt="磐石Max-PC"
+            <NuxtImg src="/images/products/panshi/scene-bg-max.jpg" alt="雷迪恩磐石Max家用充电桩安装场景"
               class="hidden md:block w-full h-full object-cover animate-ken-burns" loading="eager"
               :placeholder="false" />
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90"></div>
@@ -85,7 +85,7 @@
               </Transition>
             </div>
             <p class="text-gray-400 mb-10 leading-relaxed min-h-[3rem]">
-              工业级美学设计，IP65桩体+IP67枪头超高防护。28重安全防护，无惧极端天气。
+              工业级美学设计，IP65桩体+IP67枪头超高防护。{{ activeModel === 'pro' ? '26' : '28' }}重安全防护，无惧极端天气。
               <span class="transition-colors duration-500 text-brand">
                 {{ activeModel === 'pro' ? 'Pro版本采用极简呼吸灯设计，简约而不简单。' : 'Max版本配备高清显示屏，充电数据一目了然。' }}
               </span>
@@ -183,7 +183,7 @@
                 实用至上 · 大道至简</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/jianshi-cover.png" alt="坚石系列"
+              <NuxtImg src="/images/products/jianshi-cover.png" alt="雷迪恩坚石系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -216,7 +216,7 @@
                 智能科技 · 美学之光</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/xingchen-cover.png" alt="星辰系列"
+              <NuxtImg src="/images/products/xingchen-cover.png" alt="雷迪恩星辰系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -249,7 +249,7 @@
                 触控大屏 · 时代之巅</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/xingyao-cover.png" alt="星耀系列"
+              <NuxtImg src="/images/products/xingyao-cover.png" alt="雷迪恩星耀系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -308,22 +308,22 @@ const activeModel = ref(route.query.model === 'max' ? 'max' : 'pro')
 // --- 动态 Product JSON-LD Schema（根据 Pro/Max 切换）---
 const panshiProSchema = {
   name: '雷迪恩磐石Pro 7kW家用交流充电桩',
-  description: '雷迪恩磐石Pro系列7kW家用充电桩，极简呼吸灯设计，IP65/IP67级防护，28重安全防护，支持App远程管理与峰谷定时充电。已通过中国强制性3C认证，适配99%新能源车型。',
+  description: '雷迪恩磐石Pro7kW家用充电桩，极简呼吸灯设计，IP65/IP67级防护，26重安全防护，支持App远程管理与峰谷定时充电。已通过中国强制性3C认证，适配99%新能源车型。',
   price: 999,
-  url: '/products/panshi?model=pro',
-  image: '/images/products/panshi-pro.png',
+  url: 'https://www.raydiene.cn/products/panshi?model=pro',
+  image: 'https://assets.raydiene.cn/images/products/panshi-pro.png',
   sku: 'A1507-GB01-002-PRO',
-  warranty: '4年（前2年只换不修，后2年免费维修）',
+  warranty: '2年质保只换不修',
   hasCertification: true,
 }
 const panshiMaxSchema = {
   name: '雷迪恩磐石Max 7kW智能屏显家用交流充电桩',
-  description: '雷迪恩磐石Max系列7kW家用充电桩，配备4.3寸高清液晶显示屏，IP65/IP67级防护，28重安全防护，支持App远程管理与峰谷定时充电。已通过中国强制性3C认证，适配99%新能源车型。',
+  description: '雷迪恩磐石Max7kW家用充电桩，配备4.3寸高清液晶显示屏，IP65/IP67级防护，28重安全防护，支持App远程管理与峰谷定时充电。已通过中国强制性3C认证，适配99%新能源车型。',
   price: 1199,
-  url: '/products/panshi?model=max',
-  image: '/images/products/panshi-max.png',
+  url: 'https://www.raydiene.cn/products/panshi?model=max',
+  image: 'https://assets.raydiene.cn/images/products/panshi-max.png',
   sku: 'A1507-GB01-002-MAX',
-  warranty: '4年（前2年只换不修，后2年免费维修）',
+  warranty: '2年质保只换不修',
   hasCertification: true,
 }
 useProductSchema(activeModel.value === 'max' ? panshiMaxSchema : panshiProSchema)
@@ -337,7 +337,7 @@ useSeoMeta({
   ogTitle: '雷迪恩磐石系列：智能屏显与极简美学的双重选择',
   ogDescription: '7kW家用交流充电桩，Pro版呼吸灯交互，Max版高清屏显。安全防护与智能互联的完美结合。',
   // 使用 Max 版本的场景图作为分享封面，视觉更丰富
-  ogImage: '/images/products/panshi/scene-bg-max.jpg',
+  ogImage: 'https://assets.raydiene.cn/images/products/panshi/scene-bg-max.jpg',
 })
 
 watch(activeModel, (newVal) => {
@@ -367,7 +367,7 @@ const features = [
   { text: '适配99%车型', icon: IconCheck },
   { text: '专业上门安装', icon: IconTool },
   { text: '7*15h 响应', icon: IconClock },
-  { text: '4年质保（前2年只换不修+后2年免费维修）', icon: IconVerified },
+  { text: '2年质保只换不修', icon: IconVerified },
   { text: '终身免费流量 & OTA', icon: IconWifi },
 ]
 
@@ -384,7 +384,7 @@ const highlightCards = computed(() => [
     icon: activeModel.value === 'pro' ? IconLight : IconScreen
   },
   {
-    title: '28重安全防护',
+    title: activeModel.value === 'pro' ? '26重安全防护' : '28重安全防护',
     desc: '过压/过流/漏电/防雷等',
     icon: IconShield
   },
@@ -403,7 +403,7 @@ const appFeatures = [
 
 const currentSpecs = computed(() => [
   { label: '产品型号', value: activeModel.value === 'pro' ? 'A1607-GB01-001' : 'A1607-GB01-002' },
-  { label: '产品名称', value: `磐石${activeModel.value === 'pro' ? 'Pro' : 'Max'}系列交流充电桩` },
+  { label: '产品名称', value: `磐石${activeModel.value === 'pro' ? 'Pro' : 'Max'}交流充电桩` },
   { label: '显示配置', value: activeModel.value === 'pro' ? '智能呼吸灯' : '智能高清屏显', highlight: true },
   { label: '外观尺寸', value: '374.8 * 186.5 * 121 (mm)' },
   { label: '设备重量', value: '3.6kg' },
@@ -415,7 +415,7 @@ const currentSpecs = computed(() => [
   { label: '防护等级', value: 'IP65 (适合室内/室外)' },
   { label: '工作温度', value: '-30°C ~ 50°C' },
   { label: '工作海拔', value: '&lt; 4000m' },
-  { label: '执行标准', value: 'GB/T 18487.1-2023' },
+  { label: '执行标准', value: 'GB 39752-2024 / GB 44263-2024' },
   { label: '安全设计', value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等20余项主动安全防护。' },
 ])
 

@@ -9,7 +9,7 @@
         <div class="flex-shrink-0 cursor-pointer z-50 transition-[filter] duration-300"
           :class="{ invert: isMobileMenuOpen }" @click="handleLogoClick">
           <NuxtLink to="/">
-            <img src="/images/logo.svg" alt="Raydiene Logo" class="h-12 md:h-16 w-auto object-contain" />
+            <img src="/images/logo.svg" alt="雷迪恩 RAYDIENE 官方Logo" class="h-12 md:h-16 w-auto object-contain" />
           </NuxtLink>
         </div>
 

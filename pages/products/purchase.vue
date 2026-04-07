@@ -35,7 +35,7 @@
           <div class="flex flex-col md:flex-row h-full">
             <div
               class="w-full md:w-2/5 relative min-h-[300px] md:min-h-full bg-gradient-to-b from-cyan-900/20 to-transparent flex items-center justify-center p-8 group/image">
-              <NuxtImg src="/images/products/solid-series.png" alt="坚石系列"
+              <NuxtImg src="/images/products/solid-series.png" alt="雷迪恩坚石系列家用充电桩 金属银极简风格"
                 class="w-full max-w-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"
                 loading="eager" fetchpriority="high" preload :placeholder="false" />
               <div class="absolute top-6 left-6">
@@ -88,7 +88,7 @@
           <div class="flex flex-col md:flex-row h-full">
             <div
               class="w-full md:w-2/5 relative min-h-[300px] md:min-h-full bg-gradient-to-b from-cyan-900/20 to-transparent flex items-center justify-center p-8 group/image">
-              <NuxtImg src="/images/products/rock-series.png" alt="磐石系列"
+              <NuxtImg src="/images/products/rock-series.png" alt="雷迪恩磐石系列家用充电桩 简约时尚品质之选"
                 class="w-full max-w-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105" />
               <div class="absolute top-6 left-6">
                 <span
@@ -139,7 +139,7 @@
           <div class="flex flex-col md:flex-row h-full">
             <div
               class="w-full md:w-2/5 relative min-h-[300px] md:min-h-full bg-gradient-to-b from-cyan-900/20 to-transparent flex items-center justify-center p-8 group/image">
-              <NuxtImg src="/images/products/star-series.png" alt="星辰系列"
+              <NuxtImg src="/images/products/star-series.png" alt="雷迪恩星辰系列家用充电桩 钢化玻璃面板"
                 class="w-full max-w-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105" />
               <div class="absolute top-6 left-6">
                 <span
@@ -190,7 +190,7 @@
           <div class="flex flex-col md:flex-row h-full">
             <div
               class="w-full md:w-2/5 relative min-h-[300px] md:min-h-full bg-gradient-to-b from-cyan-900/20 to-transparent flex items-center justify-center p-8 group/image">
-              <NuxtImg src="/images/products/shining-series.png" alt="星耀系列"
+              <NuxtImg src="/images/products/shining-series.png" alt="雷迪恩星耀系列家用充电桩 7寸触控大屏"
                 class="w-full max-w-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105" />
               <div class="absolute top-6 left-6">
                 <span
@@ -245,11 +245,11 @@
 useSeoMeta({
   title: '选购指南 - 家用充电桩产品对比与推荐 | Raydiene',
   description: '家用充电桩怎么选？7kW还是11kW？雷迪恩选购指南对比坚石/磐石/星辰/星耀全系：价格799元起，全系28重安全防护、3C认证（坚石/磐石）、4年质保。覆盖特斯拉/比亚迪/理想等99%国标车型，找到您的专属家用充电方案。',
-  keywords: '家用充电桩怎么选, 7kW和11kW充电桩区别, 充电桩选购指南, 雷迪恩产品对比, 坚石vs磐石, 家用充电桩推荐2024, 充电桩多少钱',
+  keywords: '家用充电桩怎么选, 7kW和11kW充电桩区别, 充电桩选购指南, 雷迪恩产品对比, 坚石vs磐石, 家用充电桩推荐2026, 充电桩多少钱',
   // 社交分享优化
   ogTitle: '雷迪恩选购指南：一图看懂四大系列区别',
   ogDescription: '从极致性价比到行业旗舰，我们为您提供多样化的家庭能源解决方案。',
-  ogImage: '/images/products/rock-series.png', // 使用销量冠军“磐石”的图片作为封面
+  ogImage: 'https://assets.raydiene.cn/images/products/rock-series.png', // 使用销量冠军“磐石”的图片作为封面
 })
 </script>
 

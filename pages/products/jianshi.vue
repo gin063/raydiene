@@ -4,11 +4,11 @@
 
     <div class="relative w-full h-screen">
       <div class="absolute inset-0 z-0 overflow-hidden">
-        <NuxtImg src="/images/products/jianshi/scene-bg-mobile.jpg" alt="坚石系列场景-移动端"
+        <NuxtImg src="/images/products/jianshi/scene-bg-mobile.jpg" alt="雷迪恩坚石系列家用充电桩安装场景-移动端"
           class="block md:hidden w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high"
           preload />
 
-        <NuxtImg src="/images/products/jianshi/scene-bg.jpg" alt="坚石系列场景-PC端"
+        <NuxtImg src="/images/products/jianshi/scene-bg.jpg" alt="雷迪恩坚石系列家用充电桩安装场景"
           class="hidden md:block w-full h-full object-cover animate-ken-burns" loading="eager" />
 
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
@@ -43,7 +43,7 @@
         <div class="flex flex-col lg:flex-row items-center gap-16">
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <div class="relative aspect-[16/9] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-              <NuxtImg src="/images/products/jianshi/detail.jpg" alt="坚石产品质感"
+              <NuxtImg src="/images/products/jianshi/detail.jpg" alt="雷迪恩坚石系列家用充电桩金属银质感细节"
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
           </div>
@@ -66,7 +66,7 @@
         <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <div class="relative mx-auto max-w-2xl">
-              <NuxtImg src="/images/products/jianshi/app-scene.jpg" alt="手机智能控制"
+              <NuxtImg src="/images/products/jianshi/app-scene.jpg" alt="雷迪恩App智能控制坚石系列充电桩"
                 class="w-full h-auto rounded-3xl shadow-2xl border border-white/5" />
             </div>
           </div>
@@ -87,7 +87,7 @@
         <h2 class="text-3xl font-bold text-center mb-16 font-hero">详细规格参数</h2>
         <div class="flex flex-col md:flex-row gap-12 items-start mb-12">
           <div class="w-full md:w-1/3 flex justify-center sticky top-24">
-            <NuxtImg src="/images/products/jianshi/front.png" alt="坚石系列正视图" class="w-full h-auto drop-shadow-2xl" />
+            <NuxtImg src="/images/products/jianshi/front.png" alt="雷迪恩坚石系列家用充电桩正视图" class="w-full h-auto drop-shadow-2xl" />
           </div>
           <div class="w-full md:w-2/3">
             <ProductSpecsTable :specs="jianshiSpecs" />
@@ -95,11 +95,11 @@
         </div>
 
         <div class="w-full relative aspect-[21/9] rounded-xl overflow-hidden border border-white/10 shadow-2xl group">
-          <NuxtImg src="/images/products/jianshi/lifestyle.jpg" alt="坚石系列生活场景"
+          <NuxtImg src="/images/products/jianshi/lifestyle.jpg" alt="雷迪恩坚石系列家用充电桩生活使用场景"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hover:grayscale-0" />
           <div
             class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 z-10 scale-50 origin-bottom-left md:scale-100">
-            <span class="text-sm font-bold text-brand">坚石</span>
+            <span class="text-sm font-bold text-brand">坚石Pro</span>
             <span class="text-xs text-white ml-2">实用至上 · 大道至简</span>
           </div>
         </div>
@@ -126,7 +126,7 @@
                 简约时尚 · 品质之选</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/panshi-cover.png" alt="磐石系列"
+              <NuxtImg src="/images/products/panshi-cover.png" alt="雷迪恩磐石系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -159,7 +159,7 @@
                 智能科技 · 美学之光</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/xingchen-cover.png" alt="星辰系列"
+              <NuxtImg src="/images/products/xingchen-cover.png" alt="雷迪恩星辰系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -192,7 +192,7 @@
                 触控大屏 · 时代之巅</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/xingyao-cover.png" alt="星耀系列"
+              <NuxtImg src="/images/products/xingyao-cover.png" alt="雷迪恩星耀系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -229,23 +229,23 @@ useProductSchema({
   name: '雷迪恩坚石系列 7kW家用交流充电桩',
   description: '雷迪恩坚石系列7kW家用充电桩，专为复杂环境设计。具备IP65/IP67高等级防护与28重安全防护，支持App远程控制与预约错峰充电。已通过中国强制性3C认证，适配99%新能源车型。',
   price: 799,
-  url: '/products/jianshi',
-  image: '/images/products/jianshi.png',
+  url: 'https://www.raydiene.cn/products/jianshi',
+  image: 'https://assets.raydiene.cn/images/products/jianshi.png',
   sku: 'A1507-GB01-003',
-  warranty: '4年（前2年只换不修，后2年免费维修）',
+  warranty: '2年质保只换不修',
   hasCertification: true,
 })
 
 // --- SEO 配置 ---
 useSeoMeta({
   title: '坚石系列 - 7kW家用交流充电桩 | 硬核防护 | Raydiene 雷迪恩',
-  description: '雷迪恩(Raydiene)坚石系列7kW家用充电桩，专为复杂环境设计。具备IP65/IP67高等级防护与28重安全防护，支持App远程控制与预约错峰充电。适配99%新能源车型，提供专业上门安装与4年质保（前2年只换不修+后2年免费维修）服务。',
+  description: '雷迪恩(Raydiene)坚石系列7kW家用充电桩，专为复杂环境设计。具备IP65/IP67高等级防护与22重安全防护，支持App远程控制与预约错峰充电。适配99%新能源车型，提供专业上门安装与2年质保（只换不修）服务。',
   keywords: '雷迪恩坚石系列, 7kW充电桩, 家用交流充电桩, 户外充电桩, IP65防护, 预约充电, 汽车充电桩安装, Raydiene',
   // 社交分享优化
   ogTitle: '雷迪恩坚石系列：实用至上，硬核防护',
   ogDescription: '7kW家用交流充电桩，IP65级防尘防水，支持App智能互联。让每一次充电都安全无忧。',
   // 使用PC端场景图作为分享封面，视觉冲击力更强
-  ogImage: '/images/products/jianshi/scene-bg.jpg',
+  ogImage: 'https://assets.raydiene.cn/images/products/jianshi/scene-bg.jpg',
 })
 
 // === 1. 通用图标 ===
@@ -271,14 +271,14 @@ const features = [
   { text: '适配99%车型', icon: IconCheck },
   { text: '专业上门安装', icon: IconTool },
   { text: '7*15h 响应', icon: IconClock },
-  { text: '4年质保（前2年只换不修+后2年免费维修）', icon: IconVerified },
+  { text: '2年质保只换不修', icon: IconVerified },
   { text: '终身免费流量 & OTA', icon: IconWifi },
 ]
 
 // 中间 4 张特性卡片
 const highlightCards = [
   { title: 'IP67/IP65 防护', desc: '枪头IP67 / 桩体IP65', icon: IconIP },
-  { title: '28重安全防护', desc: '过压/过流/漏电/防雷等', icon: IconShield }, // 复用 IconShield
+  { title: '22重安全防护', desc: '过压/过流/漏电/防雷等', icon: IconShield }, // 复用 IconShield
   { title: '-30℃ ~ 50℃', desc: '极端温度稳定运行', icon: IconTemp },
   { title: '智能互联', desc: '蓝牙 / 4G / 充满自停', icon: IconConnect },
 ]
@@ -293,7 +293,7 @@ const appFeatures = [
 // 规格参数表
 const jianshiSpecs = [
   { label: '产品型号', value: 'A1607-GB01-101' },
-  { label: '产品名称', value: '坚石系列交流充电桩（家用版）' },
+  { label: '产品名称', value: '坚石Pro交流充电桩' },
   { label: '最大功率', value: '7 kW', highlight: true },
   { label: '输出电流', value: '32A' },
   { label: '输入/输出电压', value: 'AC 220V ± 20%' },
@@ -303,10 +303,10 @@ const jianshiSpecs = [
   { label: '工作温度', value: '-30°C ~ 50°C' },
   { label: '线缆长度', value: '5 米' },
   { label: '安装方式', value: '壁挂式 / 立柱式' },
-  { label: '执行标准', value: 'GB/T 18487.1-2023' },
+  { label: '执行标准', value: 'GB 39752-2024 / GB 44263-2024' },
   {
     label: '安全设计',
-    value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等20余项主动安全防护。'
+    value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等20余项安全防护。'
   },
 ]
 

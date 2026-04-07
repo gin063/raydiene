@@ -47,7 +47,7 @@
 
     <section class="w-full bg-black pt-20 pb-12 px-6 md:px-12 container mx-auto text-center">
       <h2 class="text-3xl md:text-5xl text-white font-bold tracking-tight animate-fade-in-up">
-        即刻探索雷迪恩高端家用充电桩系列
+        即刻探索雷迪恩<br class="md:hidden" />高端家用充电桩系列
       </h2>
     </section>
 
@@ -108,7 +108,7 @@
             </NuxtLink>
           </div>
           <div class="w-full md:w-[60%] h-full relative overflow-hidden">
-            <NuxtImg src="/images/service-install.jpg" alt="安装服务" format="webp" quality="80"
+            <NuxtImg src="/images/service-install.jpg" alt="雷迪恩(Raydiene)家用充电桩专业安装服务" format="webp" quality="80"
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
             <div class="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-black via-black/50 to-transparent"></div>
           </div>
@@ -117,7 +117,7 @@
         <div
           class="w-full aspect-[4/5] md:aspect-[3/1] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer relative bg-gray-900 flex flex-col md:flex-row">
           <div class="w-full md:w-[60%] h-full relative overflow-hidden">
-            <NuxtImg src="/images/service-aftersales.jpg" alt="售后服务" format="webp" quality="80"
+            <NuxtImg src="/images/service-aftersales.jpg" alt="雷迪恩(Raydiene)家用充电桩售后服务保障" format="webp" quality="80"
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
             <div class="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-black via-black/50 to-transparent"></div>
           </div>

@@ -4,10 +4,10 @@
 
     <div class="relative w-full h-screen">
       <div class="absolute inset-0 z-0 overflow-hidden">
-        <NuxtImg src="/images/products/xingyao/scene-bg-mobile.jpg" alt="星耀系列场景-移动端"
+        <NuxtImg src="/images/products/xingyao/scene-bg-mobile.jpg" alt="雷迪恩星耀系列家用充电桩安装场景-移动端"
           class="block md:hidden w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high"
           preload :placeholder="false" />
-        <NuxtImg src="/images/products/xingyao/scene-bg.jpg" alt="星耀系列场景-PC端"
+        <NuxtImg src="/images/products/xingyao/scene-bg.jpg" alt="雷迪恩星耀系列家用充电桩安装场景"
           class="hidden md:block w-full h-full object-cover animate-ken-burns" loading="eager" :placeholder="false" />
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
       </div>
@@ -41,7 +41,7 @@
         <div class="flex flex-col lg:flex-row items-center gap-16">
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <div class="relative aspect-[16/9] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-              <NuxtImg src="/images/products/xingyao/detail.jpg" alt="星耀系列旗舰质感"
+              <NuxtImg src="/images/products/xingyao/detail.jpg" alt="雷迪恩星耀系列家用充电桩旗舰质感细节"
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
             </div>
           </div>
@@ -64,7 +64,7 @@
         <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
           <div class="w-full lg:w-1/2 animate-on-scroll">
             <div class="relative mx-auto max-w-2xl">
-              <NuxtImg src="/images/products/xingyao/app-scene.jpg" alt="星耀智能交互"
+              <NuxtImg src="/images/products/xingyao/app-scene.jpg" alt="雷迪恩星耀系列家用充电桩7寸触控屏智能交互"
                 class="w-full h-auto rounded-3xl shadow-2xl border border-white/5" />
             </div>
           </div>
@@ -85,7 +85,7 @@
         <h2 class="text-3xl font-bold text-center mb-16 font-hero">详细规格参数</h2>
         <div class="flex flex-col md:flex-row gap-12 items-start mb-16">
           <div class="w-full md:w-1/3 flex justify-center sticky top-24">
-            <NuxtImg src="/images/products/xingyao/front.png" alt="星耀系列正视图" class="w-full h-auto drop-shadow-2xl" />
+            <NuxtImg src="/images/products/xingyao/front.png" alt="雷迪恩星耀系列家用充电桩正视图" class="w-full h-auto drop-shadow-2xl" />
           </div>
           <div class="w-full md:w-2/3">
             <ProductSpecsTable :specs="xingyaoSpecs" />
@@ -93,7 +93,7 @@
         </div>
 
         <div class="w-full relative aspect-[21/9] rounded-xl overflow-hidden border border-white/10 shadow-2xl group">
-          <NuxtImg src="/images/products/xingyao/lifestyle.jpg" alt="星耀系列旗舰生活"
+          <NuxtImg src="/images/products/xingyao/lifestyle.jpg" alt="雷迪恩星耀系列家用充电桩旗舰生活场景"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hover:grayscale-0" />
           <div
             class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 z-10 scale-50 origin-bottom-left md:scale-100">
@@ -123,7 +123,7 @@
                 实用至上 · 大道至简</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/jianshi-cover.png" alt="坚石系列"
+              <NuxtImg src="/images/products/jianshi-cover.png" alt="雷迪恩坚石系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -156,7 +156,7 @@
                 简约时尚 · 品质之选</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/panshi-cover.png" alt="磐石系列"
+              <NuxtImg src="/images/products/panshi-cover.png" alt="雷迪恩磐石系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -189,7 +189,7 @@
                 智能科技 · 美学之光</p>
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
-              <NuxtImg src="/images/products/xingchen-cover.png" alt="星辰系列"
+              <NuxtImg src="/images/products/xingchen-cover.png" alt="雷迪恩星辰系列家用充电桩"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -226,22 +226,22 @@ useProductSchema({
   name: '雷迪恩星耀系列 7kW/21kW旗舰触控家用充电桩',
   description: '雷迪恩星耀系列旗舰级家用充电桩，搭载7寸高清触控大屏与智能语音交互，支持7kW及21kW超快充，28重安全防护，4年全程只换不修，特斯拉版支持一键开盖功能，适配99%国标新能源车型。',
   price: 1999,
-  url: '/products/xingyao',
-  image: '/images/products/xingyao.png',
+  url: 'https://www.raydiene.cn/products/xingyao',
+  image: 'https://assets.raydiene.cn/images/products/xingyao.png',
   sku: 'A1507-GB01-101',
-  warranty: '4年只换不修',
+  warranty: '4年质保只换不修',
 })
 
 // --- SEO 配置 ---
 useSeoMeta({
   title: '星耀系列 - 7kW/21kW旗舰触控家用充电桩 | 时代之巅 | Raydiene 雷迪恩',
-  description: '雷迪恩(Raydiene)星耀系列，行业旗舰级家用充电桩。搭载7寸高清触控大屏与智能语音交互系统，支持7kW及21kW超快充。标配特斯拉一键开盖功能、28重安全防护及4年超长质保，支持自定义屏保与流光氛围灯，定义未来充电体验。',
+  description: '雷迪恩(Raydiene)星耀系列，行业旗舰级家用充电桩。搭载7寸高清触控大屏与智能语音交互系统，支持7kW及21kW超快充。标配特斯拉一键开盖功能、28重安全防护及4年超长质保只换不修，支持自定义屏保与流光氛围灯，定义未来充电体验。',
   keywords: '雷迪恩星耀系列, 21kW充电桩, 触控屏充电桩, 特斯拉一键开盖, 语音控制充电桩, 高端家用充电桩, 智能充电桩旗舰, Raydiene',
   // 社交分享优化
   ogTitle: '雷迪恩星耀系列：触控大屏，时代之巅',
   ogDescription: '行业旗舰之作。7寸大屏交互，21kW极速补能，标配特斯拉一键开盖。',
   // 使用极具视觉冲击力的场景图
-  ogImage: '/images/products/xingyao/scene-bg.jpg',
+  ogImage: 'https://assets.raydiene.cn/images/products/xingyao/scene-bg.jpg',
 })
 
 // === 1. 通用图标 ===
@@ -284,7 +284,7 @@ const appFeatures = [
 
 const xingyaoSpecs = [
   { label: '产品型号', value: 'A1507-GB01-101' },
-  { label: '产品名称', value: '星耀系列交流充电桩' },
+  { label: '产品名称', value: '星耀交流充电桩' },
   {
     label: '最大功率',
     value: '<span class="text-brand font-bold">7 kW</span> <span class="mx-2 text-gray-600">/</span> <span class="text-brand font-bold">21 kW</span>'
@@ -304,7 +304,7 @@ const xingyaoSpecs = [
   { label: '工作温度', value: '-30°C ~ 50°C' },
   { label: '线缆长度', value: '7.5 米' },
   { label: '安装方式', value: '壁挂式 / 立柱式' },
-  { label: '执行标准', value: 'GB/T 18487.1-2023' },
+  { label: '执行标准', value: 'GB 39752-2024 / GB 44263-2024' },
   { label: '安全设计', value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等28重主动安全防护。' },
 ]
 

@@ -30,7 +30,7 @@
           style="animation-delay: 0.1s;">
 
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/support.jpg" alt="全时响应背景"
+            <NuxtImg src="/images/service/support.jpg" alt="雷迪恩充电桩全时响应售后客服服务"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu"
               loading="eager" fetchpriority="high" preload :placeholder="false" />
           </div>
@@ -64,7 +64,7 @@
           style="animation-delay: 0.2s;">
 
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/ota-bg.jpg" alt="OTA升级背景" class="w-full h-full object-cover object-center
+            <NuxtImg src="/images/service/ota-bg.jpg" alt="雷迪恩充电桩OTA云端远程升级功能" class="w-full h-full object-cover object-center
                brightness-100 contrast-110
                group-hover:scale-105 group-hover:brightness-110
                transition-all duration-700 ease-out transform-gpu" />
@@ -98,7 +98,7 @@
           style="animation-delay: 0.3s;">
 
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/4g-bg.jpg" alt="4G网络背景" class="w-full h-full object-cover object-center
+            <NuxtImg src="/images/service/4g-bg.jpg" alt="雷迪恩充电桩4G终身免费联网功能" class="w-full h-full object-cover object-center
                brightness-100 contrast-110
                group-hover:scale-105 group-hover:brightness-110
                transition-all duration-700 ease-out transform-gpu" />
@@ -132,7 +132,7 @@
           style="animation-delay: 0.4s;">
 
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/warranty-bg.jpg" alt="质保服务背景" class="w-full h-full object-cover object-center
+            <NuxtImg src="/images/service/warranty-bg.jpg" alt="雷迪恩充电桩4年质保太平洋保险服务保障" class="w-full h-full object-cover object-center
                brightness-100 contrast-110
                group-hover:scale-105 group-hover:brightness-110
                transition-all duration-700 ease-out transform-gpu" />
@@ -175,7 +175,7 @@ useSeoMeta({
   // 社交分享优化
   ogTitle: '雷迪恩无忧售后：只换不修，全程守护',
   ogDescription: '7*15h全时响应，终身免费流量，OTA持续进化。我们承诺质保期内“只换不修”。',
-  ogImage: '/images/service/support.jpg', // 使用页面中“全时响应”的背景图作为分享封面
+  ogImage: 'https://assets.raydiene.cn/images/service/support.jpg', // 使用页面中“全时响应”的背景图作为分享封面
 })
 </script>
 

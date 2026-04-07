@@ -144,7 +144,7 @@ useSeoMeta({
     ogTitle: "联系雷迪恩：随时为您服务",
     ogDescription: "无论是产品咨询还是售后支持，雷迪恩专业团队随时待命。",
     // 这里没有特定的大图，可以使用通用的 Logo 分享图，或者如果不设置会自动回退到全局默认图
-    ogImage: "/images/og-share.png",
+    ogImage: "https://assets.raydiene.cn/images/og-share.png",
 });
 
 // 状态

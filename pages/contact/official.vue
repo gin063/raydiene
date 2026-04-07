@@ -44,7 +44,7 @@
               </div>
 
               <div class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mb-6 relative z-10">
-                <img src="/images/social/jd.svg" alt="JD" class="w-14 h-14 object-contain" />
+                <img src="/images/social/jd.svg" alt="雷迪恩充电桩京东旗舰店" class="w-14 h-14 object-contain" />
               </div>
               <h3 class="text-2xl font-bold font-hero mb-2 relative z-10">京东</h3>
               <p class="text-gray-400 text-sm relative z-10">JD.com</p>
@@ -180,7 +180,7 @@ useSeoMeta({
   // 社交分享优化
   ogTitle: '雷迪恩官方渠道导航',
   ogDescription: '一键直达京东/天猫/抖音官方旗舰店，选购正品保障的充电产品。',
-  ogImage: '/images/og-share.png',
+  ogImage: 'https://assets.raydiene.cn/images/og-share.png',
 })
 
 const jdTab = ref('official')

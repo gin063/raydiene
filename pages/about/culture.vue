@@ -110,7 +110,7 @@
           <div class="group relative rounded-[2.5rem] overflow-hidden border border-white/10 bg-[#0a0a0a]">
 
             <div class="absolute inset-0 z-0">
-              <NuxtImg src="/images/about/responsibility-bg.jpg" alt="可持续未来"
+              <NuxtImg src="/images/about/responsibility-bg.jpg" alt="雷迪恩(Raydiene)绿色出行可持续能源未来愿景"
                 class="w-full h-full object-cover opacity-60 transition-all duration-[2000ms] ease-out scale-100 group-hover:scale-105 saturate-110"
                 loading="eager" fetchpriority="high" preload :placeholder="false" />
 

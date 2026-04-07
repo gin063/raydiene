@@ -106,13 +106,13 @@ import { ref, computed } from 'vue'
 // --- SEO 配置 ---
 useSeoMeta({
   title: '用户手册下载 - 产品说明书与使用指南 | Raydiene',
-  description: '雷迪恩充电桩电子说明书下载中心：坚石/磐石Pro/磐石Max/星辰/星耀系列PDF用户手册，含产品参数、安装规范、App使用指南、故障排除说明，符合GB 39752-2024新国标。',
+  description: '雷迪恩充电桩电子说明书下载中心：坚石Pro/磐石Pro/磐石Max/星辰/星耀系列PDF用户手册，含产品参数、安装规范、App使用指南、故障排除说明，符合GB 39752-2024新国标。',
   keywords: '充电桩电子说明书, 雷迪恩用户手册, 充电桩使用说明书, 坚石说明书, 磐石说明书, 星辰说明书, 星耀说明书, 充电桩PDF下载',
   // 社交分享优化
   ogTitle: '雷迪恩产品使用手册下载',
   ogDescription: '全系列产品说明书在线预览与下载，助您快速掌握产品使用方法。',
   // 使用坚石系列的第一页作为默认分享图，非常直观
-  ogImage: '/images/download/manual/jianshi/manual-part-01.jpg',
+  ogImage: 'https://assets.raydiene.cn/images/download/manual/jianshi/manual-part-01.jpg',
 })
 
 // 1. 修改数据源：只保留文件名 (Filename only)

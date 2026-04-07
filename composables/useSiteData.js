@@ -42,7 +42,7 @@ export const useSiteData = () => {
               image: "/images/products/jianshi.png",
               products: [
                 {
-                  name: "坚石",
+                  name: "坚石Pro",
                   link: "/products/jianshi",
                   image: "/images/products/jianshi.png",
                 },
@@ -92,6 +92,7 @@ export const useSiteData = () => {
           name: "选购指南",
           link: "/products/purchase",
           image: "/images/products/roadmap-bg.jpg",
+          desc: "对比四大系列，找到最适合您的家用充电桩。",
         },
       ],
     },
@@ -104,11 +105,13 @@ export const useSiteData = () => {
           name: "安装服务",
           link: "/service/install",
           image: "/images/service/install-bg.jpg",
+          desc: "专业持证师傅上门，从勘测到验收全程跟进。",
         },
         {
           name: "售后服务",
           link: "/service/aftersales",
           image: "/images/service/aftersales-bg.jpg",
+          desc: "超长质保、OTA升级、4G流量终身免费，全周期无忧。",
         },
         {
           name: "常见问题",
@@ -146,11 +149,13 @@ export const useSiteData = () => {
           name: "联系方式",
           link: "/contact/info",
           image: "/images/contact/info-bg.jpg",
+          desc: "电话、邮件、地址，多种方式随时联系我们。",
         },
         {
           name: "官方渠道",
           link: "/contact/official",
           image: "/images/contact/official-bg.jpg",
+          desc: "官方旗舰店及社交媒体。",
         },
         /*{ name: "加入我们", link: "/", image: "/images/contact/join-bg.jpg" },*/
       ],

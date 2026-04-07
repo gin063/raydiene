@@ -29,7 +29,7 @@
           class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
           style="animation-delay: 0.1s;">
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/install-1.jpg" alt="极速响应"
+            <NuxtImg src="/images/service/install-1.jpg" alt="雷迪恩充电桩安装服务-2小时极速响应上门"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu"
               loading="eager" fetchpriority="high" preload :placeholder="false" />
           </div>
@@ -54,7 +54,7 @@
           class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
           style="animation-delay: 0.2s;">
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/install-2.jpg" alt="专属服务"
+            <NuxtImg src="/images/service/install-2.jpg" alt="雷迪恩充电桩安装服务-1对1专属管家"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
           <div
@@ -78,7 +78,7 @@
           class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
           style="animation-delay: 0.3s;">
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/install-3.jpg" alt="资质齐全"
+            <NuxtImg src="/images/service/install-3.jpg" alt="雷迪恩充电桩安装服务-持证专业电工上岗"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
           <div
@@ -102,7 +102,7 @@
           class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
           style="animation-delay: 0.4s;">
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/install-4.jpg" alt="上门安装"
+            <NuxtImg src="/images/service/install-4.jpg" alt="雷迪恩充电桩专业上门精工安装施工"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
           <div
@@ -126,7 +126,7 @@
           class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
           style="animation-delay: 0.5s;">
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/install-5.jpg" alt="安装验收"
+            <NuxtImg src="/images/service/install-5.jpg" alt="雷迪恩充电桩安装完成严苛安全验收"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
           <div
@@ -150,7 +150,7 @@
           class="group relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden hover:border-emerald-500/50 hover:shadow-[0_0_35px_rgba(16,185,129,0.3)] transition-all duration-500 h-[280px] animate-fade-in-up"
           style="animation-delay: 0.6s;">
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/install-6.jpg" alt="客服回访"
+            <NuxtImg src="/images/service/install-6.jpg" alt="雷迪恩充电桩安装后专属客服回访"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
           <div
@@ -215,7 +215,7 @@ useSeoMeta({
   // 社交分享优化
   ogTitle: '雷迪恩专业安装：6大流程，一步到位',
   ogDescription: '从勘测到交付，全程标准化服务。持证上岗，安全无忧。',
-  ogImage: '/images/service/install-4.jpg', // 使用页面中代表“精工交付”的图片作为分享封面
+  ogImage: 'https://assets.raydiene.cn/images/service/install-4.jpg', // 使用页面中代表“精工交付”的图片作为分享封面
 })
 </script>
 

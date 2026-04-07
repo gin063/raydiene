@@ -36,7 +36,7 @@
               <div class="relative group w-full sm:w-auto">
                 <a href="https://apps.apple.com/cn/app/%E9%9B%B7%E8%BF%AA%E6%81%A9/id6746684577" target="_blank"
                   class="w-full h-full flex items-center gap-4 bg-white/5 border border-white/10 hover:bg-white hover:text-black hover:border-white px-8 py-4 rounded-2xl transition-all duration-300 min-w-[200px]">
-                  <img src="/images/social/apple.svg" alt="Apple"
+                  <img src="/images/social/apple.svg" alt="App Store下载雷迪恩充电桩App"
                     class="w-9 h-9 object-contain group-hover:invert transition-all" />
                   <div class="text-left">
                     <p class="text-[10px] uppercase tracking-wider opacity-60 group-hover:opacity-100">Download on the
@@ -46,7 +46,7 @@
                 </a>
                 <div
                   class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-40 p-2 bg-white rounded-xl shadow-2xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
-                  <NuxtImg src="/images/qr/apple-app.jpg" alt="App Store QR" class="w-full h-auto rounded-lg" />
+                  <NuxtImg src="/images/qr/apple-app.jpg" alt="雷迪恩App Store下载二维码" class="w-full h-auto rounded-lg" />
                   <div class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
                 </div>
               </div>
@@ -55,7 +55,7 @@
                 <a href="https://sj.qq.com/appdetail/uni.UNICBA3BB2" target="_blank"
                   class="w-full h-full flex items-center gap-4 bg-white/5 border border-white/10 hover:bg-[#3DDC84] hover:text-black hover:border-[#3DDC84] px-8 py-4 rounded-2xl transition-all duration-300 min-w-[200px]">
 
-                  <img src="/images/social/android.svg" alt="Android"
+                  <img src="/images/social/android.svg" alt="Android下载雷迪恩充电桩App"
                     class="w-9 h-9 object-contain group-hover:brightness-0 transition-all origin-center scale-150" />
 
                   <div class="text-left">
@@ -65,7 +65,7 @@
                 </a>
                 <div
                   class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-40 p-2 bg-white rounded-xl shadow-2xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
-                  <NuxtImg src="/images/qr/android-app.jpg" alt="Android QR" class="w-full h-auto rounded-lg" />
+                  <NuxtImg src="/images/qr/android-app.jpg" alt="雷迪恩Android应用下载二维码" class="w-full h-auto rounded-lg" />
                   <div class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
                 </div>
               </div>
@@ -73,7 +73,7 @@
               <div class="relative group w-full sm:w-auto">
                 <button
                   class="w-full h-full flex items-center gap-4 bg-white/5 border border-white/10 hover:bg-[#07C160] hover:text-black hover:border-[#07C160] px-8 py-4 rounded-2xl transition-all duration-300 min-w-[200px]">
-                  <img src="/images/social/wechat-miniprogram.svg" alt="Mini Program"
+                  <img src="/images/social/wechat-miniprogram.svg" alt="雷迪恩充电桩微信小程序"
                     class="w-8=9 h-9 object-contain group-hover:brightness-0 transition-all origin-center" />
                   <div class="text-left">
                     <p class="text-[10px] uppercase tracking-wider opacity-60 group-hover:opacity-100">Scan to Use</p>
@@ -82,7 +82,7 @@
                 </button>
                 <div
                   class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-40 p-2 bg-white rounded-xl shadow-2xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
-                  <NuxtImg src="/images/qr/wechat-miniprogram.jpg" alt="小程序码" class="w-full h-auto rounded-lg" />
+                  <NuxtImg src="/images/qr/wechat-miniprogram.jpg" alt="雷迪恩充电桩微信小程序二维码" class="w-full h-auto rounded-lg" />
                   <div class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
                 </div>
               </div>
@@ -108,7 +108,7 @@
               <div
                 class="relative w-full h-full bg-black border-4 border-gray-800 rounded-[3rem] shadow-2xl overflow-hidden transform rotate-[-6deg] group-hover:rotate-0 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-10 group-hover:shadow-[0_0_50px_rgba(0,255,153,0.3)]">
                 <div class="absolute inset-0 bg-gray-900 overflow-hidden">
-                  <NuxtImg src="/images/download/app-preview.jpg" alt="Raydiene App UI"
+                  <NuxtImg src="/images/download/app-preview.jpg" alt="雷迪恩(Raydiene)充电桩智能管理App界面展示"
                     class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
                     loading="eager" fetchpriority="high" preload :placeholder="false" />
 
@@ -210,7 +210,7 @@ useSeoMeta({
   // 社交分享优化
   ogTitle: '雷迪恩 App：智享充电，一手掌控',
   ogDescription: '随时随地监控状态、远程预约充电。点击下载 App 或查看使用手册。',
-  ogImage: '/images/download/app-preview.jpg', // 使用页面中那张手机 App 预览图作为分享封面
+  ogImage: 'https://assets.raydiene.cn/images/download/app-preview.jpg', // 使用页面中那张手机 App 预览图作为分享封面
 })
 </script>
 

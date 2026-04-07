@@ -131,7 +131,7 @@ useSeoMeta({
     // 社交分享优化
     ogTitle: '雷迪恩隐私政策：我们如何保护您的信息',
     ogDescription: '点击查看雷迪恩关于个人信息保护的详细承诺与措施。',
-    ogImage: '/images/og-share.png',
+    ogImage: 'https://assets.raydiene.cn/images/og-share.png',
     // 注意：我去掉了原有的 noindex，以便提升品牌透明度。
     // 如果您确实不希望此页面被搜索引擎搜到，请取消下面这行的注释：
     // robots: 'noindex, nofollow',

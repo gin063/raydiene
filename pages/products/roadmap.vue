@@ -52,7 +52,7 @@
 
             <div
               class="w-48 h-48 flex-shrink-0 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center overflow-hidden group-hover:border-cyan-500/30 transition-colors duration-300 relative">
-              <NuxtImg src="/images/products/rock-series.png" alt="磐石系列"
+              <NuxtImg src="/images/products/rock-series.png" alt="雷迪恩磐石系列家用充电桩"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             </div>
           </div>
@@ -80,7 +80,7 @@
             </div>
             <div
               class="w-48 h-48 flex-shrink-0 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center overflow-hidden group-hover:border-cyan-500/30 transition-colors duration-300 relative">
-              <NuxtImg src="/images/products/star-series.png" alt="星辰系列"
+              <NuxtImg src="/images/products/star-series.png" alt="雷迪恩星辰系列家用充电桩"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             </div>
           </div>
@@ -108,7 +108,7 @@
             </div>
             <div
               class="w-48 h-48 flex-shrink-0 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center overflow-hidden group-hover:border-cyan-500/30 transition-colors duration-300 relative">
-              <NuxtImg src="/images/products/shining-series.png" alt="星耀系列"
+              <NuxtImg src="/images/products/shining-series.png" alt="雷迪恩星耀系列家用充电桩"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             </div>
           </div>
@@ -136,7 +136,7 @@
             </div>
             <div
               class="w-48 h-48 flex-shrink-0 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center overflow-hidden group-hover:border-cyan-500/30 transition-colors duration-300 relative">
-              <NuxtImg src="/images/products/solid-series.png" alt="坚石系列"
+              <NuxtImg src="/images/products/solid-series.png" alt="雷迪恩坚石系列家用充电桩"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             </div>
           </div>
@@ -163,7 +163,7 @@ useSeoMeta({
   // 社交分享优化
   ogTitle: '雷迪恩未来视界：产品创新路线图',
   ogDescription: '探索我们如何一步步定义家庭能源的未来。',
-  ogImage: '/images/products/rock-series.png', // 使用其中一款代表性产品的图片
+  ogImage: 'https://assets.raydiene.cn/images/products/rock-series.png', // 使用其中一款代表性产品的图片
 })
 </script>
 
