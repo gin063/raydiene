@@ -23,7 +23,7 @@
     <div class="md:hidden sticky top-20 z-20 bg-[#050505]/95 backdrop-blur-md border-b border-white/5">
       <div class="hide-scrollbar px-4 flex gap-2 py-3 overflow-x-auto">
         <button v-for="cat in categories" :key="cat.id" @click="setActiveCategory(cat.id)" :class="[
-          'shrink-0 px-4 py-2 rounded-full text-xl font-bold transition-all duration-300 border whitespace-nowrap',
+          'shrink-0 px-3 py-2 rounded-full text-xl font-bold transition-all duration-300 border whitespace-nowrap',
           activeCategory === cat.id
             ? 'bg-brand border-brand text-white'
             : 'bg-transparent border-white/20 text-gray-400'
@@ -39,9 +39,9 @@
       <aside class="hidden md:flex flex-col md:col-span-4 lg:col-span-3 sticky top-32 gap-10 z-10">
         <nav class="flex flex-col gap-2">
           <button v-for="cat in categories" :key="cat.id" @click="setActiveCategory(cat.id)" :class="[
-            'text-left px-5 py-2 rounded-r-xl text-xl md:text-2xl font-bold transition-all duration-300 border-l-2',
+            'text-left px-5 py-3 rounded-r-xl text-xl md:text-2xl font-bold transition-all duration-300 border-l-2',
             activeCategory === cat.id
-              ? 'border-brand text-white bg-gradient-to-r from-brand/15 to-transparent'
+              ? 'border-brand text-white bg-gradient-to-r from-brand/40 to-transparent'
               : 'border-white/5 text-gray-400 hover:text-white hover:border-white/30 hover:bg-white/[0.03]'
           ]">
             {{ cat.name }}
