@@ -13,11 +13,16 @@ useSeoMeta({
   // 4. 社交分享 (微信/朋友圈/卡片显示)
   ogTitle: 'Raydiene 雷迪恩：智享充电，一手掌控',
   ogDescription: '探索坚石、磐石、星辰、星耀四大系列，发现懂你所需的家用充电桩。',
-  ogImage: '/images/og-share.png', // 建议专门做一张 1200x630 的包含 Logo 和主产品的图片
+  ogImage: 'https://assets.raydiene.cn/images/og-share.png', // 建议专门做一张 1200x630 的包含 Logo 和主产品的图片
   ogType: 'website',
 })
 </script>
 
 <template>
-  <TheHero />
+  <main>
+    <h1 class="sr-only">雷迪恩 RAYDIENE - 高端智能家用充电桩</h1>
+
+    <TheHero />
+
+  </main>
 </template>

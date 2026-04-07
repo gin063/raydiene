@@ -7,7 +7,12 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/image", "nuxt-gtag", "@nuxtjs/sitemap"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxt/image",
+    "nuxt-gtag",
+    "@nuxtjs/sitemap",
+  ],
 
   site: {
     url: "https://www.raydiene.cn",
@@ -37,6 +42,10 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      // ★★★ 核心修改 3：全局语言声明，解决 Bing 爬虫警告 ★★★
+      htmlAttrs: {
+        lang: "zh-CN",
+      },
       link: [
         {
           rel: "icon",
@@ -49,7 +58,10 @@ export default defineNuxtConfig({
         { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
         { rel: "manifest", href: "/site.webmanifest" },
       ],
-      meta: [{ name: "apple-mobile-web-app-title", content: "Raydiene" }],
+      meta: [
+        { name: "apple-mobile-web-app-title", content: "Raydiene" },
+        { name: "baidu-site-verification", content: "codeva-M7DqHGipP4" },
+      ],
     },
   },
 
