@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 
   site: {
     url: "https://www.raydiene.cn",
-    name: "雷迪恩RAYDIENE官方网站",
+    name: "RAYDIENE雷迪恩官方网站",
   },
 
   sitemap: {
@@ -111,7 +111,7 @@ export default defineNuxtConfig({
   gtag: {
     id: "G-B7L17SX3XZ", // 替换为您刚才复制的真实 衡量 ID
     config: {
-      page_title: "Raydiene 雷迪恩", // 可选：设置默认的页面标题
+      page_title: "Raydiene 雷迪恩 官方网站", // 可选：设置默认的页面标题
     },
   },
 
