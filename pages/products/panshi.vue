@@ -326,7 +326,7 @@ const panshiMaxSchema = {
   warranty: '2年质保只换不修',
   hasCertification: true,
 }
-useProductSchema(activeModel.value === 'max' ? panshiMaxSchema : panshiProSchema)
+useProductSchema(() => activeModel.value === 'max' ? panshiMaxSchema : panshiProSchema)
 
 // --- SEO 配置 ---
 useSeoMeta({

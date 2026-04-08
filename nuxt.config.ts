@@ -17,6 +17,9 @@ export default defineNuxtConfig({
   site: {
     url: "https://www.raydiene.cn",
     name: "雷迪恩",
+    description:
+      "雷迪恩(RAYDIENE)官方网站 - 高端智能家用充电桩，提供7kW/11kW/21kW多功率选择，坚石/磐石/星辰/星耀全系适配99%新能源车型。",
+    defaultLocale: "zh-CN",
   },
 
   sitemap: {
@@ -62,6 +65,12 @@ export default defineNuxtConfig({
         { name: "apple-mobile-web-app-title", content: "Raydiene" },
         { name: "baidu-site-verification", content: "codeva-M7DqHGipP4" },
         { property: "og:site_name", content: "雷迪恩" },
+        // 百度搜索结果方形缩略图（百度只认这个 meta；Bing 也会消费）
+        // 必须方形或接近方形 — 不要用横向 og-share
+        {
+          name: "thumbnail",
+          content: "https://assets.raydiene.cn/images/logo-square.png",
+        },
       ],
     },
   },
@@ -110,10 +119,9 @@ export default defineNuxtConfig({
   },
 
   gtag: {
-    id: "G-B7L17SX3XZ", // 替换为您刚才复制的真实 衡量 ID
-    config: {
-      page_title: "雷迪恩(RAYDIENE)官方网站 - 高端智能家用充电桩", // 可选：设置默认的页面标题
-    },
+    id: "G-B7L17SX3XZ",
+    // 不要在这里设 config.page_title — 会污染 GA4 page_view 默认值
+    // nuxt-gtag 会在路由切换时自动从 document.title 抓取真实页面标题
   },
 
   css: ["./assets/css/main.css"],
