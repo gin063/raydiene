@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 
   site: {
     url: "https://www.raydiene.cn",
-    name: "RAYDIENE雷迪恩官方网站",
+    name: "雷迪恩",
   },
 
   sitemap: {
@@ -61,6 +61,7 @@ export default defineNuxtConfig({
       meta: [
         { name: "apple-mobile-web-app-title", content: "Raydiene" },
         { name: "baidu-site-verification", content: "codeva-M7DqHGipP4" },
+        { property: "og:site_name", content: "雷迪恩" },
       ],
     },
   },
@@ -111,7 +112,7 @@ export default defineNuxtConfig({
   gtag: {
     id: "G-B7L17SX3XZ", // 替换为您刚才复制的真实 衡量 ID
     config: {
-      page_title: "Raydiene 雷迪恩 官方网站", // 可选：设置默认的页面标题
+      page_title: "雷迪恩(RAYDIENE)官方网站 - 高端智能家用充电桩", // 可选：设置默认的页面标题
     },
   },
 
