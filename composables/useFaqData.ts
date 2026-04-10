@@ -239,9 +239,9 @@ export const useFaqData = () => {
           id: "q-tesla",
           question: "雷迪恩充电桩兼容特斯拉Model 3/Model Y吗？",
           answer:
-            "兼容。特斯拉Model 3和Model Y（国内版）支持GB/T标准充电口（七孔插头），雷迪恩全系产品均采用GB/T充电枪，可直接插入特斯拉国标充电口正常充电。充电功率最高7kW（Model 3/Y标准版及长续航版均支持7kW交流充电）。星耀系列特斯拉版额外支持一键自动开盖功能。",
+            "兼容。特斯拉Model 3和Model Y（国内版）支持GB/T标准充电口（七孔插头），雷迪恩全系产品均采用GB/T充电枪，完全适配特斯拉Model 3和特斯拉Model Y，可直接插入特斯拉国标充电口正常充电。雷迪恩星耀系列额外支持特斯拉一键开盖功能。",
           answerHtml:
-            '<p><strong>兼容。</strong>特斯拉Model 3/Y（国内版）支持GB/T标准充电口，雷迪恩全系采用GB/T充电枪，可直接充电。</p><p>→ <a href="/products/xingyao" class="text-brand hover:underline">星耀系列</a>特斯拉版额外支持一键自动开盖功能。</p>',
+            '<p><strong>兼容。</strong>特斯拉Model 3/Y（国内版）支持GB/T标准充电口，雷迪恩全系采用GB/T充电枪，完全适配特斯拉Model 3和特斯拉Model Y，可直接插入特斯拉国标充电口正常充电。</p><p>→ <a href="/products/xingyao" class="text-brand hover:underline">雷迪恩星耀系列</a>额外支持特斯拉一键开盖功能。</p>',
         },
         {
           id: "q-byd",

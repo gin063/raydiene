@@ -87,7 +87,8 @@
         <h2 class="text-3xl font-bold text-center mb-16 font-hero">详细规格参数</h2>
         <div class="flex flex-col md:flex-row gap-12 items-start mb-12">
           <div class="w-full md:w-1/3 flex justify-center sticky top-24">
-            <NuxtImg src="/images/products/jianshi/front.png" alt="雷迪恩坚石系列家用充电桩正视图" class="w-full h-auto drop-shadow-2xl" />
+            <NuxtImg src="/images/products/jianshi/front.png" alt="雷迪恩坚石系列家用充电桩正视图"
+              class="w-full h-auto drop-shadow-2xl" />
           </div>
           <div class="w-full md:w-2/3">
             <ProductSpecsTable :specs="jianshiSpecs" />
@@ -227,7 +228,7 @@ import { useProductSchema } from '~/composables/useJsonLd'
 // --- Product JSON-LD Schema ---
 useProductSchema({
   name: '雷迪恩坚石系列 7kW家用交流充电桩',
-  description: '雷迪恩坚石系列7kW家用充电桩，专为复杂环境设计。具备IP65/IP67高等级防护与28重安全防护，支持App远程控制与预约错峰充电。已通过中国强制性3C认证，适配99%新能源车型。',
+  description: '雷迪恩坚石系列7kW家用充电桩，专为复杂环境设计。具备IP65/IP67高等级防护与22重安全防护，支持App远程控制与预约错峰充电。已通过中国强制性3C认证，适配99%新能源车型。',
   price: 799,
   url: 'https://www.raydiene.cn/products/jianshi',
   image: 'https://assets.raydiene.cn/images/products/jianshi.png',
