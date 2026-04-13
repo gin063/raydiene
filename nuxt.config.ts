@@ -50,6 +50,8 @@ export default defineNuxtConfig({
         lang: "zh-CN",
       },
       link: [
+        // .ico 放最前 — Bing 优先匹配第一个 rel="icon"，.ico 是其最稳定格式
+        { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
         {
           rel: "icon",
           type: "image/png",
@@ -57,7 +59,6 @@ export default defineNuxtConfig({
           sizes: "96x96",
         },
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-        { rel: "shortcut icon", href: "/favicon.ico" },
         { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
         { rel: "manifest", href: "/site.webmanifest" },
       ],
