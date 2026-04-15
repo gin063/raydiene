@@ -82,7 +82,8 @@
                 </button>
                 <div
                   class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-40 p-2 bg-white rounded-xl shadow-2xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
-                  <NuxtImg src="/images/qr/wechat-miniprogram.jpg" alt="雷迪恩充电桩微信小程序二维码" class="w-full h-auto rounded-lg" />
+                  <NuxtImg src="/images/qr/wechat-miniprogram.jpg" alt="雷迪恩充电桩微信小程序二维码"
+                    class="w-full h-auto rounded-lg" />
                   <div class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
                 </div>
               </div>
@@ -178,7 +179,7 @@
                     下载 PDF 文件
                   </span>
                 </a>
-                <p class="text-xs text-gray-500 mt-4">文件大小: 10.3 MB</p>
+                <p class="text-xs text-gray-500 mt-4">文件大小: 11.5 MB</p>
               </div>
 
               <div class="bg-black/40 border border-white/10 rounded-[2rem] p-8 text-center backdrop-blur-md">

@@ -138,6 +138,12 @@ export const useSiteData = () => {
           image: "/images/download/manual-bg.jpg", // 记得在 public 放这张图，用于 Header 右侧预览
           desc: "获取雷迪恩全系产品使用指南与技术文档。",
         },
+        {
+          name: "媒体中心",
+          link: "/download/media",
+          image: "/images/download/media-bg.jpg", // 记得在 public 放这张图，用于 Header 右侧预览
+          desc: "高清产品写真与品牌影片，一站尽览。",
+        },
       ],
     },
     {

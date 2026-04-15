@@ -1,7 +1,13 @@
 <template>
   <div
     class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-blue-500 selection:text-white overflow-x-hidden">
+
     <div class="fixed inset-0 z-0 pointer-events-none">
+
+      <ClientOnly>
+        <MeteorsFullScreen :count="50" class="opacity-60" />
+      </ClientOnly>
+
       <div
         class="absolute top-[-10%] left-[20%] w-[50vw] h-[50vw] bg-purple-900/20 rounded-full blur-[120px] animate-pulse-slow">
       </div>
@@ -12,6 +18,7 @@
     </div>
 
     <div class="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-0">
+
       <section class="max-w-4xl mx-auto mb-16 md:mb-24 text-center animate-fade-in-up">
         <span
           class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-xs font-bold tracking-widest text-gray-400 mb-8 uppercase">

@@ -123,14 +123,14 @@ const products = [
     name: '坚石系列',
     fileName: 'jianshi-manual.pdf', // 以前是 link: '/downloads/...'
     pages: 14,
-    size: '1.20 MB'
+    size: '1.26 MB'
   },
   {
     id: 'panshi',
     name: '磐石系列',
     fileName: 'panshi-manual.pdf',
     pages: 15,
-    size: '1.67 MB'
+    size: '1.53 MB'
   },
   {
     id: 'xingchen',

@@ -38,6 +38,7 @@ export default defineNuxtConfig({
       { loc: "/about/culture", priority: 0.6, changefreq: "yearly" },
       { loc: "/download/apps", priority: 0.6, changefreq: "monthly" },
       { loc: "/download/manual", priority: 0.7, changefreq: "monthly" },
+      { loc: "/download/media", priority: 0.6, changefreq: "monthly" },
       { loc: "/contact/info", priority: 0.5, changefreq: "yearly" },
       { loc: "/contact/official", priority: 0.5, changefreq: "yearly" },
     ],
@@ -126,4 +127,12 @@ export default defineNuxtConfig({
   },
 
   css: ["./assets/css/main.css"],
+
+  // Vidstack 视频播放器使用 Web Components（<media-player> 等），
+  // 需告知 Vue 编译器这些标签不是 Vue 组件，避免 "Unknown custom element" 警告
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith("media-"),
+    },
+  },
 });
