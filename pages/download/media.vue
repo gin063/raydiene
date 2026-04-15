@@ -72,7 +72,7 @@
         <div v-for="item in featured" :key="item.id" @click="openMedia(item)"
           class="relative snap-center shrink-0 w-[88vw] md:w-[72vw] lg:w-[62vw] aspect-[16/9] rounded-3xl overflow-hidden cursor-pointer group/featured border border-white/10 hover:border-white/30 transition-colors">
           <!-- 背景媒体 -->
-          <NuxtImg v-if="item.kind === 'image'" :src="item.thumb || item.src" :alt="item.title"
+          <NuxtImg v-if="item.kind === 'image'" :src="item.thumb || item.src" :alt="item.title" width="1400"
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover/featured:scale-[1.04]" />
           <video v-else :poster="item.poster" :src="item.src" muted loop playsinline preload="metadata"
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover/featured:scale-[1.04]"
@@ -154,7 +154,7 @@
             class="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 [column-fill:balance]">
             <div v-for="img in filteredResults" :key="img.id" @click="openMedia(img)"
               class="break-inside-avoid mb-4 md:mb-6 cursor-pointer group/img relative overflow-hidden rounded-2xl border border-white/5 hover:border-white/20 transition-colors">
-              <NuxtImg :src="img.thumb || img.src" :alt="img.title" loading="lazy"
+              <NuxtImg :src="img.thumb || img.src" :alt="img.title" loading="lazy" width="800"
                 class="w-full h-auto object-cover transition-transform duration-700 group-hover/img:scale-[1.03]" />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity">

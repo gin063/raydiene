@@ -22,10 +22,12 @@ export interface MediaItem {
 const IMG_BASE = "https://assets.raydiene.cn/images/media/";
 const VIDEO_BASE = "https://assets.raydiene.cn/videos/media/";
 
-// 生成 OSS 缩略图 URL 的小工具
-const thumbOf = (filename: string, width = 800) =>
-  `${IMG_BASE}${filename}?x-oss-process=image/resize,w_${width}/quality,q_85/format,webp`;
+// thumb 返回"相对路径"（不带协议头、不带 x-oss-process）
+// NuxtImg + aliyun provider（见 patches/@nuxt+image+2.0.0.patch）会负责拼 baseURL、加 x-oss-process、
+// 并根据 NuxtImg 的 width 属性生成 resize,w_XXX 参数。尺寸控制改由模板里的 :width 决定。
+const thumbOf = (filename: string) => `images/media/${filename}`;
 
+// 原图仍返回绝对 URL，供 Lightbox 的原生 <img>/<media-player> 直接使用
 const originalOf = (filename: string) => `${IMG_BASE}${filename}`;
 
 export const useMediaLibrary = () => {
