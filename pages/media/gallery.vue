@@ -4,36 +4,30 @@
 
     <!-- Hero（电流蓝+白 Vortex 背景，带氛围辉光） -->
     <section class="relative z-10 overflow-hidden border-b border-white/5">
-      <Vortex
-        :particle-count="450"
-        :base-hue="210"
-        :range-hue="15"
-        :saturation="100"
-        :lightness="60"
-        :white-ratio="0.4"
-        :range-speed="1.5"
-        :base-radius="1"
-        :range-radius="2"
-        :range-y="90"
-        background-color="#000000"
-        class="w-full pt-24 pb-14 md:pt-28 md:pb-16"
-      >
+      <Vortex :particle-count="450" :base-hue="210" :range-hue="15" :saturation="100" :lightness="60" :white-ratio="0.4"
+        :range-speed="1.5" :base-radius="1" :range-radius="2" :range-y="90" background-color="#000000"
+        class="w-full pt-24 pb-14 md:pt-28 md:pb-16">
         <!-- 氛围辉光（mix-blend-screen 与 canvas 粒子相加叠色，纯黑区域被轻微"照亮"） -->
         <div class="absolute inset-0 pointer-events-none mix-blend-screen" aria-hidden="true">
-          <div class="absolute top-1/2 left-[15%] -translate-y-1/2 w-[50vw] h-[50vw] rounded-full bg-blue-600/25 blur-[140px]"></div>
+          <div
+            class="absolute top-1/2 left-[15%] -translate-y-1/2 w-[50vw] h-[50vw] rounded-full bg-blue-600/25 blur-[140px]">
+          </div>
           <div class="absolute top-1/3 right-[10%] w-[40vw] h-[40vw] rounded-full bg-sky-500/20 blur-[160px]"></div>
-          <div class="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[55vw] h-[25vw] rounded-full bg-indigo-500/18 blur-[120px]"></div>
+          <div
+            class="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[55vw] h-[25vw] rounded-full bg-indigo-500/18 blur-[120px]">
+          </div>
         </div>
         <div class="container mx-auto px-6 md:px-12">
           <div class="max-w-4xl animate-slide-in-left">
-            <p class="text-sm md:text-base text-cyan-200/70 tracking-[0.2em] uppercase mb-5 font-hero">MEDIA CENTER</p>
+            <p class="text-sm md:text-base text-cyan-200/70 tracking-[0.2em] uppercase mb-5 font-hero">VISUAL GALLERY
+            </p>
             <h1 class="text-5xl md:text-7xl font-bold font-hero tracking-tight mb-6 leading-tight">
-              媒体中心<br>
+              视觉画廊<br>
               <span
-                class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-sky-500 pb-2 inline-block">视觉世界</span>
+                class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-sky-500 pb-2 inline-block">影像之美</span>
             </h1>
             <p class="text-gray-300 text-lg md:text-xl max-w-2xl leading-relaxed mb-6">
-              走进雷迪恩的视觉宇宙——产品美图、品牌影片、安装实景与生活方式，尽收眼底。
+              高清产品写真、品牌影片、安装实景与生活方式，尽收眼底。
             </p>
             <p class="text-sm text-gray-400">
               共 <span class="text-white font-bold">{{ images.length }}</span> 张图片
@@ -55,13 +49,15 @@
         <div class="hidden md:flex gap-3">
           <button @click="scrollFeatured(-1)"
             class="w-12 h-12 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white hover:text-black hover:border-white transition-all flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
           <button @click="scrollFeatured(1)"
             class="w-12 h-12 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white hover:text-black hover:border-white transition-all flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
           </button>
@@ -79,12 +75,14 @@
             @mouseenter="hoverPlay" @mouseleave="hoverStop" />
 
           <!-- 渐变遮罩 -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none">
+          </div>
 
           <!-- 视频播放标志 -->
           <div v-if="item.kind === 'video'"
             class="absolute top-6 right-6 w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/30 flex items-center justify-center group-hover/featured:bg-white group-hover/featured:text-black transition-all pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 translate-x-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+              class="w-6 h-6 translate-x-0.5">
               <path d="M8 5v14l11-7z" />
             </svg>
           </div>
@@ -109,14 +107,12 @@
 
           <!-- 类型切换 -->
           <div class="inline-flex rounded-full bg-white/5 border border-white/10 p-1 self-start shrink-0">
-            <button @click="setType('image')"
-              :class="['px-5 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap',
-                activeType === 'image' ? 'bg-white text-black shadow-lg' : 'text-gray-400 hover:text-white']">
+            <button @click="setType('image')" :class="['px-5 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap',
+              activeType === 'image' ? 'bg-white text-black shadow-lg' : 'text-gray-400 hover:text-white']">
               图片 · {{ images.length }}
             </button>
-            <button @click="setType('video')"
-              :class="['px-5 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap',
-                activeType === 'video' ? 'bg-white text-black shadow-lg' : 'text-gray-400 hover:text-white']">
+            <button @click="setType('video')" :class="['px-5 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap',
+              activeType === 'video' ? 'bg-white text-black shadow-lg' : 'text-gray-400 hover:text-white']">
               视频 · {{ videos.length }}
             </button>
           </div>
@@ -132,7 +128,8 @@
 
           <!-- 搜索 -->
           <div class="relative lg:w-64 shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor"
               class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -161,7 +158,8 @@
               </div>
               <div
                 class="absolute bottom-0 left-0 right-0 p-4 md:p-5 translate-y-3 group-hover/img:translate-y-0 transition-transform duration-500 opacity-0 group-hover/img:opacity-100">
-                <h3 class="text-white font-bold text-sm md:text-base mb-1 leading-snug line-clamp-2">{{ img.title }}</h3>
+                <h3 class="text-white font-bold text-sm md:text-base mb-1 leading-snug line-clamp-2">{{ img.title }}
+                </h3>
                 <p class="text-gray-300 text-xs line-clamp-1">{{ img.desc }}</p>
               </div>
             </div>
@@ -177,10 +175,13 @@
               <video :poster="vid.poster" :src="vid.src" muted loop playsinline preload="metadata"
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/vid:scale-[1.03]"
                 @mouseenter="hoverPlay" @mouseleave="hoverStop" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent pointer-events-none"></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent pointer-events-none">
+              </div>
               <div
                 class="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/30 flex items-center justify-center group-hover/vid:bg-white group-hover/vid:text-black transition-all pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 translate-x-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  class="w-5 h-5 translate-x-0.5">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
@@ -199,13 +200,15 @@
     <!-- Lightbox -->
     <Teleport to="body">
       <Transition name="lightbox">
-        <div v-if="activeMedia" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-12"
+        <div v-if="activeMedia"
+          class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-12"
           @click.self="closeMedia">
 
           <!-- 关闭按钮 -->
           <button @click="closeMedia" aria-label="关闭"
             class="absolute top-5 right-5 md:top-8 md:right-8 z-50 w-11 h-11 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white hover:text-black transition-all flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -213,13 +216,15 @@
           <!-- 左右切换按钮（桌面） -->
           <button v-if="filteredResults.length > 1" @click.stop="navigate(-1)" aria-label="上一个"
             class="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-50 w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white hover:text-black transition-all items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
           <button v-if="filteredResults.length > 1" @click.stop="navigate(1)" aria-label="下一个"
             class="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 z-50 w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white hover:text-black transition-all items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
           </button>
@@ -227,38 +232,46 @@
           <!-- 内容区 -->
           <div class="relative w-full h-full flex flex-col items-center justify-center gap-6" @click.stop>
 
-            <!-- 图片 -->
-            <img v-if="activeMedia.kind === 'image'" :src="activeMedia.src" :alt="activeMedia.title"
-              class="max-w-full max-h-[72vh] md:max-h-[78vh] object-contain rounded-2xl shadow-2xl" />
+            <!-- 图片/视频：纯叠化（min-h 锁死高度，消灭 CLS） -->
+            <div class="relative w-full flex items-center justify-center min-h-[60vh] md:min-h-[68vh]">
+              <Transition name="media-fade">
+                <div :key="activeMedia.id" class="w-full flex items-center justify-center">
+                  <!-- 图片（走 NuxtImg 拿 OSS resize 版本，非原图） -->
+                  <NuxtImg v-if="activeMedia.kind === 'image'" :src="activeMedia.thumb || activeMedia.src"
+                    :alt="activeMedia.title" width="1600" :height="activeMedia.height"
+                    class="max-w-full max-h-[60vh] md:max-h-[68vh] object-contain rounded-2xl shadow-2xl" />
 
-            <!-- 视频：Vidstack Web Component -->
-            <ClientOnly>
-              <media-player v-if="activeMedia.kind === 'video'"
-                :title="activeMedia.title"
-                :src="activeMedia.src"
-                :poster="activeMedia.poster"
-                autoplay
-                playsinline
-                crossorigin
-                class="w-full max-w-6xl rounded-2xl overflow-hidden shadow-2xl">
-                <media-provider></media-provider>
-                <media-video-layout></media-video-layout>
-              </media-player>
-            </ClientOnly>
+                  <!-- 视频：Vidstack Web Component -->
+                  <ClientOnly>
+                    <media-player v-if="activeMedia.kind === 'video'" :title="activeMedia.title" :src="activeMedia.src"
+                      :poster="activeMedia.poster" autoplay playsinline crossorigin
+                      class="w-full max-w-6xl rounded-2xl overflow-hidden shadow-2xl">
+                      <media-provider></media-provider>
+                      <media-video-layout></media-video-layout>
+                    </media-player>
+                  </ClientOnly>
+                </div>
+              </Transition>
+            </div>
 
-            <!-- 文案 -->
-            <div class="max-w-3xl text-center px-2">
-              <div class="flex flex-wrap items-center justify-center gap-2 mb-3">
-                <span class="px-3 py-1 rounded-full bg-brand/20 border border-brand/40 text-[11px] font-bold tracking-wider text-brand uppercase">
-                  {{ categoryName(activeMedia.category) }}
-                </span>
-                <span v-for="tag in activeMedia.tags" :key="tag"
-                  class="px-3 py-1 rounded-full bg-white/5 border border-white/15 text-[11px] font-medium text-gray-300">
-                  {{ tag }}
-                </span>
-              </div>
-              <h3 class="text-xl md:text-2xl font-bold font-hero mb-2">{{ activeMedia.title }}</h3>
-              <p class="text-gray-400 text-sm md:text-base leading-relaxed">{{ activeMedia.desc }}</p>
+            <!-- 文案：独立叠化，原位不平移 -->
+            <div class="relative max-w-3xl text-center px-2 min-h-[7rem] w-full">
+              <Transition name="text-fade">
+                <div :key="activeMedia.id" class="w-full">
+                  <div class="flex flex-wrap items-center justify-center gap-2 mb-3">
+                    <span
+                      class="px-3 py-1 rounded-full bg-brand/20 border border-brand/40 text-[11px] font-bold tracking-wider text-brand uppercase">
+                      {{ categoryName(activeMedia.category) }}
+                    </span>
+                    <span v-for="tag in activeMedia.tags" :key="tag"
+                      class="px-3 py-1 rounded-full bg-white/5 border border-white/15 text-[11px] font-medium text-gray-300">
+                      {{ tag }}
+                    </span>
+                  </div>
+                  <h3 class="text-xl md:text-2xl font-bold font-hero mb-2">{{ activeMedia.title }}</h3>
+                  <p class="text-gray-400 text-sm md:text-base leading-relaxed">{{ activeMedia.desc }}</p>
+                </div>
+              </Transition>
             </div>
           </div>
 
@@ -274,6 +287,7 @@ import { ref, computed, onMounted, onUnmounted, watch, h } from 'vue'
 import { useMediaLibrary } from '~/composables/useMediaLibrary'
 
 const { images, videos, featured } = useMediaLibrary()
+const nuxtImg = useImage()
 
 // --- 分类 ---
 const categories = [
@@ -322,7 +336,7 @@ const scrollFeatured = (dir) => {
 // --- 视频悬停预览 ---
 const hoverPlay = (e) => {
   const v = e.currentTarget
-  if (v?.play) v.play().catch(() => {})
+  if (v?.play) v.play().catch(() => { })
 }
 const hoverStop = (e) => {
   const v = e.currentTarget
@@ -334,6 +348,22 @@ const hoverStop = (e) => {
 
 // --- Lightbox ---
 const activeMedia = ref(null)
+
+// 预加载策略：滑动窗口 ±PRELOAD_RADIUS 张 + LRU(PRELOAD_CACHE_MAX) 缓存
+// Map 的 insertion order 即 recency —— 命中时 delete 再 set 以刷新排位，超量时淘汰 keys().next()
+// 好处：常驻成本与库规模解耦，500 张库也只占 ~60MB；HTTP 缓存过期也不会塌陷（Image 对象被 Map 持有，不可 GC）
+const PRELOAD_RADIUS = 3
+const PRELOAD_CACHE_MAX = 10
+const preloadCache = new Map()
+
+const touchCache = (url, img) => {
+  if (preloadCache.has(url)) preloadCache.delete(url)
+  preloadCache.set(url, img)
+  while (preloadCache.size > PRELOAD_CACHE_MAX) {
+    const oldest = preloadCache.keys().next().value
+    if (oldest) preloadCache.delete(oldest)
+  }
+}
 
 const openMedia = (item) => {
   activeMedia.value = item
@@ -374,11 +404,40 @@ onUnmounted(() => {
     window.removeEventListener('keydown', handleKey)
     document.body.style.overflow = ''
   }
+  preloadCache.clear()
+})
+
+// 筛选条件变化 → 当前预加载窗口失效，清空缓存避免无用对象滞留
+watch([activeType, activeCategory, searchQuery], () => {
+  preloadCache.clear()
 })
 
 // 清理：页面卸载时恢复 body 滚动
 watch(activeMedia, (v) => {
   if (!v && import.meta.client) document.body.style.overflow = ''
+  if (!v || !import.meta.client) return
+  let list = filteredResults.value
+  let idx = list.findIndex((i) => i.id === v.id)
+  if (idx === -1) {
+    list = v.kind === 'image' ? images : videos
+    idx = list.findIndex((i) => i.id === v.id)
+  }
+  if (idx === -1) return
+  // 窗口化预加载：±PRELOAD_RADIUS 张，经 LRU 去重 + 容量控制
+  for (let offset = -PRELOAD_RADIUS; offset <= PRELOAD_RADIUS; offset++) {
+    if (offset === 0) continue
+    const i = (idx + offset + list.length) % list.length
+    const item = list[i]
+    if (item.kind !== 'image' || !item.thumb) continue
+    const url = nuxtImg(item.thumb, { width: 1600 })
+    if (preloadCache.has(url)) {
+      touchCache(url, preloadCache.get(url))
+      continue
+    }
+    const img = new Image()
+    img.src = url
+    touchCache(url, img)
+  }
 })
 
 // --- 空态组件（内联） ---
@@ -395,11 +454,11 @@ EmptyState.props = ['query', 'type']
 
 // --- SEO ---
 useSeoMeta({
-  title: '媒体中心 - 雷迪恩(Raydiene)高清产品写真与品牌影片',
+  title: '视觉画廊 - 雷迪恩(Raydiene)高清产品写真与品牌影片',
   description:
-    '探索雷迪恩媒体中心，浏览高清产品美图、品牌宣传片、安装实景与生活方式影像合集。',
-  keywords: '雷迪恩媒体中心, 雷迪恩产品图, 雷迪恩品牌视频, 充电桩产品图片, 雷迪恩视觉素材',
-  ogTitle: '媒体中心 - 雷迪恩品牌视觉世界',
+    '探索雷迪恩视觉画廊，浏览高清产品美图、品牌宣传片、安装实景与生活方式影像合集。',
+  keywords: '雷迪恩视觉画廊, 雷迪恩产品图, 雷迪恩品牌视频, 充电桩产品图片, 雷迪恩视觉素材',
+  ogTitle: '视觉画廊 - 雷迪恩品牌影像之美',
   ogDescription: '高清产品美图与品牌影片，沉浸雷迪恩视觉宇宙。',
   ogImage: 'https://assets.raydiene.cn/images/og-share.png',
 })
@@ -460,16 +519,16 @@ useHead({
   opacity: 0;
 }
 
-.lightbox-enter-active > div,
-.lightbox-leave-active > div {
+.lightbox-enter-active>div,
+.lightbox-leave-active>div {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.lightbox-enter-from > div {
+.lightbox-enter-from>div {
   transform: scale(0.95);
 }
 
-.lightbox-leave-to > div {
+.lightbox-leave-to>div {
   transform: scale(0.97);
 }
 
@@ -505,6 +564,46 @@ useHead({
 
 .animate-pulse-slow {
   animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* Lightbox 图片纯叠化 */
+.media-fade-enter-active,
+.media-fade-leave-active {
+  transition: opacity 0.4s ease-out;
+  will-change: opacity;
+}
+
+.media-fade-leave-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-fade-enter-from,
+.media-fade-leave-to {
+  opacity: 0;
+}
+
+/* 文案纯叠化：原位不动，仅 opacity */
+.text-fade-enter-active,
+.text-fade-leave-active {
+  transition: opacity 0.35s ease-out;
+}
+
+.text-fade-leave-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.text-fade-enter-from,
+.text-fade-leave-to {
+  opacity: 0;
 }
 </style>
 

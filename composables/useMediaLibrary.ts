@@ -1,6 +1,7 @@
 // composables/useMediaLibrary.ts
 // 媒体中心素材库 — 图片 + 视频统一数据源
 // 后续新增素材只需向 images / videos 数组追加条目
+// 建议图片条目填写 width / height（原始像素）以消除 Lightbox 首次切换的布局偏移
 
 export type MediaCategory = "product" | "install" | "lifestyle" | "brand";
 
@@ -17,6 +18,8 @@ export interface MediaItem {
   featured?: boolean; // 是否进入首屏"精选"轮播
   featuredOrder?: number; // 精选区内显式排序（越小越靠前；未指定的排在末尾；相同值按 images→videos、声明顺序兜底）
   duration?: string; // 视频 ISO 8601 时长（如 "PT2M18S"），供 JSON-LD 使用
+  width?: number; // 图像原始宽度（可选，NuxtImg 透传用于 intrinsic aspect-ratio 预留空间）
+  height?: number; // 图像原始高度（可选，同上）
 }
 
 const IMG_BASE = "https://assets.raydiene.cn/images/media/";

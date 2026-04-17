@@ -138,10 +138,23 @@ export const useSiteData = () => {
           image: "/images/download/manual-bg.jpg", // 记得在 public 放这张图，用于 Header 右侧预览
           desc: "获取雷迪恩全系产品使用指南与技术文档。",
         },
+      ],
+    },
+    {
+      name: "媒体中心",
+      type: "mega",
+      image: "/images/media/media-bg.jpg",
+      children: [
         {
-          name: "媒体中心",
-          link: "/download/media",
-          image: "/images/download/media-bg.jpg", // 记得在 public 放这张图，用于 Header 右侧预览
+          name: "新闻资讯",
+          link: "/media/news",
+          image: "/images/media/news-bg.jpg",
+          desc: "品牌动态、行业洞察与合作报道，一手掌握。",
+        },
+        {
+          name: "视觉画廊",
+          link: "/media/gallery",
+          image: "/images/media/gallery-bg.jpg",
           desc: "高清产品写真与品牌影片，一站尽览。",
         },
       ],

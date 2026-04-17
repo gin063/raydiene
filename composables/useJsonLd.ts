@@ -253,3 +253,83 @@ export const useHowToSchema = (
     ],
   });
 };
+
+/**
+ * 单篇新闻文章 Schema（详情页使用）
+ */
+export const useNewsArticleSchema = (article: {
+  slug: string;
+  title: string;
+  summary: string;
+  cover: string;
+  date: string;
+  tags?: string[];
+}) => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: article.title,
+    description: article.summary,
+    image: `https://assets.raydiene.cn/${article.cover}`,
+    datePublished: article.date,
+    dateModified: article.date,
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.raydiene.cn/media/news/${article.slug}`,
+    },
+    ...(article.tags?.length && { keywords: article.tags.join(", ") }),
+  };
+
+  useHead({
+    script: [
+      {
+        type: "application/ld+json",
+        innerHTML: JSON.stringify(schema),
+        key: "schema-news-article",
+      },
+    ],
+  });
+};
+
+/**
+ * 新闻列表页 Schema（CollectionPage + ItemList）
+ */
+export const useNewsArticleListSchema = (
+  articles: {
+    slug: string;
+    title: string;
+    summary: string;
+    cover: string;
+    date: string;
+  }[],
+) => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "新闻资讯 - 雷迪恩",
+    description: "雷迪恩品牌动态、新品资讯、行业洞察与合作报道。",
+    url: "https://www.raydiene.cn/media/news",
+    publisher: { "@id": ORG_ID },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: articles.map((a, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `https://www.raydiene.cn/media/news/${a.slug}`,
+        name: a.title,
+      })),
+    },
+  };
+
+  useHead({
+    script: [
+      {
+        type: "application/ld+json",
+        innerHTML: JSON.stringify(schema),
+        key: "schema-news-list",
+      },
+    ],
+  });
+};
