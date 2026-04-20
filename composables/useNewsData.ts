@@ -121,6 +121,8 @@ export const useNewsData = () => {
       cover: "images/media/news/raydiene-reward-2025.jpg",
       source: "品牌新闻",
       date: "2026-03-02",
+      externalUrl:
+        "https://tech.china.com/articles/20260302/202603021817463.html",
       body: [
         {
           type: "p",
