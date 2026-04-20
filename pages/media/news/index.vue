@@ -62,20 +62,20 @@
     <section v-if="featuredArticle" class="relative z-10 py-12 md:py-16 border-b border-white/5">
       <div class="container mx-auto px-6 md:px-12">
         <NuxtLink :to="`/media/news/${featuredArticle.slug}`"
-          class="group block relative aspect-[21/9] rounded-3xl overflow-hidden border border-white/10 hover:border-white/30 transition-colors">
+          class="group block relative aspect-[4/5] md:aspect-[21/9] rounded-3xl overflow-hidden border border-white/10 hover:border-white/30 transition-colors">
           <NuxtImg :src="featuredArticle.cover" :alt="plainTitle(featuredArticle.title)" width="1400" loading="lazy"
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none">
           </div>
-          <div class="absolute bottom-0 left-0 right-0 p-8 md:p-12 pointer-events-none">
-            <div class="flex items-center gap-3 mb-4">
+          <div class="absolute bottom-0 left-0 right-0 p-5 md:p-12 pointer-events-none">
+            <div class="flex items-center gap-3 mb-3 md:mb-4">
               <span
                 class="inline-block px-3 py-1 rounded-full bg-brand/20 border border-brand/40 text-[11px] font-bold tracking-wider text-brand uppercase">
                 {{ featuredArticle.source }}
               </span>
               <span class="text-gray-400 text-xs">{{ formatDate(featuredArticle.date) }}</span>
             </div>
-            <h2 class="text-2xl md:text-4xl font-bold font-hero mb-3 leading-snug max-w-3xl">
+            <h2 class="text-xl md:text-4xl font-bold font-hero mb-2 md:mb-3 leading-snug max-w-3xl">
               {{ plainTitle(featuredArticle.title) }}
             </h2>
             <p class="text-gray-300 text-sm md:text-base max-w-2xl line-clamp-2">{{ featuredArticle.summary }}</p>
