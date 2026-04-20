@@ -22,8 +22,21 @@
           </div>
         </div>
 
+        <!-- 辉光层：摄影棚打光效果，mix-blend-screen 只增亮不压暗，保证大字与前景文本可读 -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+          <div
+            class="absolute top-1/2 -translate-y-1/2 -left-[15%] w-[55vw] h-[130%] rounded-full bg-cyan-500/25 blur-[130px] mix-blend-screen">
+          </div>
+          <div
+            class="absolute top-1/2 -translate-y-1/2 -right-[15%] w-[55vw] h-[130%] rounded-full bg-blue-600/25 blur-[140px] mix-blend-screen">
+          </div>
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[80%] rounded-full bg-sky-300/10 blur-[180px] mix-blend-screen">
+          </div>
+        </div>
+
         <!-- 前景内容 -->
-        <div class="relative z-10 container mx-auto px-6 md:px-12 pt-24 pb-14 md:pt-28 md:pb-16">
+        <div class="relative z-10 container mx-auto px-6 md:px-12 pt-24 pb-7 md:pt-28 md:pb-8">
           <div class="max-w-4xl animate-slide-in-left">
             <p class="text-sm md:text-base text-cyan-200/70 tracking-[0.2em] uppercase mb-5 font-hero">NEWS & PRESS</p>
             <h1 class="text-5xl md:text-7xl font-bold font-hero tracking-tight mb-6 leading-tight">
@@ -43,7 +56,7 @@
     </section>
 
     <!-- 置顶精选 Hero -->
-    <section v-if="featuredArticle" class="relative z-10 py-12 md:py-16 border-b border-white/5">
+    <section v-if="featuredArticle" class="relative z-10 py-6 md:py-8 border-b border-white/5">
       <div class="container mx-auto px-6 md:px-12">
         <NuxtLink :to="`/media/news/${featuredArticle.slug}`"
           class="group block relative aspect-[4/5] md:aspect-[21/9] rounded-3xl overflow-hidden border border-white/10 hover:border-white/30 transition-colors">
@@ -69,7 +82,7 @@
     </section>
 
     <!-- 文章列表 -->
-    <section class="relative z-10 py-12 md:py-16">
+    <section class="relative z-10 py-6 md:py-8">
       <div class="container mx-auto px-6 md:px-12">
         <div v-if="allSortedByDate.length" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           <NuxtLink v-for="article in allSortedByDate" :key="article.slug" :to="`/media/news/${article.slug}`"
