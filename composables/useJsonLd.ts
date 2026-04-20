@@ -3,6 +3,7 @@
 
 import type { MaybeRefOrGetter } from "vue";
 import { toValue } from "vue";
+import { plainTitle } from "./useNewsData";
 
 // 全局实体 ID — 供 schema 之间通过 @id 互相引用，构建实体图谱
 const ORG_ID = "https://www.raydiene.cn/#organization";
@@ -268,7 +269,7 @@ export const useNewsArticleSchema = (article: {
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
-    headline: article.title,
+    headline: plainTitle(article.title),
     description: article.summary,
     image: `https://assets.raydiene.cn/${article.cover}`,
     datePublished: article.date,
@@ -318,7 +319,7 @@ export const useNewsArticleListSchema = (
         "@type": "ListItem",
         position: i + 1,
         url: `https://www.raydiene.cn/media/news/${a.slug}`,
-        name: a.title,
+        name: plainTitle(a.title),
       })),
     },
   };

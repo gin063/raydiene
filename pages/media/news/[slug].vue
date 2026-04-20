@@ -4,7 +4,7 @@
     <!-- Hero 封面：满屏背景图 + 底部阴影 + 居中标题 -->
     <section class="relative z-10 overflow-hidden">
       <div class="relative h-[60vh] md:h-[68vh] min-h-[460px] flex items-end">
-        <NuxtImg :src="article.cover" :alt="article.title" width="2400"
+        <NuxtImg :src="article.cover" :alt="plainTitle(article.title)" width="2400"
           class="absolute inset-0 w-full h-full object-cover" />
         <!-- 底部 ~55% 区域阴影渐变，凸显标题（从 #050505 平滑过渡到透明，与正文区无缝衔接） -->
         <div
@@ -14,25 +14,29 @@
         <!-- 居中标题块 -->
         <div class="relative z-10 w-full container mx-auto px-6 md:px-12 pb-14 md:pb-20">
           <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold font-hero tracking-tight leading-tight mb-6">
-              {{ article.title }}
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold font-hero tracking-tight leading-tight">
+              <template v-for="(line, i) in article.title.split('\n')" :key="i">
+                <span class="block" :class="i > 0 ? 'mt-3 md:mt-5' : ''">{{ line }}</span>
+              </template>
             </h1>
-            <div class="flex items-center justify-start gap-3">
-              <span
-                class="inline-block px-3 py-1 rounded-full bg-brand/20 border border-brand/40 text-[11px] font-bold tracking-wider text-brand uppercase">
-                {{ article.source }}
-              </span>
-              <span class="text-gray-400 text-sm">{{ formatDate(article.date) }}</span>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 正文：结构化块渲染。文本列 max-w-3xl 保障可读性（~40 中文字符/行），图片块 max-w-5xl 宽展示形成视觉节奏 -->
-    <section class="relative z-10 pt-14 md:pt-20 pb-16 md:pb-24">
+    <section class="relative z-10 pt-10 md:pt-14 pb-12 md:pb-16">
       <div class="container mx-auto px-6 md:px-12">
         <article class="max-w-5xl mx-auto">
+          <!-- 文章元信息：分类 + 日期，左对齐置顶 -->
+          <div class="flex items-center gap-3 mb-8 md:mb-10">
+            <span
+              class="inline-block px-3 py-1 rounded-full bg-brand/20 border border-brand/40 text-[11px] font-bold tracking-wider text-brand uppercase">
+              {{ article.source }}
+            </span>
+            <span class="text-gray-400 text-sm">{{ formatDate(article.date) }}</span>
+          </div>
+
           <template v-for="(block, i) in article.body" :key="i">
             <p v-if="block.type === 'p'" class="text-gray-300 text-base md:text-lg leading-[1.9] mb-6">
               {{ block.text }}
@@ -75,7 +79,7 @@
     </section>
 
     <!-- 推荐阅读 -->
-    <section v-if="related.length" class="relative z-10 py-14 md:py-20 border-t border-white/5">
+    <section v-if="related.length" class="relative z-10 pt-10 md:pt-14 pb-8 md:pb-12 border-t border-white/5">
       <div class="container mx-auto px-6 md:px-12">
         <div class="mb-8">
           <p class="text-xs md:text-sm text-gray-500 tracking-[0.2em] uppercase mb-2 font-hero">RELATED</p>
@@ -104,7 +108,7 @@
     </section>
 
     <!-- 返回列表 -->
-    <div class="relative z-10 pb-16 md:pb-20">
+    <div class="relative z-10 pb-8 md:pb-12">
       <div class="container mx-auto px-6 md:px-12">
         <NuxtLink to="/media/news"
           class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
@@ -121,6 +125,7 @@
 
 <script setup lang="ts">
 import { useNewsArticleSchema } from '~/composables/useJsonLd'
+import { plainTitle } from '~/composables/useNewsData'
 
 const route = useRoute()
 const { findBySlug, getRelated } = useNewsData()
@@ -138,11 +143,12 @@ const formatDate = (iso: string) => {
 }
 
 // SEO
+const plainT = plainTitle(article.title)
 useSeoMeta({
-  title: `${article.title} - 新闻资讯 - 雷迪恩`,
+  title: `${plainT} - 新闻资讯 - 雷迪恩`,
   description: article.summary,
   keywords: article.tags.join(', '),
-  ogTitle: article.title,
+  ogTitle: plainT,
   ogDescription: article.summary,
   ogImage: `https://assets.raydiene.cn/${article.cover}`,
   articlePublishedTime: article.date,

@@ -758,6 +758,30 @@ const handleCategoryClick = async (category) => {
   }
 };
 
+// 视口跨越 md 断点时，若移动端菜单仍处于打开状态，强制静默重置
+// —— 场景：用户在手机模式打开汉堡菜单后按 F12 切回桌面，md:hidden 会让汉堡按钮消失，
+// 导致 isMobileMenuOpen 卡在 true，进而：
+//   1) 顶栏背景/logo 仍是白色反色态
+//   2) body overflow:hidden 未释放，页面无法滚动
+//   3) 桌面 nav 的 onMenuEnter / closeMenu 都会因 isMobileMenuOpen 早退而失效
+const desktopMq = ref(null);
+const handleBreakpointChange = (e) => {
+  if (!e.matches) return;
+  if (!isMobileMenuOpen.value) return;
+
+  isMobileMenuOpen.value = false;
+  activeSubMenu.value = null;
+  activeThirdMenu.value = null;
+  document.body.style.overflow = "";
+
+  if (mobileMenuContainer.value)
+    gsap.set(mobileMenuContainer.value, { yPercent: -100, autoAlpha: 0 });
+  if (mainMenuLayer.value)
+    gsap.set(mainMenuLayer.value, { xPercent: 0, autoAlpha: 1 });
+  if (subMenuLayer.value) gsap.set(subMenuLayer.value, { xPercent: 100 });
+  if (thirdMenuLayer.value) gsap.set(thirdMenuLayer.value, { xPercent: 100 });
+};
+
 onMounted(() => {
   isMenuMounted.value = true;
   setTimeout(() => {
@@ -765,10 +789,15 @@ onMounted(() => {
       gsap.set(mobileMenuContainer.value, { yPercent: -100 });
     if (subMenuLayer.value) gsap.set(subMenuLayer.value, { xPercent: 100 });
   }, 0);
+
+  desktopMq.value = window.matchMedia("(min-width: 768px)");
+  desktopMq.value.addEventListener("change", handleBreakpointChange);
 });
 onUnmounted(() => {
   document.body.style.paddingRight = "";
   document.body.style.overflow = "";
+  if (desktopMq.value)
+    desktopMq.value.removeEventListener("change", handleBreakpointChange);
 });
 </script>
 
