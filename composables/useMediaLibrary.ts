@@ -22,7 +22,7 @@ export interface MediaItem {
   height?: number; // 图像原始高度（可选，同上）
 }
 
-const IMG_BASE = "https://assets.raydiene.cn/images/media/";
+const IMG_BASE = "https://assets.raydiene.cn/images/media/gallery/";
 const VIDEO_BASE = "https://assets.raydiene.cn/videos/media/";
 
 // thumb 返回"相对路径"（不带协议头、不带 x-oss-process）

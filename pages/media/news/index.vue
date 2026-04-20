@@ -3,17 +3,25 @@
     class="relative min-h-screen w-full bg-[#050505] text-white selection:bg-blue-500 selection:text-white font-sans">
 
     <!-- Hero -->
-    <section class="relative z-10 overflow-hidden border-b border-white/5">
-      <Vortex :particle-count="350" :base-hue="210" :range-hue="20" :saturation="100" :lightness="60"
-        :white-ratio="0.35" :range-speed="1.2" :base-radius="1" :range-radius="2" :range-y="80"
-        background-color="#000000" class="w-full pt-24 pb-14 md:pt-28 md:pb-16">
-        <div class="absolute inset-0 pointer-events-none mix-blend-screen" aria-hidden="true">
-          <div
-            class="absolute top-1/2 left-[15%] -translate-y-1/2 w-[50vw] h-[50vw] rounded-full bg-blue-600/20 blur-[140px]">
+    <section class="relative z-10 overflow-hidden border-b border-white/5 bg-[#050505]">
+      <!-- Hero body -->
+      <div class="relative overflow-hidden">
+        <!-- 大字滚动背景 -->
+        <div class="absolute inset-0 flex items-center pointer-events-none select-none" aria-hidden="true">
+          <div class="animate-marquee-lg flex whitespace-nowrap">
+            <div class="flex shrink-0 items-center">
+              <span v-for="(w, i) in bgWords" :key="`ba-${i}`"
+                class="text-[14vw] md:text-[12vw] font-bold font-hero leading-none tracking-tight text-white/[0.06] pr-[8vw]">{{ w }}</span>
+            </div>
+            <div class="flex shrink-0 items-center" aria-hidden="true">
+              <span v-for="(w, i) in bgWords" :key="`bb-${i}`"
+                class="text-[14vw] md:text-[12vw] font-bold font-hero leading-none tracking-tight text-white/[0.06] pr-[8vw]">{{ w }}</span>
+            </div>
           </div>
-          <div class="absolute top-1/3 right-[10%] w-[40vw] h-[40vw] rounded-full bg-sky-500/15 blur-[160px]"></div>
         </div>
-        <div class="container mx-auto px-6 md:px-12">
+
+        <!-- 前景内容 -->
+        <div class="relative z-10 container mx-auto px-6 md:px-12 pt-24 pb-14 md:pt-28 md:pb-16">
           <div class="max-w-4xl animate-slide-in-left">
             <p class="text-sm md:text-base text-cyan-200/70 tracking-[0.2em] uppercase mb-5 font-hero">NEWS & PRESS</p>
             <h1 class="text-5xl md:text-7xl font-bold font-hero tracking-tight mb-6 leading-tight">
@@ -29,7 +37,25 @@
             </p>
           </div>
         </div>
-      </Vortex>
+      </div>
+
+      <!-- 底部 ticker 条 -->
+      <div class="relative overflow-hidden border-t border-cyan-400/20 bg-black/50">
+        <div class="animate-marquee-sm flex whitespace-nowrap py-3 md:py-4">
+          <div class="flex shrink-0 items-center gap-6 md:gap-10 pr-6 md:pr-10">
+            <template v-for="(w, i) in tickerWords" :key="`ta-${i}`">
+              <span class="text-[11px] md:text-xs font-hero tracking-[0.25em] uppercase text-cyan-200/70">{{ w }}</span>
+              <span class="text-cyan-400/50 text-[10px]">◆</span>
+            </template>
+          </div>
+          <div class="flex shrink-0 items-center gap-6 md:gap-10 pr-6 md:pr-10" aria-hidden="true">
+            <template v-for="(w, i) in tickerWords" :key="`tb-${i}`">
+              <span class="text-[11px] md:text-xs font-hero tracking-[0.25em] uppercase text-cyan-200/70">{{ w }}</span>
+              <span class="text-cyan-400/50 text-[10px]">◆</span>
+            </template>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- 置顶精选 Hero -->
@@ -98,6 +124,9 @@ import { plainTitle } from '~/composables/useNewsData'
 
 const { articles, allSortedByDate, featuredArticle } = useNewsData()
 
+const bgWords = ['NEWS', 'PRESS', '2026', 'INSIGHT', 'BRAND', 'UPDATE', 'RAYDIENE']
+const tickerWords = ['NEWS', 'PRESS', 'INSIGHT', '2026', 'UPDATE', 'BRAND', 'RAYDIENE', '品牌前沿', '行业洞察', '媒体中心']
+
 const formatDate = (iso: string) => {
   const d = new Date(iso)
   return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`
@@ -116,3 +145,30 @@ useSeoMeta({
 // JSON-LD
 useNewsArticleListSchema(articles)
 </script>
+
+<style scoped>
+@keyframes marquee-lg {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-sm {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee-lg {
+  animation: marquee-lg 70s linear infinite;
+  will-change: transform;
+  width: max-content;
+}
+.animate-marquee-sm {
+  animation: marquee-sm 40s linear infinite;
+  will-change: transform;
+  width: max-content;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-lg,
+  .animate-marquee-sm {
+    animation: none;
+  }
+}
+</style>
