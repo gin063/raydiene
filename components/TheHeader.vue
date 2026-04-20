@@ -19,7 +19,7 @@
             class="h-full flex items-center px-5 relative cursor-pointer group" @mouseenter="onMenuEnter(index)"
             @mouseleave="onMenuLeave">
             <span
-              class="text-base font-bold tracking-wide transition-all duration-500 ease-in-out origin-center font-hero"
+              class="text-base font-bold tracking-wide whitespace-nowrap transition-all duration-500 ease-in-out origin-center font-hero"
               :class="[
                 activeMenuIndex === index && !isClosing
                   ? 'text-white scale-110'
