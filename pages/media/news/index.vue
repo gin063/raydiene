@@ -7,20 +7,7 @@
       <!-- Hero body -->
       <div class="relative overflow-hidden">
         <!-- 大字滚动背景 -->
-        <div class="absolute inset-0 flex items-center pointer-events-none select-none" aria-hidden="true">
-          <div class="animate-marquee-lg flex whitespace-nowrap">
-            <div class="flex shrink-0 items-center">
-              <span v-for="(w, i) in bgWords" :key="`ba-${i}`"
-                class="text-[14vw] md:text-[12vw] font-bold font-hero leading-none tracking-tight text-white/[0.06] pr-[8vw]">{{
-                w }}</span>
-            </div>
-            <div class="flex shrink-0 items-center" aria-hidden="true">
-              <span v-for="(w, i) in bgWords" :key="`bb-${i}`"
-                class="text-[14vw] md:text-[12vw] font-bold font-hero leading-none tracking-tight text-white/[0.06] pr-[8vw]">{{
-                w }}</span>
-            </div>
-          </div>
-        </div>
+        <MarqueeText :words="bgWords" :speed="70" />
 
         <!-- 辉光层：摄影棚打光效果，mix-blend-screen 只增亮不压暗，保证大字与前景文本可读 -->
         <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -61,6 +48,7 @@
         <NuxtLink :to="`/media/news/${featuredArticle.slug}`"
           class="group block relative aspect-[4/5] md:aspect-[21/9] rounded-3xl overflow-hidden border border-white/10 hover:border-white/30 transition-colors">
           <NuxtImg :src="featuredArticle.cover" :alt="plainTitle(featuredArticle.title)" width="1400" loading="lazy"
+            sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw"
             class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none">
           </div>
@@ -89,6 +77,7 @@
             class="group block rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-colors">
             <div class="relative aspect-video overflow-hidden">
               <NuxtImg :src="article.cover" :alt="plainTitle(article.title)" width="800" loading="lazy"
+                sizes="100vw md:50vw"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none">
@@ -121,7 +110,7 @@ import { plainTitle } from '~/composables/useNewsData'
 
 const { articles, allSortedByDate, featuredArticle } = useNewsData()
 
-const bgWords = ['NEWS', 'PRESS', '2026', 'INSIGHT', 'BRAND', 'UPDATE', 'RAYDIENE']
+const bgWords = ['NEWS', 'PRESS', 'STORY', 'INSIGHT', 'BRAND', 'UPDATE', 'RAYDIENE']
 
 const formatDate = (iso: string) => {
   const d = new Date(iso)
@@ -143,43 +132,5 @@ useNewsArticleListSchema(articles)
 </script>
 
 <style scoped>
-@keyframes marquee-lg {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee-sm {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee-lg {
-  animation: marquee-lg 70s linear infinite;
-  will-change: transform;
-  width: max-content;
-}
-
-.animate-marquee-sm {
-  animation: marquee-sm 40s linear infinite;
-  will-change: transform;
-  width: max-content;
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  .animate-marquee-lg,
-  .animate-marquee-sm {
-    animation: none;
-  }
-}
+/* marquee 已抽到 <MarqueeText> 组件 */
 </style>

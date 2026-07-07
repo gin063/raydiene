@@ -126,7 +126,7 @@
             <div class="absolute inset-0 z-0">
               <NuxtImg src="/images/about/responsibility-bg.jpg" alt="雷迪恩(Raydiene)绿色出行可持续能源未来愿景"
                 class="w-full h-full object-cover opacity-60 transition-all duration-[2000ms] ease-out scale-100 group-hover:scale-105 saturate-110"
-                loading="eager" fetchpriority="high" preload :placeholder="false" />
+                sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw" loading="lazy" />
 
               <div
                 class="absolute inset-0 bg-gradient-to-b from-black/60 via-teal-950/50 to-black/90 mix-blend-multiply">

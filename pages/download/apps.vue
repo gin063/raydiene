@@ -111,7 +111,7 @@
                 <div class="absolute inset-0 bg-gray-900 overflow-hidden">
                   <NuxtImg src="/images/download/app-preview.jpg" alt="雷迪恩(Raydiene)充电桩智能管理App界面展示"
                     class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
-                    loading="eager" fetchpriority="high" preload :placeholder="false" />
+                    sizes="100vw md:50vw" loading="eager" fetchpriority="high" preload :placeholder="false" />
 
                   <div
                     class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent translate-y-full group-hover:translate-y-[-100%] transition-transform duration-1000 ease-in-out pointer-events-none">
@@ -151,7 +151,7 @@
                 :src="`/images/download/manual/manual-part-${String(i).padStart(2, '0')}.jpg`"
                 :alt="`雷迪恩产品说明书 - Part ${i}`"
                 class="block w-full h-auto brightness-90 hover:brightness-100 transition-all duration-300"
-                loading="lazy" format="webp" :modifiers="{ withoutEnlargement: true }" />
+                sizes="100vw lg:66vw" loading="lazy" format="webp" :modifiers="{ withoutEnlargement: true }" />
             </div>
           </div>
 

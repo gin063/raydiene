@@ -8,12 +8,15 @@
       <ol class="flex items-center gap-1.5 text-xs text-gray-500 flex-wrap">
         <li v-for="(crumb, index) in breadcrumbs" :key="crumb.url" class="flex items-center gap-1.5">
           <NuxtLink
-            v-if="!crumb.isLast"
+            v-if="!crumb.isLast && crumb.navigable"
             :to="crumb.url.replace('https://www.raydiene.cn', '')"
             class="hover:text-brand transition-colors duration-200"
           >
             {{ crumb.name }}
           </NuxtLink>
+          <span v-else-if="!crumb.isLast" class="text-gray-500">
+            {{ crumb.name }}
+          </span>
           <span v-else class="text-gray-300" :aria-current="'page'">
             {{ crumb.name }}
           </span>
@@ -46,7 +49,13 @@ watch(
   breadcrumbs,
   (items) => {
     if (items.length > 1) {
-      useBreadcrumbSchema(items.map((b) => ({ name: b.name, url: b.url })))
+      useBreadcrumbSchema(
+        items.map((b) => ({
+          name: b.name,
+          // 非导航层级（无落地页）不提供 url，schema 将省略 item
+          url: b.navigable || b.isLast ? b.url : undefined,
+        })),
+      )
     }
   },
   { immediate: true }

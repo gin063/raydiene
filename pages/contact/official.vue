@@ -11,10 +11,20 @@
       </div>
     </div>
 
-    <div class="relative z-10 container mx-auto px-6 md:px-12 pt-32 pb-16 md:pt-36 md:pb-16">
-
-      <div class="text-center mb-16 animate-fade-in-up">
-        <h1 class="text-4xl md:text-6xl font-bold font-hero tracking-tight mb-6">
+    <!-- Hero：滚动大字 + 辉光背景 -->
+    <section class="relative z-10 overflow-hidden border-b border-white/5">
+      <MarqueeText :words="heroWords" :speed="60" />
+      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div
+          class="absolute top-1/2 -translate-y-1/2 -left-[15%] w-[55vw] h-[130%] rounded-full bg-cyan-500/20 blur-[130px] mix-blend-screen">
+        </div>
+        <div
+          class="absolute top-1/2 -translate-y-1/2 -right-[15%] w-[55vw] h-[130%] rounded-full bg-blue-600/20 blur-[140px] mix-blend-screen">
+        </div>
+      </div>
+      <div
+        class="relative z-10 container mx-auto px-6 md:px-12 pt-28 pb-10 md:pt-32 md:pb-12 text-center animate-fade-in-up">
+        <h1 class="text-4xl md:text-6xl font-bold font-hero tracking-tight mb-5">
           官方渠道
         </h1>
         <p class="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -23,6 +33,9 @@
           或访问官方旗舰店，选购正品保障的充电产品
         </p>
       </div>
+    </section>
+
+    <div class="relative z-10 container mx-auto px-6 md:px-12 pt-12 pb-16">
 
       <div class="mb-16">
         <div class="flex items-center gap-4 mb-16 animate-fade-in-up" style="animation-delay: 0.1s;">
@@ -182,6 +195,9 @@ useSeoMeta({
   ogDescription: '一键直达京东/天猫/抖音官方旗舰店，选购正品保障的充电产品。',
   ogImage: 'https://assets.raydiene.cn/images/og-share.png',
 })
+
+// 顶部 marquee 大字
+const heroWords = ['CONTACT', 'OFFICIAL', 'CHANNELS', 'CONNECT', 'STORE', 'FOLLOW', 'RAYDIENE']
 
 const jdTab = ref('official')
 

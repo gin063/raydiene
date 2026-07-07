@@ -6,23 +6,23 @@
       <div class="absolute inset-0 z-0 overflow-hidden grid grid-cols-1 grid-rows-1">
         <Transition name="fade-slow">
           <div v-if="activeModel === 'pro'" class="col-start-1 row-start-1 w-full h-full">
-            <NuxtImg src="/images/products/panshi/scene-bg-pro-mobile.jpg" alt="雷迪恩磐石Pro家用充电桩安装场景-移动端"
-              class="block md:hidden w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high"
-              preload :placeholder="false" />
-            <NuxtImg src="/images/products/panshi/scene-bg-pro.jpg" alt="雷迪恩磐石Pro家用充电桩安装场景"
-              class="hidden md:block w-full h-full object-cover animate-ken-burns" loading="eager"
-              :placeholder="false" />
+            <picture class="block w-full h-full">
+              <source media="(max-width: 767px)" :srcset="heroProMobile.srcset" :sizes="heroProMobile.sizes" />
+              <img :src="heroProDesktop.src" :srcset="heroProDesktop.srcset" :sizes="heroProDesktop.sizes"
+                alt="雷迪恩磐石Pro家用充电桩安装场景"
+                class="w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high" />
+            </picture>
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90"></div>
           </div>
         </Transition>
         <Transition name="fade-slow">
           <div v-if="activeModel === 'max'" class="col-start-1 row-start-1 w-full h-full">
-            <NuxtImg src="/images/products/panshi/scene-bg-max-mobile.jpg" alt="雷迪恩磐石Max家用充电桩安装场景-移动端"
-              class="block md:hidden w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high"
-              preload :placeholder="false" />
-            <NuxtImg src="/images/products/panshi/scene-bg-max.jpg" alt="雷迪恩磐石Max家用充电桩安装场景"
-              class="hidden md:block w-full h-full object-cover animate-ken-burns" loading="eager"
-              :placeholder="false" />
+            <picture class="block w-full h-full">
+              <source media="(max-width: 767px)" :srcset="heroMaxMobile.srcset" :sizes="heroMaxMobile.sizes" />
+              <img :src="heroMaxDesktop.src" :srcset="heroMaxDesktop.srcset" :sizes="heroMaxDesktop.sizes"
+                alt="雷迪恩磐石Max家用充电桩安装场景"
+                class="w-full h-full object-cover animate-ken-burns" loading="eager" fetchpriority="high" />
+            </picture>
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90"></div>
           </div>
         </Transition>
@@ -71,6 +71,7 @@
                 <NuxtImg :key="activeModel"
                   :src="activeModel === 'pro' ? '/images/products/panshi/detail-pro.jpg' : '/images/products/panshi/detail-max.jpg'"
                   :alt="activeModel === 'pro' ? '磐石Pro充电桩细节图' : '磐石Max充电桩细节图'"
+                  sizes="md:100vw lg:50vw" loading="lazy"
                   class="w-full h-full object-cover col-start-1 row-start-1" />
               </Transition>
             </div>
@@ -109,6 +110,7 @@
                 <NuxtImg :key="activeModel"
                   :src="activeModel === 'pro' ? '/images/products/panshi/app-scene-pro.jpg' : '/images/products/panshi/app-scene-max.jpg'"
                   :alt="activeModel === 'pro' ? '磐石Pro雷迪恩App界面展示' : '磐石Max雷迪恩App界面展示'"
+                  sizes="md:100vw lg:40vw" loading="lazy"
                   class="w-full h-auto rounded-3xl shadow-2xl border border-white/5 col-start-1 row-start-1" />
               </Transition>
             </div>
@@ -132,6 +134,7 @@
                 <NuxtImg :key="activeModel"
                   :src="activeModel === 'pro' ? '/images/products/panshi/pro-front.png' : '/images/products/panshi/max-front.png'"
                   :alt="activeModel === 'pro' ? '磐石Pro充电桩正面图' : '磐石Max充电桩正面图'"
+                  sizes="90vw md:360px" loading="lazy"
                   class="w-full h-auto drop-shadow-2xl col-start-1 row-start-1" />
               </Transition>
             </div>
@@ -142,6 +145,14 @@
           </div>
           <div class="w-full md:w-2/3">
             <ProductSpecsTable :specs="currentSpecs" />
+            <NuxtLink to="/products/certificates"
+              class="group mt-6 inline-flex items-center gap-2 text-sm text-brand hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 shrink-0">
+                <path fill-rule="evenodd" d="M16.403 12.652a3 3 0 000-5.304 3 3 0 00-3.75-3.751 3 3 0 00-5.305 0 3 3 0 00-3.751 3.75 3 3 0 000 5.305 3 3 0 003.75 3.751 3 3 0 005.305 0 3 3 0 003.751-3.75zm-2.546-4.46a.75.75 0 00-1.214-.883l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+              </svg>
+              本产品已通过国家强制性3C认证 · 查看证书
+              <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </NuxtLink>
           </div>
         </div>
 
@@ -151,6 +162,7 @@
             <NuxtImg :key="activeModel"
               :src="activeModel === 'pro' ? '/images/products/panshi/lifestyle-pro.jpg' : '/images/products/panshi/lifestyle-max.jpg'"
               :alt="activeModel === 'pro' ? '磐石Pro充电桩家居场景图' : '磐石Max充电桩家居场景图'"
+              sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw" loading="lazy"
               class="w-full h-full object-cover col-start-1 row-start-1 group-hover:scale-105 transition-transform duration-700" />
           </Transition>
           <div
@@ -184,6 +196,7 @@
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
               <NuxtImg src="/images/products/jianshi-cover.png" alt="雷迪恩坚石系列家用充电桩"
+                sizes="85vw md:30vw" loading="lazy"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -217,6 +230,7 @@
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
               <NuxtImg src="/images/products/xingchen-cover.png" alt="雷迪恩星辰系列家用充电桩"
+                sizes="85vw md:30vw" loading="lazy"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -250,6 +264,7 @@
             </div>
             <div class="absolute inset-0 flex items-center justify-center p-6 z-10">
               <NuxtImg src="/images/products/xingyao-cover.png" alt="雷迪恩星耀系列家用充电桩"
+                sizes="85vw md:30vw" loading="lazy"
                 class="w-[75%] md:w-[85%] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)] group-hover:scale-105 group-hover:-translate-y-2 transition-transform duration-700 ease-out" />
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
@@ -297,7 +312,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch, defineComponent, h } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useProductSchema } from '~/composables/useJsonLd'
 
@@ -312,7 +327,7 @@ const panshiProSchema = {
   price: 999,
   url: 'https://www.raydiene.cn/products/panshi?model=pro',
   image: 'https://assets.raydiene.cn/images/products/panshi-pro.png',
-  sku: 'A1507-GB01-002-PRO',
+  sku: 'A1607-GB01-001',
   warranty: '2年质保只换不修',
   hasCertification: true,
 }
@@ -322,7 +337,7 @@ const panshiMaxSchema = {
   price: 1199,
   url: 'https://www.raydiene.cn/products/panshi?model=max',
   image: 'https://assets.raydiene.cn/images/products/panshi-max.png',
-  sku: 'A1507-GB01-002-MAX',
+  sku: 'A1607-GB01-002',
   warranty: '2年质保只换不修',
   hasCertification: true,
 }
@@ -340,6 +355,14 @@ useSeoMeta({
   ogImage: 'https://assets.raydiene.cn/images/products/panshi/scene-bg-max.jpg',
 })
 
+// === 首屏 Hero：art-direction，按视口只下载一张（移动竖图 / 桌面横图）===
+const $img = useImage()
+const heroSizes = (src) => $img.getSizes(src, { sizes: 'xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw', modifiers: { format: 'webp', quality: 80 } })
+const heroProMobile = heroSizes('/images/products/panshi/scene-bg-pro-mobile.jpg')
+const heroProDesktop = heroSizes('/images/products/panshi/scene-bg-pro.jpg')
+const heroMaxMobile = heroSizes('/images/products/panshi/scene-bg-max-mobile.jpg')
+const heroMaxDesktop = heroSizes('/images/products/panshi/scene-bg-max.jpg')
+
 watch(activeModel, (newVal) => {
   router.replace({ query: { ...route.query, model: newVal } })
 })
@@ -347,77 +370,12 @@ watch(() => route.query.model, (newVal) => {
   if (newVal === 'max' || newVal === 'pro') activeModel.value = newVal
 })
 
-// === 图标定义 ===
-const IconCheck = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12' })]) })
-const IconTool = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z' })]) })
-const IconClock = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z' })]) })
-const IconVerified = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z' })]) })
-const IconWifi = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z' })]) })
-const IconApp = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z' }), h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z' })]) })
-const IconTime = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z' })]) })
-const IconAlert = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z' })]) })
-const IconIP = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z' })]) })
-const IconLight = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18' })]) })
-const IconScreen = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M3 3v18h18V3H3zm15 15H6V6h12v12zM8 9h8m-8 3h5' })]) })
-const IconShield = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.243-8.25-3.285z' })]) })
-const IconConnect = defineComponent({ render: () => h('svg', { fill: 'none', viewBox: '0 0 24 24', strokeWidth: '1.5', stroke: 'currentColor' }, [h('path', { strokeLinecap: 'round', strokeLinejoin: 'round', d: 'M14.25 9.75v-4.5m0 4.5h4.5m-4.5 0l6-6m-3 18c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 014.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 00-.38 1.21 12.035 12.035 0 007.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 011.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 01-2.25 2.25h-2.25z' })]) })
-
-// === 数据配置 ===
-const features = [
-  { text: '适配99%车型', icon: IconCheck },
-  { text: '专业上门安装', icon: IconTool },
-  { text: '7*15h 响应', icon: IconClock },
-  { text: '2年质保只换不修', icon: IconVerified },
-  { text: '终身免费流量 & OTA', icon: IconWifi },
-]
-
-// 4张特性卡片 (修正：补全了您手动添加的后两张)
-const highlightCards = computed(() => [
-  {
-    title: 'IP67 / IP65',
-    desc: '枪头IP67 / 桩体IP65',
-    icon: IconIP
-  },
-  {
-    title: activeModel.value === 'pro' ? '智能呼吸灯' : '智能高清屏显',
-    desc: activeModel.value === 'pro' ? '简约交互 状态直观' : '状态数据 可视化',
-    icon: activeModel.value === 'pro' ? IconLight : IconScreen
-  },
-  {
-    title: activeModel.value === 'pro' ? '26重安全防护' : '28重安全防护',
-    desc: '过压/过流/漏电/防雷等',
-    icon: IconShield
-  },
-  {
-    title: '智能互联',
-    desc: '蓝牙 / 4G / 充满自停',
-    icon: IconConnect
-  }
-])
-
-const appFeatures = [
-  { title: 'APP 远程管理', desc: '无论身在何处，一键启动/停止充电，实时查看进度。', icon: IconApp },
-  { title: '预约错峰充电', desc: '设置定时任务，利用夜间低谷电价，为您省钱。', icon: IconTime },
-  { title: '故障监测通知', desc: '异常情况实时推送通知，安心无忧。', icon: IconAlert },
-]
-
-const currentSpecs = computed(() => [
-  { label: '产品型号', value: activeModel.value === 'pro' ? 'A1607-GB01-001' : 'A1607-GB01-002' },
-  { label: '产品名称', value: `磐石${activeModel.value === 'pro' ? 'Pro' : 'Max'}交流充电桩` },
-  { label: '显示配置', value: activeModel.value === 'pro' ? '智能呼吸灯' : '智能高清屏显', highlight: true },
-  { label: '外观尺寸', value: '374.8 * 186.5 * 121 (mm)' },
-  { label: '设备重量', value: '3.6kg' },
-  { label: '外壳材质', value: 'PC+ABS（V0级阻燃）' },
-  { label: '线缆长度', value: '6m' },
-  { label: '最大功率', value: '7 kW' },
-  { label: '输出电流', value: '32A' },
-  { label: '输入/输出电压', value: 'AC 220V ± 20%' },
-  { label: '防护等级', value: 'IP65 (适合室内/室外)' },
-  { label: '工作温度', value: '-30°C ~ 50°C' },
-  { label: '工作海拔', value: '&lt; 4000m' },
-  { label: '执行标准', value: 'GB 39752-2024 / GB 44263-2024' },
-  { label: '安全设计', value: '漏电保护、防反接保护、接地保护、过温保护、雷电保护、静电保护、防盗充保护、急停保护、浪涌保护、过充保护等20余项主动安全防护。' },
-])
+// 产品结构化数据统一自 composables/useProducts（磐石按 activeModel 选 pro/max）
+const panshiData = useProducts('panshi')
+const features = panshiData.features
+const appFeatures = panshiData.appFeatures
+const highlightCards = computed(() => panshiData[activeModel.value].highlightCards)
+const currentSpecs = computed(() => panshiData[activeModel.value].specs)
 
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {

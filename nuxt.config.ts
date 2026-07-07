@@ -32,6 +32,7 @@ export default defineNuxtConfig({
       { loc: "/products/xingchen", priority: 0.8, changefreq: "monthly" },
       { loc: "/products/xingyao", priority: 0.8, changefreq: "monthly" },
       { loc: "/products/purchase", priority: 0.8, changefreq: "monthly" },
+      { loc: "/products/certificates", priority: 0.7, changefreq: "monthly" },
       { loc: "/service/install", priority: 0.7, changefreq: "monthly" },
       { loc: "/service/aftersales", priority: 0.7, changefreq: "monthly" },
       { loc: "/about/intro", priority: 0.6, changefreq: "yearly" },
@@ -55,6 +56,19 @@ export default defineNuxtConfig({
     ],
   },
 
+  // 预渲染：构建时把页面产出为静态 HTML（混合模式，不改变部署形态）
+  routeRules: {
+    "/**": { prerender: true },
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true, // 从首页爬内部链接，自动发现产品页/新闻 slug 等
+      routes: ["/"],
+      failOnError: false,
+    },
+  },
+
   app: {
     head: {
       // ★★★ 核心修改 3：全局语言声明，解决 Bing 爬虫警告 ★★★
@@ -73,6 +87,14 @@ export default defineNuxtConfig({
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
         { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
         { rel: "manifest", href: "/site.webmanifest" },
+        // 预加载 H1/标题用的中文 Bold 子集（已子集化 ~640KB），减少标题 FOUT
+        {
+          rel: "preload",
+          as: "font",
+          type: "font/woff2",
+          href: "/fonts/AlibabaPuHuiTi-3-85-Bold.woff2",
+          crossorigin: "anonymous",
+        },
       ],
       meta: [
         { name: "apple-mobile-web-app-title", content: "Raydiene" },

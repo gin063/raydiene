@@ -1,6 +1,6 @@
 <template>
   <footer class="bg-black text-white border-t border-white/10 font-sans relative z-10 w-full">
-    <div class="md:hidden pt-10 pb-20 px-6">
+    <div class="xl:hidden pt-10 pb-20 px-6 md:px-12">
       <div class="flex flex-col items-center w-fit mb-10">
         <img src="/images/logo-cn2.svg" alt="雷迪恩 RAYDIENE 品牌Logo" class="w-80 h-auto opacity-90 mb-6" />
 
@@ -14,7 +14,7 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-2 gap-x-4 gap-y-10 mb-12 border-t border-white/5 pt-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-10 mb-12 border-t border-white/5 pt-8">
         <div>
           <h4 class="text-white font-bold mb-4 text-sm tracking-wide">
             产品介绍
@@ -135,7 +135,7 @@
       </div>
     </div>
 
-    <div class="hidden md:block pt-9 pb-2">
+    <div class="hidden xl:block pt-9 pb-2">
       <div class="container mx-auto px-6 md:px-12">
         <div class="flex flex-row justify-between items-start mb-4">
           <div class="w-auto xl:w-80 flex flex-col flex-shrink-0 items-center h-36 justify-between">

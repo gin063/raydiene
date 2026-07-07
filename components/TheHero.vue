@@ -1,17 +1,12 @@
 <template>
   <div class="w-full bg-black">
     <section class="relative w-full h-[100svh] overflow-hidden bg-black group/hero">
-      <video ref="mobileVideoRef"
-        class="block md:hidden absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500"
-        autoplay muted loop playsinline webkit-playsinline="true" x5-video-player-type="h5-page" preload="auto"
-        fetchpriority="high" :class="{ 'opacity-60': !isHeroPlaying }">
-        <source :src="useVideoUrl('video-mobile.mp4')" type="video/mp4" />
-      </video>
-
-      <video ref="pcVideoRef"
-        class="hidden md:block absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500"
-        autoplay muted loop playsinline preload="auto" :class="{ 'opacity-60': !isHeroPlaying }">
-        <source :src="useVideoUrl('video-pc.mp4')" type="video/mp4" />
+      <!-- 单个 video：poster 占位；onMounted 按视口只加载一个视频源，避免移动/PC 两份都下载 -->
+      <video ref="videoRef"
+        class="absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500"
+        :poster="heroPoster" autoplay muted loop playsinline webkit-playsinline="true"
+        x5-video-player-type="h5-page" preload="none" fetchpriority="high"
+        :class="{ 'opacity-60': !isHeroPlaying }">
       </video>
 
       <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80 pointer-events-none">
@@ -59,6 +54,7 @@
             class="relative overflow-hidden group/card rounded-3xl bg-gray-900 border border-white/10 cursor-pointer w-full aspect-[4/3]">
             <div class="absolute inset-0 w-full h-full overflow-hidden">
               <NuxtImg :src="product.image" :alt="product.name" format="webp" quality="85"
+                sizes="100vw md:50vw" loading="lazy"
                 class="absolute inset-0 w-full h-full object-contain transition-transform duration-700 ease-out group-hover/card:scale-105" />
               <div
                 class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-black/60 to-transparent pointer-events-none">
@@ -109,6 +105,7 @@
           </div>
           <div class="w-full md:w-[60%] h-full relative overflow-hidden">
             <NuxtImg src="/images/service-install.jpg" alt="雷迪恩(Raydiene)家用充电桩专业安装服务" format="webp" quality="80"
+              sizes="100vw md:60vw" loading="lazy"
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
             <div class="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-black via-black/50 to-transparent"></div>
           </div>
@@ -118,6 +115,7 @@
           class="w-full aspect-[4/5] md:aspect-[3/1] rounded-3xl overflow-hidden border border-white/10 group cursor-pointer relative bg-gray-900 flex flex-col md:flex-row">
           <div class="w-full md:w-[60%] h-full relative overflow-hidden">
             <NuxtImg src="/images/service-aftersales.jpg" alt="雷迪恩(Raydiene)家用充电桩售后服务保障" format="webp" quality="80"
+              sizes="100vw md:60vw" loading="lazy"
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
             <div class="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-black via-black/50 to-transparent"></div>
           </div>
@@ -149,43 +147,35 @@ import { ref } from "vue";
 import { onMounted } from 'vue';
 
 // === 顶部视频控制 ===
-const mobileVideoRef = ref(null); // 新增：移动端视频引用
-const pcVideoRef = ref(null); // 新增：PC端视频引用
+const videoRef = ref(null);
 const isHeroPlaying = ref(true);
+// 占位封面（首屏立即有画面）；文件由后续手动放置到 public/images/
+const heroPoster = "/images/hero-poster.jpg";
 
 const toggleHeroVideo = () => {
-  // 定义一个辅助函数来切换单个视频
-  const toggleVideo = (videoEl) => {
-    if (!videoEl) return;
-    if (videoEl.paused) {
-      videoEl.play();
-    } else {
-      videoEl.pause();
-    }
-  };
-
-  // 同时尝试切换两个视频的状态
-  // 这样无论当前显示的是哪个，状态都能保持同步
-  toggleVideo(mobileVideoRef.value);
-  toggleVideo(pcVideoRef.value);
-
-  // 更新播放状态标识 (以任意一个存在的视频状态为准，或直接取反)
+  const el = videoRef.value;
+  if (!el) return;
+  if (el.paused) el.play(); else el.pause();
   isHeroPlaying.value = !isHeroPlaying.value;
 };
 
 onMounted(() => {
-  const video = mobileVideoRef.value;
+  const el = videoRef.value;
+  if (!el) return;
 
-  // 微信专用：监听 JSBridgeReady 事件
-  // 只要微信准备好了，就立刻强制触发播放
+  // 按视口只加载一个视频源（移动竖版 / PC 横版），避免两份都下载
+  const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+  el.src = useVideoUrl(isDesktop ? "video-pc.mp4" : "video-mobile.mp4");
+  el.load();
+
+  const tryPlay = () => el.play().catch(() => { });
+  tryPlay();
+
+  // 微信专用：JSBridge 就绪后再触发播放
   if (typeof WeixinJSBridge === "undefined") {
-    document.addEventListener("WeixinJSBridgeReady", () => {
-      video?.play();
-    }, false);
+    document.addEventListener("WeixinJSBridgeReady", tryPlay, false);
   } else {
-    WeixinJSBridge.invoke("getNetworkType", {}, () => {
-      video?.play();
-    });
+    WeixinJSBridge.invoke("getNetworkType", {}, tryPlay);
   }
 });
 // === 数据配置 ===

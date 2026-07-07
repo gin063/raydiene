@@ -11,6 +11,7 @@ const ROUTE_NAME_MAP: Record<string, string> = {
   '/products/panshi': '磐石系列',
   '/products/xingchen': '星辰系列',
   '/products/xingyao': '星耀系列',
+  '/products/certificates': '3C认证证书',
   '/products/purchase': '选购指南',
   '/service': '产品服务',
   '/service/install': '安装服务',
@@ -28,7 +29,19 @@ export interface BreadcrumbItem {
   name: string
   url: string
   isLast: boolean
+  navigable: boolean
 }
+
+// 一级栏目仅作导航分组，没有对应的落地页（无 index 页面）。
+// 面包屑中这些层级应显示为纯文本，避免点击后 404 及 Vue Router 告警。
+const NON_NAVIGABLE_PATHS = new Set([
+  '/about',
+  '/products',
+  '/service',
+  '/download',
+  '/contact',
+  '/media',
+])
 
 export const useBreadcrumbs = () => {
   const route = useRoute()
@@ -37,7 +50,7 @@ export const useBreadcrumbs = () => {
     const segments = route.path.replace(/\/$/, '').split('/').filter(Boolean)
 
     const items: BreadcrumbItem[] = [
-      { name: '首页', url: 'https://www.raydiene.cn/', isLast: false },
+      { name: '首页', url: 'https://www.raydiene.cn/', isLast: false, navigable: true },
     ]
 
     let cumPath = ''
@@ -49,6 +62,7 @@ export const useBreadcrumbs = () => {
         name,
         url: `https://www.raydiene.cn${cumPath}`,
         isLast,
+        navigable: !NON_NAVIGABLE_PATHS.has(cumPath),
       })
     })
 

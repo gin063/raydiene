@@ -37,7 +37,7 @@
               class="w-full md:w-2/5 relative min-h-[300px] md:min-h-full bg-gradient-to-b from-cyan-900/20 to-transparent flex items-center justify-center p-8 group/image">
               <NuxtImg src="/images/products/solid-series.png" alt="雷迪恩坚石系列家用充电桩 金属银极简风格"
                 class="w-full max-w-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"
-                loading="eager" fetchpriority="high" preload :placeholder="false" />
+                sizes="280px" loading="eager" fetchpriority="high" preload :placeholder="false" />
               <div class="absolute top-6 left-6">
                 <span
                   class="px-4 py-1.5 rounded-full bg-cyan-600/80 border border-white/20 text-xs font-bold tracking-wider text-white">入门首选</span>
@@ -89,6 +89,7 @@
             <div
               class="w-full md:w-2/5 relative min-h-[300px] md:min-h-full bg-gradient-to-b from-cyan-900/20 to-transparent flex items-center justify-center p-8 group/image">
               <NuxtImg src="/images/products/rock-series.png" alt="雷迪恩磐石系列家用充电桩 简约时尚品质之选"
+                sizes="280px" loading="lazy"
                 class="w-full max-w-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105" />
               <div class="absolute top-6 left-6">
                 <span
@@ -140,6 +141,7 @@
             <div
               class="w-full md:w-2/5 relative min-h-[300px] md:min-h-full bg-gradient-to-b from-cyan-900/20 to-transparent flex items-center justify-center p-8 group/image">
               <NuxtImg src="/images/products/star-series.png" alt="雷迪恩星辰系列家用充电桩 钢化玻璃面板"
+                sizes="280px" loading="lazy"
                 class="w-full max-w-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105" />
               <div class="absolute top-6 left-6">
                 <span
@@ -191,6 +193,7 @@
             <div
               class="w-full md:w-2/5 relative min-h-[300px] md:min-h-full bg-gradient-to-b from-cyan-900/20 to-transparent flex items-center justify-center p-8 group/image">
               <NuxtImg src="/images/products/shining-series.png" alt="雷迪恩星耀系列家用充电桩 7寸触控大屏"
+                sizes="280px" loading="lazy"
                 class="w-full max-w-[280px] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105" />
               <div class="absolute top-6 left-6">
                 <span
@@ -236,6 +239,28 @@
         </div>
 
       </div>
+
+      <!-- 3C 认证信任条 -->
+      <div class="max-w-6xl mx-auto mt-12 animate-fade-in-up" style="animation-delay: 0.5s">
+        <NuxtLink to="/products/certificates"
+          class="group flex flex-col md:flex-row items-center justify-between gap-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl px-8 py-6 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all duration-500">
+          <div class="flex items-center gap-4 text-center md:text-left">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+              class="w-10 h-10 shrink-0 text-cyan-400">
+              <path fill-rule="evenodd" d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+            </svg>
+            <div>
+              <p class="text-lg font-bold text-white">全系产品已通过国家强制性 3C 认证</p>
+              <p class="text-sm text-gray-400">符合 GB 39752-2024 新国标，证书可在中国质量认证中心（CQC）官网在线查验。</p>
+            </div>
+          </div>
+          <span
+            class="shrink-0 inline-flex items-center gap-2 font-bold text-cyan-400 group-hover:text-white transition-colors">
+            查看认证证书
+            <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </span>
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
@@ -244,7 +269,7 @@
 // --- SEO 配置 (替换原有的 useHead) ---
 useSeoMeta({
   title: '选购指南 - 家用充电桩产品对比与推荐 | Raydiene',
-  description: '家用充电桩怎么选？7kW还是11kW？雷迪恩选购指南对比坚石/磐石/星辰/星耀全系：价格799元起，全系28重安全防护、3C认证（坚石/磐石）、4年质保。覆盖特斯拉/比亚迪/理想等99%国标车型，找到您的专属家用充电方案。',
+  description: '家用充电桩怎么选？7kW还是21kW？雷迪恩选购指南对比坚石/磐石/星辰/星耀全系：价格799元起，最高28重安全防护、全系3C认证、最高4年质保。覆盖特斯拉/比亚迪/理想等99%国标车型，找到您的专属家用充电方案。',
   keywords: '家用充电桩怎么选, 7kW和11kW充电桩区别, 充电桩选购指南, 雷迪恩产品对比, 坚石vs磐石, 家用充电桩推荐2026, 充电桩多少钱',
   // 社交分享优化
   ogTitle: '雷迪恩选购指南：一图看懂四大系列区别',

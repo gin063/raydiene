@@ -89,6 +89,12 @@ export const useSiteData = () => {
           ],
         },
         {
+          name: "3C认证",
+          link: "/products/certificates",
+          image: "/images/products/cert-bg.jpg", // 记得在 public 放这张图，用于 Header 右侧预览
+          desc: "全系产品均已通过国家强制性3C认证，正品可查。",
+        },
+        {
           name: "选购指南",
           link: "/products/purchase",
           image: "/images/products/roadmap-bg.jpg",

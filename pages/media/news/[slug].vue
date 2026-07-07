@@ -5,6 +5,7 @@
     <section class="relative z-10 overflow-hidden">
       <div class="relative h-[60vh] md:h-[68vh] min-h-[460px] flex items-end">
         <NuxtImg :src="article.cover" :alt="plainTitle(article.title)" width="2400"
+          sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw"
           class="absolute inset-0 w-full h-full object-cover" />
         <!-- 底部 ~55% 区域阴影渐变，凸显标题（从 #050505 平滑过渡到透明，与正文区无缝衔接） -->
         <div
@@ -47,6 +48,7 @@
             </h2>
             <figure v-else-if="block.type === 'img'" class="my-10 md:my-14">
               <NuxtImg :src="block.src" :alt="block.alt" width="1600" loading="lazy"
+                sizes="100vw md:800px"
                 class="w-full h-auto rounded-2xl border border-white/10 shadow-2xl" />
               <figcaption v-if="block.caption" class="mt-4 text-sm text-gray-500 text-center">
                 {{ block.caption }}
@@ -90,6 +92,7 @@
             class="group block rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-colors">
             <div class="relative aspect-video overflow-hidden">
               <NuxtImg :src="rec.cover" :alt="rec.title" width="600" loading="lazy"
+                sizes="100vw sm:50vw lg:33vw"
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
             </div>
             <div class="p-4 md:p-5">

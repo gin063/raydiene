@@ -28,7 +28,7 @@
                   :src="`/images/download/manual/${currentProduct}/manual-part-${String(i).padStart(2, '0')}.jpg`"
                   :alt="`${currentProductText}说明书 - Part ${i}`"
                   class="block w-full h-auto opacity-90 hover:opacity-100 transition-opacity duration-500"
-                  loading="eager" format="webp" :modifiers="{ withoutEnlargement: true }" />
+                  sizes="100vw lg:66vw" loading="lazy" format="webp" :modifiers="{ withoutEnlargement: true }" />
               </div>
             </Transition>
           </div>

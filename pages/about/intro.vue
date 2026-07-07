@@ -4,10 +4,6 @@
 
     <div class="fixed inset-0 z-0 pointer-events-none">
 
-      <ClientOnly>
-        <MeteorsFullScreen :count="50" class="opacity-60" />
-      </ClientOnly>
-
       <div
         class="absolute top-[-10%] left-[20%] w-[50vw] h-[50vw] bg-purple-900/20 rounded-full blur-[120px] animate-pulse-slow">
       </div>
@@ -64,7 +60,7 @@
               <div class="absolute inset-0 z-0">
                 <NuxtImg src="/images/about/about-charger-square.jpg" alt="雷迪恩充电桩特效"
                   class="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
-                  loading="eager" fetchpriority="high" preload :placeholder="false" />
+                  sizes="90vw sm:384px" loading="eager" fetchpriority="high" preload :placeholder="false" />
 
                 <div
                   class="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-black/30 mix-blend-multiply">

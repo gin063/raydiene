@@ -31,7 +31,7 @@
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-1.jpg" alt="雷迪恩充电桩安装服务-2小时极速响应上门"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu"
-              loading="eager" fetchpriority="high" preload :placeholder="false" />
+              sizes="100vw sm:50vw lg:33vw" loading="eager" fetchpriority="high" preload :placeholder="false" />
           </div>
           <div
             class="absolute inset-0 z-1 pointer-events-none bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent to-[80%] opacity-90">
@@ -55,6 +55,7 @@
           style="animation-delay: 0.2s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-2.jpg" alt="雷迪恩充电桩安装服务-1对1专属管家"
+              sizes="100vw sm:50vw lg:33vw" loading="lazy"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
           <div
@@ -79,6 +80,7 @@
           style="animation-delay: 0.3s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-3.jpg" alt="雷迪恩充电桩安装服务-持证专业电工上岗"
+              sizes="100vw sm:50vw lg:33vw" loading="lazy"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
           <div
@@ -103,6 +105,7 @@
           style="animation-delay: 0.4s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-4.jpg" alt="雷迪恩充电桩专业上门精工安装施工"
+              sizes="100vw sm:50vw lg:33vw" loading="lazy"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
           <div
@@ -127,6 +130,7 @@
           style="animation-delay: 0.5s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-5.jpg" alt="雷迪恩充电桩安装完成严苛安全验收"
+              sizes="100vw sm:50vw lg:33vw" loading="lazy"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
           <div
@@ -151,6 +155,7 @@
           style="animation-delay: 0.6s;">
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/install-6.jpg" alt="雷迪恩充电桩安装后专属客服回访"
+              sizes="100vw sm:50vw lg:33vw" loading="lazy"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu" />
           </div>
           <div

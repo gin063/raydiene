@@ -14,7 +14,7 @@
         </div>
 
         <nav
-          class="hidden md:flex h-full items-center justify-center space-x-1 absolute left-1/2 top-0 -translate-x-1/2">
+          class="hidden lg:flex h-full items-center justify-center space-x-1 absolute left-1/2 top-0 -translate-x-1/2">
           <div v-for="(item, index) in menuItems" :key="index"
             class="h-full flex items-center px-5 relative cursor-pointer group" @mouseenter="onMenuEnter(index)"
             @mouseleave="onMenuLeave">
@@ -31,7 +31,7 @@
         </nav>
 
         <button
-          class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50 group"
+          class="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50 group"
           @click="toggleMobileMenu">
           <span class="block w-6 h-0.5 transition-all duration-300 ease-out origin-center shadow-sm" :class="[
             isMobileMenuOpen
@@ -102,7 +102,7 @@
                       class="relative w-48 h-48 bg-white/5 rounded-xl overflow-hidden border border-white/5 mb-3 transition-transform duration-500 group-hover/prod:border-white/20">
                       <NuxtImg :src="prod.image" :alt="prod.name"
                         class="w-full h-full object-contain p-4 transition-transform duration-500 group-hover/prod:scale-105 pointer-events-none"
-                        sizes="500px" format="webp" loading="lazy" />
+                        sizes="500px" format="webp" loading="eager" fetchpriority="high" />
                     </div>
                     <p
                       class="text-center font-hero font-bold text-white group-hover/prod:text-blue-400 transition-colors">
@@ -120,7 +120,7 @@
               class="w-full h-full relative rounded-xl overflow-hidden group cursor-pointer border border-white/10 block">
               <NuxtImg :src="currentCategory.image" :alt="currentCategory.name"
                 class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-700 group-hover:scale-105 opacity-60 pointer-events-none"
-                sizes="500px" format="webp" />
+                sizes="500px" format="webp" loading="eager" />
               <div
                 class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent pointer-events-none">
               </div>

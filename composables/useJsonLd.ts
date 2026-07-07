@@ -194,7 +194,9 @@ export const useFaqPageSchema = (
  * items: { name: string, url: string }[]
  * url 为完整绝对路径
  */
-export const useBreadcrumbSchema = (items: { name: string; url: string }[]) => {
+export const useBreadcrumbSchema = (
+  items: { name: string; url?: string }[],
+) => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -202,7 +204,8 @@ export const useBreadcrumbSchema = (items: { name: string; url: string }[]) => {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.url,
+      // 无落地页的分组层级不写入 item，避免指向 404 的面包屑链接
+      ...(item.url ? { item: item.url } : {}),
     })),
   };
 

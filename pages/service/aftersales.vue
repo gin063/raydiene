@@ -32,7 +32,7 @@
           <div class="absolute inset-0 z-0">
             <NuxtImg src="/images/service/support.jpg" alt="雷迪恩充电桩全时响应售后客服服务"
               class="w-full h-full object-cover object-center brightness-100 contrast-110 group-hover:scale-105 group-hover:brightness-110 transition-all duration-700 ease-out transform-gpu"
-              loading="eager" fetchpriority="high" preload :placeholder="false" />
+              sizes="100vw md:50vw" loading="eager" fetchpriority="high" preload :placeholder="false" />
           </div>
 
           <div
@@ -67,7 +67,7 @@
             <NuxtImg src="/images/service/ota-bg.jpg" alt="雷迪恩充电桩OTA云端远程升级功能" class="w-full h-full object-cover object-center
                brightness-100 contrast-110
                group-hover:scale-105 group-hover:brightness-110
-               transition-all duration-700 ease-out transform-gpu" />
+               transition-all duration-700 ease-out transform-gpu" sizes="100vw md:50vw" loading="lazy" />
           </div>
 
           <div
@@ -101,7 +101,7 @@
             <NuxtImg src="/images/service/4g-bg.jpg" alt="雷迪恩充电桩4G终身免费联网功能" class="w-full h-full object-cover object-center
                brightness-100 contrast-110
                group-hover:scale-105 group-hover:brightness-110
-               transition-all duration-700 ease-out transform-gpu" />
+               transition-all duration-700 ease-out transform-gpu" sizes="100vw md:50vw" loading="lazy" />
           </div>
 
           <div
@@ -135,7 +135,7 @@
             <NuxtImg src="/images/service/warranty-bg.jpg" alt="雷迪恩充电桩4年质保太平洋保险服务保障" class="w-full h-full object-cover object-center
                brightness-100 contrast-110
                group-hover:scale-105 group-hover:brightness-110
-               transition-all duration-700 ease-out transform-gpu" />
+               transition-all duration-700 ease-out transform-gpu" sizes="100vw md:50vw" loading="lazy" />
           </div>
 
           <div
