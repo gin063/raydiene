@@ -1,41 +1,62 @@
 <template>
-  <div class="min-h-screen w-full bg-[#050505] text-white selection:bg-cyan-500/30 font-sans pt-24 pb-20">
+  <div class="min-h-screen w-full bg-[#050505] text-white selection:bg-cyan-500/30 font-sans pb-20">
 
-    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-      <div
-        class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-amber-500/80 opacity-[0.12] rounded-full blur-[120px] animate-pulse-slow">
-      </div>
-      <div
-        class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-blue-600/90 opacity-20 rounded-full blur-[120px] animate-pulse-slow"
-        style="animation-delay: 2s;"></div>
-      <div class="absolute inset-0 bg-[url('/images/noise.svg')] opacity-20 mix-blend-overlay"></div>
-    </div>
-
-    <!-- Hero -->
-    <div class="relative z-10 container mx-auto px-6 mb-16 text-center animate-fade-up">
-      <h1 class="text-4xl md:text-5xl font-hero font-bold tracking-tight mb-4 mt-12 text-white">认证证书</h1>
-      <p class="text-gray-500 text-xs md:text-sm tracking-[0.3em] uppercase font-bold">Certifications</p>
-    </div>
-
-    <div class="relative z-10 container mx-auto px-6 space-y-16">
-
-      <!-- 新规说明 -->
-      <section class="animate-fade-up delay-100">
-        <div
-          class="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-6 md:p-10 overflow-hidden">
-          <div class="text-center max-w-3xl mx-auto">
-            <span
-              class="inline-block px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs font-bold tracking-wider mb-4">国家强制性产品认证</span>
-            <h2 class="text-2xl md:text-3xl font-bold font-hero mb-4 text-white">选好桩 · 认准 3C 认证</h2>
-            <p class="text-gray-400 text-sm md:text-base leading-relaxed">
-              根据国家新规，自 <span class="text-white font-bold">2026 年 8 月 1 日</span>
-              起，未取得 3C 认证的充电桩产品将全面禁止销售。雷迪恩全系产品不仅符合标准，更已提前拿证，让您买得放心。
-            </p>
-          </div>
+    <!-- ① 标题区 + 新规说明：平铺背景图（参考 faq），底部渐变融入暗背景 -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <!-- 占位背景图：后续替换为 /images/certificates/hero-bg.jpg -->
+        <NuxtImg src="/images/certificates/hero-bg.jpg" alt="雷迪恩充电桩 3C 认证背景"
+          class="w-full h-full object-cover" loading="eager" fetchpriority="high" format="webp"
+          sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw xxl:100vw" />
+        <!-- 整体压暗 + 顶部压暗（配合固定头部）+ 交界处渐变 -->
+        <div class="absolute inset-0 bg-black/55"></div>
+        <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/70 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent">
         </div>
-      </section>
+      </div>
 
-      <!-- 单张证书网格 -->
+      <div class="relative z-10 pt-28 md:pt-32 pb-14">
+        <!-- Hero -->
+        <div class="container mx-auto px-6 mb-12 md:mb-14 text-center animate-fade-up">
+          <h1 class="text-4xl md:text-5xl font-hero font-bold tracking-tight mb-4 text-white">认证证书</h1>
+          <p class="text-gray-400 text-xs md:text-sm tracking-[0.3em] uppercase font-bold">Certifications</p>
+        </div>
+
+        <!-- 新规说明 -->
+        <div class="container mx-auto px-6">
+          <section class="animate-fade-up delay-100">
+            <div
+              class="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-6 md:p-10 overflow-hidden">
+              <div class="text-center max-w-3xl mx-auto">
+                <span
+                  class="inline-block px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs font-bold tracking-wider mb-4">国家强制性产品认证</span>
+                <h2 class="text-2xl md:text-3xl font-bold font-hero mb-4 text-white">选好桩 · 认准 3C 认证</h2>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed">
+                  根据国家新规，自 <span class="text-white font-bold">2026 年 8 月 1 日</span>
+                  起，未取得 3C 认证的充电桩产品将全面禁止销售。雷迪恩全系产品不仅符合标准，更已提前拿证，让您买得放心。
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② 证书网格 + 查验：暗底 + 双色呼吸特效（由原固定背景移到此处） -->
+    <div class="relative overflow-hidden">
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div
+          class="absolute top-[-15%] left-[-10%] w-[60vw] h-[60vw] bg-amber-500/80 opacity-[0.12] rounded-full blur-[120px] animate-pulse-slow">
+        </div>
+        <div
+          class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-blue-600/90 opacity-20 rounded-full blur-[120px] animate-pulse-slow"
+          style="animation-delay: 2s;"></div>
+        <div class="absolute inset-0 bg-[url('/images/noise.svg')] opacity-20 mix-blend-overlay"></div>
+      </div>
+
+      <div class="relative z-10 container mx-auto px-6 pt-16 space-y-16">
+
+        <!-- 单张证书网格 -->
       <section class="animate-fade-up delay-200">
         <div class="text-center mb-10">
           <h2 class="text-2xl md:text-3xl font-bold font-hero text-white mb-2">全系产品认证证书</h2>
@@ -106,6 +127,7 @@
         </div>
       </section>
 
+      </div>
     </div>
 
     <!-- 灯箱 -->
