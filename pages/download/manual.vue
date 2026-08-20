@@ -62,7 +62,7 @@
 
             <div class="bg-black/40 border border-white/10 rounded-2xl p-6 shadow-xl text-center backdrop-blur-md">
               <h3 class="text-xl font-bold mb-2 text-white">{{ currentProductText }}使用手册</h3>
-              <p class="text-gray-500 text-sm mb-8">V2.0 | 更新于 2025.12</p>
+              <p class="text-gray-500 text-sm mb-8">更新于 2026.08</p>
 
               <a :href="currentDownloadLink" target="_blank"
                 class="group relative flex items-center justify-center w-full bg-white text-black font-bold py-4 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-white/20 overflow-hidden cursor-pointer">
@@ -123,28 +123,28 @@ const products = [
     name: '坚石系列',
     fileName: 'jianshi-manual.pdf', // 以前是 link: '/downloads/...'
     pages: 14,
-    size: '1.26 MB'
+    size: '1.58 MB'
   },
   {
     id: 'panshi',
     name: '磐石系列',
     fileName: 'panshi-manual.pdf',
     pages: 15,
-    size: '1.53 MB'
+    size: '1.99 MB'
   },
   {
     id: 'xingchen',
     name: '星辰系列',
     fileName: 'xingchen-manual.pdf',
     pages: 15,
-    size: '1.39 MB'
+    size: '1.65 MB'
   },
   {
     id: 'xingyao',
     name: '星耀系列',
     fileName: 'xingyao-manual.pdf',
     pages: 15,
-    size: '1.65 MB'
+    size: '1.98 MB'
   },
 ]
 
