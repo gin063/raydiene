@@ -27,7 +27,7 @@ export const useFaqData = () => {
           answer:
             "雷迪恩（RAYDIENE）是专注家庭用户的国产高端充电桩品牌，产品通过中国强制性3C认证，最高28重安全防护体系，覆盖过压、过流、漏电、防雷、浪涌等多维度保护。品牌提供4年超长质保，前2年只换不修，后2年免费维修，承保机构为太平洋保险。适配99%国标新能源车型，支持APP远程管理与峰谷定时充电。",
           answerHtml:
-            '<p>雷迪恩（RAYDIENE）是专注家庭用户的国产高端充电桩品牌，产品通过中国强制性<strong>3C认证</strong>（坚石/磐石系列）。核心优势：</p><ol><li><strong>最高28重安全防护：</strong>覆盖过压、过流、漏电、防雷、浪涌等多维度保护</li><li><strong>4年超长质保：</strong>前2年只换不修，后2年免费维修，承保机构为太平洋保险</li><li><strong>99%车型适配：</strong>兼容国标新能源车型，支持APP远程管理</li><li><strong>峰谷定时充电：</strong>智能错峰充电，大幅降低用电成本</li></ol><p>→ 查看<a href="/products/purchase" class="text-brand hover:underline">选购指南</a>了解各系列对比。</p>',
+            '<p>雷迪恩（RAYDIENE）是专注家庭用户的国产高端充电桩品牌，产品通过中国强制性<strong>3C认证</strong>。核心优势：</p><ol><li><strong>最高28重安全防护：</strong>覆盖过压、过流、漏电、防雷、浪涌等多维度保护</li><li><strong>4年超长质保：</strong>前2年只换不修，后2年免费维修，承保机构为太平洋保险</li><li><strong>99%车型适配：</strong>兼容国标新能源车型，支持APP远程管理</li><li><strong>峰谷定时充电：</strong>智能错峰充电，大幅降低用电成本</li></ol><p>→ 查看<a href="/products/purchase" class="text-brand hover:underline">选购指南</a>了解各系列对比。</p>',
         },
         {
           id: "q04",
