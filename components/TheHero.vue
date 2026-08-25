@@ -149,23 +149,28 @@ import { onMounted } from 'vue';
 // === 顶部视频控制 ===
 const videoRef = ref(null);
 const isHeroPlaying = ref(true);
-// 占位封面（首屏立即有画面）；文件由后续手动放置到 public/images/
-const heroPoster = "/images/hero-poster.jpg";
+// 占位封面（首屏立即有画面）。默认竖版：预渲染的 HTML 里就带上它，
+// 微信打开无需等 hydration 即可出画面；PC 在 onMounted 换成横版。
+const heroPoster = ref("/images/hero-poster-mobile.jpg");
 
 const toggleHeroVideo = () => {
   const el = videoRef.value;
   if (!el) return;
-  if (el.paused) el.play(); else el.pause();
-  isHeroPlaying.value = !isHeroPlaying.value;
+  if (el.paused) el.play().catch(() => { }); else el.pause();
 };
 
 onMounted(() => {
   const el = videoRef.value;
   if (!el) return;
 
+  // 播放状态以真实事件为准：微信可能拦截自动播放，乐观翻转会让按钮图标反了
+  el.addEventListener("play", () => { isHeroPlaying.value = true; });
+  el.addEventListener("pause", () => { isHeroPlaying.value = false; });
+
   // 按视口只加载一个视频源（移动竖版 / PC 横版），避免两份都下载
   const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-  el.src = useVideoUrl(isDesktop ? "video-pc.mp4" : "video-mobile.mp4");
+  if (isDesktop) heroPoster.value = "/images/hero-poster-pc.jpg";
+  el.src = useVideoUrl(isDesktop ? "video-pc-v2.mp4" : "video-mobile-v2.mp4");
   el.load();
 
   const tryPlay = () => el.play().catch(() => { });

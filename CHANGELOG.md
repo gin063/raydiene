@@ -1,5 +1,51 @@
 # CHANGELOG
 
+## 2026-08-25 — 修微信内置浏览器首页 Hero 视频起播 30 秒
+
+### 根因不在「微信特殊写法」，在视频文件本身
+
+`TheHero.vue` 里的 `playsinline` / `webkit-playsinline` / `x5-video-player-type="h5-page"` /
+`WeixinJSBridgeReady` 兜底**原本就写对了**，不是问题所在。实测两个 hero 视频：
+
+| 检查项 | 修前 |
+|---|---|
+| moov atom 位置 | **文件末尾**（mobile: offset 14,856,958 / 总长 14,895,890） |
+| 编码 | **HEVC / H.265**，1080p，60fps |
+| OSS Range | `Accept-Ranges: bytes` 正常（不是服务端问题） |
+
+**主因：moov 在文件尾部（未 faststart）。** 播放器拿不到 moov 就解不了任何一帧。
+桌面 Chrome/Safari 会先发一个尾部 Range 请求把 moov 抓回来所以秒开；
+微信 X5 内核的视频代理层**顺序拉流**，必须把 14MB 整个下完才摸到末尾的 moov —— 对应那 30 秒。
+
+**次因：HEVC。** 微信 X5 对 H.265 支持极差，多数机型走软解，1080p60 软解起播还要再慢一截。
+iOS Safari 和桌面 Chrome 都有硬解，所以本地测不出来。
+
+**第三个坑：`heroPoster` 指向的 `/images/hero-poster.jpg` 根本不存在（404）。**
+所以那 30 秒是纯黑屏，poster 兜底完全失效。
+
+### 改动
+
+- 两个视频重转 **H.264 High / 保留 1080p / 保留 60fps / `-movflags +faststart`**
+  （moov 已在 offset 32）。H.264 效率不如 HEVC 但原片码率本就保守，体积反而降了：
+  mobile 14.9 → 11.2 MB，pc 15.6 → 13.3 MB
+- **改了文件名 `video-{mobile,pc}-v2.mp4`**（不是同名替换）。微信 X5 视频缓存很顽固，
+  同名覆盖大概率测到旧文件，误判"修了没用"。原 HEVC 存于 `public/videos/_original-hevc/`
+- 从视频首帧生成 `hero-poster-mobile.jpg`(54KB) / `hero-poster-pc.jpg`(74KB)。
+  `heroPoster` 默认竖版 —— 预渲染 HTML 里就带上它，微信打开无需等 hydration 即可出画面；
+  PC 在 `onMounted` 换横版（桌面白吃 54KB，但桌面本来就快，换的是微信首屏）
+- `isHeroPlaying` 改为监听真实 `play`/`pause` 事件。原来是点击时乐观翻转，
+  一旦微信拦截自动播放（非 WiFi 下会），图标状态就是反的，第一次点还会对已暂停的视频调 `pause()`
+
+### 待办 / 未验证
+
+- **视频未上传 OSS**：需把 `public/videos/video-{mobile,pc}-v2.mp4` 传到
+  `assets.raydiene.cn/videos/`，poster 两张随站点部署即可。**上传前线上是坏的**（v2 文件 404）
+- **微信真机未实测**（本地无法复现 X5 行为），根因是静态分析 + ffprobe 实测推出来的。
+  上线后需在微信里验证起播时间
+- `assets.raydiene.cn` 直连 OSS 无 CDN（`Server: AliyunOSS`）。本次不是瓶颈（Chrome 秒开说明带宽够），
+  但跨地域访问会有波动，值得后续接 CDN
+- 旧的 `video-mobile.mp4` / `video-pc.mp4` 确认新版没问题后可从 OSS 删除
+
 ## 2026-07-30 — 修金属表面「氧化/水雾」质感；玻璃 pass 改 scissor 裁剪
 
 ### 「氧化 / 水雾 / 油污」= 平坦法线图上的 JPEG 噪声
