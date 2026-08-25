@@ -1,5 +1,163 @@
 # CHANGELOG
 
+## 2026-08-25（五）— 全部完成；唯一待观察点：2026-09-01 首次自动续期
+
+微信内置浏览器 hero 视频问题**已实测秒开**（用户真机确认）。全链路收尾状态：
+
+| 项 | 状态 |
+|---|---|
+| moov faststart + H.264（保留 1080p60） | ✅ |
+| poster 补齐（原 `hero-poster.jpg` 是 404） | ✅ |
+| SSR HTML 里带 `src`（黑屏根因） | ✅ 已上线 |
+| CDN 接入 + Range 回源 2MB | ✅ |
+| `Cache-Control: public, max-age=31536000, immutable` | ✅ 实测生效 |
+| CDN 证书自动续期（acme.sh `ali_cdn` hook） | ✅ 已配置，待首次实战 |
+
+### CDN 证书续期配置结果
+
+VPS 上确认 acme.sh **v3.1.3**，`deploy/ali_cdn.sh` 在该 tag 已存在，无需升级。
+`Ali_Key` 已存在于 `account.conf`（用 `dns_ali` 验证），无需重复配置。执行：
+
+```bash
+export DEPLOY_ALI_CDN_DOMAIN="assets.raydiene.cn"
+acme.sh --deploy -d assets.raydiene.cn --deploy-hook ali_cdn --ecc
+```
+
+读 v3.1.3 源码确认了两点：`DEPLOY_ALI_CDN_DOMAIN` 会被 `_savedeployconf` 持久化（第 48 行）；
+即使没存也会回退成证书主域名（第 50 行），双保险。
+
+### ⚠️ 续期日期是 9-01，不是 10 月
+
+`acme.sh --list` 显示续期周期是 **30 天**（非 acme.sh 默认的 60 天）：
+
+- `assets.raydiene.cn`：Created 2026-08-03 → **Renew 2026-09-01**
+- `raydiene.cn`：Created 2026-08-06 → **Renew 2026-09-04**
+
+**9-01 是 `ali_cdn` hook 的第一次实战**。主站续期脚本虽已稳定运行很久，但从未走过这个 hook，
+是全新一环，需实际验证。当天之后跑：
+
+```bash
+echo | openssl s_client -connect assets.raydiene.cn:443 -servername assets.raydiene.cn 2>/dev/null \
+  | openssl x509 -noout -dates -serial
+```
+
+基准值 serial `A2111968CED4CB59E063F8A61E0907AD` / `notAfter Nov 1 2026`——
+两者都变化才说明「签发 → 部署到 CDN」闭环成立。
+
+另需确认 `Le_DeployHook` 已落盘（否则自动续期不会触发 CDN 部署）：
+
+```bash
+grep -iE "DeployHook|ALI_CDN" ~/.acme.sh/assets.raydiene.cn_ecc/assets.raydiene.cn.conf
+```
+
+### 遗留（非阻塞）
+
+- `public/videos/_original-hevc/` 留有原始 HEVC 母带，OSS 上的旧
+  `video-mobile.mp4` / `video-pc.mp4` 确认无引用后可删
+- 本地 `e:\Code\23363672_assets.raydiene.cn_nginx\` 是 2026-05-03 已过期的 DigiCert 证书，
+  含私钥文件，未清理
+
+## 2026-08-25（四）— CDN 切换完成；Hero 修复已上线；待办：Cache-Control + CDN 证书续期
+
+### 已完成并实测确认
+
+- **DNS 已切到 CDN**：`assets.raydiene.cn` → `assets.raydiene.cn.w.kunlunaq.com`
+  实测 `Server: Tengine` + `Via: kunlun3.cn9405`，Range 请求返回 `206` ✅
+- **Range 回源已开启**，分片 2MB（控制台确认）
+- **Hero 黑屏修复已上线**，线上 HTML 已含
+  `src="https://assets.raydiene.cn/videos/video-mobile-v2.mp4"` ✅
+
+### 待办 1：Cache-Control 仍未设置
+
+新版 OSS 控制台入口**不叫「设置 HTTP 头」，叫「设置文件元数据」**——在文件列表勾选文件后
+底部那排按钮的第一个。填 `public, max-age=31536000, immutable`。
+
+因为 CDN 已经缓存了无 Cache-Control 的响应，设完还要去 **CDN → 刷新预热**按 URL 刷新两个视频地址。
+
+### 待办 2：CDN 侧证书自动续期（11-01 到期，务必在此前完成）
+
+主站和 OSS 都有自动续签脚本，唯独 CDN 侧没有。到期当天 CDN 上的证书不会自动更新 → 资源全挂。
+
+证书是 **ZeroSSL ECC DV** —— 这是 acme.sh 从 v3.0 起的默认 CA + 默认密钥类型，
+**推断续期脚本就是 acme.sh，但未证实**（脚本不在本机，需登服务器跑 `acme.sh --version` 确认）。
+
+若确为 acme.sh，一次性执行即可，之后每次续期自动部署：
+
+```bash
+export Ali_Key="LTAI..." Ali_Secret="..."
+export DEPLOY_ALI_CDN_DOMAIN="assets.raydiene.cn"
+acme.sh --deploy -d assets.raydiene.cn --deploy-hook ali_cdn --ecc
+```
+
+- **`--ecc` 不能省**：证书是 ECC，acme.sh 存在单独目录，不加会找不到
+- hook 会写进该域名的配置文件，后续续期自动触发，无需重复设置
+- 该 hook 调的是 `SetCdnDomainSSLCertificate`（endpoint `cdn.aliyuncs.com`）。
+  **DCDN 是另一个 hook `ali_dcdn`**，我们用的是 CDN，别选错
+- RAM 子账号权限：`AliyunCDNFullAccess`（必需）、`AliyunCASFullAccess`、
+  `AliyunDNSFullAccess`（若用 DNS-01 验证）
+
+验证基准（续期成功后这两个值都会变）：
+serial `A2111968CED4CB59E063F8A61E0907AD`，到期 `Nov 1 23:59:59 2026`。
+
+```bash
+echo | openssl s_client -connect assets.raydiene.cn:443 -servername assets.raydiene.cn 2>/dev/null \
+  | openssl x509 -noout -subject -dates -serial
+```
+
+## 2026-08-25（三）— assets 域名接入 CDN（DNS 已于当日切换完成，见上一节）
+
+`assets.raydiene.cn` 原为直连 OSS（`Server: AliyunOSS`，cn-shanghai，无 CDN）。已在 CDN 控制台
+完成域名添加与证书配置，**但 DNS 还没切，线上仍走 OSS**。
+
+### 关键信息（下次接手需要）
+
+- CDN CNAME：`assets.raydiene.cn.w.kunlunaq.com`（边缘 IP 实测 124.232.182.6）
+- **回滚值**：`raydiene-assets-zrs.cn-shanghai.taihangpkx.cn`（OSS 原 CNAME），TTL 10 分钟
+- DNS 里 `assets.raydiene.cn` 是**独立托管的 zone**，所以主机记录是 `@` 而不是 `assets`。
+  同一主机记录不允许两条 CNAME —— 是改现有那条，不是新建
+- `_dnsauth` TXT 是域名归属验证记录，不要动
+
+### 证书
+
+CDN 控制台的证书下拉是 `cert-5yj3sh` / `cert-1kkk03` / `cert-lspaaq` 这种无意义 ID，
+认不出谁是谁。**用 SNI 直连边缘节点即可在切 DNS 前验证选对没有**：
+
+```bash
+openssl s_client -connect assets.raydiene.cn.w.kunlunaq.com:443 \
+  -servername assets.raydiene.cn 2>/dev/null | openssl x509 -noout -subject -dates -ext subjectAltName
+```
+
+已验证选中的是正确那张：`CN=assets.raydiene.cn` / ZeroSSL ECC DV / 2026-08-03→**11-01**。
+另外两张分别是主站证书（SAN 只有 `raydiene.cn`+`www`，**不覆盖 assets**）和一张过期的 DigiCert。
+
+- 本地 `e:\Code\23363672_assets.raydiene.cn_nginx\` 那对 pem/key 是 **DigiCert，2026-05-03 已过期**，
+  别再用；私钥文件还留在磁盘上，未删
+- **续期风险**：证书 11-01 到期。现有自动续期脚本（不在本机，未找到 acme.sh/certbot/lego/win-acme 痕迹）
+  只更新 OSS 侧。若 CDN 侧走「自定义上传」贴死 pem/key，到期当天资源全挂。
+  当前选的是「数字证书管理服务」，需确认续期脚本会把新证书推送到那里
+
+### 切换前已用 `--resolve` 绕过 DNS 完整验证过 CDN 链路（对线上零影响）
+
+```bash
+curl -sI --resolve assets.raydiene.cn:443:124.232.182.6 https://assets.raydiene.cn/videos/video-mobile-v2.mp4
+```
+
+- 走 CDN ✅ `Server: Tengine` + `Via: kunlun7.cn6209`
+- 回源 ✅ `x-oss-cdn-auth: success`
+- **Range ✅ `206` + `Content-Range: bytes 0-1000/11195384`**（iOS Safari 的硬需求）
+- 缓存 ✅ 首次 MISS → 二次 `HIT TCP_MEM_HIT`
+- 冷对象首次 Range：TTFB 0.755s / 1MB 用时 0.84s
+
+### 待办
+
+1. **给 OSS `videos/` 下两个 v2 文件补 `Cache-Control: public, max-age=31536000, immutable`**。
+   现在响应里一个缓存头都没有，CDN 只能用自己的默认值（实测 `X-Swift-CacheTime: 2592000`，30 天），
+   浏览器端则走启发式缓存。敢设一年是因为文件名带版本号，换内容就换 v3。
+   **要在切 DNS 前做**，否则还得去 CDN 刷新缓存
+2. 控制台确认 **Range 回源** 是「开启」（默认关闭）。外部实测行为正常，但开关状态无法从外部确认
+3. 改 DNS CNAME → 切换
+4. **Hero 黑屏修复仍未部署**，线上还是旧代码
+
 ## 2026-08-25（二）— 修微信首次进首页 Hero 黑屏；src 必须进 SSR HTML
 
 ### 症状
