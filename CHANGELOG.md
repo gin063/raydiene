@@ -1,5 +1,53 @@
 # CHANGELOG
 
+## 2026-08-25（二）— 修微信首次进首页 Hero 黑屏；src 必须进 SSR HTML
+
+### 症状
+
+视频换 H.264+faststart 上线后，PC / 移动端 Chrome & Safari 都秒开，但微信内置浏览器：
+**首次进首页黑屏、视频完全不加载**；点进任意内页再点 logo 返回首页，则秒加载并自动播放。
+
+### 根因：`<video>` 在 SSR 输出的 HTML 里没有 `src`
+
+线上实测拿到的标签（注意没有 src，且 `preload="none"`）：
+
+```html
+<video poster="/images/hero-poster-mobile.jpg" autoplay muted loop playsinline
+       webkit-playsinline="true" x5-video-player-type="h5-page" preload="none" ...>
+```
+
+`src` 全靠 `onMounted` 里 JS 赋值，凑成一条死链：
+
+1. HTML 解析出一个**没有 src 的 video** → `networkState = NETWORK_EMPTY`，原生 `autoplay` 无从触发
+2. 要等 Nuxt 的 JS chunk 下载完 + hydration 完成，`onMounted` 才设 src
+3. 此时早已脱离页面加载的初始上下文，微信的自动播放策略拦掉 `play()`
+4. `preload="none"` 意味着浏览器也不会自己去拉 → **零字节下载，黑屏**
+   （`preload="none"` + 无 src 时 X5 连 poster 都不渲染，所以是黑屏而非静止画面）
+
+**从内页返回之所以正常**：客户端路由，JS 早在内存里 `onMounted` 立即执行；
+更关键的是用户此时已点过两次，微信的自动播放限制在用户手势后解除。
+
+### 改动（`components/TheHero.vue`）
+
+- **`src` 改为 SSR 就带上**（`heroSrc` ref 初值即竖版 OSS 绝对地址），浏览器一解析 `<video>`
+  就开始加载、原生 autoplay 直接生效，完全不依赖 JS。已验证预渲染 HTML 里有 src
+- `preload="none"` → **`preload="metadata"`**。有 autoplay 时浏览器会为满足播放继续拉，
+  所以移动端等价于 auto；PC 在换 src 前只白拉约 54KB metadata（faststart 后 moov 在头部）
+- PC 换横版时**同步写 `el.src`**，不是只改 ref。ref 要等 Vue flush 才落到 DOM，
+  中间空隙里 `el` 上还是竖版地址
+- **删掉了无条件的 `el.load()`**。移动端调它会把浏览器已拉到的数据全丢弃重来；
+  PC 上它还有个时序 bug——在 ref flush 前执行，实际重载的是旧的竖版
+- **新增用户手势兜底**：`touchstart` / `click` 各挂一次 `{ once: true }` 补播，
+  微信非 WiFi 下仍会拦自动播放，此时用户随便点一下即播
+- `WeixinJSBridgeReady` 监听补 `{ once: true }`；新增 `onBeforeUnmount` 清理三个监听器——
+  首页 ⇄ 内页来回切正是本次的复现路径，未触发的监听器会持续堆积
+
+### 待办 / 未验证
+
+- **微信真机未实测**（本地无法复现 X5 行为）。根因是线上 HTML 实测 + 症状推理得出，
+  需上线后在微信里验证「首次进首页」这条路径
+- CDN 仍未挂，`assets.raydiene.cn` 依旧 `Server: AliyunOSS` 直连（见下一节的开通步骤）
+
 ## 2026-08-25 — 修微信内置浏览器首页 Hero 视频起播 30 秒
 
 ### 根因不在「微信特殊写法」，在视频文件本身

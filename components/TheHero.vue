@@ -4,8 +4,8 @@
       <!-- 单个 video：poster 占位；onMounted 按视口只加载一个视频源，避免移动/PC 两份都下载 -->
       <video ref="videoRef"
         class="absolute top-0 left-0 w-full h-full object-cover opacity-90 transition-opacity duration-500"
-        :poster="heroPoster" autoplay muted loop playsinline webkit-playsinline="true"
-        x5-video-player-type="h5-page" preload="none" fetchpriority="high"
+        :src="heroSrc" :poster="heroPoster" autoplay muted loop playsinline webkit-playsinline="true"
+        x5-video-player-type="h5-page" preload="metadata" fetchpriority="high"
         :class="{ 'opacity-60': !isHeroPlaying }">
       </video>
 
@@ -144,13 +144,17 @@
 
 <script setup>
 import { ref } from "vue";
-import { onMounted } from 'vue';
+import { onMounted, onBeforeUnmount } from 'vue';
 
 // === 顶部视频控制 ===
 const videoRef = ref(null);
 const isHeroPlaying = ref(true);
-// 占位封面（首屏立即有画面）。默认竖版：预渲染的 HTML 里就带上它，
-// 微信打开无需等 hydration 即可出画面；PC 在 onMounted 换成横版。
+let stopGestureFallback = null;
+// src / poster 默认都取竖版，且必须在 SSR 输出的 HTML 里就带上：
+// 浏览器一解析到 <video> 就能开始加载、原生 autoplay 直接生效，不必等 JS 下载和 hydration。
+// 微信里如果等到 onMounted 才设 src，那时自动播放已被策略拦截，preload 又不会自己去拉 → 黑屏。
+// PC 在 onMounted 换横版，代价是白拉一次竖版的 metadata（约 54KB），换 HTML 里能有 src。
+const heroSrc = ref(useVideoUrl("video-mobile-v2.mp4"));
 const heroPoster = ref("/images/hero-poster-mobile.jpg");
 
 const toggleHeroVideo = () => {
@@ -167,22 +171,38 @@ onMounted(() => {
   el.addEventListener("play", () => { isHeroPlaying.value = true; });
   el.addEventListener("pause", () => { isHeroPlaying.value = false; });
 
-  // 按视口只加载一个视频源（移动竖版 / PC 横版），避免两份都下载
-  const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-  if (isDesktop) heroPoster.value = "/images/hero-poster-pc.jpg";
-  el.src = useVideoUrl(isDesktop ? "video-pc-v2.mp4" : "video-mobile-v2.mp4");
-  el.load();
+  // 只在 PC 上换横版；移动端 HTML 里已是正确的 src，不要再动它，
+  // 更不要调 load()——那会把浏览器已经拉到的数据全部丢弃重来。
+  // 这里同步写 el.src（设置 src 本身即触发加载算法），不能只改 ref 就指望它立刻生效：
+  // Vue 要等到 flush 才落到 DOM，中间这段空隙拿到的还是竖版地址。
+  if (window.matchMedia("(min-width: 768px)").matches) {
+    heroPoster.value = "/images/hero-poster-pc.jpg";
+    heroSrc.value = useVideoUrl("video-pc-v2.mp4");
+    el.src = heroSrc.value;
+  }
 
   const tryPlay = () => el.play().catch(() => { });
   tryPlay();
 
   // 微信专用：JSBridge 就绪后再触发播放
   if (typeof WeixinJSBridge === "undefined") {
-    document.addEventListener("WeixinJSBridgeReady", tryPlay, false);
+    document.addEventListener("WeixinJSBridgeReady", tryPlay, { once: true });
   } else {
     WeixinJSBridge.invoke("getNetworkType", {}, tryPlay);
   }
+
+  // 最后兜底：微信在非 WiFi 等情况下仍会拦掉自动播放，此时借用户第一次触摸/点击补播一次
+  document.addEventListener("touchstart", tryPlay, { once: true, passive: true });
+  document.addEventListener("click", tryPlay, { once: true });
+  stopGestureFallback = () => {
+    document.removeEventListener("touchstart", tryPlay);
+    document.removeEventListener("click", tryPlay);
+    document.removeEventListener("WeixinJSBridgeReady", tryPlay);
+  };
 });
+
+// 首页 ⇄ 内页来回切换时组件会反复挂载，未触发的监听器不清理会持续堆积
+onBeforeUnmount(() => stopGestureFallback?.());
 // === 数据配置 ===
 // 移除了 video 字段，因为不再需要自动播放交互
 const productRows = [
