@@ -70,7 +70,7 @@
               <div class="space-y-4 text-gray-300 leading-relaxed mb-8">
                 <p><strong class="text-white">主打定位：</strong>基础充电，外观为金属银，极致简约风格。</p>
                 <p><strong class="text-white">硬件配置：</strong>枪线5米，满足90%以上的充电场景需求。除枪线长度外，与其它产品在功能上基本无区别。</p>
-                <p><strong class="text-white">质保服务：</strong>质保为两年只换不修。（参加活动，限时升级4年质保）</p>
+                <p><strong class="text-white">质保服务：</strong>4年质保（前2年只换不修+后2年免费维修）。</p>
               </div>
 
               <div class="mt-auto p-4 rounded-xl bg-cyan-900/20 border border-cyan-500/20">
@@ -122,7 +122,7 @@
               <div class="space-y-4 text-gray-300 leading-relaxed mb-8">
                 <p><strong class="text-white">主打定位：</strong>全能充电，全网销售冠军。外观为黑色高光面板搭配经典银，主流充电桩中的颜值担当。</p>
                 <p><strong class="text-white">硬件配置：</strong>枪线升级为6米，功能配置拉满，使用场景更丰富。</p>
-                <p><strong class="text-white">质保服务：</strong>质保为两年只换不修。（参加活动，限时升级4年质保）</p>
+                <p><strong class="text-white">质保服务：</strong>4年质保（前2年只换不修+后2年免费维修）。</p>
               </div>
 
               <div class="mt-auto p-4 rounded-xl bg-cyan-900/20 border border-cyan-500/20">
@@ -174,7 +174,7 @@
               <div class="space-y-4 text-gray-300 leading-relaxed mb-8">
                 <p><strong class="text-white">主打定位：</strong>功能上与磐石一致，区别主要是外观和用料。</p>
                 <p><strong class="text-white">硬件配置：</strong>玻璃金属面板更富科技感，核心元件用料整体有提升（更极致的稳定性），加上4.3寸屏幕（科技感拉满）。</p>
-                <p><strong class="text-white">质保服务：</strong>质保为两年只换不修。（参加活动，限时升级4年质保）</p>
+                <p><strong class="text-white">质保服务：</strong>4年质保（前2年只换不修+后2年免费维修）。</p>
               </div>
 
               <div class="mt-auto p-4 rounded-xl bg-cyan-900/20 border border-cyan-500/20">
@@ -225,8 +225,8 @@
 
               <div class="space-y-4 text-gray-300 leading-relaxed mb-8">
                 <p><strong class="text-white">主打定位：</strong>行业旗舰，业内首个7寸触控大屏充电桩，把“Pad”搬上了充电桩，真正的全面智能。</p>
-                <p><strong class="text-white">硬件配置：</strong>各项参数规格到顶，全系标配 7.5米 菲尼克斯充电枪。</p>
-                <p><strong class="text-white">质保服务：</strong>额外赠送两年质保，四年只换不修。</p>
+                <p><strong class="text-white">硬件配置：</strong>各项参数规格到顶，全系标配 7.5米 充电枪。</p>
+                <p><strong class="text-white">质保服务：</strong>4年全程只换不修。</p>
               </div>
 
               <div class="mt-auto p-4 rounded-xl bg-cyan-900/20 border border-cyan-500/20">
@@ -269,7 +269,7 @@
 // --- SEO 配置 (替换原有的 useHead) ---
 useSeoMeta({
   title: '选购指南 - 家用充电桩产品对比与推荐 | Raydiene',
-  description: '家用充电桩怎么选？7kW还是21kW？雷迪恩选购指南对比坚石/磐石/星辰/星耀全系：价格799元起，最高28重安全防护、全系3C认证、最高4年质保。覆盖特斯拉/比亚迪/理想等99%国标车型，找到您的专属家用充电方案。',
+  description: '家用充电桩怎么选？7kW还是21kW？雷迪恩选购指南对比坚石/磐石/星辰/星耀全系：价格849元起，最高28重安全防护、全系3C认证、全系4年质保。覆盖特斯拉/比亚迪/理想等99%国标车型，找到您的专属家用充电方案。',
   keywords: '家用充电桩怎么选, 7kW和11kW充电桩区别, 充电桩选购指南, 雷迪恩产品对比, 坚石vs磐石, 家用充电桩推荐2026, 充电桩多少钱',
   // 社交分享优化
   ogTitle: '雷迪恩选购指南：一图看懂四大系列区别',

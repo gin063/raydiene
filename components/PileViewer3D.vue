@@ -2,14 +2,14 @@
   <div ref="wrapEl" class="relative w-full select-none">
     <div ref="stageEl"
       class="relative w-full aspect-[3/4] overflow-hidden rounded-[1.75rem] sm:aspect-[4/3] xl:aspect-auto xl:h-[clamp(760px,82vh,920px)]"
-      :style="{ '--ink': T.ink, '--ink-dim': T.inkDim, '--hair': T.hair,
+      :style="{ '--ink': T.ink, '--ink-dim': T.inkDim, '--accent': T.accent, '--hair': T.hair,
                  '--knob': T.knob, '--knob-ink': T.knobInk, background: T.wall[1] }">
       <canvas ref="canvasEl" v-show="mode === '3d'" class="block h-full w-full" style="touch-action: pan-y" />
 
       <template v-if="mode === '3d' && ready">
         <!-- 标题区。无玻璃卡，直接压在影棚背景上 -->
         <div class="pointer-events-none absolute left-6 top-6 xl:left-9 xl:top-9">
-          <p class="label-lg mb-2.5 text-brand xl:mb-3">
+          <p class="label-lg mb-2.5 text-accent xl:mb-3">
             ✦ <ScrambleText :text="shown.tier" :trigger="gen" :delay="60" />
           </p>
           <h3 class="display font-hero font-bold text-ink">
@@ -26,7 +26,7 @@
         -->
         <div class="absolute bottom-9 left-9 top-[13rem] hidden w-[20rem] flex-col gap-4 xl:flex">
           <div :ref="(el) => (p.role = el)" class="flex flex-[20] flex-col justify-center px-6">
-            <p class="label mb-2.5 text-brand">
+            <p class="label mb-2.5 text-accent">
               <ScrambleText :text="shown.role" :trigger="gen" :delay="220" />
             </p>
             <p class="text-[15px] leading-relaxed text-ink-dim">
@@ -88,7 +88,7 @@
         <!-- 右上：产品简介 -->
         <div :ref="(el) => (p.intro = el)"
           class="absolute right-9 top-9 hidden w-[19rem] flex-col justify-center px-6 py-5 2xl:flex">
-          <p class="label mb-2.5 text-brand">
+          <p class="label mb-2.5 text-accent">
             ◆ <ScrambleText text="产品简介" :trigger="gen" :delay="160" />
           </p>
           <p class="text-[14.5px] leading-relaxed text-ink-dim">
@@ -143,7 +143,7 @@
           <div class="hidden items-end gap-3.5 2xl:flex">
             <div v-for="(hl, i) in shown.highlights" :key="i" :ref="(el) => (hlEls[i] = el)"
               class="flex h-[6rem] w-[14rem] flex-col items-center justify-center px-4 text-center">
-              <p class="label mb-2 text-brand">
+              <p class="label mb-2 text-accent">
                 <ScrambleText :text="hl.t" :trigger="gen" :delay="420 + i * 60" />
               </p>
               <p class="text-[14px] leading-snug text-ink-dim">
@@ -170,9 +170,9 @@
             </div>
 
             <a :ref="(el) => (p.cta = el)" :href="shown.buyUrl" target="_blank" rel="noopener noreferrer"
-              class="flex h-[2.75rem] items-center gap-1.5 whitespace-nowrap px-4 font-hero text-[14px] font-bold text-ink transition-colors hover:text-brand xl:h-[3.5rem] xl:gap-2 xl:px-6 xl:text-[1.05rem]">
+              class="flex h-[2.75rem] items-center gap-1.5 whitespace-nowrap px-4 font-hero text-[14px] font-bold text-ink transition-colors hover-accent xl:h-[3.5rem] xl:gap-2 xl:px-6 xl:text-[1.05rem]">
               <ScrambleText text="立即订购" :trigger="gen" :delay="580" />
-              <span class="text-brand">»</span>
+              <span class="text-accent">»</span>
             </a>
           </div>
         </div>
@@ -203,6 +203,13 @@ import { createGlassPass } from "~/utils/glassPass";
 const props = defineProps({
   products: { type: Array, required: true },
   debug: { type: Boolean, default: false },
+  /**
+   * 性能排查用的开关，只在实验页通过网址参数传进来（见 pages/products/showroom.vue）：
+   *   msaa  离屏画面的多重采样数（默认 4，低端机 0）
+   *   dpr   像素比上限（默认桌面 2、触屏 1.5）
+   *   glass false = 跳过玻璃合成，直接出场景，用来量玻璃着色器本身的开销
+   */
+  perf: { type: Object, default: () => ({}) },
 });
 
 const wrapEl = ref(null);
@@ -219,7 +226,8 @@ const stats = reactive({ fps: 0, calls: 0, tris: 0, coverage: 0 });
 const panelCount = ref(0);
 /** 递增即让全部 ScrambleText 重跑一遍，包括内容不变的表头与按钮 */
 const gen = ref(0);
-const theme = ref("day");
+// 默认夜间影棚（用户 2026-09-18 定）：暗底下金属高光收敛，产品质感更好
+const theme = ref("night");
 const T = computed(() => THEMES[theme.value]);
 
 /*
@@ -308,27 +316,55 @@ const THEMES = {
     wall: ["#b9c4d0", "#ccd5df", "#dde3ea", "#aeb9c6"],
     pool: "246,249,252", poolAlpha: 0.72,
     vignette: "60,72,88", vignetteAlpha: 0.26,
-    envIntensity: 1.1,
-    key: { color: 0xfff6e8, intensity: 1.5 },
-    fill: { color: 0xcfdcf0, intensity: 0.45 },
-    head: { color: 0xffffff, intensity: 0.55 },
+    // 白影棚 + 白/亮灰机身：原来 env 1.1 / key 1.5 / head 0.55 下，
+    // 环境里那几块发光面板在机身上反射成刺眼的白条（过曝）。
+    // 2026-09-18 三轮：① 0.8 / 1.2 / 0.4 + 曝光 0.85 仍偏亮；② 全压到 0.6 / 1.0 / 0.3 + 曝光 0.75 后发灰发闷。
+    // ③ 反射白条来自环境，env 留在低位；把曝光和主光回调，靠主光把明暗对比拉回来
+    envIntensity: 0.6,
+    exposure: 0.85,
+    key: { color: 0xfff6e8, intensity: 1.2 },
+    fill: { color: 0xcfdcf0, intensity: 0.4 },
+    head: { color: 0xffffff, intensity: 0.3 },
+    ambient: { sky: 0xffffff, ground: 0xb8c2cc, intensity: 0 },
+    // 黑玻璃面板/枪头的倒影强度（乘在 env 之上）。日间白影棚本就亮，正常即可
+    darkEnv: 1.0,
     shadowOpacity: 1,
     glass: { tint: 0.26, tintColor: 0xffffff, edge: 0.03, rim: 0.38, shadow: 0.2 },
-    ink: "#141a21", inkDim: "#5b6672", hair: "rgba(0,0,0,.10)",
+    // 浅灰影棚上：品牌蓝 #2d9ed0 对比度只有约 2.5:1、原次要字 #5b6672 约 3.7:1，都读不清。
+    // 日间用深一档的品牌蓝与更深的次要字（均 ≥ 4.5:1），夜间仍用原品牌蓝
+    ink: "#141a21", inkDim: "#3b4652", accent: "#074c72", hair: "rgba(0,0,0,.12)",
     knob: "#ffffff", knobInk: "#c2831f",
   },
   night: {
-    wall: ["#1d2530", "#28323e", "#333f4d", "#19212b"],
-    pool: "150,178,212", poolAlpha: 0.34,
-    vignette: "6,10,16", vignetteAlpha: 0.42,
-    envIntensity: 0.6,
+    // 背景亮度只靠「氛围光」提：墙面整体提一档 + 产品身后一团柔和辉光 + 暗角收轻。
+    // 这些都画在背景贴图里，不是场景灯，不会在机身上多出反光（2026-09-18 用户要求）。
+    // 原值：wall #1d2530/#28323e/#333f4d/#19212b，poolAlpha 0.34，vignetteAlpha 0.42，无 halo
+    // 第一轮：#27313d/#34404e/#404d5d/#222b36，pool 0.42，halo 0.26，暗角 0.3
+    // 第二轮：#2e3946/#3c4959/#495768/#29333f，pool 0.48，halo 0.34，暗角 0.24；用户要再亮，第三轮如下
+    wall: ["#35414f", "#435163", "#506073", "#303b48"],
+    pool: "170,196,228", poolAlpha: 0.55,
+    halo: "122,164,212", haloAlpha: 0.42,
+    vignette: "6,10,16", vignetteAlpha: 0.18,
+    // 夜间「表面亮一点、反光少一点」（2026-09-18）：
+    // 环境贴图同时贡献漫反射和镜面反射，降它 = 降反光；亮度改由半球光补 ——
+    // HemisphereLight 只进漫反射项、不产生高光，正好只提亮表面不增加反光
+    envIntensity: 0.45,
+    // 用户要表面再亮（2026-09-18）：1.1→1.6。只动半球光与正面柔光，env 与曝光不动，反光不增加
+    ambient: { sky: 0xc8d8ee, ground: 0x3c4654, intensity: 1.6 },
+    // 夜间 env 压到 0.45 后，黑色件几乎映不出东西、黑得像碳。单独把它们的倒影加强：
+    // 0.45 × 2.0 ≈ 0.9，接近日间的倒影量，浅色机身的反光不受影响
+    darkEnv: 2.6,   // 2.0 仍太黑（2026-09-18），再加
+    // 用户反馈夜间略过曝（2026-09-18）：原 曝光 1 / 主光 2.0 / 补光 0.55 / 柔光 0.75，
+    // 先降到 0.9 / 1.7 / 0.5 / 0.6，仍略过曝，再降一档到下面这组
+    exposure: 0.82,
     // 暗底下环境光贡献少，主光要更强才能把形体撑起来
-    key: { color: 0xfff2e0, intensity: 2.0 },
-    fill: { color: 0x8fb0dc, intensity: 0.55 },
-    head: { color: 0xdce9ff, intensity: 0.75 },
+    key: { color: 0xfff2e0, intensity: 1.5 },
+    fill: { color: 0x8fb0dc, intensity: 0.45 },
+    head: { color: 0xdce9ff, intensity: 0.6 },
     shadowOpacity: 0.4,
     glass: { tint: 0.28, tintColor: 0x1b232e, edge: 0, rim: 0.52, shadow: 0.3 },
-    ink: "#eef2f7", inkDim: "#9fadbc", hair: "rgba(255,255,255,.14)",
+    // 夜间背景两轮提亮后，原次要字 #9fadbc / 品牌蓝 #2d9ed0 在墙面中下部只剩 2.4~4.0:1，同步提亮一档
+    ink: "#eef2f7", inkDim: "#d4dce5", accent: "#86d2f6", hair: "rgba(255,255,255,.16)",
     knob: "#2b3644", knobInk: "#d6e4f7",
   },
 };
@@ -358,6 +394,17 @@ function studioBackground(THREE, t) {
   pool.addColorStop(1, `rgba(${t.pool},0)`);
   g.fillStyle = pool;
   g.fillRect(0, 0, N, N);
+
+  // 氛围辉光：产品身后一团大而软的光晕，让暗底有「空间感」而不是一块死黑的墙。
+  // 只有夜间配了 halo，日间影棚本来就亮，不需要
+  if (t.halo) {
+    const halo = g.createRadialGradient(N / 2, N * 0.42, N * 0.04, N / 2, N * 0.42, N * 0.55);
+    halo.addColorStop(0, `rgba(${t.halo},${t.haloAlpha})`);
+    halo.addColorStop(0.55, `rgba(${t.halo},${t.haloAlpha * 0.35})`);
+    halo.addColorStop(1, `rgba(${t.halo},0)`);
+    g.fillStyle = halo;
+    g.fillRect(0, 0, N, N);
+  }
 
   // 暗角：视线收拢到中心，四周的玻璃卡片也更容易读出来
   const vig = g.createRadialGradient(N / 2, N / 2, N * 0.27, N / 2, N / 2, N * 0.73);
@@ -420,7 +467,10 @@ async function init() {
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: !lowEnd, powerPreference: "high-performance" });
-  const dpr = Math.min(devicePixelRatio || 1, isTouch ? 1.5 : 2);
+  // 桌面像素比封顶 1（原来 2）。用户 165Hz 屏实测（2026-09-18）：基准 60 帧，
+  // 关 4×MSAA 约 100，像素比压到 1 约 115，关玻璃约 150（但画面发灰失真，弃用）。
+  // 像素比只影响 3D 画面本身，卡片文字是 DOM，照样按原生分辨率清晰；MSAA 保留，边缘不起锯齿
+  const dpr = Math.min(devicePixelRatio || 1, props.perf.dpr ?? (isTouch ? 1.5 : 1));
   renderer.setPixelRatio(dpr);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -476,6 +526,9 @@ async function init() {
   // 正面会完全背光 —— 黑玻璃面板、logo、枪头就全糊成死黑。
   // 挂在相机上保证「朝向观众的那一面」永远有基础照度
   const headLight = new THREE.DirectionalLight(0xffffff, 1);
+  // 只给漫反射的环境光（夜间用，日间强度 0），见 THEMES.night.ambient 的说明
+  const ambientLight = new THREE.HemisphereLight(0xffffff, 0x888888, 0);
+  scene.add(ambientLight);
   headLight.position.set(0, 0.35, 1);
 
   // pivot 转/缩（绕视觉中心），holder 把视觉中心搬到原点。
@@ -490,6 +543,9 @@ async function init() {
 
   // 有 model 字段的走真实 GLB，其余仍用程序化 proxy —— 两者接口一致
   const models = {};
+  // 所有模型的深色非金属材质，主题切换时统一改倒影强度
+  const darkMats = new Set();
+  let darkEnvNow = THEMES[theme.value].darkEnv;
 
   function layoutFor(key) {
     const m = models[key];
@@ -520,12 +576,17 @@ async function init() {
         m = await loadPileModel(THREE, GLTFLoader, DRACOLoader, prod.model, {
           maxAnisotropy: renderer.capabilities.getMaxAnisotropy(),
           rotateY: prod.rotateY ?? 0,
+          matte: prod.matte,
+          colorFix: prod.colorFix,
+          partColorFix: prod.partColorFix,
         });
       } catch (err) {
         console.error(`[PileViewer3D] ${prod.key} 的 GLB 加载失败，回退 proxy`, err);
       }
     }
     if (!m) m = buildChargingPile(THREE, RoundedBoxGeometry, prod.variant, prod.finish);
+    // 后台加载完的模型要立刻用上当前主题的倒影强度，否则切到它时会先黑一下
+    for (const dm of m.darkMats ?? []) { dm.envMapIntensity = darkEnvNow; darkMats.add(dm); }
     m.root.visible = false;
     holder.add(m.root);
     models[prod.key] = m;
@@ -546,7 +607,7 @@ async function init() {
   // 半透明毛玻璃：染色压低、模糊拉高，靠投影而非描边分离层次（rondesignlab 的做法）
   const glass = createGlassPass(THREE, FullScreenQuad, {
     // RenderTarget 的 MSAA —— 低端机太贵，关掉
-    samples: lowEnd ? 0 : 4,
+    samples: props.perf.msaa ?? (lowEnd ? 0 : 4),
     frost: 0.82, env: 0.24, thickness: 12, blend: 16,
     ...THEMES[theme.value].glass,
   });
@@ -562,6 +623,10 @@ async function init() {
     const keyTo = new THREE.Color(t.key.color);
     const fillTo = new THREE.Color(t.fill.color);
     const headTo = new THREE.Color(t.head.color);
+    const skyTo = new THREE.Color(t.ambient.sky);
+    const groundTo = new THREE.Color(t.ambient.ground);
+    const skyFrom = ambientLight.color.clone();
+    const groundFrom = ambientLight.groundColor.clone();
     const tintTo = new THREE.Color(t.glass.tintColor);
     const keyFrom = keyLight.color.clone();
     const fillFrom = fillLight.color.clone();
@@ -570,7 +635,10 @@ async function init() {
 
     const st = {
       env: scene.environmentIntensity ?? 1,
+      exposure: renderer.toneMappingExposure,
       keyI: keyLight.intensity, fillI: fillLight.intensity, headI: headLight.intensity,
+      ambI: ambientLight.intensity,
+      darkEnv: darkEnvNow,
       shadowO: shadow.material.opacity,
       tint: u.uTint.value, edge: u.uEdge.value, rim: u.uRim.value, gShadow: u.uShadow.value,
       mix: bgMat.uniforms.uMix.value,
@@ -578,7 +646,10 @@ async function init() {
     };
     const to = {
       env: t.envIntensity,
+      exposure: t.exposure,
       keyI: t.key.intensity, fillI: t.fill.intensity, headI: t.head.intensity,
+      ambI: t.ambient.intensity,
+      darkEnv: t.darkEnv,
       shadowO: t.shadowOpacity,
       tint: t.glass.tint, edge: t.glass.edge, rim: t.glass.rim, gShadow: t.glass.shadow,
       mix: toNight ? 1 : 0,
@@ -586,9 +657,15 @@ async function init() {
     };
     const write = () => {
       scene.environmentIntensity = st.env;
+      renderer.toneMappingExposure = st.exposure;
       keyLight.intensity = st.keyI;
       fillLight.intensity = st.fillI;
       headLight.intensity = st.headI;
+      ambientLight.intensity = st.ambI;
+      darkEnvNow = st.darkEnv;
+      darkMats.forEach((dm) => { dm.envMapIntensity = st.darkEnv; });
+      ambientLight.color.copy(skyFrom).lerp(skyTo, st.p);
+      ambientLight.groundColor.copy(groundFrom).lerp(groundTo, st.p);
       shadow.material.opacity = st.shadowO;
       u.uTint.value = st.tint;
       u.uEdge.value = st.edge;
@@ -716,7 +793,8 @@ async function init() {
     panelCount.value = panels.length;
 
     renderer.info.reset();
-    glass.render(renderer, scene, camera);
+    if (props.perf.glass === false) renderer.render(scene, camera);
+    else glass.render(renderer, scene, camera);
 
     if (props.debug) {
       frames++; acc += dt;
@@ -866,6 +944,8 @@ defineExpose({ setGlass, select });
    实际渲染值仍然平滑，效果等价且零成本 */
 .text-ink { color: var(--ink); transition: color 0.55s ease; }
 .text-ink-dim { color: var(--ink-dim); transition: color 0.55s ease; }
+.text-accent { color: var(--accent); transition: color 0.55s ease; }
+.hover-accent:hover { color: var(--accent); }
 .hair { background-color: var(--hair); transition: background-color 0.55s ease; }
 
 /* Apple 风格开关：轨道 + 右移的旋钮。
@@ -934,11 +1014,11 @@ defineExpose({ setGlass, select });
   color: var(--ink);
 }
 .console-btn:hover,
-.console-btn.active { color: #2d9ed0; }
+.console-btn.active { color: var(--accent); }
 
 .arrow-btn {
   @apply px-3.5 py-2.5 text-[13px] leading-none transition-colors;
   color: var(--ink-dim);
 }
-.arrow-btn:hover { color: #2d9ed0; }
+.arrow-btn:hover { color: var(--accent); }
 </style>

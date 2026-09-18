@@ -240,23 +240,23 @@ import { useProductSchema } from '~/composables/useJsonLd'
 // --- Product JSON-LD Schema ---
 useProductSchema({
   name: '雷迪恩星耀系列 7kW/21kW旗舰触控家用充电桩',
-  description: '雷迪恩星耀系列旗舰级家用充电桩，搭载7寸高清触控大屏与智能语音交互，支持7kW及21kW超快充，28重安全防护，4年全程只换不修，特斯拉版支持一键开盖功能。已通过中国强制性3C认证，适配99%国标新能源车型。',
+  description: '雷迪恩星耀系列旗舰级家用充电桩，搭载7寸高清触控大屏与智能语音交互，支持7kW及21kW超快充，28重安全防护，4年全程只换不修。已通过中国强制性3C认证，适配99%国标新能源车型。',
   price: 1999,
   url: 'https://www.raydiene.cn/products/xingyao',
   image: 'https://assets.raydiene.cn/images/products/xingyao.png',
   sku: 'A1507-GB01-101',
-  warranty: '4年质保只换不修',
+  warranty: '4年全程只换不修',
   hasCertification: true,
 })
 
 // --- SEO 配置 ---
 useSeoMeta({
   title: '星耀系列 - 7kW/21kW旗舰触控家用充电桩 | 时代之巅 | Raydiene 雷迪恩',
-  description: '雷迪恩(Raydiene)星耀系列，行业旗舰级家用充电桩。搭载7寸高清触控大屏与智能语音交互系统，支持7kW及21kW超快充。标配特斯拉一键开盖功能、28重安全防护及4年超长质保只换不修，支持自定义屏保与流光氛围灯，定义未来充电体验。',
-  keywords: '雷迪恩星耀系列, 21kW充电桩, 触控屏充电桩, 特斯拉一键开盖, 语音控制充电桩, 高端家用充电桩, 智能充电桩旗舰, Raydiene',
+  description: '雷迪恩(Raydiene)星耀系列，行业旗舰级家用充电桩。搭载7寸高清触控大屏与智能语音交互系统，支持7kW及21kW超快充。28重安全防护及4年全程只换不修，支持自定义屏保与流光氛围灯，定义未来充电体验。',
+  keywords: '雷迪恩星耀系列, 21kW充电桩, 触控屏充电桩, 语音控制充电桩, 高端家用充电桩, 智能充电桩旗舰, Raydiene',
   // 社交分享优化
   ogTitle: '雷迪恩星耀系列：触控大屏，时代之巅',
-  ogDescription: '行业旗舰之作。7寸大屏交互，21kW极速补能，标配特斯拉一键开盖。',
+  ogDescription: '行业旗舰之作。7寸大屏交互，21kW极速补能，4年全程只换不修。',
   // 使用极具视觉冲击力的场景图
   ogImage: 'https://assets.raydiene.cn/images/products/xingyao/scene-bg.jpg',
 })

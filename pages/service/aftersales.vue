@@ -98,7 +98,7 @@
           style="animation-delay: 0.3s;">
 
           <div class="absolute inset-0 z-0">
-            <NuxtImg src="/images/service/4g-bg.jpg" alt="雷迪恩充电桩4G终身免费联网功能" class="w-full h-full object-cover object-center
+            <NuxtImg src="/images/service/4g-bg.jpg" alt="雷迪恩充电桩4G免费联网功能" class="w-full h-full object-cover object-center
                brightness-100 contrast-110
                group-hover:scale-105 group-hover:brightness-110
                transition-all duration-700 ease-out transform-gpu" sizes="100vw md:50vw" loading="lazy" />
@@ -119,9 +119,9 @@
             </div>
 
             <div class="drop-shadow-lg">
-              <h3 class="text-2xl md:text-3xl font-bold font-hero mb-3 text-white">4G 终身免费</h3>
+              <h3 class="text-2xl md:text-3xl font-bold font-hero mb-3 text-white">4G 免费联网</h3>
               <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-lg font-medium">
-                告别连接焦虑<br>每台设备提供<span class="text-purple-400 font-bold">终身免费流量</span>保持即时在线，无额外付费。
+                告别连接焦虑<br>磐石、星辰、星耀<span class="text-purple-400 font-bold">终身免费流量</span>，坚石前 4 年免费，保持即时在线。
               </p>
             </div>
           </div>
@@ -170,11 +170,11 @@
 // --- SEO 配置 ---
 useSeoMeta({
   title: '售后服务 - 只换不修 & 全时响应 | 无忧保障 | Raydiene 雷迪恩',
-  description: '雷迪恩充电桩质保政策：4年超长质保（前2年只换不修+后2年免费维修），太平洋保险承保。28重安全防护，7×15h人工客服，终身免费4G流量及OTA升级。非人为质量问题上门换新，让每次充电零后顾之忧。',
+  description: '雷迪恩充电桩质保政策：4年超长质保（前2年只换不修+后2年免费维修），太平洋保险承保。最高28重安全防护，7×15h人工客服，4G免费联网（坚石前4年）及OTA升级。非人为质量问题上门换新，让每次充电零后顾之忧。',
   keywords: '充电桩质保政策, 充电桩只换不修, 4年质保充电桩, 28重安全防护, 充电桩售后服务, 充电桩OTA升级, 雷迪恩售后, Raydiene服务',
   // 社交分享优化
   ogTitle: '雷迪恩无忧售后：只换不修，全程守护',
-  ogDescription: '7*15h全时响应，终身免费流量，OTA持续进化。我们承诺质保期内“只换不修”。',
+  ogDescription: '7*15h全时响应，4G免费联网，OTA持续进化。我们承诺质保期内“只换不修”。',
   ogImage: 'https://assets.raydiene.cn/images/service/support.jpg', // 使用页面中“全时响应”的背景图作为分享封面
 })
 </script>

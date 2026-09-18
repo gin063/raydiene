@@ -244,18 +244,18 @@ import { useProductSchema } from '~/composables/useJsonLd'
 useProductSchema({
   name: '雷迪恩坚石系列 7kW家用交流充电桩',
   description: '雷迪恩坚石系列7kW家用充电桩，专为复杂环境设计。具备IP65/IP67高等级防护与25重安全防护，支持App远程控制与预约错峰充电。已通过中国强制性3C认证，适配99%新能源车型。',
-  price: 799,
+  price: 849,
   url: 'https://www.raydiene.cn/products/jianshi',
   image: 'https://assets.raydiene.cn/images/products/jianshi.png',
   sku: 'A1607-GB01-101',
-  warranty: '2年质保只换不修',
+  warranty: '4年质保（前2年只换不修+后2年免费维修）',
   hasCertification: true,
 })
 
 // --- SEO 配置 ---
 useSeoMeta({
   title: '坚石系列 - 7kW家用交流充电桩 | 硬核防护 | Raydiene 雷迪恩',
-  description: '雷迪恩(Raydiene)坚石系列7kW家用充电桩，专为复杂环境设计。具备IP65/IP67高等级防护与25重安全防护，支持App远程控制与预约错峰充电。适配99%新能源车型，提供专业上门安装与2年质保（只换不修）服务。',
+  description: '雷迪恩(Raydiene)坚石系列7kW家用充电桩，专为复杂环境设计。具备IP65/IP67高等级防护与25重安全防护，支持App远程控制与预约错峰充电。适配99%新能源车型，提供专业上门安装与4年质保（前2年只换不修+后2年免费维修）服务。',
   keywords: '雷迪恩坚石系列, 7kW充电桩, 家用交流充电桩, 户外充电桩, IP65防护, 预约充电, 汽车充电桩安装, Raydiene',
   // 社交分享优化
   ogTitle: '雷迪恩坚石系列：实用至上，硬核防护',

@@ -328,7 +328,7 @@ const panshiProSchema = {
   url: 'https://www.raydiene.cn/products/panshi?model=pro',
   image: 'https://assets.raydiene.cn/images/products/panshi-pro.png',
   sku: 'A1607-GB01-001',
-  warranty: '2年质保只换不修',
+  warranty: '4年质保（前2年只换不修+后2年免费维修）',
   hasCertification: true,
 }
 const panshiMaxSchema = {
@@ -338,7 +338,7 @@ const panshiMaxSchema = {
   url: 'https://www.raydiene.cn/products/panshi?model=max',
   image: 'https://assets.raydiene.cn/images/products/panshi-max.png',
   sku: 'A1607-GB01-002',
-  warranty: '2年质保只换不修',
+  warranty: '4年质保（前2年只换不修+后2年免费维修）',
   hasCertification: true,
 }
 useProductSchema(() => activeModel.value === 'max' ? panshiMaxSchema : panshiProSchema)
@@ -346,7 +346,7 @@ useProductSchema(() => activeModel.value === 'max' ? panshiMaxSchema : panshiPro
 // --- SEO 配置 ---
 useSeoMeta({
   title: '磐石系列 Pro/Max - 7kW智能家用交流充电桩 | Raydiene 雷迪恩',
-  description: '雷迪恩(Raydiene)磐石系列提供Pro与Max双版本选择。Pro版采用极简呼吸灯设计，Max版配备高清显示屏。全系标配7kW功率、IP65/IP67级防护、28重安全防护及App智能互联，适配99%新能源车型。',
+  description: '雷迪恩(Raydiene)磐石系列提供Pro与Max双版本选择。Pro版采用极简呼吸灯设计，Max版配备高清显示屏。全系标配7kW功率、IP65/IP67级防护及App智能互联，Pro版26重、Max版28重安全防护，适配99%新能源车型。',
   keywords: '雷迪恩磐石系列, 磐石Pro, 磐石Max, 7kW充电桩, 家用充电桩, 带屏幕充电桩, 智能充电桩, 汽车充电桩安装',
   // 社交分享优化
   ogTitle: '雷迪恩磐石系列：智能屏显与极简美学的双重选择',

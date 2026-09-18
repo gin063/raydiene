@@ -244,7 +244,7 @@ useProductSchema({
   url: 'https://www.raydiene.cn/products/xingchen',
   image: 'https://assets.raydiene.cn/images/products/xingchen.png',
   sku: 'A1507-GB01-001',
-  warranty: '2年质保只换不修',
+  warranty: '4年质保（前2年只换不修+后2年免费维修）',
   hasCertification: true,
 })
 

@@ -89,6 +89,13 @@ export const useSiteData = () => {
           ],
         },
         {
+          name: "3D展厅",
+          link: "/products/showroom",
+          // 这张「一排充电桩 + 全息展台」的图本来就更像展厅，用户定归 3D展厅（2026-09-18）
+          image: "/images/products/roadmap-bg.jpg",
+          desc: "五款产品 360° 立体展示，拖动旋转、切换昼夜影棚。",
+        },
+        {
           name: "3C认证",
           link: "/products/certificates",
           image: "/images/products/cert-bg.jpg", // 记得在 public 放这张图，用于 Header 右侧预览
@@ -97,6 +104,8 @@ export const useSiteData = () => {
         {
           name: "选购指南",
           link: "/products/purchase",
+          // TODO 原图已归 3D展厅，选购指南要换新图（prompt 见 CHANGELOG 2026-09-18）。
+          // 新图做好前两项暂时共用同一张
           image: "/images/products/roadmap-bg.jpg",
           desc: "对比四大系列，找到最适合您的家用充电桩。",
         },
@@ -117,7 +126,7 @@ export const useSiteData = () => {
           name: "售后服务",
           link: "/service/aftersales",
           image: "/images/service/aftersales-bg.jpg",
-          desc: "超长质保、OTA升级、4G流量终身免费，全周期无忧。",
+          desc: "4年超长质保、OTA升级、4G免费联网，全周期无忧。",
         },
         {
           name: "常见问题",

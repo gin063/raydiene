@@ -118,9 +118,10 @@
             class="col-span-9 pl-8 opacity-0 translate-x-[-10px] flex items-center" @mouseenter="cancelCategoryTimer">
             <NuxtLink :to="currentCategory.link" @click.prevent="handleCategoryClick(currentCategory)"
               class="w-full h-full relative rounded-xl overflow-hidden group cursor-pointer border border-white/10 block">
+              <!-- 横幅图 3.5:1，要用 object-cover 铺满约 730×380 的框，需要约 1350 宽；原来 sizes=500px 只请求 500/1000 宽，电脑上发糊 -->
               <NuxtImg :src="currentCategory.image" :alt="currentCategory.name"
                 class="absolute inset-0 w-full h-full object-cover object-right transition-transform duration-700 group-hover:scale-105 opacity-60 pointer-events-none"
-                sizes="500px" format="webp" loading="eager" />
+                sizes="1400px" format="webp" loading="eager" />
               <div
                 class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent pointer-events-none">
               </div>
@@ -179,7 +180,7 @@
 
             <div v-if="activeSubMenu && activeSubMenu.image"
               class="w-full aspect-[16/9] rounded-lg overflow-hidden mb-8 bg-gray-50 shadow-sm">
-              <NuxtImg :src="activeSubMenu.image" :alt="activeSubMenu.name" class="w-full h-full object-cover" sizes="500px" format="webp"
+              <NuxtImg :src="activeSubMenu.image" :alt="activeSubMenu.name" class="w-full h-full object-cover" sizes="1000px" format="webp"
                 loading="lazy" />
             </div>
 

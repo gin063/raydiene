@@ -13,6 +13,7 @@ const ROUTE_NAME_MAP: Record<string, string> = {
   '/products/xingyao': '星耀系列',
   '/products/certificates': '3C认证证书',
   '/products/purchase': '选购指南',
+  '/products/showroom': '3D展厅',
   '/service': '产品服务',
   '/service/install': '安装服务',
   '/service/aftersales': '售后服务',

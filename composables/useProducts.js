@@ -7,21 +7,21 @@ import {
   IconIP, IconShield, IconConnect, IconTemp,
   IconApp, IconTime, IconShare, IconAlert, IconBell,
   IconScreen, IconLight, IconMetal, IconAutoStop,
-  IconTouch, IconCar, IconVoice, IconCustom, IconSpeaker,
+  IconTouch, IconVoice, IconCustom, IconSpeaker,
 } from '~/utils/productIcons'
 
 // 顶部通用特性条（仅质保描述不同）
-const baseFeatures = (warranty) => [
+const baseFeatures = (warranty, traffic = '终身免费流量 & OTA') => [
   { text: '适配99%车型', icon: IconCheck },
   { text: '专业上门安装', icon: IconTool },
   { text: '7*15h 响应', icon: IconClock },
   { text: warranty, icon: IconVerified },
-  { text: '终身免费流量 & OTA', icon: IconWifi },
+  { text: traffic, icon: IconWifi },
 ]
 
 const PRODUCTS = {
   jianshi: {
-    features: baseFeatures('2年质保只换不修'),
+    features: baseFeatures('4年质保 前2年只换不修', '4年免费流量 & OTA'),
     highlightCards: [
       { title: 'IP67/IP65 防护', desc: '枪头IP67 / 桩体IP65', icon: IconIP },
       { title: '25重安全防护', desc: '过压/过流/漏电/防雷等', icon: IconShield },
@@ -52,7 +52,7 @@ const PRODUCTS = {
   },
 
   xingchen: {
-    features: baseFeatures('2年质保只换不修'),
+    features: baseFeatures('4年质保 前2年只换不修'),
     highlightCards: [
       { title: 'IP67 / IP65', desc: '枪头IP67 / 桩体IP65', icon: IconIP },
       { title: '智能高清屏显', desc: '充电状态 实时可见', icon: IconScreen },
@@ -83,11 +83,11 @@ const PRODUCTS = {
   },
 
   xingyao: {
-    features: baseFeatures('4年质保只换不修'),
+    features: baseFeatures('4年全程只换不修'),
     highlightCards: [
       { title: '7寸智能触控', desc: '大屏交互 如手机般流畅', icon: IconTouch },
       { title: '28重安全防护', desc: '新增枪温保护/浪涌/防盗充等防护', icon: IconShield },
-      { title: '特斯拉一键开盖', desc: '智能感应 便捷体验', icon: IconCar },
+      { title: '7kW / 21kW 双版本', desc: '单相三相 按电表选择', icon: IconClock },
       { title: '智能语音助手', desc: '语音播报 & 充满自停', icon: IconVoice },
     ],
     appFeatures: [
@@ -115,7 +115,7 @@ const PRODUCTS = {
 
   // 磐石：Pro / Max 双版本，页面按 activeModel 选择
   panshi: {
-    features: baseFeatures('2年质保只换不修'),
+    features: baseFeatures('4年质保 前2年只换不修'),
     appFeatures: [
       { title: 'APP 远程管理', desc: '无论身在何处，一键启动/停止充电，实时查看进度。', icon: IconApp },
       { title: '预约错峰充电', desc: '设置定时任务，利用夜间低谷电价，为您省钱。', icon: IconTime },

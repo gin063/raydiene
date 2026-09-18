@@ -33,6 +33,7 @@ export default defineNuxtConfig({
       { loc: "/products/xingyao", priority: 0.8, changefreq: "monthly" },
       { loc: "/products/purchase", priority: 0.8, changefreq: "monthly" },
       { loc: "/products/certificates", priority: 0.7, changefreq: "monthly" },
+      { loc: "/products/showroom", priority: 0.7, changefreq: "monthly" },
       { loc: "/service/install", priority: 0.7, changefreq: "monthly" },
       { loc: "/service/aftersales", priority: 0.7, changefreq: "monthly" },
       { loc: "/about/intro", priority: 0.6, changefreq: "yearly" },
@@ -59,6 +60,9 @@ export default defineNuxtConfig({
   // 预渲染：构建时把页面产出为静态 HTML（混合模式，不改变部署形态）
   routeRules: {
     "/**": { prerender: true },
+    // 3D 展厅由实验页转正（2026-09-18）。旧地址永久跳转；必须关掉预渲染 ——
+    // 预渲染会生成一张 meta refresh 的静态页、返回 200，搜索引擎认不出是 301
+    "/lab-3d": { redirect: { to: "/products/showroom", statusCode: 301 }, prerender: false },
   },
 
   nitro: {

@@ -30,12 +30,53 @@ const MATTE = {
   // 带 baseColor 贴图的材质在这批模型里就是屏幕与灯带 —— 真机是自发光的，
   // 只靠环境光照永远是一块死黑，中央那块 HUD 尤其明显
   emissive: 0.9,
+  // 深色非金属（黑玻璃面板、枪头、黑色塑料件）：基色近黑，几乎没有漫反射，
+  // 看起来「亮」全靠映出环境的倒影 —— 真实黑玻璃就是这样。
+  // 早先统一把非金属粗糙度抬到 ≥0.4，把它们的倒影糊没了，夜间就黑得像碳（2026-09-18 用户反馈）。
+  // 所以单列一支：保留厂家原本的光滑度（原值 0.11~0.32），只把近乎镜面的抬到 0.15 避免锐利亮斑；
+  // 倒影强度由 viewer 按昼夜设置（darkMats），夜间加强、日间正常
+  darkLum: 0.04,
+  darkRoughMin: 0.15,
+  // 纯黑（线性 0）的面板正对着看只反射约 4% 的环境光（菲涅尔 F0），倒影再强也拉不起来，
+  // 灯光打上去也毫无反应 —— 磐石中央面板就是这样变成「黑洞」的。基色抬到深炭灰，灯光能勾出形体
+  darkFloor: 0.025,   // 0.012 仍太黑（用户 2026-09-18），再抬一档
+  // 带贴图的非金属 = 液晶屏 / 印了图案的玻璃面板（星辰/星耀左侧那块黑玻璃，logo 与小屏幕都在贴图里）。
+  // 按玻璃处理：保持光滑、倒影随昼夜（darkMats）、贴图自发光让 logo 和界面显出来
+  glassRoughMin: 0.12,
+  // 金属 + 贴图有两种：彩色的是指示灯带（磐石的青色灯），要自发光；
+  // 灰色的是拉丝铝纹理（星辰/星耀右侧面板）—— 以前一律自发光，拉丝铝自己发白光，所以「太白」
+  emissiveSatMin: 0.3,
+};
+
+/** 贴图的平均颜色（缩到 8×8 取平均），用来区分彩色灯带与灰色金属纹理。失败返回 null */
+function texAvg(tex) {
+  try {
+    const img = tex?.image;
+    if (!img) return null;
+    const c = document.createElement("canvas");
+    c.width = c.height = 8;
+    const g = c.getContext("2d", { willReadFrequently: true });
+    g.drawImage(img, 0, 0, 8, 8);
+    const d = g.getImageData(0, 0, 8, 8).data;
+    let r = 0, gg = 0, b = 0;
+    for (let i = 0; i < d.length; i += 4) { r += d[i]; gg += d[i + 1]; b += d[i + 2]; }
+    const n = d.length / 4;
+    return { r: r / n / 255, g: gg / n / 255, b: b / n / 255 };
+  } catch {
+    return null;
+  }
+}
+const saturation = (c) => {
+  const mx = Math.max(c.r, c.g, c.b), mn = Math.min(c.r, c.g, c.b);
+  return mx > 0 ? (mx - mn) / mx : 0;
 };
 
 export async function loadPileModel(
   THREE, GLTFLoader, DRACOLoader, url,
-  { dracoPath = "/draco/", maxAnisotropy = 8, matte = MATTE, rotateY = 0 } = {}
+  { dracoPath = "/draco/", maxAnisotropy = 8, matte = {}, rotateY = 0, colorFix = {}, partColorFix = [] } = {}
 ) {
+  // 按产品覆盖部分哑光参数（如星辰/星耀的玻璃与合金反光更强，要单独压），其余沿用默认
+  const mt = { ...MATTE, ...matte };
   const draco = new DRACOLoader().setDecoderPath(dracoPath);
   const loader = new GLTFLoader().setDRACOLoader(draco);
 
@@ -73,6 +114,30 @@ export async function loadPileModel(
   const center = new THREE.Vector3(hub.x, (bbox.min.y + bbox.max.y) / 2, hub.z);
   const centerY = center.y;
 
+  // 按零件改色：同一材质被不同零件共用、只想改其中一部分时用。
+  // 规则 { material: 材质名, maxSize: 零件包围盒最长边上限（模型原始单位）, color: sRGB 十六进制 }，
+  // 命中的零件换成一份克隆材质再改色，共用这个材质的其他零件不受影响。
+  // 例：磐石 Max 的无线图标与机身上两个 32mm 高的圆柱件共用「Color:156:168:171」，只改图标
+  if (partColorFix.length) {
+    const clones = new Map();
+    const sz = new THREE.Vector3();
+    root.traverse((o) => {
+      if (!o.isMesh || Array.isArray(o.material)) return;
+      for (const [i, rule] of partColorFix.entries()) {
+        if (o.material.name !== rule.material) continue;
+        if (!o.geometry.boundingBox) o.geometry.computeBoundingBox();
+        o.geometry.boundingBox.getSize(sz);
+        if (Math.max(sz.x, sz.y, sz.z) > rule.maxSize) continue;
+        if (!clones.has(i)) {
+          const cm = o.material.clone();
+          cm.name = `${rule.material} · 局部改色`;
+          cm.color.set(rule.color);
+          clones.set(i, cm);
+        }
+        o.material = clones.get(i);
+      }
+    });
+  }
   const materials = new Set();
   root.traverse((o) => {
     if (!o.isMesh) return;
@@ -81,18 +146,41 @@ export async function loadPileModel(
     (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) => materials.add(m));
   });
 
+  // 按材质名改回设计色（sRGB 十六进制）。KeyShot → glTF 时部分颜色丢了：
+  // 磐石 Max 的 logo 字母材质名叫「Color:223:223:223」，导出后却是线性 0.052 的深灰，在黑面板上几乎看不见。
+  // 必须在分类之前改，否则按错误的颜色会被归进「深色件」
   for (const m of materials) {
-    const isMetal = (m.metalness ?? 0) >= matte.metalThreshold;
+    if (colorFix[m.name] && m.color) m.color.set(colorFix[m.name]);
+  }
+  const darkMats = [];
+  for (const m of materials) {
+    const isMetal = (m.metalness ?? 0) >= mt.metalThreshold;
+    const c = m.color;
+    const lum = c ? 0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b : 1;
+    const isDark = !isMetal && !m.map && lum < mt.darkLum;
+    const isPanel = !isMetal && !!m.map;
     // metalness 保持厂家原值不动 —— 它决定的是材质类别，不是反光强度
-    if (m.roughness != null) {
-      m.roughness = Math.max(m.roughness, isMetal ? matte.metalRoughness : matte.dielectricRoughness);
+    if (isDark || isPanel) {
+      if (m.roughness != null) {
+        m.roughness = Math.max(m.roughness, isPanel ? mt.glassRoughMin : mt.darkRoughMin);
+      }
+      if (isDark && c && lum < mt.darkFloor) c.setRGB(mt.darkFloor, mt.darkFloor, mt.darkFloor);
+      m.envMapIntensity = 1; // 实际值由 viewer 按主题写入
+      darkMats.push(m);
+    } else {
+      if (m.roughness != null) {
+        m.roughness = Math.max(m.roughness, isMetal ? mt.metalRoughness : mt.dielectricRoughness);
+      }
+      m.envMapIntensity = isMetal ? mt.metalEnv : mt.dielectricEnv;
     }
-    m.envMapIntensity = isMetal ? matte.metalEnv : matte.dielectricEnv;
-    // 屏幕/灯带自发光
-    if (m.map && matte.emissive > 0) {
+    // 自发光：屏幕与印刷面板（非金属 + 贴图）一律发光；金属 + 贴图只有彩色的灯带才发光，
+    // 灰色的拉丝铝纹理不发光
+    const glow = m.map && mt.emissive > 0 &&
+      (!isMetal || saturation(texAvg(m.map) ?? { r: 0, g: 0, b: 0 }) >= mt.emissiveSatMin);
+    if (glow) {
       m.emissiveMap = m.map;
       m.emissive = new THREE.Color(0xffffff);
-      m.emissiveIntensity = matte.emissive;
+      m.emissiveIntensity = mt.emissive;
     }
     // 各向异性过滤：斜视角下的贴图不再糊成一片
     for (const v of Object.values(m)) {
@@ -105,6 +193,8 @@ export async function loadPileModel(
     root,
     // GLB 里没有可呼吸的灯带材质；viewer 侧对 null 做了保护
     ledMat: null,
+    /** 深色非金属材质，倒影强度由 viewer 按昼夜统一设置 */
+    darkMats,
     center,
     centerY,
     bodyBottom: (body ?? bbox).min.y,

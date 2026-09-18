@@ -1,5 +1,183 @@
 # CHANGELOG
 
+## 2026-09-18 — 3D 展厅转正：/lab-3d → /products/showroom（未部署）
+
+- **用户定**：放在「产品介绍」栏，菜单名「3D展厅」，网址 `/products/showroom`，默认夜间模式；夜间再降一档（曝光 0.82 / 主光 1.5 / 补光 0.45 / 柔光 0.5）。
+- `git mv pages/lab-3d.vue → pages/products/showroom.vue`。
+  - `/lab-3d` 用 routeRules 做 **301**，并设 `prerender: false`（否则会生成 meta refresh 静态页、返回 200）。dev 实测返回 301。
+  - build 后 `.output/public/lab-3d` 不存在，`products/showroom` 已预渲染。
+- **SEO**：去掉 noindex；`useSeoMeta` 写了 title / description / keywords / og；JSON-LD 用 `CollectionPage` + `ItemList`，5 款各指向自己的产品页。**不重复写 Product/价格**，那些留在产品页，免得两处口径不一致。面包屑加了 `/products/showroom: 3D展厅`（BreadcrumbBar 会自动出 BreadcrumbList）。sitemap 加了一条，priority 0.7。
+- **菜单**：「产品介绍」栏在「在售产品」之后加「3D展厅」，背景图用 roadmap-bg.jpg（见下方「菜单背景图」）。og 分享图暂用站点默认图。
+- **夜间背景氛围光**：墙面提一档，加了产品身后的柔和 halo（只画在背景贴图里，不是场景灯，不会在机身上多出反光），暗角 0.42→0.3，poolAlpha 0.34→0.42。
+- **夜间背景第二轮提亮**：wall #2e3946/#3c4959/#495768/#29333f，pool 0.48，halo 0.34，暗角 0.24。背景变亮后夜间文字对比度掉到 2.4–4.0，同步把次要字 #9fadbc→#c6d0db、品牌蓝 #2d9ed0→#6cc6f0（墙面顶/中部 ≥4.8）。
+- **⚠️ 黑色面板 / 枪头「黑得像碳」**（用户指出的主要问题）：
+  - 根因：近黑的非金属几乎没有漫反射，看起来亮全靠映出环境的倒影。`loadPileModel` 原来统一把非金属粗糙度抬到 ≥0.4（星辰/星耀 0.55），倒影被糊没了；夜间 env 又降到 0.45，就只剩一块纯黑。
+  - 五个模型的黑色材质实测：亮度 < 0.04、非金属、无贴图，厂家原粗糙度 0.11–0.32。
+  - 修法：这类材质单独一支，保留原粗糙度（只把 0.11 抬到 0.15，避免锐利亮斑）；倒影强度 `darkEnv` 按主题设置（日间 1.0、夜间 2.0，夜间实际约 0.45×2≈0.9），随主题补间，后台加载的模型载入时立刻套用当前值。浅色机身的反光设置不变。
+  - build 通过；**效果要用户在真机上看**。
+- **磐石 Max 的无线图标统一成浅灰**：它的材质 `Color:156:168:171` 还被机身上两个 32 高的圆柱件共用，不能按材质名整体改。新增 `partColorFix`：按零件几何包围盒（原始单位 mm，不含节点的 0.001 缩放）最长边 ≤12 命中图标的 5 段弧线（3.1–10.7），换成克隆材质再改 #dfdfdf，圆柱件不受影响。
+- **磐石 Pro 的 logo 对齐磐石 Max**：`colorFix` 把英文字母（新材质 010，0.21）和无线图标（新材质 010 #1，0.063）都改成 #dfdfdf。这两种材质只用在面板 logo 上（逐个零件核对过）。
+- **第二轮（用户：黑面板仍太黑、磐石 Max 的 logo 不如 Pro 清楚、背景再亮）**：
+  - 磐石 Max 面板上的 RAYDIENE 8 个字母，材质名是 `Color:223:223:223`，导出后却是线性 0.052 的深灰；青色「N」`Color:0:255:255` 也导成了暗青。磐石 Pro 的 logo 材质（新材质 010）是 0.21，所以清楚。新增 `colorFix`（按材质名改回 sRGB 设计色，在分类前执行），只给磐石 Max 这两种材质用。
+  - `darkFloor` 0.012→0.025，夜间 `darkEnv` 2.0→2.6。
+  - 夜间背景第三轮：wall #35414f/#435163/#506073/#303b48，pool 0.55，halo 0.42，暗角 0.18。夜间文字同步：次要字 #d4dce5、品牌蓝 #86d2f6（墙面顶/中部 ≥4.8）。
+  - build 通过。
+- **磐石中央面板「黑洞」、星辰/星耀左侧玻璃面板发黑、右侧拉丝铝太白**：导出贴图逐一核对后发现三个问题。
+  - 磐石 Pro/Max 中央面板（约 100×182mm）是纯黑非金属（线性 0）、没有贴图。正对着看只反射约 4%（菲涅尔 F0），加强倒影也拉不起来。`darkFloor` 把基色抬到线性 0.012（深炭灰）。
+  - 星辰/星耀左侧玻璃面板（`0_0005`）是非金属 + 2116×1958 贴图（黑底，上面印着 RAYDIENE logo、小屏幕界面、NFC、青色光条），原来被当成普通非金属统一磨砂。现在「非金属 + 贴图」按玻璃处理：粗糙度 ≥0.12，倒影随昼夜（归入 darkMats），贴图自发光。磐石 Max 的液晶屏同理。
+  - 原规则是「有贴图就自发光」，拉丝铝（金属 + 灰色拉丝贴图）也在自己发光，所以太白。改为：金属 + 贴图只有贴图平均饱和度 ≥0.3 才发光。实测磐石青色灯带 0.97/0.99 → 发光，拉丝铝 0.00/0.01 → 不发光。
+  - build 通过；效果要用户在真机上看。
+- **夜间产品表面再提亮**：半球光 1.1→1.6，正面柔光 0.5→0.6；环境反射和曝光不动（反光不增加）。
+- **夜间产品表面「亮一点、反光少一点」**：
+  - 环境贴图同时贡献漫反射和镜面反射，所以夜间 envIntensity 0.6→0.45 降反光；亮度改由新增的 `HemisphereLight` 补（夜间 1.1，日间 0，随主题补间）。半球光只进漫反射、不产生高光。
+  - 星辰 / 星耀（玻璃面板 + 合金）单独传 `matte`：金属粗糙度 0.55→0.68、非金属 0.4→0.55、非金属环境强度 0.75→0.6。**金属的环境强度不动**，金属没有漫反射，压了会发黑。这部分材质改动日夜都生效。
+  - `loadPileModel` 的 `matte` 参数改为「部分覆盖 + 其余用默认」（原来是整体替换）。
+  - build 通过；效果要用户在真机上看。
+- **上线步骤**：`npm run deploy` → `npm run indexnow`。
+- **菜单背景图（用户 2026-09-18 定）**：选购指南原来那张「一排充电桩 + 全息展台」更像展厅，**改归 3D展厅**；选购指南换新图，新图好之前两项共用一张。
+  - 生图模型原生出 16:9，32:9 横幅是用户在 Photoshop 里拼的（左侧网点渐变），prompt 只管 16:9 的场景。
+  - 涉及真实产品时用户会同时上传参考图，prompt 里按上传顺序写明「图1–图5」。
+  - 选购指南 prompt：
+
+```
+16:9 photorealistic product photograph. Use the uploaded reference images for the exact product
+designs: image 1 = entry model, image 2 and image 3 = mid-range models, image 4 = premium model,
+image 5 = flagship model. Reproduce each charger's shape, proportions, materials, screen and panel
+details faithfully; do not invent new products, do not add or change logos or text on them.
+
+Scene: a dark, premium showroom at night. The five wall-box EV chargers stand in a single row from
+left to right in that order, each mounted on its own matte black display pedestal. The pedestals rise
+in height step by step from left (lowest) to right (highest), clearly suggesting a line-up from entry
+level to flagship. A thin glowing cyan (#2d9ed0) light line runs along the front edge of the pedestals
+like a rising progress path. Soft cyan rim light behind each charger separates them from the
+background; cool soft key light from above; gentle reflections on a dark glossy floor; faint
+atmospheric haze. The left edge of the frame fades into deep navy (#0a1622) darkness so it can blend
+into a halftone pattern later.
+
+Style: high-end consumer-tech product photography, cinematic, clean, balanced spacing, all five
+chargers sharp and fully visible. No people, no text, no numbers, no labels, no watermark, no extra
+logos.
+```
+  - 如果只想用四个系列（磐石只放一款），把 image 2 / image 3 合并成一张参考图，并把 five 改成 four。
+
+
+## 2026-09-18 — 3D 交互页（/lab-3d）第一轮细节优化（未部署）
+
+- **日间文字可读性**：浅灰影棚上，品牌蓝 `#2d9ed0` 对比度约 1.7–2.3:1，次要字 `#5b6672` 约 3.3–4.4:1。
+  - 背景不动（它是产品影棚底，改了影响模型观感）。
+  - 主题新增 `accent`：日间 `#074c72`，夜间仍是 `#2d9ed0`。次要字日间改为 `#3b4652`。
+  - 在卡片底 / 墙面 / 顶部较暗处三种背景上，新强调色 6.8 / 6.2 / 5.2，新次要字 7.2 / 6.5 / 5.4，都 ≥ 4.5。
+  - 组件内文字的 `text-brand` 改为随主题变化的 `text-accent`；实底按钮 `bg-brand` 不变。
+- **日间过曝**：环境反射 1.1→0.8，主光 1.5→1.2，跟随相机的柔光 0.55→0.4，新增 `exposure`（日间 0.85、夜间 1），随昼夜切换一起补间。夜间参数不变。
+- **移除「全系规格」区块**，只留标题区和 3D 画布；随之无用的 `dims` / `material` 字段已删；画布下补了 `pb-20`。
+- **未验证**：headless 的软件渲染在时限内加载不出模型，**灯光效果需要用户在真实浏览器里看**。
+- ~~帧数 60 不是问题~~ **更正**：用户的显示器是 165Hz，却只跑到 60 左右，说明卡在 GPU（代码里没有限帧）。每帧要做：39 万面场景 → 4× MSAA 离屏画面 → 两趟 1/4 分辨率模糊 → 整屏拷贝 → 玻璃着色器（约 58% 画面）。哪一步最重需要在真机上测。
+  - 加了排查开关（只在实验页，网址参数）：`?debug=1` 显示帧数，`&msaa=0`、`&dpr=1`、`&glass=0` 分别关掉多重采样、压像素比、跳过玻璃合成。**等用户测出各档帧数再决定优化方向。**
+- **第二轮**（用户看过仍偏亮）：日间环境 0.8→0.6、曝光 0.85→0.75、主光 1.2→1.0、补光 0.45→0.4、柔光 0.4→0.3。
+- 左下角调试信息默认不显示，只在 `?debug=1` 时显示。
+- 名称：一度把 3D 页改成「坚石」，**用户定改回「坚石 Pro」，其他地方不动**，此事已定。
+- **帧数实测（用户 165Hz 屏）**：基准 60；`msaa=0` 约 100；`dpr=1` 约 115；`glass=0` 约 150，但画面发灰失真，用户弃用。
+  - 采用：**桌面像素比封顶 1**（原 2），4× MSAA 保留。触屏仍是 1.5。排查开关保留，`&dpr=2` 可以切回原画质对比。
+- **第三轮亮度**：
+  - 日间第二轮压到 0.6 / 1.0 / 0.3 + 曝光 0.75 后发灰发闷。改为环境仍 0.6（白条来自环境反射），曝光回到 0.85、主光回到 1.2。
+  - 夜间用户反馈略过曝：曝光 1→0.9、主光 2.0→1.7、补光 0.55→0.5、柔光 0.75→0.6。
+
+
+## 2026-09-18 — ⚠️ 全站图片发糊：assets CDN「忽略参数」+ 菜单 sizes 过小
+
+**现象**：用户在首次 `npm run deploy` 之后发现 FAQ 顶部背景、下拉菜单图片发糊。**不是这次发布造成的**：CDN 上这些缓存的 `Age` 约 206 万秒，8/25 CDN 接入时就已经缓存成小图。
+
+**根因一（全站）**：`assets.raydiene.cn` 开了「忽略参数」。同一张图不同 `x-oss-process` 尺寸的请求共用一份缓存，谁先被访问就缓存谁。
+- 实测 faq.jpg：OSS 源站 `w_2560` 正确返回 2560×1429；CDN 无论什么参数（包括随机参数）都返回 640×357。
+- 全站扫描（`.output/public` 里 99 张经过缩放的图，每张按页面请求的最大宽度去取）：**26 张偏小**。最严重的是 faq.jpg、坚石 / 磐石Pro / 星耀的 mobile 场景图（640）、两张新闻图（384 / 640）、星辰场景图（1024）。另外 73 张碰巧先缓存了大图，手机上会拿到过大的图。
+- 顶部菜单 32 张全是小图缓存（横幅 500 宽，二维码 192 宽）。
+
+**根因二（只影响菜单）**：`TheHeader.vue` 桌面菜单大图写的是 `sizes="500px"`，但 3.5:1 的横幅图要 object-cover 铺满约 730×380 的框，需要约 1350 宽。已改为 1400px；移动端子菜单的 16:9 图框改为 1000px。**尚未部署。**
+
+**修复（已完成）**：
+1. 用户在 CDN 控制台把 assets.raydiene.cn 的「忽略参数」改为**保留参数 `x-oss-process`**，改完立即生效。
+2. 刷新 `https://assets.raydiene.cn/images/`：**普通目录刷新不够**。它只把缓存标记为过期，CDN 回源时 OSS 回「未修改」，旧缓存继续用（`TCP_REFRESH_HIT`），所以不带参数的 faq.jpg 仍是 640 宽的 webp。**要加 `Force=true` 强制删除缓存**，之后才返回 5504×3072 的原图 JPEG。
+   - `deploy.mjs` 里的自动刷新不需要强制：它只刷新内容真的变了的文件，回源时拿得到新内容。
+3. 菜单修复用 `npm run deploy -- --only=site` 发布：52 个页面文件更新（每页都带菜单），pm2 online。
+   - 第一次发布时我把输出接给了 grep，grep 遇到二进制后提前退出，管道断开，把构建进程也中断了，还没开始上传，线上没受影响。**以后别把 deploy 的输出接给会提前退出的命令**，要看输出就写进日志文件。
+
+**验证**：
+- 全站 99 张页面图片按最大请求宽度复查：**0 张偏小**（之前 26 张）。
+- 菜单 32 张图 × 1000 / 1400 / 2000 / 2800 四个尺寸，128 次请求**全部正确**。原图不够宽的二维码返回原图宽度，属于正常。
+- faq.jpg 不带参数：`image/jpeg 5504×3072`。线上 www 能取到包含新 sizes 的 `_nuxt/BOCdt4D4.js`。
+
+**遗留**：服务器上的 `/var/www/raydiene/.output.bak`（8/25 手动备份）可以删了，现在由 `.output-prev` 负责回滚。
+
+
+## 2026-09-18 — 一键发布 `npm run deploy`（写好，待首次实跑）
+
+**起因**：以前每次发布都用 xftp 把整个 `.output`（892MB）传到服务器，再用 xshell 重启 pm2；另外还把 `_nuxt` 和整个 public 覆盖上传到 OSS。
+
+**核实后的线上架构**：
+- `www` → CDN → 服务器 106.15.103.118（pm2，`/var/www/raydiene/.output`）。页面、`_nuxt`、字体、模型都从这里加载。
+- `assets` → CDN → OSS `raydiene-assets-zrs`。线上**只读 `images/`、`videos/`、`downloads/`**。
+- 所以 OSS 里的 `_nuxt/` 和 `about/`、`faq/` 等页面目录**线上根本没用到**，以前是白传。它们还让 `assets.raydiene.cn/about/` 能打开一份重复页面，有 SEO 隐患，**待清理**（清之前先确认没有引用）。
+
+**做法**（`scripts/deploy.mjs`）：
+- rclone（MIT 许可证，v1.75.1）按 MD5 比对，只传内容变了的文件。ossutil 从本地往 OSS 同步只能按修改时间或大小比对，而每次 build 都会重写所有文件，所以不用它。
+- OSS：`public/{images,videos,downloads}` 用 `sync` 同步，**远端多出来的文件会删掉**（用户定：本地删掉的都是不需要的）。`videos/_original-hevc` 不上传。
+- 服务器：先增量同步到 `.output-staging`，再复制成新版本、和 `.output` 对调、重启 pm2；上一版保留在 `.output-prev`，可以 `--rollback`。首次运行用线上现有的 `.output` 初始化暂存目录，所以不用整份重传。
+- CDN：直接调 OpenAPI 做 RefreshObjectCaches（签名已用阿里云文档的公开示例核对一致），不用装阿里云命令行。assets 按变化的目录刷新（图片经 x-oss-process 处理后有带参数的多个缓存版本）；www 只在 `_nuxt` 以外有变化时刷新整站目录。
+- 凭据：用户环境变量 `RAYDIENE_OSS_AK` / `RAYDIENE_OSS_SK`（RAM 子账号 deploy-site，只能读写这个 Bucket 和刷新 CDN），通过环境变量交给 rclone，不写配置文件。服务器用 `~/.ssh/id_ed25519` 免密登录。
+
+**验证**：`node --check` 通过；CDN 签名和官方示例一致。
+**首次预览（2026-09-18，`--dry-run`）**：
+- 环境检查全部通过：rclone、凭据、SSH 免密登录、服务器上的 pm2 和 node 都正常。
+- OSS 三个目录都无需同步：images 213 个文件用 `rclone check --checksum` 逐个核对 MD5，0 处差异；downloads 5 个一致；videos 除母带外 4 个一致。
+- OSS 上的 `videos/_original-hevc/` 两个母带（30MB）在排除规则内，不上传也不删除；**要不要从 OSS 删掉由用户定**。
+- 服务器：新增 89、修改 115、删除 89 个文件，只需传 **5.4MB**（原来每次整份 892MB）。变化集中在页面、`_nuxt`、server/chunks 和 3 个字体子集，没有图片或视频。
+- 随后把预览模式下 rclone 逐条「跳过」的输出关掉，并写明 sftp 的校验命令（省掉探测提示）。
+- **还没正式跑过。** 第一次正式跑会先在服务器上用 `cp -a .output .output-staging` 初始化暂存目录。
+- 用户在 VS Code 终端里跑时报「缺少环境变量」：VS Code 里的终端继承的是 VS Code 启动那一刻的环境，先开着 VS Code、后设变量，新开终端也读不到，只有整个退出重开才行。已让脚本在读不到时去注册表 `HKCU\Environment` 补读，并在读不到变量的终端里验证通过。和 Python 虚拟环境无关。
+
+
+## 2026-09-18 — FAQ 新增 19 条 + 全站口径纠偏（未部署）
+
+**起因**：W25 GEO 追踪里，引擎把雷迪恩的价格、质保、防护说错了 17 条。部分源头就在官网：产品页 JSON-LD 写「2年质保只换不修」，FAQ 写「4年（前2+后2）」，引擎把两边拼成了「4年只换不修」。
+
+**对外口径**（用户 2026-09-18 定）：
+- 价格：坚石 849 / 磐石Pro 999 / 磐石Max 1199 / 星辰 1499 / 星耀 1999 起，都是裸桩价、不含安装。
+- 质保：坚石、磐石、星辰为 4 年（前 2 年只换不修 + 后 2 年维修）；星耀为 4 年全程只换不修。
+- 防护：25 / 26 / 28 / 28 / 28 重。
+- 4G：坚石前 4 年免费，其余终身免费。
+- 一键开盖已停产，**全站不再提**。
+
+**改了什么**：
+- **JSON-LD**：
+  - 坚石、磐石Pro、磐石Max、星辰的 `warranty` 改成 4 年（前 2+后 2），星耀改成「4年全程只换不修」。
+  - 坚石 `price` 799 → 849。
+  - Organization 加上 `legalName: 上海捷益能科技有限公司`，`alternateName` 加入 `RAYDIENE`。
+- **一键开盖全部删除**：
+  - FAQ q24 整条删掉；特斯拉兼容问答里的一句也删掉。
+  - 星耀页的 description / keywords / og；星耀亮点卡改成「7kW / 21kW 双版本」；lab-3d 介绍。
+- **质保文案**：
+  - 四个产品页顶部特性条由「2年质保只换不修」改为「4年质保 前2年只换不修」。
+  - 选购页原来写「两年只换不修（参加活动限时升级4年）」，这是晒单延保的内部条件，不能对外。已改。
+  - 坚石 SEO 描述里的「2年质保」一并改掉。
+- **4G**：FAQ q21 改为按系列写；售后页、首页卖点、坚石特性条（改为「4年免费流量」）同步。
+- **防护**：安全问答原来写「坚石/磐石均 28 重」，改为按型号列出；磐石系列页原来写「全系 28 重」，改为 Pro 26 / Max 28。
+- **选购页**：
+  - 星耀段落删掉「菲尼克斯充电枪」（已废弃说法，产品表是云泰）。
+  - 描述里「799元起」改为 849 元起，「最高4年质保」改为「全系4年质保」。
+- **FAQ 新增 19 条**，共 49 条：
+  - 新建三个类目：「品牌与产品」5 条（含各型号参数一览）、「价格与购买」3 条、「充电知识」4 条；
+  - 「售后与权益」追加 3 条（含「星耀和其他系列的质保有什么不同」）；
+  - 「车型适配」追加 4 条（小米、蔚来、问界、极氪）。
+  - 依据：`E:\Raydiene\产品资料\官网新增faq类目(1).docx` 加用户 9/18 的修改。原稿里「绝对低价」「全网超级爆款」「行业唯一」这些绝对化用语已改掉（广告法）。
+
+**验证**：用 esbuild 转译了改动过的 composables；实际执行 `useFaqData()`：10 个类目共 49 条，没有重复 id，「开盖」0 处。**没有跑 `nuxi build`，也没有看过页面渲染**，部署前要本地起一下看看，尤其是参数一览那张表在 prose 样式下的效果。
+
+**车型问答**（同日追加）：q05 与 q-byd / q-ideal / q-xpeng 不再写具体车型的 OBC 功率、电池容量和充电时长，只讲 GB/T 接口兼容，功率以随车手册为准。
+
+**不改的**：历史新闻稿（`useNewsData.ts`）里的「菲尼克斯枪头」「2年质保 + 活动叠加 2 年」保留原样。用户定：发布当时的说法是对的，不追改。
+
+## 2026-08-25（五）— 全部完成；唯一待观察点：2026-09-01 首次自动续期
+
 ## 2026-08-25（五）— 全部完成；唯一待观察点：2026-09-01 首次自动续期
 
 微信内置浏览器 hero 视频问题**已实测秒开**（用户真机确认）。全链路收尾状态：
