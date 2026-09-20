@@ -92,7 +92,7 @@ export const useSiteData = () => {
           name: "3D展厅",
           link: "/products/showroom",
           // 这张「一排充电桩 + 全息展台」的图本来就更像展厅，用户定归 3D展厅（2026-09-18）
-          image: "/images/products/roadmap-bg.jpg",
+          image: "/images/products/showroom-bg.jpg",
           desc: "五款产品 360° 立体展示，拖动旋转、切换昼夜影棚。",
         },
         {
@@ -106,7 +106,7 @@ export const useSiteData = () => {
           link: "/products/purchase",
           // TODO 原图已归 3D展厅，选购指南要换新图（prompt 见 CHANGELOG 2026-09-18）。
           // 新图做好前两项暂时共用同一张
-          image: "/images/products/roadmap-bg.jpg",
+          image: "/images/products/purchase-bg.jpg",
           desc: "对比四大系列，找到最适合您的家用充电桩。",
         },
       ],

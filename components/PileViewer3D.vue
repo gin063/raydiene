@@ -330,9 +330,9 @@ const THEMES = {
     darkEnv: 1.0,
     shadowOpacity: 1,
     glass: { tint: 0.26, tintColor: 0xffffff, edge: 0.03, rim: 0.38, shadow: 0.2 },
-    // 浅灰影棚上：品牌蓝 #2d9ed0 对比度只有约 2.5:1、原次要字 #5b6672 约 3.7:1，都读不清。
-    // 日间用深一档的品牌蓝与更深的次要字（均 ≥ 4.5:1），夜间仍用原品牌蓝
-    ink: "#141a21", inkDim: "#3b4652", accent: "#074c72", hair: "rgba(0,0,0,.12)",
+    // 强调色改回品牌蓝（用户 2026-09-20 定）。它在浅灰影棚上只有约 2:1，低于 4.5:1 的可读线，
+    // 但品牌一致性优先；次要字仍保留加深后的 #3b4652（≥5:1），不跟着退回去
+    ink: "#141a21", inkDim: "#3b4652", accent: "#2d9ed0", hair: "rgba(0,0,0,.12)",
     knob: "#ffffff", knobInk: "#c2831f",
   },
   night: {
