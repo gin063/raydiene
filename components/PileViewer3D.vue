@@ -24,8 +24,8 @@
           桌面左列。底边与底排卡片底边对齐：容器 top/bottom 双向定位，
           三张卡按 flex 比例分配余量 —— 不是只把第三张拉高，三张一起随舞台高度伸缩
         -->
-        <div class="absolute bottom-9 left-9 top-[13rem] hidden w-[20rem] flex-col gap-4 xl:flex">
-          <div :ref="(el) => (p.role = el)" class="flex flex-[20] flex-col justify-center px-6">
+        <div class="absolute bottom-9 left-9 top-[11rem] hidden w-[20rem] flex-col gap-4 xl:flex">
+          <div :ref="(el) => (p.role = el)" class="flex flex-[23] flex-col justify-center px-6">
             <p class="label mb-2.5 text-accent">
               <ScrambleText :text="shown.role" :trigger="gen" :delay="220" />
             </p>
@@ -35,7 +35,7 @@
           </div>
 
           <!-- 大号轻字重数字配微型标签，取自 rondesignlab 的排版惯例 -->
-          <div :ref="(el) => (p.power = el)" class="flex flex-[23] flex-col justify-center px-6">
+          <div :ref="(el) => (p.power = el)" class="flex flex-[25] flex-col justify-center px-6">
             <p class="label mb-1.5 text-ink-dim">
               <ScrambleText text="最大功率" :trigger="gen" :delay="240" />
             </p>
@@ -43,12 +43,12 @@
               <ScrambleText :text="shown.power" :trigger="gen" :delay="300" />
             </p>
             <div class="hair h-1.5 w-full overflow-hidden rounded-full">
-              <div class="h-full rounded-full bg-brand transition-[width] duration-700 ease-out"
-                :style="{ width: shown.powerPct * 100 + '%' }" />
+              <!-- 宽度由 barPct 显式驱动，不用 CSS transition：见下方 watch -->
+              <div class="h-full rounded-full bg-brand" :style="{ width: bar.pct * 100 + '%' }" />
             </div>
           </div>
 
-          <div :ref="(el) => (p.specs = el)" class="flex flex-[57] flex-col px-6 py-5">
+          <div :ref="(el) => (p.specs = el)" class="flex flex-[52] flex-col px-6 py-5">
             <p class="label mb-1 text-ink-dim">
               ◆ <ScrambleText text="核心参数" :trigger="gen" :delay="320" />
             </p>
@@ -142,7 +142,7 @@
         <div class="absolute inset-x-4 bottom-4 flex flex-wrap items-end justify-center gap-3.5 md:bottom-6 md:justify-end xl:inset-x-9 xl:bottom-9 xl:left-[24.5rem] xl:justify-between">
           <div class="hidden items-end gap-3.5 2xl:flex">
             <div v-for="(hl, i) in shown.highlights" :key="i" :ref="(el) => (hlEls[i] = el)"
-              class="flex h-[6rem] w-[14rem] flex-col items-center justify-center px-4 text-center">
+              class="flex h-[6.25rem] w-[15rem] flex-col items-center justify-center px-4 text-center">
               <p class="label mb-2 text-accent">
                 <ScrambleText :text="hl.t" :trigger="gen" :delay="420 + i * 60" />
               </p>
@@ -313,9 +313,16 @@ function hasWebGL() {
  */
 const THEMES = {
   day: {
-    wall: ["#b9c4d0", "#ccd5df", "#dde3ea", "#aeb9c6"],
-    pool: "246,249,252", poolAlpha: 0.72,
-    vignette: "60,72,88", vignetteAlpha: 0.26,
+    // 「太白」不靠压暗解决，靠加色调（用户 2026-09-20 改的方案）：
+    // 日间文字是深色的，背景一暗可读性就掉；而品牌蓝在任何浅背景上都到不了 4.5:1
+    // （按对比度公式需要比纯白更亮），所以亮度必须保住，只提彩度。
+    // 墙面彩度 0.09→0.18，亮度 0.66→0.62（主文字 11.8→11.3，几乎不变）；
+    // 地面亮区原本是近乎纯白的 246,249,252，是「泛白」的主要来源，改成带蓝调的浅色并收一点。
+    // 原值：wall #b9c4d0/#ccd5df/#dde3ea/#aeb9c6，pool 246,249,252 @0.72，暗角 60,72,88 @0.26
+    // 暖砂调试过，桩体与米黄底格格不入，用户否掉（2026-09-20），回到青蓝调
+    wall: ["#a9c0d6", "#bcd2e6", "#cbdeef", "#9db5cc"],
+    pool: "226,240,252", poolAlpha: 0.6,
+    vignette: "40,60,86", vignetteAlpha: 0.28,
     // 白影棚 + 白/亮灰机身：原来 env 1.1 / key 1.5 / head 0.55 下，
     // 环境里那几块发光面板在机身上反射成刺眼的白条（过曝）。
     // 2026-09-18 三轮：① 0.8 / 1.2 / 0.4 + 曝光 0.85 仍偏亮；② 全压到 0.6 / 1.0 / 0.3 + 曝光 0.75 后发灰发闷。
@@ -328,11 +335,13 @@ const THEMES = {
     ambient: { sky: 0xffffff, ground: 0xb8c2cc, intensity: 0 },
     // 黑玻璃面板/枪头的倒影强度（乘在 env 之上）。日间白影棚本就亮，正常即可
     darkEnv: 1.0,
-    shadowOpacity: 1,
     glass: { tint: 0.26, tintColor: 0xffffff, edge: 0.03, rim: 0.38, shadow: 0.2 },
-    // 强调色改回品牌蓝（用户 2026-09-20 定）。它在浅灰影棚上只有约 2:1，低于 4.5:1 的可读线，
-    // 但品牌一致性优先；次要字仍保留加深后的 #3b4652（≥5:1），不跟着退回去
-    ink: "#141a21", inkDim: "#3b4652", accent: "#2d9ed0", hair: "rgba(0,0,0,.12)",
+    // 强调色与夜间的品牌蓝配成一对，逻辑同主文字的黑↔白（用户 2026-09-20 定）：夜间亮、日间深。
+    // 先后试过品牌蓝本色（最低 1.4）和 #064a70（4.5），用户都判为不够读，最终按「可读性优先」取
+    // #003d52 —— 色相 195°（偏青）、**饱和度拉满**，所以看得出是青蓝不是黑（#06293b 那版被判接近黑色）；
+    // 对四档墙面最低 5.54、在玻璃卡片上 8.5。饱和度拉满是这里的关键：
+    // 同样亮度下彩度越高越不像黑色，而亮度一提对比度就掉，只能从彩度上找空间
+    ink: "#141a21", inkDim: "#3b4652", accent: "#003d52", hair: "rgba(0,0,0,.12)",
     knob: "#ffffff", knobInk: "#c2831f",
   },
   night: {
@@ -361,7 +370,6 @@ const THEMES = {
     key: { color: 0xfff2e0, intensity: 1.5 },
     fill: { color: 0x8fb0dc, intensity: 0.45 },
     head: { color: 0xdce9ff, intensity: 0.6 },
-    shadowOpacity: 0.4,
     glass: { tint: 0.28, tintColor: 0x1b232e, edge: 0, rim: 0.52, shadow: 0.3 },
     // 夜间背景两轮提亮后，原次要字 #9fadbc / 品牌蓝 #2d9ed0 在墙面中下部只剩 2.4~4.0:1，同步提亮一档
     ink: "#eef2f7", inkDim: "#d4dce5", accent: "#86d2f6", hair: "rgba(255,255,255,.16)",
@@ -429,24 +437,6 @@ function studioBackground(THREE, t) {
   return tex;
 }
 
-function contactShadow(THREE) {
-  const c = document.createElement("canvas");
-  c.width = c.height = 256;
-  const g = c.getContext("2d");
-  const grad = g.createRadialGradient(128, 128, 0, 128, 128, 128);
-  grad.addColorStop(0, "rgba(24,32,42,0.45)");
-  grad.addColorStop(0.5, "rgba(24,32,42,0.15)");
-  grad.addColorStop(1, "rgba(24,32,42,0)");
-  g.fillStyle = grad;
-  g.fillRect(0, 0, 256, 256);
-  const tex = new THREE.CanvasTexture(c);
-  const mesh = new THREE.Mesh(
-    new THREE.PlaneGeometry(0.85, 0.85),
-    new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false })
-  );
-  mesh.rotation.x = -Math.PI / 2;
-  return mesh;
-}
 
 async function init() {
   const canvas = canvasEl.value;
@@ -538,8 +528,6 @@ async function init() {
   pivot.add(holder);
   scene.add(pivot);
 
-  const shadow = contactShadow(THREE);
-  holder.add(shadow);
 
   // 有 model 字段的走真实 GLB，其余仍用程序化 proxy —— 两者接口一致
   const models = {};
@@ -553,9 +541,6 @@ async function init() {
     // 横向按主壳中轴、纵向按整体包围盒（proxy 没有 center，退回只偏 Y）
     if (m.center) holder.position.set(-m.center.x, -m.center.y, -m.center.z);
     else holder.position.set(0, -m.centerY, 0);
-    // 阴影挂在 holder 里，会跟着上面的偏移一起移动；把横向偏移抵消掉，
-    // 让它始终落在舞台中轴正下方
-    shadow.position.set(m.center?.x ?? 0, m.bodyBottom - 0.004, m.center?.z ?? 0);
   }
 
   /** 把某一款推上屏，并同步 shownKey 与文案重跑 */
@@ -639,7 +624,6 @@ async function init() {
       keyI: keyLight.intensity, fillI: fillLight.intensity, headI: headLight.intensity,
       ambI: ambientLight.intensity,
       darkEnv: darkEnvNow,
-      shadowO: shadow.material.opacity,
       tint: u.uTint.value, edge: u.uEdge.value, rim: u.uRim.value, gShadow: u.uShadow.value,
       mix: bgMat.uniforms.uMix.value,
       p: 0,
@@ -650,7 +634,6 @@ async function init() {
       keyI: t.key.intensity, fillI: t.fill.intensity, headI: t.head.intensity,
       ambI: t.ambient.intensity,
       darkEnv: t.darkEnv,
-      shadowO: t.shadowOpacity,
       tint: t.glass.tint, edge: t.glass.edge, rim: t.glass.rim, gShadow: t.glass.shadow,
       mix: toNight ? 1 : 0,
       p: 1,
@@ -666,7 +649,6 @@ async function init() {
       darkMats.forEach((dm) => { dm.envMapIntensity = st.darkEnv; });
       ambientLight.color.copy(skyFrom).lerp(skyTo, st.p);
       ambientLight.groundColor.copy(groundFrom).lerp(groundTo, st.p);
-      shadow.material.opacity = st.shadowO;
       u.uTint.value = st.tint;
       u.uEdge.value = st.edge;
       u.uRim.value = st.rim;
@@ -833,9 +815,6 @@ async function init() {
       Object.values(bgTex).forEach((t) => t.dispose());
       bgMesh.geometry.dispose();
       bgMat.dispose();
-      shadow.geometry.dispose();
-      shadow.material.map.dispose();
-      shadow.material.dispose();
       scene.environment?.dispose();
       renderer.dispose();
     },
@@ -886,6 +865,25 @@ function select(key) {
     .to(trans, { v: 1, duration: out * 0.85, ease: "power2.in", onUpdate: applyTrans }, 0)
     .to(trans, { v: 0, duration: 0.62, ease: "power2.out", onUpdate: applyTrans }, out);
 }
+
+/*
+ * 功率条。每换一款都**退回零、再从零填到该款的刻度**（用户 2026-09-20 定）：7kW 填到 34%，
+ * 星耀 21kW 填到 100%。所以用 fromTo 而不是 to —— 五款里四款都是 0.34，
+ * 只补间「到目标值」的话值没变就不会动。同理不用 CSS transition：
+ * 过渡只在属性值变化时触发，重放不了同一段。
+ *
+ * 出场挂在 activeKey 上（点下去就动），入场挂在 shown 上（等模型缩到零点、文案换了才动），
+ * 中间隔着模型缩出的时间。0.62s 退场 + 0.3s 延迟 ≈ 正好接上，衔接处不会跳。
+ */
+const bar = reactive({ pct: 0 });
+// 出场：向左退回零，是入场的反向（ease 也对调：out → in）
+watch(activeKey, () => {
+  gsap.to(bar, { pct: 0, duration: 0.62, ease: "power2.in", overwrite: true });
+});
+watch(shown, (next) => {
+  gsap.fromTo(bar, { pct: 0 },
+    { pct: next.powerPct, duration: 0.8, delay: 0.3, ease: "power2.out", overwrite: true });
+}, { immediate: true });
 
 // 规格数值滚动。跟着 shownKey 走，与模型同步
 watch(shown, (next, prev) => {
@@ -999,14 +997,17 @@ defineExpose({ setGlass, select });
   letter-spacing: -0.015em;
 }
 
+/* 品牌蓝标签：颜色对比度上不去（品牌一致性优先），改用更大的字号换可读性。
+   12.5 → 14.5，label-lg 13/15 → 15/17。玻璃卡片的尺寸由 DOM 实测得到（见 pushPanel），
+   字号变了卡片会自己跟着变，不用另外调 —— 但固定高宽的那几张卡要手动放大（见模板） */
 .label {
-  @apply text-[12.5px] font-semibold uppercase leading-none;
-  letter-spacing: 0.14em;
+  @apply text-[14.5px] font-semibold uppercase leading-none;
+  letter-spacing: 0.12em;
 }
 
 .label-lg {
-  @apply text-[13px] font-semibold uppercase leading-none xl:text-[15px];
-  letter-spacing: 0.12em;
+  @apply text-[15px] font-semibold uppercase leading-none xl:text-[17px];
+  letter-spacing: 0.1em;
 }
 
 .console-btn {

@@ -1,8 +1,10 @@
 <template>
   <div class="min-h-screen w-full bg-[#050505] font-sans text-white selection:bg-brand">
     <section class="mx-auto w-full max-w-[1760px] px-4 pb-8 pt-14 lg:px-8">
-      <p class="mb-4 font-mono text-sm tracking-widest text-brand">RAYDIENE · 3D 展厅</p>
-      <h1 class="mb-5 font-hero text-4xl font-bold tracking-tight md:text-6xl">全系五款 · 三维交互</h1>
+      <!-- 这行原来是 font-mono，等于没用项目字体；font-hero 才会让 RAYDIENE 走 Michroma -->
+      <p class="mb-4 font-hero text-[13px] tracking-[0.22em] text-brand md:text-sm">RAYDIENE · 3D 展厅</p>
+      <!-- 中文走不了 Michroma（纯拉丁字体），font-hero 会自动落到阿里巴巴普惠体 Bold -->
+      <h1 class="mb-5 font-hero text-5xl font-bold tracking-tight md:text-7xl">全系五款 · 三维交互</h1>
       <p class="max-w-3xl text-lg leading-relaxed text-gray-400">
         坚石 Pro、磐石 Pro / Max、星辰、星耀五款家用交流充电桩的交互式立体展示：拖动旋转、缩放细节，
         切换昼夜影棚，看清每一款的外观与用料。
