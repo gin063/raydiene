@@ -1,17 +1,15 @@
 <template>
   <div class="min-h-screen w-full bg-[#050505] font-sans text-white selection:bg-brand">
-    <section class="mx-auto w-full max-w-[1760px] px-4 pb-8 pt-14 lg:px-8">
-      <!-- 这行原来是 font-mono，等于没用项目字体；font-hero 才会让 RAYDIENE 走 Michroma -->
-      <p class="mb-4 font-hero text-[13px] tracking-[0.22em] text-brand md:text-sm">RAYDIENE · 3D 展厅</p>
-      <!-- 中文走不了 Michroma（纯拉丁字体），font-hero 会自动落到阿里巴巴普惠体 Bold -->
-      <h1 class="mb-5 font-hero text-5xl font-bold tracking-tight md:text-7xl">全系五款 · 三维交互</h1>
-      <p class="max-w-3xl text-lg leading-relaxed text-gray-400">
-        坚石 Pro、磐石 Pro / Max、星辰、星耀五款家用交流充电桩的交互式立体展示：拖动旋转、缩放细节，
-        切换昼夜影棚，看清每一款的外观与用料。
-      </p>
+    <!--
+      标题区只留一行：3D 视图本身就是主角，介绍文字占掉的竖向空间会把视图挤出首屏
+      （用户 2026-09-20，同事 2880×1800@200% 的机器上要缩放页面才看得全）。
+      "3D" 走 Michroma，中文自动落到阿里巴巴普惠体 Bold。
+    -->
+    <section class="mx-auto w-full max-w-[1760px] px-4 pb-4 pt-14 lg:px-8">
+      <h1 class="font-hero text-4xl font-bold tracking-tight md:text-5xl">3D · 交互展厅</h1>
     </section>
 
-    <section class="mx-auto w-full max-w-[1760px] px-4 pb-20 lg:px-8">
+    <section class="mx-auto w-full max-w-[1760px] px-4 pb-10 lg:px-8">
       <ClientOnly>
         <PileViewer3D ref="viewer" :products="products" :debug="debug" :perf="perf" />
         <template #fallback>
@@ -146,7 +144,7 @@ const products = [
     roleDesc: "7kW 家用交流，极简呼吸灯，26 重安全防护。",
     intro: "极简呼吸灯设计，简约而不简单。IP65 / IP67 级防护配合 26 重安全防护，支持 App 远程管理与峰谷定时充电。",
     power: "7 kW", powerPct: 0.34,
-    buyUrl: "https://item.jd.com/10138575243363.html",
+    buyUrl: "https://item.jd.com/10138575243361.html",
     specs: [
       { k: "最大功率", num: 7, unit: "kW", digits: 0 },
       { k: "输出电流", num: 32, unit: "A", digits: 0 },
@@ -174,7 +172,7 @@ const products = [
     roleDesc: "7kW 家用交流，4.3 寸屏显，28 重安全防护。",
     intro: "配备 4.3 寸高清液晶显示屏，充电数据一目了然。28 重安全防护，支持 App 远程管理与峰谷定时充电。",
     power: "7 kW", powerPct: 0.34,
-    buyUrl: "https://item.jd.com/10138575243363.html",
+    buyUrl: "https://item.jd.com/10213575077717.html",
     specs: [
       { k: "最大功率", num: 7, unit: "kW", digits: 0 },
       { k: "输出电流", num: 32, unit: "A", digits: 0 },
@@ -201,7 +199,7 @@ const products = [
     roleDesc: "7kW 家用交流，钢化玻璃面板配高清屏显。",
     intro: "高级曜石黑钢化玻璃面板与高强度合金机身，配备智能高清显示屏，支持 28 重安全防护与峰谷定时充电。",
     power: "7 kW", powerPct: 0.34,
-    buyUrl: "/products/xingchen",
+    buyUrl: "https://item.jd.com/10157161125734.html",
     specs: [
       { k: "最大功率", num: 7, unit: "kW", digits: 0 },
       { k: "输出电流", num: 32, unit: "A", digits: 0 },
@@ -228,7 +226,7 @@ const products = [
     roleDesc: "7kW / 21kW 双功率，7 寸智能触控大屏。",
     intro: "7kW 及 21kW 超快充，7 寸智能触控大屏。28 重安全防护，4 年全程只换不修。",
     power: "21 kW", powerPct: 1,
-    buyUrl: "/products/xingyao",
+    buyUrl: "https://item.jd.com/10195071831709.html",
     specs: [
       { k: "最大功率", num: 21, unit: "kW", digits: 0 },
       { k: "输出电流", num: 32, unit: "A", digits: 0 },

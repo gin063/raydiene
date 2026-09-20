@@ -1,187 +1,201 @@
 <template>
   <div ref="wrapEl" class="relative w-full select-none">
     <div ref="stageEl"
-      class="relative w-full aspect-[3/4] overflow-hidden rounded-[1.75rem] sm:aspect-[4/3] xl:aspect-auto xl:h-[clamp(760px,82vh,920px)]"
+      class="relative w-full aspect-[3/4] max-h-[calc(100dvh-10rem)] min-h-[20rem] overflow-hidden rounded-[1.75rem] sm:aspect-[4/3] xl:aspect-auto xl:max-h-none xl:h-[min(920px,max(30rem,calc(100dvh-11.5rem)))]"
       :style="{ '--ink': T.ink, '--ink-dim': T.inkDim, '--accent': T.accent, '--hair': T.hair,
                  '--knob': T.knob, '--knob-ink': T.knobInk, background: T.wall[1] }">
       <canvas ref="canvasEl" v-show="mode === '3d'" class="block h-full w-full" style="touch-action: pan-y" />
 
       <template v-if="mode === '3d' && ready">
-        <!-- 标题区。无玻璃卡，直接压在影棚背景上 -->
-        <div class="pointer-events-none absolute left-6 top-6 xl:left-9 xl:top-9">
-          <p class="label-lg mb-2.5 text-accent xl:mb-3">
-            ✦ <ScrambleText :text="shown.tier" :trigger="gen" :delay="60" />
-          </p>
-          <h3 class="display font-hero font-bold text-ink">
-            <ScrambleText :text="shown.name" :trigger="gen" :delay="120" />
-          </h3>
-          <p class="mt-3 label-lg text-ink-dim xl:mt-3.5">
-            <ScrambleText :text="shown.tagline" :trigger="gen" :delay="180" />
-          </p>
-        </div>
-
         <!--
-          桌面左列。底边与底排卡片底边对齐：容器 top/bottom 双向定位，
-          三张卡按 flex 比例分配余量 —— 不是只把第三张拉高，三张一起随舞台高度伸缩
+          UI 缩放层。桌面端这套密排布局是按约 880px 高的舞台画的；同事 2880×1800@200%
+          的机器视口只有 ~760px，舞台被压到 570 左右，左列三张卡就装不下了（用户 2026-09-20）。
+          做法：让这一层的**布局尺寸**保持设计高度（width/height 除以 s），再整体 scale(s) 贴回舞台，
+          于是界面等比缩小、比例与留白全部不变，而不是各处分别做断点。
+          ⚠️ 这里用了 transform，而 pushPanel 是按 offset* 量的（不计 transform），
+             所以 pushPanel 里要把量到的矩形乘回 s，否则玻璃卡片会和 DOM 错位。
+          ⚠️ 本层铺满舞台，必须 pointer-events:none，否则会吃掉画布上的拖拽旋转；
+             各直接子元素再单独开回 auto（原来它们各自独立定位，行为等价）。
         -->
-        <div class="absolute bottom-9 left-9 top-[11rem] hidden w-[20rem] flex-col gap-4 xl:flex">
-          <div :ref="(el) => (p.role = el)" class="flex flex-[23] flex-col justify-center px-6">
-            <p class="label mb-2.5 text-accent">
-              <ScrambleText :text="shown.role" :trigger="gen" :delay="220" />
+        <div class="pointer-events-none absolute left-0 top-0 origin-top-left"
+          :style="{ width: `calc(100% / ${uiScale})`, height: `calc(100% / ${uiScale})`,
+                    transform: `scale(${uiScale})` }">
+          <!-- 标题区。无玻璃卡，直接压在影棚背景上 -->
+          <div class="pointer-events-none absolute left-6 top-6 xl:left-9 xl:top-9">
+            <p class="label-lg mb-2.5 text-accent xl:mb-3">
+              ✦ <ScrambleText :text="shown.tier" :trigger="gen" :delay="60" />
             </p>
-            <p class="text-[15px] leading-relaxed text-ink-dim">
-              <ScrambleText :text="shown.roleDesc" :trigger="gen" :delay="280" />
+            <h3 class="display font-hero font-bold text-ink">
+              <ScrambleText :text="shown.name" :trigger="gen" :delay="120" />
+            </h3>
+            <p class="mt-3 label-lg text-ink-dim xl:mt-3.5">
+              <ScrambleText :text="shown.tagline" :trigger="gen" :delay="180" />
             </p>
           </div>
 
-          <!-- 大号轻字重数字配微型标签，取自 rondesignlab 的排版惯例 -->
-          <div :ref="(el) => (p.power = el)" class="flex flex-[25] flex-col justify-center px-6">
-            <p class="label mb-1.5 text-ink-dim">
-              <ScrambleText text="最大功率" :trigger="gen" :delay="240" />
-            </p>
-            <p class="numeral mb-3.5 text-ink">
-              <ScrambleText :text="shown.power" :trigger="gen" :delay="300" />
-            </p>
-            <div class="hair h-1.5 w-full overflow-hidden rounded-full">
-              <!-- 宽度由 barPct 显式驱动，不用 CSS transition：见下方 watch -->
-              <div class="h-full rounded-full bg-brand" :style="{ width: bar.pct * 100 + '%' }" />
+          <!--
+            桌面左列。底边与底排卡片底边对齐：容器 top/bottom 双向定位，
+            三张卡按 flex 比例分配余量 —— 不是只把第三张拉高，三张一起随舞台高度伸缩
+          -->
+          <div class="pointer-events-auto absolute bottom-9 left-9 top-[11rem] hidden w-[20rem] flex-col gap-4 xl:flex">
+            <div :ref="(el) => (p.role = el)" class="flex flex-[23] flex-col justify-center px-6">
+              <p class="label mb-2.5 text-accent">
+                <ScrambleText :text="shown.role" :trigger="gen" :delay="220" />
+              </p>
+              <p class="text-[15px] leading-relaxed text-ink-dim">
+                <ScrambleText :text="shown.roleDesc" :trigger="gen" :delay="280" />
+              </p>
+            </div>
+
+            <!-- 大号轻字重数字配微型标签，取自 rondesignlab 的排版惯例 -->
+            <div :ref="(el) => (p.power = el)" class="flex flex-[25] flex-col justify-center px-6">
+              <p class="label mb-1.5 text-ink-dim">
+                <ScrambleText text="最大功率" :trigger="gen" :delay="240" />
+              </p>
+              <p class="numeral mb-3.5 text-ink">
+                <ScrambleText :text="shown.power" :trigger="gen" :delay="300" />
+              </p>
+              <div class="hair h-1.5 w-full overflow-hidden rounded-full">
+                <!-- 宽度由 barPct 显式驱动，不用 CSS transition：见下方 watch -->
+                <div class="h-full rounded-full bg-brand" :style="{ width: bar.pct * 100 + '%' }" />
+              </div>
+            </div>
+
+            <div :ref="(el) => (p.specs = el)" class="flex flex-[52] flex-col px-6 py-5">
+              <p class="label mb-1 text-ink-dim">
+                ◆ <ScrambleText text="核心参数" :trigger="gen" :delay="320" />
+              </p>
+              <dl class="flex flex-1 flex-col justify-around">
+                <div v-for="(s, i) in shown.specs" :key="s.k" class="flex items-baseline justify-between">
+                  <dt class="text-[15px] text-ink-dim">
+                    <ScrambleText :text="s.k" :trigger="gen" :delay="340 + i * 40" />
+                  </dt>
+                  <dd class="font-mono text-[15.5px] tabular-nums text-ink">
+                    <template v-if="s.num != null">{{ counted(s, i) }}</template>
+                    <ScrambleText v-else :text="s.v" :trigger="gen" :delay="360 + i * 40" />
+                  </dd>
+                </div>
+              </dl>
             </div>
           </div>
 
-          <div :ref="(el) => (p.specs = el)" class="flex flex-[52] flex-col px-6 py-5">
-            <p class="label mb-1 text-ink-dim">
-              ◆ <ScrambleText text="核心参数" :trigger="gen" :delay="320" />
+          <!-- 平板（md ~ xl）：只保留一张紧凑参数卡 -->
+          <div :ref="(el) => (p.specsTablet = el)"
+            class="pointer-events-auto absolute left-6 top-[11.5rem] hidden w-[16.5rem] flex-col px-5 py-4 md:flex xl:hidden">
+            <p class="label mb-3 text-ink-dim">
+              ◆ <ScrambleText text="核心参数" :trigger="gen" :delay="240" />
             </p>
-            <dl class="flex flex-1 flex-col justify-around">
+            <dl class="space-y-2.5">
               <div v-for="(s, i) in shown.specs" :key="s.k" class="flex items-baseline justify-between">
-                <dt class="text-[15px] text-ink-dim">
-                  <ScrambleText :text="s.k" :trigger="gen" :delay="340 + i * 40" />
+                <dt class="text-[13.5px] text-ink-dim">
+                  <ScrambleText :text="s.k" :trigger="gen" :delay="260 + i * 40" />
                 </dt>
-                <dd class="font-mono text-[15.5px] tabular-nums text-ink">
+                <dd class="font-mono text-[14px] tabular-nums text-ink">
                   <template v-if="s.num != null">{{ counted(s, i) }}</template>
-                  <ScrambleText v-else :text="s.v" :trigger="gen" :delay="360 + i * 40" />
+                  <ScrambleText v-else :text="s.v" :trigger="gen" :delay="280 + i * 40" />
                 </dd>
               </div>
             </dl>
           </div>
-        </div>
 
-        <!-- 平板（md ~ xl）：只保留一张紧凑参数卡 -->
-        <div :ref="(el) => (p.specsTablet = el)"
-          class="absolute left-6 top-[11.5rem] hidden w-[16.5rem] flex-col px-5 py-4 md:flex xl:hidden">
-          <p class="label mb-3 text-ink-dim">
-            ◆ <ScrambleText text="核心参数" :trigger="gen" :delay="240" />
-          </p>
-          <dl class="space-y-2.5">
-            <div v-for="(s, i) in shown.specs" :key="s.k" class="flex items-baseline justify-between">
-              <dt class="text-[13.5px] text-ink-dim">
-                <ScrambleText :text="s.k" :trigger="gen" :delay="260 + i * 40" />
-              </dt>
-              <dd class="font-mono text-[14px] tabular-nums text-ink">
-                <template v-if="s.num != null">{{ counted(s, i) }}</template>
-                <ScrambleText v-else :text="s.v" :trigger="gen" :delay="280 + i * 40" />
-              </dd>
+          <!-- 右上：产品简介 -->
+          <div :ref="(el) => (p.intro = el)"
+            class="pointer-events-auto absolute right-9 top-9 hidden w-[19rem] flex-col justify-center px-6 py-5 2xl:flex">
+            <p class="label mb-2.5 text-accent">
+              ◆ <ScrambleText text="产品简介" :trigger="gen" :delay="160" />
+            </p>
+            <p class="text-[14.5px] leading-relaxed text-ink-dim">
+              <ScrambleText :text="shown.intro" :trigger="gen" :delay="200" />
+            </p>
+          </div>
+
+          <!--
+            型号滚轮：环形首尾相接、可无限循环。
+            只显示上下各一个候选项，且不加模糊 —— 仅靠透明度区分层级
+          -->
+          <div class="pointer-events-auto absolute right-[6.5rem] top-1/2 -mt-[7.5rem] hidden h-[15rem] w-[15rem] xl:block">
+            <div :ref="(el) => (p.band = el)"
+              class="pointer-events-none absolute inset-x-0 top-1/2 -mt-[1.75rem] h-[3.5rem]" />
+
+            <div class="absolute inset-0 overflow-hidden" style="perspective: 380px">
+              <div class="absolute inset-0" style="transform-style: preserve-3d">
+                <button v-for="(prod, i) in products" :key="prod.key" :ref="(el) => (drumEls[i] = el)"
+                  type="button"
+                  class="absolute inset-x-0 top-1/2 -mt-[1.75rem] h-[3.5rem] text-center font-hero text-[1.15rem] leading-[3.5rem] text-ink-dim"
+                  @pointerdown.prevent="select(prod.key)">
+                  {{ prod.name }}
+                </button>
+              </div>
             </div>
-          </dl>
-        </div>
 
-        <!-- 右上：产品简介 -->
-        <div :ref="(el) => (p.intro = el)"
-          class="absolute right-9 top-9 hidden w-[19rem] flex-col justify-center px-6 py-5 2xl:flex">
-          <p class="label mb-2.5 text-accent">
-            ◆ <ScrambleText text="产品简介" :trigger="gen" :delay="160" />
-          </p>
-          <p class="text-[14.5px] leading-relaxed text-ink-dim">
-            <ScrambleText :text="shown.intro" :trigger="gen" :delay="200" />
-          </p>
-        </div>
+            <!-- 选中项另起一层且不带 transform：3D 变换过的文字会被重采样发虚 -->
+            <p class="pointer-events-none absolute inset-x-0 top-1/2 -mt-[1.75rem] h-[3.5rem] text-center font-hero text-[1.5rem] font-bold leading-[3.5rem] text-ink">
+              <ScrambleText :text="shown.name" :trigger="gen" :delay="0" />
+            </p>
+          </div>
 
-        <!--
-          型号滚轮：环形首尾相接、可无限循环。
-          只显示上下各一个候选项，且不加模糊 —— 仅靠透明度区分层级
-        -->
-        <div class="absolute right-[6.5rem] top-1/2 -mt-[7.5rem] hidden h-[15rem] w-[15rem] xl:block">
-          <div :ref="(el) => (p.band = el)"
-            class="pointer-events-none absolute inset-x-0 top-1/2 -mt-[1.75rem] h-[3.5rem]" />
+          <!-- 上下快捷。环形循环，没有端点，不需要禁用态 -->
+          <div :ref="(el) => (p.arrows = el)"
+            class="pointer-events-auto absolute right-9 top-1/2 -mt-[3.25rem] hidden h-[6.5rem] flex-col justify-center overflow-hidden xl:flex">
+            <button type="button" class="arrow-btn" aria-label="上一个型号" @pointerdown.prevent="step(-1)">▲</button>
+            <span class="hair mx-2.5 h-px" />
+            <button type="button" class="arrow-btn" aria-label="下一个型号" @pointerdown.prevent="step(1)">▼</button>
+          </div>
 
-          <div class="absolute inset-0 overflow-hidden" style="perspective: 380px">
-            <div class="absolute inset-0" style="transform-style: preserve-3d">
-              <button v-for="(prod, i) in products" :key="prod.key" :ref="(el) => (drumEls[i] = el)"
-                type="button"
-                class="absolute inset-x-0 top-1/2 -mt-[1.75rem] h-[3.5rem] text-center font-hero text-[1.15rem] leading-[3.5rem] text-ink-dim"
-                @pointerdown.prevent="select(prod.key)">
-                {{ prod.name }}
-              </button>
+          <!-- 手机 / 平板：横向型号条。手机居中贴底，平板落到左下 -->
+          <div :ref="(el) => (p.strip = el)"
+            class="pointer-events-auto absolute inset-x-0 bottom-[4.75rem] mx-auto flex w-fit items-center gap-0.5 px-2 py-2 md:inset-x-auto md:bottom-6 md:left-6 md:mx-0 xl:hidden">
+            <button v-for="prod in products" :key="prod.key" type="button"
+              class="whitespace-nowrap rounded-full px-2.5 py-1.5 text-[12.5px] transition-colors"
+              :class="prod.key === activeKey ? 'bg-brand text-white' : 'text-ink-dim'"
+              @pointerdown.prevent="select(prod.key)">{{ prod.name }}</button>
+          </div>
+
+          <!-- 底排：卖点卡右移让开左列；所有底部元素下边缘对齐 -->
+          <div class="pointer-events-auto absolute inset-x-4 bottom-4 flex flex-wrap items-end justify-center gap-3.5 md:bottom-6 md:justify-end xl:inset-x-9 xl:bottom-9 xl:left-[24.5rem] xl:justify-between">
+            <div class="hidden items-end gap-3.5 2xl:flex">
+              <div v-for="(hl, i) in shown.highlights" :key="i" :ref="(el) => (hlEls[i] = el)"
+                class="flex h-[6.25rem] w-[15rem] flex-col items-center justify-center px-4 text-center">
+                <p class="label mb-2 text-accent">
+                  <ScrambleText :text="hl.t" :trigger="gen" :delay="420 + i * 60" />
+                </p>
+                <p class="text-[14px] leading-snug text-ink-dim">
+                  <ScrambleText :text="hl.d" :trigger="gen" :delay="460 + i * 60" />
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-end gap-2.5 xl:gap-3.5">
+              <div :ref="(el) => (p.view = el)"
+                class="flex h-[2.75rem] items-center gap-0.5 px-2 xl:h-[3.5rem] xl:px-3">
+                <button type="button" role="switch" :aria-checked="theme === 'night'"
+                  class="theme-switch" :title="theme === 'day' ? '切换到夜间影棚' : '切换到白天影棚'"
+                  aria-label="影棚昼夜切换" @click="toggleTheme">
+                  <span class="theme-switch__knob">{{ theme === "day" ? "☀" : "☾" }}</span>
+                </button>
+                <span class="hair mx-0.5 h-4 w-px xl:mx-1" />
+                <button type="button" class="console-btn" @click="zoom(-1)" aria-label="放大">＋</button>
+                <button type="button" class="console-btn" @click="zoom(1)" aria-label="缩小">－</button>
+                <span class="hair mx-0.5 h-4 w-px xl:mx-1" />
+                <button type="button" class="console-btn" @click="resetView">
+                  <ScrambleText text="重置" :trigger="gen" :delay="540" />
+                </button>
+              </div>
+
+              <a :ref="(el) => (p.cta = el)" :href="shown.buyUrl" target="_blank" rel="noopener noreferrer"
+                class="flex h-[2.75rem] items-center gap-1.5 whitespace-nowrap px-4 font-hero text-[14px] font-bold text-ink transition-colors hover-accent xl:h-[3.5rem] xl:gap-2 xl:px-6 xl:text-[1.05rem]">
+                <ScrambleText text="立即订购" :trigger="gen" :delay="580" />
+                <span class="text-accent">»</span>
+              </a>
             </div>
           </div>
 
-          <!-- 选中项另起一层且不带 transform：3D 变换过的文字会被重采样发虚 -->
-          <p class="pointer-events-none absolute inset-x-0 top-1/2 -mt-[1.75rem] h-[3.5rem] text-center font-hero text-[1.5rem] font-bold leading-[3.5rem] text-ink">
-            <ScrambleText :text="shown.name" :trigger="gen" :delay="0" />
+          <p v-if="debug"
+            class="pointer-events-none absolute bottom-2.5 left-4 hidden font-mono text-[10px] text-ink-dim/40 xl:block">
+            {{ stats.fps }} fps · {{ stats.calls }} calls · {{ stats.tris }} tris ·
+            {{ panelCount }} panels · 玻璃覆盖 {{ stats.coverage }}%
           </p>
         </div>
-
-        <!-- 上下快捷。环形循环，没有端点，不需要禁用态 -->
-        <div :ref="(el) => (p.arrows = el)"
-          class="absolute right-9 top-1/2 -mt-[3.25rem] hidden h-[6.5rem] flex-col justify-center overflow-hidden xl:flex">
-          <button type="button" class="arrow-btn" aria-label="上一个型号" @pointerdown.prevent="step(-1)">▲</button>
-          <span class="hair mx-2.5 h-px" />
-          <button type="button" class="arrow-btn" aria-label="下一个型号" @pointerdown.prevent="step(1)">▼</button>
-        </div>
-
-        <!-- 手机 / 平板：横向型号条。手机居中贴底，平板落到左下 -->
-        <div :ref="(el) => (p.strip = el)"
-          class="absolute inset-x-0 bottom-[4.75rem] mx-auto flex w-fit items-center gap-0.5 px-2 py-2 md:inset-x-auto md:bottom-6 md:left-6 md:mx-0 xl:hidden">
-          <button v-for="prod in products" :key="prod.key" type="button"
-            class="whitespace-nowrap rounded-full px-2.5 py-1.5 text-[12.5px] transition-colors"
-            :class="prod.key === activeKey ? 'bg-brand text-white' : 'text-ink-dim'"
-            @pointerdown.prevent="select(prod.key)">{{ prod.name }}</button>
-        </div>
-
-        <!-- 底排：卖点卡右移让开左列；所有底部元素下边缘对齐 -->
-        <div class="absolute inset-x-4 bottom-4 flex flex-wrap items-end justify-center gap-3.5 md:bottom-6 md:justify-end xl:inset-x-9 xl:bottom-9 xl:left-[24.5rem] xl:justify-between">
-          <div class="hidden items-end gap-3.5 2xl:flex">
-            <div v-for="(hl, i) in shown.highlights" :key="i" :ref="(el) => (hlEls[i] = el)"
-              class="flex h-[6.25rem] w-[15rem] flex-col items-center justify-center px-4 text-center">
-              <p class="label mb-2 text-accent">
-                <ScrambleText :text="hl.t" :trigger="gen" :delay="420 + i * 60" />
-              </p>
-              <p class="text-[14px] leading-snug text-ink-dim">
-                <ScrambleText :text="hl.d" :trigger="gen" :delay="460 + i * 60" />
-              </p>
-            </div>
-          </div>
-
-          <div class="flex items-end gap-2.5 xl:gap-3.5">
-            <div :ref="(el) => (p.view = el)"
-              class="flex h-[2.75rem] items-center gap-0.5 px-2 xl:h-[3.5rem] xl:px-3">
-              <button type="button" role="switch" :aria-checked="theme === 'night'"
-                class="theme-switch" :title="theme === 'day' ? '切换到夜间影棚' : '切换到白天影棚'"
-                aria-label="影棚昼夜切换" @click="toggleTheme">
-                <span class="theme-switch__knob">{{ theme === "day" ? "☀" : "☾" }}</span>
-              </button>
-              <span class="hair mx-0.5 h-4 w-px xl:mx-1" />
-              <button type="button" class="console-btn" @click="zoom(-1)" aria-label="放大">＋</button>
-              <button type="button" class="console-btn" @click="zoom(1)" aria-label="缩小">－</button>
-              <span class="hair mx-0.5 h-4 w-px xl:mx-1" />
-              <button type="button" class="console-btn" @click="resetView">
-                <ScrambleText text="重置" :trigger="gen" :delay="540" />
-              </button>
-            </div>
-
-            <a :ref="(el) => (p.cta = el)" :href="shown.buyUrl" target="_blank" rel="noopener noreferrer"
-              class="flex h-[2.75rem] items-center gap-1.5 whitespace-nowrap px-4 font-hero text-[14px] font-bold text-ink transition-colors hover-accent xl:h-[3.5rem] xl:gap-2 xl:px-6 xl:text-[1.05rem]">
-              <ScrambleText text="立即订购" :trigger="gen" :delay="580" />
-              <span class="text-accent">»</span>
-            </a>
-          </div>
-        </div>
-
-        <p v-if="debug"
-          class="pointer-events-none absolute bottom-2.5 left-4 hidden font-mono text-[10px] text-ink-dim/40 xl:block">
-          {{ stats.fps }} fps · {{ stats.calls }} calls · {{ stats.tris }} tris ·
-          {{ panelCount }} panels · 玻璃覆盖 {{ stats.coverage }}%
-        </p>
       </template>
 
       <div v-if="mode === '3d' && !ready" class="absolute inset-0 grid place-items-center text-sm text-ink-dim">
@@ -224,6 +238,12 @@ const mode = ref("3d");
 const ready = ref(false);
 const stats = reactive({ fps: 0, calls: 0, tris: 0, coverage: 0 });
 const panelCount = ref(0);
+/**
+ * UI 缩放系数。这套密排布局实测到约 660px 高就排不下了（左列三张卡按 23/25/52 分高度，
+ * 其中参数卡五行需要 ~204px），所以基准取 700px：舞台高于 700 不缩放（1080p 及以上都不受影响），
+ * 低于 700 才整体等比缩小。下限 0.72，再小字就不好读了。xl 以下是另一套稀疏布局，不缩放。
+ */
+const uiScale = ref(1);
 /** 递增即让全部 ScrambleText 重跑一遍，包括内容不变的表头与按钮 */
 const gen = ref(0);
 // 默认夜间影棚（用户 2026-09-18 定）：暗底下金属高光收敛，产品质感更好
@@ -711,6 +731,8 @@ async function init() {
   function resize() {
     const w = canvas.clientWidth, h = canvas.clientHeight;
     if (!w || !h) return;
+    // 按视口宽判断而不是舞台宽：xl 断点看的是视口，舞台还要减掉页面左右留白
+    uiScale.value = innerWidth >= 1280 ? Math.min(1, Math.max(0.72, h / 700)) : 1;
     renderer.setSize(w, h, false);
     glass.setSize(w, h, dpr);
     camera.aspect = w / h;
@@ -727,7 +749,9 @@ async function init() {
     if (!el || !el.offsetWidth) return;
     let x = 0, y = 0, n = el;
     while (n && n !== stageEl.value) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
-    panels.push({ x, y, w: el.offsetWidth, h: el.offsetHeight, r, g });
+    // 乘回 UI 缩放层的 scale —— offset* 不计 transform，不乘玻璃卡片会比 DOM 大一圈
+    const s = uiScale.value;
+    panels.push({ x: x * s, y: y * s, w: el.offsetWidth * s, h: el.offsetHeight * s, r: r * s, g });
   }
 
   function frame() {

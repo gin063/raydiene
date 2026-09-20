@@ -47,7 +47,8 @@
           </Transition>
         </div>
         <div class="flex animate-fade-in-up" style="animation-delay: 0.4s">
-          <a href="https://item.jd.com/10138575243363.html" target="_blank" rel="noopener noreferrer"
+          <a :href="activeModel === 'pro' ? 'https://item.jd.com/10138575243361.html' : 'https://item.jd.com/10213575077717.html'"
+            target="_blank" rel="noopener noreferrer"
             class="px-8 py-3 rounded-full border border-white/10 font-bold bg-brand/80 backdrop-blur-md text-white hover:bg-white hover:text-black transition-colors">
             立即订购
           </a>

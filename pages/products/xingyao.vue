@@ -23,7 +23,7 @@
           7kW / 21kW 家用交流充电桩 · 触控大屏，时代之巅
         </p>
         <div class="flex animate-fade-in-up" style="animation-delay: 0.4s">
-          <a href="https://item.jd.com/10195071831710.html" target="_blank" rel="noopener noreferrer"
+          <a href="https://item.jd.com/10195071831709.html" target="_blank" rel="noopener noreferrer"
             class="px-8 py-3 rounded-full border border-white/10 font-bold bg-brand/80 backdrop-blur-md text-white hover:bg-white hover:text-black transition-colors">
             立即订购
           </a>
